@@ -14,7 +14,6 @@ function Tab() {
         {tabLists.map((tabList, i) => (
           <li key={i} className="tab__item">
             <Link className='tab__btn'>{tabList.title}</Link>
-            111
           </li>
         ))}
       </ul>
