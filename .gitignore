@@ -1,0 +1,7 @@
+## Ignore File ##
+
+node_modules
+dist/*
+*.log
+*.bak
+*.zip
