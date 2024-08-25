@@ -1,69 +1,48 @@
-// import MemberModel from '../models/MemberModel';
-import { nanoid } from 'nanoid';
-
-let members = [
-  {id:nanoid(), company:'apple',position:'front-end'},
-  {id:nanoid(), company:'google',position:'back-end'},
-]
+import Member from '../models/MemberModel.js';
+import { StatusCodes } from 'http-status-codes';
 
 // GET ALL
 export const getAllMembers = async (req,res) => {
-  res.status(200).json({members});
+  const members = await Member.find({});
+  res.status(StatusCodes.OK).json({members});
 };
 
 // GET SINGLE
 export const getMember = async (req,res) => {
-  const { id } = req.params;
-  const member = members.find((member) => member.id === id);
+  const member = await Member.findById(req.params);
   if (!member) {
-    // throw new Error('no member with that id');
     return res.status(404).json({msg:`no member with id ${id}`});
   }
   
-  res.status(200).json({member});
+  res.status(StatusCodes.OK).json({member});
 };
 
 // CREATE
 export const createMember = async (req,res) => {
-  const {company, position} = req.body;
-  if (!company || !position) {
-    return res.status(400).json({msg:'please provide company and postion'});
-  }
-  const id = nanoid(10);
-  const member = { id, company, position };
-  members.push(member);
-
-  res.status(200).json({members});
+  const member = await Member.create(req.body);
+  res.status(StatusCodes.CREATED).json({member});
 };
 
 // UPDATE
 export const updateMember = async (req,res) => {
-  const {company, position} = req.body;
-  if (!company || !position) {
-    return res.status(400).json({msg:'please provide company and postion'});
-  }
-
   const { id } = req.params;
-  const member = members.find((member) => member.id === id);
-  if (!member) {
+  const patchMember = await Member.findByIdAndUpdate(id, req.body,{
+    new:true
+  });
+  if (!patchMember) {
     return res.status(404).json({msg:`no member with id ${id}`});
   }
-  
-  member.company = company;
-  member.position = position;
 
-  res.status(200).json({ msg: 'member modified', member });
+  res.status(StatusCodes.OK).json({ msg: 'member modified', patchMember });
 };
 
 // DELETE
 export const deleteMember = async (req,res) => {
   const { id } = req.params;
-  const member = members.find((member) => member.id === id);
-  if (!member) {
+  const removeMember = await Member.findByIdAndDelete(id);
+  if (!removeMember) {
     return res.status(404).json({msg:`no member with id ${id}`});
   }
-  const newMembers = members.filter((member) => member.id !== id);
-  members = newMembers;
-  
-  res.status(200).json({ msg: 'member deleted', members });
+
+  res.status(StatusCodes.OK).json({ msg: 'member deleted', job: removeMember });
 };
