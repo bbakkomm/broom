@@ -1,4 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
+import LoginSuccess from "./pages/LoginSuccess";
 import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSuccess, Id, IdSuccess, Pw, PwSuccess } from "./pages";
 
 const router = createBrowserRouter([
@@ -26,6 +28,8 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
+        path: "/List",
+        element: <List />,
         path: "/Join",
         element: [
           <>
