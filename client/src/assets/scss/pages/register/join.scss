@@ -1,0 +1,19 @@
+.join {
+  padding: 3.6rem 2rem;
+
+  &__title {margin-bottom: 3.6rem; font-size: 2.4rem; letter-spacing:-.05em;}
+  &__form {margin-bottom: .6rem; font-size: 1.4rem; letter-spacing: -.05em;}
+  fieldset {border: 0;}
+  legend {display: none;}
+  &__item {display: block; margin-bottom: .6rem;}
+  &__input {
+    height: 3.6rem; padding: 0 .8rem; border: .1em solid #e5e5e5; border-radius: .5rem; color: #ccc;
+  
+    &:focus {border: 1px solid #000; outline: none;}
+  }
+  &__select {display: flex; align-items: center;}
+  &__btn {}
+  &__radio {}
+  &__text {}
+  
+}
