@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
-import LoginSuccess from "./pages/LoginSuccess";
-import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSuccess, Id, IdSuccess, Pw, PwSuccess } from "./pages";
+// import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
+// import LoginSuccess from "./pages/LoginSuccess";
+import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSuccess, Id, IdSuccess, Pw, PwSuccess, List } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +30,8 @@ const router = createBrowserRouter([
       {
         path: "/List",
         element: <List />,
+      },
+      {
         path: "/Join",
         element: [
           <>
