@@ -11,81 +11,33 @@ function Join() {
           <legend>회원 가입</legend>
 
           {/* id */}
-          <label htmlFor="username" className="join__item">
-            아이디
-          </label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="아이디"
-            className="join__input"
-          />
+          <label htmlFor="username" className="join__item">아이디</label>
+          <input type="text" id="username" name="username" placeholder="아이디" className="join__input"/>
 
           {/* pwd */}
-          <label htmlFor="pass" className="join__item">
-            비밀번호
-          </label>
-          <input
-            type="pass"
-            id="pass"
-            name="pass"
-            placeholder="비밀번호"
-            className="join__input"
-          />
-
+          <label htmlFor="pass" className="join__item">비밀번호</label>
+          <input type="pass" id="pass" name="pass" placeholder="비밀번호" className="join__input"/>
+          
           {/* pwd conf */}
-          <label htmlFor="" className="join__item hidden">
-            비밀번호 확인
-          </label>
-          <input
-            type="password"
-            id="passconfirm"
-            name="passconfirm"
-            placeholder="비밀번호 확인"
-            className="join__input"
-          />
+          <label htmlFor="" className="join__item hidden">비밀번호 확인</label>
+          <input  type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="join__input"/>
 
           {/* work */}
           <p className="join__item">희망직무</p>
           <div className="join__select">
             <div className="join__btn">
-              <input
-                type="radio"
-                id="planner"
-                name="work"
-                value="planner"
-                className="join__radio"
-              />
-              <label htmlFor="planner" className="join__text">
-                기획
-              </label>
+              <input type="radio" id="planner" name="work" value="planner" className="join__radio" />
+              <label htmlFor="planner" className="join__text">기획</label>
             </div>
 
             <div className="join__btn">
-              <input
-                type="radio"
-                id="designer"
-                name="work"
-                value="designer"
-                className="join__radio"
-              />
-              <label htmlFor="designer" className="join__text">
-                디자인
-              </label>
+              <input type="radio" id="designer" name="work" value="designer" className="join__radio" />
+              <label htmlFor="designer" className="join__text">디자인</label>
             </div>
 
             <div className="join__btn">
-              <input
-                type="radio"
-                id="developer"
-                name="work"
-                value="developer"
-                className="join__radio"
-              />
-              <label htmlFor="developer" className="join__text">
-                개발
-              </label>
+              <input type="radio" id="developer" name="work" value="developer" className="join__radio" />
+              <label htmlFor="developer" className="join__text">개발</label>
             </div>
           </div>
 
@@ -93,68 +45,28 @@ function Join() {
           <p className="join__item">주요기술</p>
           <div className="join__select">
             <div className="join__btn">
-              <input
-                type="radio"
-                id="figma"
-                name="work"
-                value="figma"
-                className="join__radio"
-              />
-              <label htmlFor="figma" className="join__text">
-                Figma
-              </label>
+              <input type="radio" id="figma" name="work" value="figma"  className="join__radio"/>
+              <label htmlFor="figma" className="join__text">Figma</label>
             </div>
 
             <div className="join__btn">
-              <input
-                type="radio"
-                id="html"
-                name="work"
-                value="html"
-                className="join__radio"
-              />
-              <label htmlFor="html" className="join__text">
-                HTML
-              </label>
+              <input type="radio" id="html" name="work" value="html"  className="join__radio"/>
+              <label htmlFor="html" className="join__text">HTML</label>
             </div>
 
             <div className="join__btn">
-              <input
-                type="radio"
-                id="css"
-                name="work"
-                value="css"
-                className="join__radio"
-              />
-              <label htmlFor="css" className="join__text">
-                CSS
-              </label>
+              <input type="radio" id="css" name="work" value="css"  className="join__radio"/>
+              <label htmlFor="css" className="join__text">CSS</label>
             </div>
 
             <div className="join__btn">
-              <input
-                type="radio"
-                id="SCSS"
-                name="work"
-                value="SCSS"
-                className="join__radio"
-              />
-              <label htmlFor="SCSS" className="join__text">
-                SCSS
-              </label>
+              <input type="radio" id="SCSS" name="work" value="SCSS"  className="join__radio"/>
+              <label htmlFor="SCSS" className="join__text">SCSS</label>
             </div>
 
             <div className="join__btn">
-              <input
-                type="radio"
-                id="javaScript"
-                name="work"
-                value="javaScript"
-                className="join__radio"
-              />
-              <label htmlFor="javaScript" className="join__text">
-                JavaScript
-              </label>
+              <input type="radio" id="javaScript" name="work" value="javaScript" className="join__radio"/>
+              <label htmlFor="javaScript" className="join__text">JavaScript</label>
             </div>
           </div>
 
@@ -162,9 +74,7 @@ function Join() {
           <div>reCAPTCHA</div>
 
           <div className="btn">
-            <Link to="/JoinSuccess" className="btn__outline">
-              가입하기
-            </Link>
+            <Link to="/JoinSuccess" className="btn__outline">가입하기</Link>
           </div>
         </fieldset>
       </form>
