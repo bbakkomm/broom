@@ -1,0 +1,15 @@
+.header {
+  display: flex; align-items: center; justify-content: space-between; height: 5rem; padding: 0 2rem; background-color: #fff;
+
+  &__title,
+  &__btn {display: flex; align-items: center; justify-content: center;}
+  &__title {
+    gap: 1.6rem; font-size: 1.6rem; color: #222;
+  
+    a {color: #222;}
+  }
+  &__btn {gap: .8rem;}
+
+  .logo {width: 8rem;}
+  .icon {width: 2.4rem;}
+}
