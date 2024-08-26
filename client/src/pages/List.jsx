@@ -3,7 +3,7 @@ import ListWhole from "./ListWhole"
 const List = () => {
     return (
       <div>
-        <ListWhole></ListWhole>
+        <ListWhole/>
       </div>
     )
   }
