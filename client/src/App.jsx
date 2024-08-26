@@ -13,7 +13,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/Login",
-        element: <Login />,
+        element: [
+          <>
+            <Header title={"로그인"} />
+            <Login />
+            <Nav />
+          </>,
+        ],
       },
       {
         path: "/Profile",
