@@ -9,6 +9,7 @@ const HomeLayout = () => {
         <li><Link to="/Landing">Landing으로 가기</Link></li>
         <li><Link to="/Login">Login으로 가기</Link></li>
         <li><Link to="/Profile">Profile으로 가기</Link></li>
+        <li><Link to="/List">List으로 가기</Link></li>
       </ul>
       <Outlet/>
     </div>

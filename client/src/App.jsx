@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { HomeLayout, Error, Landing, Login, Profile } from './pages';
+import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
 import LoginSuccess from "./pages/LoginSuccess";
 
 const router = createBrowserRouter([
@@ -27,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/Profile",
         element: <Profile />,
+      },
+      {
+        path: "/List",
+        element: <List />,
       },
     ],
   },
