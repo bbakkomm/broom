@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
 // import LoginSuccess from "./pages/LoginSuccess";
-import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSuccess, Id, IdSuccess, Pw, PwSuccess, List } from "./pages";
+import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +42,16 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "/Joinsetting",
+        element: [
+          <>
+            <Header title={"회원가입"} />
+            <JoinSetting />
+            <Nav />
+          </>,
+        ],
+      },
+      {
         path: "/JoinSuccess",
         element: [
           <>
@@ -77,6 +87,16 @@ const router = createBrowserRouter([
           <>
             <Header title={"비밀번호 찾기"} />
             <Pw />
+            <Nav />
+          </>,
+        ],
+      },
+      {
+        path: "/Pwreset",
+        element: [
+          <>
+            <Header title={"비밀번호 재설정"} />
+            <PwReset />
             <Nav />
           </>,
         ],

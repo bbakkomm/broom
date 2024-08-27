@@ -12,15 +12,19 @@ function Join() {
 
           {/* id */}
           <label htmlFor="username" className="input-label">아이디</label>
-          <input type="text" id="username" name="username" placeholder="아이디" className="input-box__write"/>
+          <input type="text" id="username" name="username" placeholder="아이디" className="input-write"/>
+
+          {/* email */}
+          <label htmlFor="useremail" className="input-label">이메일</label>
+          <input type="email" id="useremail" name="useremail" placeholder="이메일" className="input-write"/>
 
           {/* pwd */}
           <label htmlFor="pass" className="input-label">비밀번호</label>
-          <input type="pass" id="pass" name="pass" placeholder="비밀번호" className="input-box__write"/>
+          <input type="password" id="pass" name="pass" placeholder="비밀번호" className="input-write"/>
           
           {/* pwd conf */}
-          <label htmlFor="" className="input-label hidden">비밀번호 확인</label>
-          <input  type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-box__write"/>
+          <label htmlFor="passconfirm" className="input-label hidden">비밀번호 확인</label>
+          <input  type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-write"/>
 
           {/* work */}
           <p className="input-label">희망직무</p>
@@ -73,7 +77,7 @@ function Join() {
           {/* reCAPTCHA */}
           <div className="recaptcha">reCAPTCHA</div>
 
-          <Link to="/JoinSuccess" className="btn-un">가입하기</Link>
+          <Link to="/Joinsetting" className="btn-un">가입하기</Link>
         </fieldset>
       </form>
     </section>
