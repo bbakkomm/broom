@@ -42,7 +42,7 @@
 
 // select
 .select-box {
-  display: flex; flex-wrap: nowrap; align-items: center; justify-content: start; gap: .8rem; margin-bottom: 1.6rem;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: start; gap: 1.2rem .8rem; margin-bottom: 1.6rem;
 
   &__radio {display: none;}
   &__text {padding: .4rem 1.2rem; border-radius: .4rem; border: 1px solid #e5e5e5; font-size: 1.4rem; color: #ccc; cursor: pointer;}

@@ -27,7 +27,7 @@ function Join() {
           <input  type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-write"/>
 
           {/* work */}
-          <p className="input-label">희망직무</p>
+          {/* <p className="input-label">희망직무</p>
           <div className="select-box">
             <div className="select-box__btn">
               <input type="radio" id="planner" name="work" value="planner" className="select-box__radio" />
@@ -43,10 +43,10 @@ function Join() {
               <input type="radio" id="developer" name="work" value="developer" className="select-box__radio" />
               <label htmlFor="developer" className="select-box__text">개발</label>
             </div>
-          </div>
+          </div> */}
 
           {/* skill */}
-          <p className="input-label">주요기술</p>
+          {/* <p className="input-label">주요기술</p>
           <div className="select-box">
             <div className="select-box__btn">
               <input type="radio" id="figma" name="work" value="figma"  className="select-box__radio"/>
@@ -72,7 +72,7 @@ function Join() {
               <input type="radio" id="javaScript" name="work" value="javaScript" className="select-box__radio"/>
               <label htmlFor="javaScript" className="select-box__text">JavaScript</label>
             </div>
-          </div>
+          </div> */}
 
           {/* reCAPTCHA */}
           <div className="recaptcha">reCAPTCHA</div>
