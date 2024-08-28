@@ -1,13 +1,17 @@
 img {width: 100%;}
 
 .inner_360 {max-width: 36rem; margin: 0 auto;}
-.btn_search {width: 1.6rem;}
 
 .profile-header {
-  display: flex; justify-content: space-between; align-items: center; height: 5rem; padding: 0 2rem; box-shadow: 1px -1px 6px 0px rgba(166, 180, 200, 0.15);
+  display: flex; justify-content: space-between; align-items: center; height: 5rem; padding: 0 2rem; box-shadow: 1px -1px 6px 0px rgba(166, 180, 200, 0.15); margin-bottom: 3.6rem;
   &__title {font-size: 1.6rem; font-weight: 400;}
+  .btn_search {width: 2rem; height: 2rem;}
 }
 
-.profile-info {
-  &__thumb {width: 8rem; height: 8rem; overflow: hidden; border-radius: 4rem;}
+.profile-card {
+  display: flex; justify-content: space-around; align-items: center;
+  &__img {width: 8rem; height: 8rem; overflow: hidden; border-radius: 4rem;}
+  &__username {font-size: 1.6rem;}
+  &__email {font-size: 1.2rem; color: #aaa;}
+  .btn_arrowforward {width: 2rem; height: 2rem;}
 }
