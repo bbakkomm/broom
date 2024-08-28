@@ -22,7 +22,7 @@ const Profile = () => {
             <img src={imgPath + profileThumb}/>
           </div>
           <div className="profile">
-
+            test
           </div>
 
         </div>
