@@ -3,7 +3,7 @@
 }
 
 .select{
-    display: flex; align-items: baseline; justify-content: space-between; padding: 0 20px 0;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 20px 0; height: 50px;
     .whole_num{
         font-size: 11px; color: #999999;
         &__count{
@@ -65,9 +65,32 @@
         }
     }
 
+}
 
 
-
-
-
+.list{width: 100%; height: 100%; margin-top: 16px;
+    .list__wrapper{    
+        display: flex; flex-direction: column; gap: 8px;
+        .list__box{
+            width: 320px; height: 202px; border: 1px solid #F2F1F6; border-radius: 10px; margin: 0 auto; padding: 19px 15px;
+            .list__badge{
+                margin-bottom: 8px;
+                p{    
+                    display: flex; justify-content: center; align-items: center; font-size: 10px; font-weight: 700; width: 43px; height: 19px; padding: 3px 6px 3px 6px; border: 1px solid #0396FC; border-radius: 5px; color: #0396FC;
+                }
+            }
+            .study_name{
+                font-size: 16px; font-weight: 700; margin-bottom: 8px;
+            }
+            .study_inner{
+                display: flex; align-items: center; gap: 20px;
+                .img_box{
+                    width: 105px; height: 105px; border-radius: 10px;
+                }
+                .study_info{
+                    display: flex; flex-direction: column; gap: 6px; font-size: 11px; font-weight: 400; color: #656668; 
+                }
+            }
+        }
+    }
 }
