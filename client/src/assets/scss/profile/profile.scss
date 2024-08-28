@@ -1,3 +1,13 @@
-.profile {
-  li { color: #fff;}
+img {width: 100%;}
+
+.inner_360 {max-width: 36rem; margin: 0 auto;}
+.btn_search {width: 1.6rem;}
+
+.profile-header {
+  display: flex; justify-content: space-between; align-items: center; height: 5rem; padding: 0 2rem; box-shadow: 1px -1px 6px 0px rgba(166, 180, 200, 0.15);
+  &__title {font-size: 1.6rem; font-weight: 400;}
+}
+
+.profile-info {
+  &__thumb {width: 8rem; height: 8rem; overflow: hidden; border-radius: 4rem;}
 }
