@@ -1,7 +1,5 @@
 
 import '../assets/scss/profile/profile.scss';
-// import Stack from '@mui/material/Stack';
-// import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
