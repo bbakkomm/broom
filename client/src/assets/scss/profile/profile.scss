@@ -1,3 +1,40 @@
-.profile {
-  li { color: #fff;}
+img {width: 100%;}
+
+.inner_360 {max-width: 36rem; margin: 0 auto;}
+
+.profile-header {
+  display: flex; justify-content: space-between; align-items: center; height: 5rem; padding: 0 2rem; box-shadow: 1px -1px 6px 0px rgba(166, 180, 200, 0.15); margin-bottom: 3.6rem;
+  &__title {font-size: 1.6rem; font-weight: 400;}
+  .btn_search {width: 2rem; height: 2rem;}
+}
+
+.profile-card {
+  display: flex; justify-content: flex-start; align-items: center; gap: 1rem; padding: 0 2rem; margin-bottom: 2.4rem;
+  &__img {width: 8rem; height: 8rem; overflow: hidden; border-radius: 4rem;}
+  &__username {flex: 1; font-size: 1.6rem;}
+  &__email {font-size: 1.2rem; color: #aaa;}
+  .btn_arrowforward {width: 2rem; height: 2rem;}
+}
+
+.skill-tag-box {display: flex; justify-content: flex-start; align-items: center; padding: 0 2rem; gap: .3rem; margin-bottom: 3.6rem;}
+.skill-tag-box__item {}
+
+.skill-tag {
+  height: 2.3rem; color: #000; font-size: 1.1rem; font-weight: 700; padding: .4rem .8rem; border-radius: .5rem;
+  &--js {background: #F7DF1E; color: #000;}
+  &--ts {background: #3178C6; color: #fff;}
+  &--react {background: #02D9FF; color: #fff;}
+}
+
+.status-box {border: .1rem solid #F2F1F6; border-radius: 1rem; margin: 0 2rem;}
+.status {
+  display: flex; justify-content: space-around; padding: 1.5rem 2rem;
+  &__item {display: flex; flex-direction: column; justify-content: center; text-align: center; gap: .6rem;}
+  &__info {
+    font-size: 2.4rem; font-weight: 700; line-height: 2.9rem; color: #aaa;
+    &--like {color: #FB744A;}
+    &--studing {color: #FBD44A;}
+    &--complate {color: #0396FC;}
+  }
+  &__desc {font-size: 1.2rem; line-height: 1.4rem; color: #aaa;}
 }
