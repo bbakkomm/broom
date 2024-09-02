@@ -9,6 +9,68 @@ const Profile = () => {
   const imgPath = '/src/assets/img/profile/'
   let profileThumb = 'profile_01.png'
 
+  let repleData = [
+    {
+      _id : '000003',
+      userName : '뚜부',
+      userImg : imgPath + profileThumb,
+      date : '2024.08.01 23:00',
+      comment : '안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D'      
+    },
+    {
+      _id : '000003',
+      userName : '뚜부',
+      userImg : imgPath + profileThumb,
+      date : '2024.08.01 23:00',
+      comment : '안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D'      
+    },
+    {
+      _id : '000003',
+      userName : '뚜부',
+      userImg : imgPath + profileThumb,
+      date : '2024.08.01 23:00',
+      comment : '안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D'      
+    },
+    {
+      _id : '000003',
+      userName : '뚜부',
+      userImg : imgPath + profileThumb,
+      date : '2024.08.01 23:00',
+      comment : '안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D'      
+    },
+    {
+      _id : '000003',
+      userName : '뚜부',
+      userImg : imgPath + profileThumb,
+      date : '2024.08.01 23:00',
+      comment : '안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D'      
+    },
+    {
+      _id : '000003',
+      userName : '뚜부',
+      userImg : imgPath + profileThumb,
+      date : '2024.08.01 23:00',
+      comment : '안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D'      
+    },
+    {
+      _id : '000002',
+      userName : '뚜부',
+      userImg : imgPath + profileThumb,
+      date : '2024.08.01 23:00',
+      comment : '안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D'      
+    },
+    {
+      _id : '000001',
+      userName : '뚜부',
+      userImg : imgPath + profileThumb,
+      date : '2024.08.01 23:00',
+      comment : '안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D'      
+    },
+  ]
+
+  console.log(repleData)
+
+
   return (
     <div className="profile">
       <div className="inner_360">
@@ -53,7 +115,35 @@ const Profile = () => {
               </li>
             </ul>
           </div>
-          <button>test</button>
+          <div className="tab-box">
+            <ul className="tabs">
+              <li className="tabs__menu active">댓글</li>
+              <li className="tabs__menu">버튼</li>
+              <li className="tabs__menu">일정</li>
+            </ul>
+          </div>
+
+          <div className="reple-box">
+            <ul className="reple-list">
+              {
+                repleData.map((item, idx)=>(
+                  <li className="reple-list__item" key={idx}>
+                    <div className="reple-list__img">
+                      <img src={item.userImg} alt="" />
+                    </div>
+                    <div className="reple-list__cont">
+                      <div className="reple-list__wrap">
+                        <span className="reple-list__username">{item.userName}</span>
+                        <span className="reple-list__date">{item.date}</span>
+                      </div>
+                      <p className="reple-list__comment">{item.comment}</p>
+                    </div>
+                  </li>
+                ))
+              }
+              
+            </ul>
+          </div>
       </div>
     </div>
   )
