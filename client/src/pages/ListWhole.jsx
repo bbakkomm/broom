@@ -3,26 +3,6 @@ import study_img_tbd from "../assets/img/study_img_tbd.jpg";
 
 const ListWhole = () => {
 
-//전체, 모집중, 완료
-  const [selectedIndex, setSelectedIndex] = useState(null);
-  const handleClick = (index, e) => {
-    e.preventDefault();
-    setSelectedIndex(index);
-  }
-
-//최신순으로 정렬
-const [items, setItems] = useState([
-  { id: 1, name: "Item 1", date: "2024-08-20" },
-  { id: 2, name: "Item 2", date: "2024-08-27" },
-  { id: 3, name: "Item 3", date: "2024-08-23" }
-]);
-//최신순으로 정렬하는 함수
-const sortByLatest = () => {
-  const sortedItems = [...items].sort((a, b) => new Date(b.date) - new Date(a.date));
-  setItems(sortedItems);
-  console.log(1);
-};
-
 // 팝업의 열림 상태를 관리하는 상태 변수
 const [isModalOpen, setIsModalOpen] = useState(false);
 // 팝업을 토글하는 함수
@@ -76,18 +56,17 @@ const [inputData, setInputData] = useState("");
     }
   };
 
-  console.log(handleInputChange);
 
   //반복할 데이터 배열
   // studies 라는 변수선언 후 안에 배열을 만든다 key, value로 
   //react의 map이라는 문법을 사용해 함수로 만들고(study) 안에 리스트 반복할 작성문을 담고 
   //li에 key로 id값을 부여 후 반복해서 나와야할 부분에 {study.status} < 이런식으로 값들을 넣어준다! 그러면 알아서 반복해서 나온다
-  const studies = [
+  const [studies, setStudies] = useState([
     {
       id: 1,
       status: "모집중",
       name: "MORGAN",
-      date: "2024.08.01 ~",
+      date: "2024.08.01",
       time: "오후 02:00",
       location: "강남역 4번 출구",
       cost: "비용없음",
@@ -98,7 +77,7 @@ const [inputData, setInputData] = useState("");
       id: 2,
       status: "모집중",
       name: "DAVID",
-      date: "2024.08.01 ~",
+      date: "2024.08.02",
       time: "오후 02:00",
       location: "강남역 4번 출구",
       cost: "비용없음",
@@ -109,7 +88,7 @@ const [inputData, setInputData] = useState("");
       id: 3,
       status: "모집중",
       name: "JACOB",
-      date: "2024.08.01 ~",
+      date: "2024.08.03",
       time: "오후 02:00",
       location: "강남역 4번 출구",
       cost: "비용없음",
@@ -120,7 +99,7 @@ const [inputData, setInputData] = useState("");
       id: 4,
       status: "모집중",
       name: "YUMI",
-      date: "2024.08.01 ~",
+      date: "2024.08.04",
       time: "오후 02:00",
       location: "강남역 4번 출구",
       cost: "비용없음",
@@ -131,7 +110,7 @@ const [inputData, setInputData] = useState("");
       id: 5,
       status: "모집중",
       name: "YUMI",
-      date: "2024.08.01 ~",
+      date: "2024.08.05",
       time: "오후 02:00",
       location: "강남역 4번 출구",
       cost: "비용없음",
@@ -142,43 +121,23 @@ const [inputData, setInputData] = useState("");
       id: 6,
       status: "모집중",
       name: "YUMI",
-      date: "2024.08.01 ~",
+      date: "2024.08.06",
       time: "오후 02:00",
       location: "강남역 4번 출구",
       cost: "비용없음",
       participants: "최소 4명 ~ 최대 13명",
       imgSrc: study_img_tbd
     },
-  ]
+  ])
 
-
+//최신순으로 정렬하는 함수
+const sortByLatest = () => {
+  const sortedStudies = [...studies].sort((a, b) => new Date(b.date) - new Date(a.date));
+  setStudies(sortedStudies);
+};
 
     return (
       <div>
-
-        <div className="list_tit">
-          <a href="" onClick={(e) => handleClick(0, e)}>
-            <div style={{
-            color: selectedIndex === 0 ? 'black' : 'black',
-            fontWeight: selectedIndex === 0 ? 'bold' : 'normal',
-            }}>전체</div>
-          </a>
-
-          <a href="" onClick={(e) => handleClick(1, e)}>
-            <div style={{
-            color: selectedIndex === 1 ? 'black' : 'black',
-            fontWeight: selectedIndex === 1 ? 'bold' : 'normal',
-            }}>모집중</div>
-          </a>
-
-          <a href="" onClick={(e) => handleClick(2, e)}>
-            <div style={{
-            color: selectedIndex === 2 ? 'black' : 'black',
-            fontWeight: selectedIndex === 2 ? 'bold' : 'normal',
-            }}>완료</div>
-          </a>
-        </div>
-        
         <div className="select">
           <p className="whole_num">전체 <span className="whole_num__count">{studies.length}</span>개</p>
           <div className="filter">
@@ -237,7 +196,7 @@ const [inputData, setInputData] = useState("");
                   <div className="study_inner">
                     <img src={study.imgSrc} alt="" className="img_box" />
                     <div className="study_info">
-                      <p>{study.date}</p>
+                      <p>{study.date} ~</p>
                       <p>{study.time}</p>
                       <p>{study.location}</p>
                       <p>{study.cost}</p>
