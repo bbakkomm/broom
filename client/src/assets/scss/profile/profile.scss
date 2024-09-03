@@ -9,7 +9,7 @@ img {width: 100%;}
   .btn_search {width: 2rem; height: 2rem;}
 }
 
-.profile-card {
+.profile-box {
   display: flex; justify-content: flex-start; align-items: center; gap: 1.6rem; padding: 0 2rem; margin-bottom: 2.4rem;
   &__img {width: 8rem; height: 8rem; overflow: hidden; border-radius: 4rem;}
   &__user {flex: 1;}
@@ -51,8 +51,8 @@ img {width: 100%;}
   }
 }
 
-.reple-box {}
-.reple-list {
+.comment-box {}
+.comment-list {
   display: flex; flex-direction: column; gap: 1.6rem;
   &__item {display: flex; gap: .9rem; border: .1rem solid #F2F1F6; border-radius: 1rem; margin: 0 2rem; box-shadow: .1rem -.1rem .6rem 0 #A6B4C826; padding: 1.6rem;}
   &__img{width: 4rem;}
