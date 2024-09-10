@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CommentBox({ idx, userImg, userName, date, comment }) {
+function CommentList({ idx, userImg, userName, date, comment }) {
   return (
     <li className="comment-list__item" key={idx}>
       <div className="comment-list__img">
@@ -17,4 +17,4 @@ function CommentBox({ idx, userImg, userName, date, comment }) {
   )
 }
 
-export default CommentBox
+export default CommentList

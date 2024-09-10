@@ -2,10 +2,12 @@
 import '../assets/scss/profile/profile.scss';
 import SearchIcon from '@mui/icons-material/Search';
 
-import ProfileCard from '../components/ProfileCard';
-import CommentBox from '../components/CommentBox';
+import ProfileCard from '../components/mypage/ProfileCard';
+import CommentBox from '../components/mypage/CommentBox';
+// import CommentList from '../components/mypage/CommentList';
 
 import jsonData from '../assets/data/userData.json';
+import { listItemSecondaryActionClasses } from '@mui/material';
 
 
 const Profile = () => {
@@ -40,11 +42,19 @@ const Profile = () => {
           </ul>
         </div>
 
-        <div className="comment-box">
+        <div className="plan-box">
+          <div className="plan-list">
+            
+          </div>
+        </div>
+
+        <CommentBox/>
+
+        {/* <div className="comment-box">
           <ul className="comment-list">
             {
               userData.map((item, idx)=>(
-                <CommentBox 
+                <CommentList 
                   userImg={imgPath + item.userImg}
                   userName={item.userName}
                   date={item.date}
@@ -54,7 +64,7 @@ const Profile = () => {
               ))
             }
           </ul>
-        </div>
+        </div> */}
 
       </div>
     </div>
