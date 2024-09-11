@@ -35,7 +35,19 @@ const List = () => {
             }}>완료</div>
           </a>
         </div>
+        {
+          function select(){
+            // if(selectedIndex === 0){
 
+            // }else if(selectedIndex === 1){
+
+            // }else if (selectedIndex === 2){
+              
+            // }
+
+            console.log(selectedIndex === 1);
+          }
+        }
         <ListWhole/>
         <Nav/>
       </div>
