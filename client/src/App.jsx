@@ -24,12 +24,24 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/Profile",
-        element: <Profile />,
+        path: "/Mypage",
+        element: [
+          <>
+            <Header title={"마이페이지"} />
+            <Profile />
+            <Nav />
+          </>,
+        ],
       },
       {
-        path: "/List",
-        element: <List />,
+        path: "/Study",
+        element: [
+          <>
+            <Header title={"스터디"} />
+            <List />
+            <Nav />
+          </>,
+        ],
       },
       {
         path: "/Join",

@@ -27,15 +27,15 @@ function Nav(props) {
             <p className="nav__btn">스터디</p>
           </NavLink>
         </li>
-        <li className="nav__item">
+        {/* <li className="nav__item">
           <NavLink
             to="/teamproject"
             className={({ isActive }) => (isActive ? "on" : "")}
           >
-            {/* <PeopleAltOutlinedIcon /> */}
+            <PeopleAltOutlinedIcon />
             <p className="nav__btn">팀프로젝트</p>
           </NavLink>
-        </li>
+        </li> */}
         <li className="nav__item">
           <NavLink
             to="/partner"
