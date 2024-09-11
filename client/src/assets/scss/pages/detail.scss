@@ -1,0 +1,57 @@
+.detail {
+    // 탭메뉴
+    .tab {
+        &__item {}
+        &__btn {}
+    }
+
+    // 스터디 이미지
+    .image {}
+
+    // 스터디 정보
+    .info {
+        .tag {
+            &__itme {}
+        }
+
+        .title {}
+
+        .desc {
+            &__item {}
+            &__icon {}
+            &__img {}
+            &__desc {}
+            &__text {}
+        }
+
+        &__text {}
+    }
+
+    // 일정
+    
+    // 모임 멤버
+    .memeber {
+        &__list {}
+        &__item {}
+        &__img {}
+        &__info {}
+        &__data {
+        }
+        &__title {}
+        &__status {}
+        &__text {}  
+    }
+
+    // 댓글
+    .comment {
+        &__img {}
+        &__left {}
+        &__info {}
+        &__writer {}
+        &__time {}
+        &__text {}
+        &__box {}
+        &__input {}
+        &__btn {}
+    }
+}
