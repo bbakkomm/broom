@@ -1,0 +1,71 @@
+{
+    "result" :[
+        {
+            "id": 1,
+            "status": "모집중",
+            "name": "MORGAN",
+            "date": "2024.08.01",
+            "time": "오후 02:00",
+            "location": "강남역 4번 출구",
+            "cost": "비용없음",
+            "participants": "최소 4명 ~ 최대 13명",
+            "imgSrc": "study_img_tbd.jpg"
+          },
+          {
+            "id": 2,
+            "status": "모집중",
+            "name": "DAVID",
+            "date": "2024.08.02",
+            "time": "오후 02:00",
+            "location": "강남역 4번 출구",
+            "cost": "비용없음",
+            "participants": "최소 4명 ~ 최대 13명",
+            "imgSrc": "study_img_tbd.jpg"
+          },
+          {
+            "id": 3,
+            "status": "모집중",
+            "name": "JACOB",
+            "date": "2024.08.03",
+            "time": "오후 02:00",
+            "location": "강남역 4번 출구",
+            "cost": "비용없음",
+            "participants": "최소 4명 ~ 최대 13명",
+            "imgSrc": "study_img_tbd.jpg"
+          },
+          {
+            "id": 4,
+            "status": "모집중",
+            "name": "YUMI",
+            "date": "2024.08.04",
+            "time": "오후 02:00",
+            "location": "강남역 4번 출구",
+            "cost": "비용없음",
+            "participants": "최소 4명 ~ 최대 13명",
+            "imgSrc": "study_img_tbd.jpg"
+          },
+          {
+            "id": 5,
+            "status": "모집중",
+            "name": "YUMI",
+            "date": "2024.08.05",
+            "time": "오후 02:00",
+            "location": "강남역 4번 출구",
+            "cost": "비용없음",
+            "participants": "최소 4명 ~ 최대 13명",
+            "imgSrc": "study_img_tbd.jpg"
+          },
+          {
+            "id": 6,
+            "status": "모집중",
+            "name": "YUMI",
+            "date": "2024.08.06",
+            "time": "오후 02:00",
+            "location": "강남역 4번 출구",
+            "cost": "비용없음",
+            "participants": "최소 4명 ~ 최대 13명",
+            "imgSrc": "study_img_tbd.jpg"
+          }
+    ]
+
+}
