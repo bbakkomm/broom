@@ -1,49 +1,51 @@
 import 'express-async-errors';
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 dotenv.config();
 
-import express from 'express';
+import express from "express";
 const app = express();
 
-import morgan from 'morgan';
-import mongoose from 'mongoose';
+import morgan from "morgan";
+import mongoose from "mongoose";
+import cookieParser from 'cookie-parser';
 
 // routers
-import memberRouter from './routes/memberRouter.js';
+import jobRouter from './routes/jobRouter.js';
+import authRouter from './routes/authRouter.js';
+
+// middleware
+import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+import { authenticateUser } from './middleware/authMiddleware.js';
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+app.use(cookieParser());
 app.use(express.json());
 
-// MEMBER
-app.use('/api/v1/members', memberRouter);
+app.get('/', (req, res) => {
+  res.send('hello world');
+});
 
-// 설정 API 이외 경로 요청 NOT FOUND 처리
+app.use('/api/v1/jobs', authenticateUser, jobRouter);
+app.use('/api/v1/auth', authRouter);
+
 app.use('*', (req, res) => {
-  res.status(404).json({ msg: 'not found'});
+  res.sendStatus(404).json({ msg: 'not found'});
 });
 
-// 설정 서버 내부 ERROR 처리
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json({ msg: 'something went wrong'});
-});
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5100;
 
-// MONGODB 연결
 try {
-  await mongoose.connect(process.env.MONGO_URL)
+  await mongoose.connect(process.env.MONGO_URL);
   app.listen(port, () => {
-    console.log(`mongo server running to PORT ${port}...`);
+    console.log(`server mongoDB running ${port}...`);
   });
 } catch (error) {
   console.log(error);
   process.exit(1);
 }
 
-// app.listen(port, () => {
-//   console.log(`server running on PORT ${port}...`);
-// });
