@@ -13,10 +13,28 @@
                 "ts" : false
                 },
             "date" : "2024.08.01 23:00",
-            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D"
+            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D",
+            "plan" : [
+                {
+                    "planTitle" : "모각코 15시~",
+                    "planDate" : "08.01",
+                    "planWeek" : "목",
+                    "planTime" : "오후 3:00",
+                    "place" : "종로구",
+                    "price" : "10,000"
+                },
+                {
+                    "planTitle" : "모각코 15시~",
+                    "planDate" : "09.14",
+                    "planWeek" : "토",
+                    "planTime" : "오후 5:00",
+                    "place" : "서초구",
+                    "price" : "15,000"
+                }
+            ]
         },
         {
-            "_id" : "000004",
+            "_id" : "000003",
             "userName" : "뚜부",
             "userImg" : "profile_01.png",
             "userEmail" : "broom@broom.com",
@@ -28,10 +46,28 @@
                 "ts" : false
                 },
             "date" : "2024.08.01 23:00",
-            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D"
+            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D",
+            "plan" : [
+                {
+                    "planTitle" : "모각코 15시~",
+                    "planDate" : "08.01",
+                    "planWeek" : "목",
+                    "planTime" : "오후 3:00",
+                    "place" : "종로구",
+                    "price" : "10,000"
+                },
+                {
+                    "planTitle" : "모각코 15시~",
+                    "planDate" : "09.14",
+                    "planWeek" : "토",
+                    "planTime" : "오후 5:00",
+                    "place" : "서초구",
+                    "price" : "15,000"
+                }
+            ]
         },
         {
-            "_id" : "000004",
+            "_id" : "000002",
             "userName" : "뚜부",
             "userImg" : "profile_01.png",
             "userEmail" : "broom@broom.com",
@@ -43,10 +79,28 @@
                 "ts" : false
                 },
             "date" : "2024.08.01 23:00",
-            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D"
+            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D",
+            "plan" : [
+                {
+                    "planTitle" : "모각코 15시~",
+                    "planDate" : "08.01",
+                    "planWeek" : "목",
+                    "planTime" : "오후 3:00",
+                    "place" : "종로구",
+                    "price" : "10,000"
+                },
+                {
+                    "planTitle" : "모각코 15시~",
+                    "planDate" : "09.14",
+                    "planWeek" : "토",
+                    "planTime" : "오후 5:00",
+                    "place" : "서초구",
+                    "price" : "15,000"
+                }
+            ]
         },
         {
-            "_id" : "000004",
+            "_id" : "000001",
             "userName" : "뚜부",
             "userImg" : "profile_01.png",
             "userEmail" : "broom@broom.com",
@@ -58,7 +112,25 @@
                 "ts" : false
                 },
             "date" : "2024.08.01 23:00",
-            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D"
+            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D",
+            "plan" : [
+                {
+                    "planTitle" : "모각코 15시~",
+                    "planDate" : "08.01",
+                    "planWeek" : "목",
+                    "planTime" : "오후 3:00",
+                    "place" : "종로구",
+                    "price" : "10,000"
+                },
+                {
+                    "planTitle" : "모각코 15시~",
+                    "planDate" : "09.14",
+                    "planWeek" : "토",
+                    "planTime" : "오후 5:00",
+                    "place" : "서초구",
+                    "price" : "15,000"
+                }
+            ]
         }        
     ]
 }
