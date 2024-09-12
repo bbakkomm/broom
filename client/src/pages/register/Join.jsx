@@ -77,7 +77,7 @@ function Join() {
           {/* reCAPTCHA */}
           <div className="recaptcha">reCAPTCHA</div>
 
-          <Link to="/Joinsetting" className="btn-un">가입하기</Link>
+          <Link to="/Joinsetting" className="btn-un">다음</Link>
         </fieldset>
       </form>
     </section>

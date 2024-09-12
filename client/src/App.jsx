@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
 // import LoginSuccess from "./pages/LoginSuccess";
-import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List } from "./pages";
+import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +39,16 @@ const router = createBrowserRouter([
           <>
             <Header title={"스터디"} />
             <List />
+            <Nav />
+          </>,
+        ],
+      },
+      {
+        path: "/StudyDetail",
+        element: [
+          <>
+            <Header title={"스터디 상세"} rightBtn />
+            <Detail />
             <Nav />
           </>,
         ],
