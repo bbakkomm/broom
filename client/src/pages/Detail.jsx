@@ -1,19 +1,35 @@
-import React from 'react'
+import React, { useState } from "react";
+import ListBox from "../components/ListBox";
+import jsonData from "../assets/data/listData.json";
+const imgPath = "/src/assets/img/";
+
+import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
+import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
+import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
+import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
+import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
+
+import img from '../../src/assets/img/pages/detail.jpg';
+import dubuImg from '../../src/assets/img/pages/dubu.jpg';
 
 function Detail() {
+    const [listData, setListData] = useState(jsonData.result);
+
     return (
         <main className="detail">
             {/* 탭메뉴 */}
             <ul className="tab">
-                <li className="tab__item"><a href="" className="tab__btn">홈</a></li>
-                <li className="tab__item"><a href="" className="tab__btn">일정</a></li>
-                <li className="tab__item"><a href="" className="tab__btn">모임멤버</a></li>
-                <li className="tab__item"><a href="" className="tab__btn">Q&A</a></li>
+                <li className="tab__item active">홈</li>
+                <li className="tab__item">일정</li>
+                <li className="tab__item">모임멤버</li>
+                <li className="tab__item">Q&A</li>
             </ul>
 
             {/* 스터디 이미지 */}
             <section className="image">
-                <img src="" alt="" />
+                <img src={img} alt="" />
             </section>
 
             {/* 스터디 정보 */}
@@ -27,8 +43,8 @@ function Detail() {
                 <ul className="desc">
                     <li className="desc__item">
                         <div className="dec__icon">
-                            <img src="" alt="" className="desc__img" />
-                            <p className="">일정</p>
+                            <CalendarTodayRoundedIcon/>
+                            <p className="blind">일정</p>
                         </div>
                         <p className="dec__text">2024.08.01 ~ </p>
                         <p className="desc__text"></p>
@@ -36,32 +52,32 @@ function Detail() {
 
                     <li className="desc__item">
                         <div className="dec__icon">
-                            <img src="" alt="" />
-                            <p className="">시간</p>
+                            <AccessAlarmsRoundedIcon/>
+                            <p className="blind">시간</p>
                         </div>
                         <p className="dec__text">14:00</p>
                     </li>
                     
                     <li className="desc__item">
                         <div className="dec__icon">
-                            <img src="" alt="" />
-                            <p className="">위치</p>
+                            <PlaceOutlinedIcon/>
+                            <p className="blind">위치</p>
                         </div>
                         <p className="dec__text">강남역 4번 출구</p>
                     </li>
 
                     <li className="desc__item">
                         <div className="dec__icon">
-                            <img src="" alt="" />
-                            <p className="">비용</p>
+                            <PaymentsOutlinedIcon/>
+                            <p className="blind">비용</p>
                         </div>
                         <p className="dec__text">비용없음</p>
                     </li>
                     
                     <li className="desc__item">
                         <div className="dec__icon">
-                            <img src="" alt="" />
-                            <p className="">인원</p>
+                            <PeopleAltOutlinedIcon/>
+                            <p className="blind">인원</p>
                         </div>
                         <p className="dec__text">최소 {4}명</p> ~
                         <p className="dec__text">최대 {13}명</p>
@@ -69,8 +85,8 @@ function Detail() {
 
                     <li className="desc__item">
                         <div className="dec__icon">
-                            <img src="" alt="" />
-                            <p className="">주요 기술</p>
+                            <SettingsOutlinedIcon/>
+                            <p className="blind">주요 기술</p>
                         </div>
                         <ul className="skill">
                             <li className="skill__item"></li>
@@ -78,56 +94,129 @@ function Detail() {
                     </li>
                 </ul>
 
-                <p className="info__text"></p>
+                <p className="info__text">
+                    스터디 팀원 모집합니다. <br /> 같이 재미있게 공부해요! :D
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum rerum mollitia ullam alias, molestias fugiat suscipit delectus dicta, sunt ducimus, veniam cumque dolor non? Est minus explicabo atque alias recusandae.
+                </p>
             </section>
 
             {/* 일정 */}
             <section className="date">
                 <h2 className="section-title">일정</h2>
+                <p className="day"><span className="day__date">08.01</span>목 <span className="day__status">오늘</span></p>
+                <div className="list">
+                    <ul className="list__wrapper">
+                        {listData.map((study, index) => (
+                            <ListBox
+                                key={index}
+                                index={index}
+                                status={study.status}
+                                name={study.name}
+                                date={study.date}
+                                time={study.time}
+                                location={study.loaction}
+                                cost={study.cost}
+                                participants={study.participants}
+                                imgSrc={imgPath + study.imgSrc}
+                            />
+                        ))}
+                    </ul>
+                </div>
+                
+                <p className="day"><span className="day__date">08.01</span>목 <span className="day__status">오늘</span></p>
+                <div className="list">
+                    <ul className="list__wrapper">
+                        {listData.map((study, index) => (
+                            <ListBox
+                                key={index}
+                                index={index}
+                                status={study.status}
+                                name={study.name}
+                                date={study.date}
+                                time={study.time}
+                                location={study.loaction}
+                                cost={study.cost}
+                                participants={study.participants}
+                                imgSrc={imgPath + study.imgSrc}
+                            />
+                        ))}
+                    </ul>
+                </div>
             </section>
 
             {/* 모임 멤버 */}
-            <section className="memeber">
+            <section className="member">
                 <h2 className="section-title">모임 멤버 ({4})</h2>
                 
                 <ul className="member__list">
                     <li className="member__item">
-                        <img src="" alt="" className="member__img"/>
-                        <div className="memeber__info">
-                            <div className="memeber__data">
+                        <img src={ dubuImg } alt="" className="member__img"/>
+                        <div className="member__info">
+                            <div className="member__data">
                                 <p className="member__title">뚜부</p>
-                                <span className="memeber__status">NEW</span>
+                                <span className="member__status member__status--new">NEW</span>
                             </div>
-                            <p className="memeber__text">안녕하세요 뚜부에요! :D 💕</p>
+                            <p className="member__text">안녕하세요 뚜부에요! :D 💕</p>
                         </div>
                     </li>
                     <li className="member__item">
-                        <img src="" alt="" className="member__img"/>
-                        <div className="memeber__info">
-                            <div className="memeber__data">
+                        <img src={ dubuImg } alt="" className="member__img"/>
+                        <div className="member__info">
+                            <div className="member__data">
                                 <p className="member__title">뚜부</p>
-                                <span className="memeber__status">NEW</span>
+                                <span className="member__status member__status--new">NEW</span>
                             </div>
-                            <p className="memeber__text">안녕하세요 뚜부에요! :D 💕</p>
+                            <p className="member__text">안녕하세요 뚜부에요! :D 💕</p>
                         </div>
                     </li>
                 </ul>
             </section>
 
             {/* 댓글 */}
-            <section>
+            <section className="comment">
                 <h2 className="section-title">댓글 ({5})</h2>
 
-                <li className="comment">
-                    <img src="" alt="" className="comment__img"/>
-                    <div className="comment__left">
-                        <div className="comment__info">
-                            <p className="comment__writer">뚜부</p>
-                            <span className="comment__time">NEW</span>
+                <ul className="comment__list">
+                    <li className="comment__item">
+                        <img src={ dubuImg } alt="" className="comment__img"/>
+                        <div className="comment__left">
+                            <div className="comment__info">
+                                <p className="comment__writer">뚜부</p>
+                                <span className="comment__time">2024.08.01 23:00:00</span>
+                            </div>
+                            <p className="comment__text">
+                                안녕하세요 잘 부탁드려요<br/>
+                                비스톤스의 뚜부! 입니다 :D
+                            </p>
                         </div>
-                        <p className="comment__text">안녕하세요 뚜부에요! :D 💕</p>
-                    </div>
-                </li>
+                    </li>
+                                        <li className="comment__item">
+                        <img src={ dubuImg } alt="" className="comment__img"/>
+                        <div className="comment__left">
+                            <div className="comment__info">
+                                <p className="comment__writer">뚜부</p>
+                                <span className="comment__time">2024.08.01 23:00:00</span>
+                            </div>
+                            <p className="comment__text">
+                                안녕하세요 잘 부탁드려요<br/>
+                                비스톤스의 뚜부! 입니다 :D
+                            </p>
+                        </div>
+                    </li>
+                    <li className="comment__item">
+                        <img src={ dubuImg } alt="" className="comment__img"/>
+                        <div className="comment__left">
+                            <div className="comment__info">
+                                <p className="comment__writer">뚜부</p>
+                                <span className="comment__time">2024.08.01 23:00:00</span>
+                            </div>
+                            <p className="comment__text">
+                                안녕하세요 잘 부탁드려요<br/>
+                                비스톤스의 뚜부! 입니다 :D
+                            </p>
+                        </div>
+                    </li>
+                </ul>
 
                 <div className="comment__box">
                     <input type="text" placeholder="댓글을 입력해주세요." className="comment__input"/>
@@ -135,7 +224,9 @@ function Detail() {
                 </div>
             </section>
 
-            <button>참여신청하기</button>
+            <div className="btn">
+                <button className="btn-bg">참여신청하기</button>    
+            </div>
         </main>
     )
 }
