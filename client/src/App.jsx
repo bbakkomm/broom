@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
 // import LoginSuccess from "./pages/LoginSuccess";
-import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail } from "./pages";
+import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +48,36 @@ const router = createBrowserRouter([
         element: [
           <>
             <Header title={"스터디 상세"} rightBtn />
+            <Detail />
+            <Nav />
+          </>,
+        ],
+      },
+      {
+        path: "/ProjectDetail",
+        element: [
+          <>
+            <Header title={"팀프로젝트 상세"} rightBtn />
+            <Detail />
+            <Nav />
+          </>,
+        ],
+      },
+      {
+        path: "/StudyCreation",
+        element: [
+          <>
+            <Header title={"스터디 생성"} rightBtn />
+            <Detail />
+            <Nav />
+          </>,
+        ],
+      },
+      {
+        path: "/ProjectCreation",
+        element: [
+          <>
+            <Header title={"팀프로젝트 생성"} rightBtn />
             <Detail />
             <Nav />
           </>,
