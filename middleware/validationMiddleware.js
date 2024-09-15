@@ -1,5 +1,5 @@
 import { body, param, validationResult } from 'express-validator'; // param 파라미터 유효성 체크
-import { BadRequestError, NotFoundError } from '../errors/customErrors.js';
+import { BadRequestError, NotFoundError, UnauthorizedError } from '../errors/customErrors.js';
 import { JOB_STATUS, JOB_TYPE } from '../utils/constants.js';
 import Job from '../models/JobModel.js';
 import User from '../models/UserModel.js';
@@ -16,6 +16,10 @@ const withValidationErrors = (validateValues) => {
         // 단일 job 호출 시 400 에러로 반환이 되는데, job을 찾을 수 없는 케이스이니 404로 커스텀 에러 적용
         if (errorMessages[0].startsWith('no job')) {
           throw new NotFoundError(errorMessages);
+        }
+
+        if (errorMessages[0].startsWith('not authorized')) {
+          throw new UnauthorizedError(errorMessages);
         }
 
         throw new BadRequestError(errorMessages);
@@ -35,13 +39,17 @@ export const validateJobInput = withValidationErrors([
 
 export const validateIdParam = withValidationErrors([
   param('id')
-    .custom(async (value) => {
+    .custom(async (value, { req }) => {
       const isValidId = mongoose.Types.ObjectId.isValid(value);
       if (!isValidId) throw new BadRequestError('invalid MongoDB Id');
 
       // 반복되는 job 아이디를 찾는 구문을 유효성 미들웨어로 이동시켜 적용
       const job = await Job.findById(value);
       if (!job) throw new NotFoundError(`no job ${value}`);
+
+      const isAdmin = req.user.role === 'admin';
+      const isOwner = req.user.userId === job.createdBy.toString();
+      if (!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to acess this route');
     }),
 ]);
 
@@ -76,4 +84,21 @@ export const validateLoginInput = withValidationErrors([
   body('password')
   .notEmpty()
   .withMessage('password is required')
+]);
+
+export const validateUpdateUserInput = withValidationErrors([
+  body('name').notEmpty().withMessage('name is required'),
+  body('email')
+  .notEmpty()
+  .withMessage('email is required')
+  .isEmail()
+  .withMessage('invalid email format')
+  .custom(async (email, { req }) => {
+    const user = await User.findOne({email});
+    if (user && user._id.toString() !== req.user.userId) {
+      throw new BadRequestError('email already exists'); 
+    }
+  }),
+  body('location').notEmpty().withMessage('location is required'),
+  body('lastName').notEmpty().withMessage('last name is required'),
 ]);
