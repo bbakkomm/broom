@@ -9,7 +9,7 @@ export { default as Landing } from './Landing';
 export { default as Profile } from './Mypage';
 export { default as List } from './List';
 export { default as Detail } from './Detail';
-
+export { default as Creation } from "./Creation";
 
 // register
 export { default as Login } from './register/Login';

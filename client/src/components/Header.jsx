@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // icon
-// import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-// import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
-// import NavigateBeforeRoundedIcon from "@mui/icons-material/NavigateBeforeRounded";
-// import ShareRoundedIcon from "@mui/icons-material/ShareRounded";
-
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import Logo from "../assets/img/logo_broom.svg";
   
 function Header(props) {
@@ -20,11 +19,11 @@ function Header(props) {
             <>
               {/* header home */}
               <h1 className="header__title">
-                <Link to="/" title={title}>
+                <Link to="/" title={title} className="header__link">
                   <img src={Logo} alt="B.ROOM 로고" className="logo" />
                 </Link>
               </h1>
-              {/* <SearchRoundedIcon /> */}
+              <SearchOutlinedIcon />
             </>
           ) : (
             <>
@@ -35,7 +34,7 @@ function Header(props) {
                 </Link>
               </h1>
               <button className="header__btn">
-                  {/* <SearchRoundedIcon /> */}
+                <SearchOutlinedIcon />
               </button>
             </>
           )}
@@ -45,20 +44,20 @@ function Header(props) {
           {rightBtn ? (
             <>
               {/* header detail page */}
-              <Link to={to} title={title}>
-                {/* <NavigateBeforeRoundedIcon /> */}
+              <Link to={to} title={title} className="header__link">
+                <ArrowBackIosNewOutlinedIcon />
                 <h1 className="header__title">{title}</h1>
               </Link>
               <div className="header__btn">
-                <button>{/* <FavoriteSharpIcon /> */}</button>
-                <button>{/* <ShareRoundedIcon /> */}</button>
+                <button className="header__heart"><FavoriteOutlinedIcon /></button>
+                <button><ShareOutlinedIcon /></button>
               </div>
             </>
           ) : (
             <>
               {/* header perv page */}
-              <Link to={to} title={title}>
-                {/* <NavigateBeforeRoundedIcon /> */}
+              <Link to={to} title={title} className="header__link">
+                <ArrowBackIosNewOutlinedIcon />
                 <h1 className="header__title">{title}</h1>
               </Link>
             </>
