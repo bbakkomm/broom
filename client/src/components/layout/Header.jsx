@@ -1,15 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 
 // icon
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import Logo from "../assets/img/logo_broom.svg";
+import Logo from "../../assets/img/common/logo_broom.svg";
   
 function Header(props) {
-  const { home, logo, rightBtn, to, title } = props;
+  const { home, logo, search, rightBtn, to, title } = props;
+  const navigate = useNavigate();
 
   return (
     <header className="header">
@@ -27,15 +28,27 @@ function Header(props) {
             </>
           ) : (
             <>
-              {/* header main */}
-              <h1 className="header__title">
-                <Link to="/" title={title}>
-                  {title}
-                </Link>
-              </h1>
-              <button className="header__btn">
-                <SearchOutlinedIcon />
-              </button>
+              {search ? (
+                <>
+                  {/* header main */}
+                  <h1 className="header__title">
+                    <Link to="/" title={title}>
+                      {title}
+                    </Link>
+                  </h1>
+                  <button className="header__btn">
+                    <SearchOutlinedIcon />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <h1 className="header__title">
+                    <Link to="/" title={title}>
+                      {title}
+                    </Link>
+                  </h1>
+                </>
+              )}
             </>
           )}
         </>
@@ -56,7 +69,7 @@ function Header(props) {
           ) : (
             <>
               {/* header perv page */}
-              <Link to={to} title={title} className="header__link">
+              <Link to="" onClick={() => navigate(-1)}  title={title} className="header__link">
                 <ArrowBackIosNewOutlinedIcon />
                 <h1 className="header__title">{title}</h1>
               </Link>
