@@ -21,7 +21,7 @@ function Creation(props) {
   const Deadline = "deadline";
 
   return (
-    <section className="creation">
+    <main className="creation">
       <form action="" className="form-box">
         <fieldset className="form-box__inner">
           <legend className="form-box__title">로그인</legend>
@@ -52,58 +52,51 @@ function Creation(props) {
               <p className="blind">시작 날짜</p>
             </label>
             {/* startdate */}
-            <input type="date" id="startdate" name="startdate" placeholder="시작 날짜" value={StartDay} required className="input-write"/>
+            <input type="date" id="startdate" name="startdate" value={StartDay} required className="input-write"/>
             <span className="range">~</span>
             {/* deadline */}
             <label htmlFor="deadline" className="input-label blind">마감 날짜</label>
-            <input type="date" id="deadline" name="deadline" placeholder="마감 날짜" value={Deadline} className="input-write"/>
+            <input type="date" id="deadline" name="deadline" value={Deadline} className="input-write"/>
 
             <p className="validity blind">날짜를 선택해주세요.</p>
           </div>
 
           {/* time */}
           <div className="input-box">
-            <div className="input-box__icon">
+            <label htmlFor="time" className="input-label input-label--require">
               <AccessAlarmsRoundedIcon/>
-              <span className="input-box__require">*</span>
-            </div>
-
-            <label htmlFor="time" className="input-label blind">시간</label>
-            <input type="time" id="time" name="time" placeholder="시간" required className="input-write"/>
+              <p className="blind">시간</p>
+            </label>
+            <input type="time" id="time" name="time" required className="input-write"/>
             <p className="validity blind">시간을 선택해주세요.</p>
           </div>
 
           {/* location */}
           <div className="input-box">
-            <div className="input-box__icon">
+            <label htmlFor="location" className="input-label input-label--require">
               <PlaceOutlinedIcon/>
-              <span className="input-box__require">*</span>
-            </div>
-
-            <label htmlFor="location" className="input-label blind">위치</label>
-            <input type="time" id="location" name="location" placeholder="위치" required className="input-write"/>
+              <p className="blind">위치</p>
+            </label>
+            <input type="time" id="location" name="location" required className="input-write"/>
             <p className="validity blind">위치를 선택해주세요.</p>
           </div>
 
           {/* pay */}
           <div className="input-box">
-            <div className="input-box__icon">
+            <label htmlFor="pay" className="input-label">
               <PaymentsOutlinedIcon/>
-            </div>
-
-            <label htmlFor="pay" className="input-label blind">비용</label>
-            <input type="time" id="pay" name="pay" placeholder="비용" className="input-write"/>
+              <p className="blind">비용</p>
+            </label>
+            <input type="number" id="pay" name="pay" placeholder="비용" className="input-write"/>
             <p className="validity blind">비용을 입력해주세요.</p>
           </div>
 
           {/* people */}
           <div className="input-box">
-            <div className="input-box__icon">
+            <label htmlFor="people" className="input-label input-label--require">
               <PeopleAltOutlinedIcon/>
-              <span className="input-box__require">*</span>
-            </div>
-
-            <label htmlFor="people" className="input-label blind">최소 인원</label>
+              <p className="blind">최소 인원</p>
+            </label>
             <input type="number" id="people" name="people" placeholder="최소 인원" required className="input-write"/>
             ~            
             <label htmlFor="people" className="input-label blind">최대 인원</label>
@@ -112,26 +105,60 @@ function Creation(props) {
             <p className="validity blind">인원을 선택해주세요.</p>
           </div>
 
-          {/* pay */}
+          {/* skill */}
           <div className="input-box">
-            <div className="input-box__icon">
-              <PaymentsOutlinedIcon/>
-              <span className="input-box__require">*</span>
+            <div className="input-label input-label--require">
+              <SettingsOutlinedIcon/>
+              <p className="blind">주요기술</p>
             </div>
 
-            <label htmlFor="skill" className="input-label blind">주요기술</label>
-            <input type="time" id="skill" name="skill" placeholder="주요기술" className="input-write"/>
+            <div className="input-check">
+              <span>
+                <input type="checkbox" id="html" name="skill" value="html" className="input-check__item input-check__item--html"/>              
+                <label htmlFor="html">HTML</label>
+              </span>
+              
+              <span>
+                <input type="checkbox" id="css" name="skill" value="css" className="input-check__item input-check__item--css"/>              
+                <label htmlFor="css">CSS</label>
+              </span>
+
+              <span className="">
+                <input type="checkbox" id="scss" name="skill" value="scss" className="input-check__item input-check__item--scss"/>              
+                <label htmlFor="scss">SCSS</label>
+              </span>              
+              
+              <span className="">
+                <input type="checkbox" id="javascript" name="skill" value="javascript" className="input-check__item input-check__item--javascript"/>            
+                <label htmlFor="javascript">JavaScript</label>
+              </span>
+
+              <span className="">
+                <input type="checkbox" id="react" name="skill" value="react" className="input-check__item input-check__item--react"/>              
+                <label htmlFor="react">React</label>
+              </span>
+
+              <span className="">
+                <input type="checkbox" id="vue" name="skill" value="vue" className="input-check__item input-check__item--vue"/>              
+                <label htmlFor="vue">Vue</label>
+              </span>              
+
+              <span className="">
+                <input type="checkbox" id="typescript" name="skill" value="typescript" className="input-check__item input-check__item--typescript"/>              
+                <label htmlFor="typescript">TypeScript</label>
+              </span>              
+            </div>
             <p className="validity blind">주요기술을 선택해주세요.</p>
           </div>
 
           <div className="input-box">
-            <div className="input-box__icon">
-              소개내용
+            <label htmlFor="introduce" className="input-label input-label--require">
               <CreateOutlinedIcon/>
-              <span className="input-box__require">*</span>
-            </div>
+              <p className="blind">소개글</p>
+            </label>
+            <textarea className="input-textarea" id="introduce" name="introduce" cols={10} maxLength={1000} required placeholder="소개글을 입력해주세요. (1,000자 작성 가능)"></textarea>
           </div>
-
+          
           <div className="btn">
             { study ? (
               <Link to="" className="btn-bg">스터디 생성</Link>
@@ -139,10 +166,9 @@ function Creation(props) {
               <Link to="" className="btn-bg">팀프로젝트 생성</Link>
             )}
           </div>
-
         </fieldset>
       </form>
-    </section>
+    </main>
   )
 }
 

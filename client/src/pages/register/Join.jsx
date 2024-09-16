@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Join() {
   return (
-    <section className="join">
+    <main className="join">
       <h2 className="join__title">회원가입</h2>
 
       <form action="" className="form-box">
@@ -76,11 +76,12 @@ function Join() {
 
           {/* reCAPTCHA */}
           <div className="recaptcha">reCAPTCHA</div>
-
-          <Link to="/Joinsetting" className="btn-un">다음</Link>
+          <div className="btn">
+            <Link to="/Joinsetting" className="btn-un">다음</Link>
+          </div>
         </fieldset>
       </form>
-    </section>
+    </main>
   );
 }
 

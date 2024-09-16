@@ -17,7 +17,7 @@ function Login() {
   const navigate = useNavigate();
 
   return (
-    <section className="login">
+    <main className="login">
       <img src={Logo} alt="B.ROOM 로고" className="logo" />
 
       {/* 로그인 폼 */}
@@ -63,7 +63,7 @@ function Login() {
           <Link className="sns__item"><img src={Github} alt="깃헙 로고" /><span className="blind">깃헙 로그인</span></Link>
         </div>
       </div>
-    </section>
+    </main>
   )
 }
 

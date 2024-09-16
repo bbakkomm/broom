@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Pw() {
   return (
-    <section className="pw">
+    <main className="pw">
       <h2 className="pw__title">비밀번호 찾기</h2>
 
       {/* id */}
@@ -17,7 +17,7 @@ function Pw() {
       <div className="btn">
         <Link to="/Pwreset" className="btn-un">비밀번호 찾기</Link>
       </div>
-    </section>
+    </main>
   )
 }
 
