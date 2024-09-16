@@ -1,0 +1,55 @@
+.splash-ver2 {
+  position: relative; height: 100vh; overflow: hidden;
+
+  .title-box {
+    position: relative; top: 26rem; gap: 1rem; width: 100%; opacity: 1; transition: opacity 3s; animation: fadeInText 3s;
+
+    &__logo {position: relative; width: 14rem; margin: 0 auto .8rem;}
+    &__dot {
+      position: absolute; top: 58%; left: 2.3rem; width: .6rem; height: .6rem; border-radius: 10rem; background-color: #0396fc; animation: bounce 3s ease-in-out infinite;
+    }
+    &__desc {text-align: center; font-size: 1.4rem;}
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    top: -20%;
+    animation-timing-function: ease-in;
+  }
+
+  10% {
+    top: 58%;
+    animation-timing-function: ease-out;
+  }
+
+  20% {
+    top: 0%;
+    animation-timing-function: ease-in;
+  }
+
+  50% {
+    top: 58%;
+    animation-timing-function: ease-out;
+  }
+
+  75% {
+    top: 20%;
+    animation-timing-function: ease-in;
+  }
+
+  100% {
+    top: 58%;
+    animation-timing-function: ease-out;
+  }
+}
