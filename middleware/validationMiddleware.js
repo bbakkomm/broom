@@ -19,7 +19,7 @@ const withValidationErrors = (validateValues) => {
         }
 
         if (errorMessages[0].startsWith('not authorized')) {
-          throw new UnauthorizedError('not authorized to access this route');
+          throw new UnauthorizedError(errorMessages);
         }
 
         throw new BadRequestError(errorMessages);
@@ -45,11 +45,11 @@ export const validateIdParam = withValidationErrors([
 
       // 반복되는 job 아이디를 찾는 구문을 유효성 미들웨어로 이동시켜 적용
       const job = await Job.findById(value);
-      if (!job) throw new NotFoundError(`no job with id ${value}`);
+      if (!job) throw new NotFoundError(`no job ${value}`);
 
       const isAdmin = req.user.role === 'admin';
       const isOwner = req.user.userId === job.createdBy.toString();
-      if (!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to access this route');
+      if (!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to acess this route');
     }),
 ]);
 
@@ -84,4 +84,21 @@ export const validateLoginInput = withValidationErrors([
   body('password')
   .notEmpty()
   .withMessage('password is required')
+]);
+
+export const validateUpdateUserInput = withValidationErrors([
+  body('name').notEmpty().withMessage('name is required'),
+  body('email')
+  .notEmpty()
+  .withMessage('email is required')
+  .isEmail()
+  .withMessage('invalid email format')
+  .custom(async (email, { req }) => {
+    const user = await User.findOne({email});
+    if (user && user._id.toString() !== req.user.userId) {
+      throw new BadRequestError('email already exists'); 
+    }
+  }),
+  body('location').notEmpty().withMessage('location is required'),
+  body('lastName').notEmpty().withMessage('last name is required'),
 ]);
