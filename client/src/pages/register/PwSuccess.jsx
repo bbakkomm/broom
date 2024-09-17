@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/img/logo_broom.svg";
+import Logo from "../../assets/img/common/logo_broom.svg";
 
 function PwdSuccess() {
   return (
-    <section className="success">
+    <main className="success">
       <div className="text">
         <img src={Logo} alt="B.ROOM 로고" className="text__logo" />
         <p className="text__title"><strong>비밀번호 변경</strong>이<br/>완료되었습니다.</p>
@@ -15,7 +15,7 @@ function PwdSuccess() {
         <Link to="/" className="btn-outline">홈으로</Link>
         <Link to="/login" className="btn-bg">로그인</Link>
       </div>
-    </section>
+    </main>
   );
 }
 

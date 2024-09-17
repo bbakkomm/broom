@@ -1,31 +1,35 @@
 import React, { useState } from "react";
-import ListBox from "../components/ListBox";
-import jsonData from "../assets/data/listData.json";
-const imgPath = "/src/assets/img/";
 
+// component
+import Schedule from "../../components/list/Schedule";
+import Tab from "../../components/layout/Tab";
+
+// img
+import img from '../../../src/assets/img/pages/detail.jpg';
+import dubuImg from '../../../src/assets/img/pages/dubu.jpg';
+
+// icon
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
-import img from '../../src/assets/img/pages/detail.jpg';
-import dubuImg from '../../src/assets/img/pages/dubu.jpg';
+
 
 function Detail() {
-    const [listData, setListData] = useState(jsonData.result);
-
     return (
         <main className="detail">
             {/* 탭메뉴 */}
-            <ul className="tab">
+            {/* <ul className="tab">
                 <li className="tab__item active">홈</li>
                 <li className="tab__item">일정</li>
                 <li className="tab__item">모임멤버</li>
                 <li className="tab__item">Q&A</li>
-            </ul>
+            </ul> */}
+
+            <Tab/>
 
             {/* 스터디 이미지 */}
             <section className="image">
@@ -55,7 +59,7 @@ function Detail() {
                             <AccessAlarmsRoundedIcon/>
                             <p className="blind">시간</p>
                         </div>
-                        <p className="dec__text">14:00</p>
+                        <p className="dec__text">오후 02:00</p>
                     </li>
                     
                     <li className="desc__item">
@@ -83,7 +87,7 @@ function Detail() {
                         <p className="dec__text">최대 {13}명</p>
                     </li>
 
-                    <li className="desc__item">
+                    <li className="desc__item desc__item--mb">
                         <div className="dec__icon">
                             <SettingsOutlinedIcon/>
                             <p className="blind">주요 기술</p>
@@ -102,11 +106,11 @@ function Detail() {
 
             {/* 일정 */}
             <section className="date">
-                <h2 className="section-title">일정</h2>
+                <h2 className="section-title">일정11</h2>
                 <p className="day"><span className="day__date">08.01</span>목 <span className="day__status">오늘</span></p>
                 <div className="list">
                     <ul className="list__wrapper">
-                        {listData.map((study, index) => (
+                        {/* {listData.map((study, index) => (
                             <ListBox
                                 key={index}
                                 index={index}
@@ -119,14 +123,15 @@ function Detail() {
                                 participants={study.participants}
                                 imgSrc={imgPath + study.imgSrc}
                             />
-                        ))}
+                        ))} */}
+                        <Schedule/>
                     </ul>
                 </div>
                 
                 <p className="day"><span className="day__date">08.01</span>목 <span className="day__status">오늘</span></p>
                 <div className="list">
                     <ul className="list__wrapper">
-                        {listData.map((study, index) => (
+                        {/* {listData.map((study, index) => (
                             <ListBox
                                 key={index}
                                 index={index}
@@ -139,7 +144,7 @@ function Detail() {
                                 participants={study.participants}
                                 imgSrc={imgPath + study.imgSrc}
                             />
-                        ))}
+                        ))} */}
                     </ul>
                 </div>
             </section>
@@ -225,7 +230,7 @@ function Detail() {
             </section>
 
             <div className="btn">
-                <button className="btn-bg">참여신청하기</button>    
+                <button className="btn-bg">참여하기</button>    
             </div>
         </main>
     )

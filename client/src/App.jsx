@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
 // import LoginSuccess from "./pages/LoginSuccess";
-import { Header, Nav, HomeLayout, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
+import { Header, Nav, HomeLayout, Splash, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -14,17 +14,11 @@ const router = createBrowserRouter([
         element: <Landing />,
       },
       {
-        path: "/Login",
-        element: [
-          <>
-            <Header title={"로그인"} />
-            <Login />
-            <Nav />
-          </>,
-        ],
+        path: "/splash",
+        element: <Splash />,
       },
       {
-        path: "/Mypage",
+        path: "/mypage",
         element: [
           <>
             <Header title={"마이페이지"} />
@@ -34,7 +28,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/Study",
+        path: "/study",
         element: [
           <>
             <Header title={"스터디"} />
@@ -44,7 +38,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/StudyDetail",
+        path: "/study/studydetail",
         element: [
           <>
             <Header title={"스터디 상세"} rightBtn />
@@ -54,7 +48,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/ProjectDetail",
+        path: "/project/projectdetail",
         element: [
           <>
             <Header title={"팀프로젝트 상세"} rightBtn />
@@ -64,102 +58,103 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/StudyCreation",
+        path: "/study/studycreation",
         element: [
           <>
-            <Header title={"스터디 생성"} rightBtn />
-            <Detail />
+            <Header title={"스터디 생성"} />
+            <Creation study/>
             <Nav />
           </>,
         ],
       },
       {
-        path: "/ProjectCreation",
+        path: "/project/projectcreation",
         element: [
           <>
-            <Header title={"팀프로젝트 생성"} rightBtn />
-            <Detail />
+            <Header title={"팀프로젝트 생성"} />
+            <Creation />
             <Nav />
           </>,
         ],
       },
       {
-        path: "/Join",
+        path: "/login",
+        element: [
+          <>
+            <Header title={"로그인"} />
+            <Login />
+          </>,
+        ],
+      },
+      {
+        path: "/join",
         element: [
           <>
             <Header title={"회원가입"} />
             <Join />
-            <Nav />
           </>,
         ],
       },
       {
-        path: "/Joinsetting",
+        path: "/joinsetting",
         element: [
           <>
             <Header title={"회원가입"} />
             <JoinSetting />
-            <Nav />
           </>,
         ],
       },
       {
-        path: "/JoinSuccess",
+        path: "/joinsuccess",
         element: [
           <>
             <Header title={"회원가입 완료"} />
             <JoinSuccess />
-            <Nav />
           </>,
         ],
       },
       {
-        path: "/Id",
+        path: "/id",
         element: [
           <>
             <Header title={"아이디 찾기"} />
             <Id />
-            <Nav />
           </>,
         ],
       },
       {
-        path: "/IdSuccess",
+        path: "/idsuccess",
         element: [
           <>
             <Header title={"아이디 찾기 완료"} />
             <IdSuccess />
-            <Nav />
           </>,
         ],
       },
       {
-        path: "/Pw",
+        path: "/pw",
         element: [
           <>
             <Header title={"비밀번호 찾기"} />
             <Pw />
-            <Nav />
           </>,
         ],
       },
       {
-        path: "/Pwreset",
+        path: "/pwreset",
         element: [
           <>
             <Header title={"비밀번호 재설정"} />
             <PwReset />
-            <Nav />
           </>,
         ],
       },
       {
-        path: "/PwSuccess",
+        path: "/pwsuccess",
         element: [
           <>
             <Header title={"비밀번호 찾기 완료"} />
             <PwSuccess />
-            <Nav />
           </>,
         ],
       },

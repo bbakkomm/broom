@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function JoinSetting() {
   return (
-    <section className="joinsetting">
+    <main className="joinsetting">
       <h2 className="joinsetting__title">회원가입</h2>
 
       <form action="" className="form-box">
@@ -23,7 +23,7 @@ function JoinSetting() {
           </div>
         </fieldset>
       </form>
-    </section>
+    </main>
   )
 }
 

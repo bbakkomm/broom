@@ -1,13 +1,12 @@
 .detail {
-    margin: 5rem 0;
-    padding: 3.6rem 0;
+    margin: 5rem 0; padding: 3.6rem 0;
 
     //common 
     .section-title {margin-bottom: 1.6rem; font-size: 1.8rem;}
 
     // 탭메뉴
     .tab {
-        position: fixed; top: 5rem; left: 0; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 2rem; background-color: #fff;
+        z-index: 2; position: fixed; top: 5rem; left: 0; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 0 2rem; background-color: #fff;
         
         &__item {
             padding: 0 1rem; font-size: 1.6rem; line-height: 3.6rem; color: #aaa;
@@ -82,7 +81,6 @@
             font-size: 1.2rem;
         
             &--new {color: #fb744a;}
-            &--represent {}
         }
         &__text {max-width: 25.8rem; font-size: 1.2rem; color: #aaa;}  
     }
@@ -91,14 +89,12 @@
     .comment {
         position: relative; margin: 0 2rem; padding: 3.6rem 0 11.6rem;
 
-        &__list {}
         &__item {
             display: flex; gap: .8rem; margin-bottom: 1.6rem; padding: 1.6rem; background: #fff; border-radius: 1rem; box-shadow: .1rem .1rem .6rem rgba($color: #a6b4c8, $alpha: .3);
         
             &:last-child {margin-bottom: 0;}
         }
         &__img {width: 4rem; height: 4rem; border-radius: 10rem; overflow: hidden; }
-        &__left {}
         &__info {display: flex; align-items: center; gap: .4rem; margin-bottom: .4rem;}
         &__writer {font-size: 1.4rem; font-weight: 700;}
         &__time {font-size: 1.2rem; color: #aaa;}

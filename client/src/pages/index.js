@@ -1,15 +1,18 @@
 // layout
-export { default as Header } from '../components/Header';
-export { default as Nav} from '../components/Nav';
+export { default as Header } from '../components/layout/Header';
+export { default as Nav} from '../components/layout/Nav';
 
 // pages
+export { default as Splash } from "./Splash";
 export { default as HomeLayout } from './HomeLayout';
 export { default as Error } from './Error';
 export { default as Landing } from './Landing';
 export { default as Profile } from './Mypage';
 export { default as List } from './List';
-export { default as Detail } from './Detail';
-export { default as Creation } from "./Creation";
+
+// list
+export { default as Detail } from './list/Detail';
+export { default as Creation } from "./list/Creation";
 
 // register
 export { default as Login } from './register/Login';

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function PwReset() {
   return (
-    <section className="pw">
+    <main className="pw">
       <h2 className="pw__title">비밀번호 재설정</h2>
 
       {/* pwd */}
@@ -17,7 +17,7 @@ function PwReset() {
       <div className="btn">
         <Link to="/PwSuccess" className="btn-un">변경하기</Link>
       </div>
-    </section>
+    </main>
   )
 }
 
