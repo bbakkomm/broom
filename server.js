@@ -13,7 +13,6 @@ import cookieParser from 'cookie-parser';
 import jobRouter from './routes/jobRouter.js';
 import userRouter from './routes/userRouter.js';
 import authRouter from './routes/authRouter.js';
-import userRouter from './routes/userRouter.js';
 
 // middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
