@@ -115,3 +115,15 @@ export const validateUpdateUserInput = withValidationErrors([
   // body('location').notEmpty().withMessage('location is required'),
   // body('lastName').notEmpty().withMessage('last name is required'),
 ]);
+
+export const validateEmailInput = withValidationErrors([
+  body('email')
+  .notEmpty()
+  .withMessage('email is required')
+  .custom(async (email) => {
+    const user = await User.findOne({email});
+    if (!user) {
+      throw new BadRequestError('email not exists');
+    }
+  }),
+]);

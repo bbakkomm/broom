@@ -7,6 +7,7 @@ import { Header, Nav, HomeLayout, Splash, Error, Landing, Login, Profile, Join, 
 
 import { action as loginAction } from './pages/register/Login';
 import { action as registerAction } from './pages/register/Join';
+import { action as idSearch } from './pages/register/Id';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
         index: true,
         element: [
           <>
-            <Header title={"로그인"} />
+            {/* <Header title={"로그인"} /> */}
             <Login />
           </>,
         ],
@@ -132,6 +133,7 @@ const router = createBrowserRouter([
             <Id />
           </>,
         ],
+        action: idSearch,
       },
       {
         path: "/idsuccess",

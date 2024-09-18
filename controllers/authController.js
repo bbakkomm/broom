@@ -45,3 +45,12 @@ export const logout = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ msg: 'user logged out' });
 }
+
+// 아이디 찾기 컨트롤러
+export const uidSearch = async (req, res) => {
+  const user = await User.findOne({ email: req.body.email });
+
+  if (!user) throw new UnauthenticatedError('invalid credentials');
+
+  res.status(StatusCodes.OK).json({ uid: user.uid });
+}
