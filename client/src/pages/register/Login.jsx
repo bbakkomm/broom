@@ -21,7 +21,6 @@ export const action = async ({ request }) => {
   
   try {
     await customFetch.post('/auth/login', data);
-    console.log(data);
     toast.success('Login successful');
     return redirect('/Study');
   } catch (error) {
@@ -45,7 +44,7 @@ const Login = () => {
 
           {/* id */}
           <div className="input-box">
-            <FormRow type='email' name="email" blind placeholder="이메일"/>
+            <FormRow type='uid' name="uid" blind placeholder="아이디"/>
             {/* <p className="validity">이메일을 입력해주세요.</p> */}
           </div>
 

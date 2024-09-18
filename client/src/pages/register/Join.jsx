@@ -3,7 +3,6 @@ import { Link, Form, redirect, useNavigation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import FormRow from '../../components/FormRow';
-import FormWrapRow from '../../components/FormWrapRow';
 import customFetch from '../../utils/customFetch.js';
 
 export const action = async ({ request }) => {
@@ -12,7 +11,6 @@ export const action = async ({ request }) => {
   
   try {
     await customFetch.post('/auth/register', data);
-    console.log(data);
     toast.success('register successful');
     return redirect('/');
   } catch (error) {
@@ -34,14 +32,13 @@ const Join = () => {
           <legend className="form-box__title">회원 가입</legend>
 
           {/* id */}
-          {/* <label htmlFor="username" className="input-label">아이디</label>
-          <input type="text" id="username" name="username" placeholder="아이디" className="input-write"/> */}
+          <FormRow type='uid' name="uid" labelText="아이디" placeholder="아이디"/>
 
           {/* nickname */}
-          <FormWrapRow type='name' name="name" labelText="닉네임" placeholder="닉네임"/>
+          <FormRow type='name' name="name" labelText="닉네임" placeholder="닉네임"/>
 
           {/* email */}
-          <FormWrapRow type='email' name="email" labelText="이메일" placeholder="이메일"/>
+          <FormRow type='email' name="email" labelText="이메일" placeholder="이메일"/>
 
           {/* pwd */}
           <FormRow type='password' name="password" labelText="비밀번호" placeholder="비밀번호"/>
@@ -99,7 +96,7 @@ const Join = () => {
           </div> */}
 
           {/* reCAPTCHA */}
-          <div className="recaptcha">reCAPTCHA</div>
+          {/* <div className="recaptcha">reCAPTCHA</div> */}
           <div className="btn">
             <button type='submit' className="input-submit btn-bg" disabled={isSubmitting}>회원가입하기 {isSubmitting?'...':''}</button>
           </div>

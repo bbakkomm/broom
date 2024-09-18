@@ -54,6 +54,15 @@ export const validateIdParam = withValidationErrors([
 ]);
 
 export const validateRegisterInput = withValidationErrors([
+  body('uid')
+  .notEmpty()
+  .withMessage('uid is required')
+  .custom(async (uid) => {
+    const user = await User.findOne({uid});
+    if (user) {
+      throw new BadRequestError('uid already exists');
+    }
+  }),
   body('name').notEmpty().withMessage('name is required'),
   body('email')
   .notEmpty()
@@ -75,12 +84,16 @@ export const validateRegisterInput = withValidationErrors([
 ]);
 
 export const validateLoginInput = withValidationErrors([
-  body('email')
+  body('uid')
   .notEmpty()
-  .withMessage('email is required')
-  .isEmail()
-  .withMessage('invalid email format')
+  .withMessage('uid is required')
   ,
+  // body('email')
+  // .notEmpty()
+  // .withMessage('email is required')
+  // .isEmail()
+  // .withMessage('invalid email format')
+  // ,
   body('password')
   .notEmpty()
   .withMessage('password is required')

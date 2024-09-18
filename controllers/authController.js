@@ -18,7 +18,7 @@ export const register = async (req, res) => {
 
 // 로그인 컨트롤러
 export const login = async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ uid: req.body.uid });
 
   const isValidUser = user && (await comparePassword(req.body.password, user.password));
 
