@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Header, Nav, HomeLayout, Splash, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
 
 import { action as loginAction } from './pages/register/Login';
+import { action as registerAction } from './pages/register/Join';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -103,6 +104,7 @@ const router = createBrowserRouter([
             <Join />
           </>,
         ],
+        action: registerAction,
       },
       {
         path: "/joinsetting",

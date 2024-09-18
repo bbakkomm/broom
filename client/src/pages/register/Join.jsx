@@ -1,30 +1,54 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Form, redirect, useNavigation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-function Join() {
+import FormRow from '../../components/FormRow';
+import FormWrapRow from '../../components/FormWrapRow';
+import customFetch from '../../utils/customFetch.js';
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  
+  try {
+    await customFetch.post('/auth/register', data);
+    console.log(data);
+    toast.success('register successful');
+    return redirect('/');
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
+
+const Join = () => {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
     <main className="join">
       <h2 className="join__title">회원가입</h2>
 
-      <form action="" className="form-box">
+      <Form method='post' className="form-box">
         <fieldset className="form-box__inner">
           <legend className="form-box__title">회원 가입</legend>
 
           {/* id */}
-          <label htmlFor="username" className="input-label">아이디</label>
-          <input type="text" id="username" name="username" placeholder="아이디" className="input-write"/>
+          {/* <label htmlFor="username" className="input-label">아이디</label>
+          <input type="text" id="username" name="username" placeholder="아이디" className="input-write"/> */}
+
+          {/* nickname */}
+          <FormWrapRow type='name' name="name" labelText="닉네임" placeholder="닉네임"/>
 
           {/* email */}
-          <label htmlFor="useremail" className="input-label">이메일</label>
-          <input type="email" id="useremail" name="useremail" placeholder="이메일" className="input-write"/>
+          <FormWrapRow type='email' name="email" labelText="이메일" placeholder="이메일"/>
 
           {/* pwd */}
-          <label htmlFor="pass" className="input-label">비밀번호</label>
-          <input type="password" id="pass" name="pass" placeholder="비밀번호" className="input-write"/>
+          <FormRow type='password' name="password" labelText="비밀번호" placeholder="비밀번호"/>
           
           {/* pwd conf */}
-          <label htmlFor="passconfirm" className="input-label hidden">비밀번호 확인</label>
-          <input  type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-write"/>
+          {/* <label htmlFor="passconfirm" className="input-label hidden">비밀번호 확인</label>
+          <input type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-write"/> */}
 
           {/* work */}
           {/* <p className="input-label">희망직무</p>
@@ -77,10 +101,10 @@ function Join() {
           {/* reCAPTCHA */}
           <div className="recaptcha">reCAPTCHA</div>
           <div className="btn">
-            <Link to="/Joinsetting" className="btn-un">다음</Link>
+            <button type='submit' className="input-submit btn-bg" disabled={isSubmitting}>회원가입하기 {isSubmitting?'...':''}</button>
           </div>
         </fieldset>
-      </form>
+      </Form>
     </main>
   );
 }

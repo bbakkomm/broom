@@ -71,7 +71,7 @@ export const validateRegisterInput = withValidationErrors([
   .withMessage('password is required')
   .isLength({min:8})
   .withMessage('password least 8'),
-  body('location').notEmpty().withMessage('location is required'),
+  // body('location').notEmpty().withMessage('location is required'),
 ]);
 
 export const validateLoginInput = withValidationErrors([
@@ -99,6 +99,6 @@ export const validateUpdateUserInput = withValidationErrors([
       throw new BadRequestError('email already exists'); 
     }
   }),
-  body('location').notEmpty().withMessage('location is required'),
-  body('lastName').notEmpty().withMessage('last name is required'),
+  // body('location').notEmpty().withMessage('location is required'),
+  // body('lastName').notEmpty().withMessage('last name is required'),
 ]);

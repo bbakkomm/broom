@@ -1,8 +1,11 @@
-const FormRow = ({ type, name, labelText, defaultValue, placeholder, onChange }) => {
+const FormRow = ({ type, name, labelText, defaultValue, placeholder, onChange, blind }) => {
     return (
         <div className='form-row'>
-            <label htmlFor={name} className='input-label blind'>
-                {labelText || name}
+            <label 
+                htmlFor={name} 
+                className={!blind ? 'input-label' : 'input-label blind'}
+            >
+            {labelText || name}
             </label>
             <input
                 type={type}

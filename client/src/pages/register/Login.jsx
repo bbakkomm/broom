@@ -45,13 +45,13 @@ const Login = () => {
 
           {/* id */}
           <div className="input-box">
-            <FormRow type='email' name="email" placeholder="이메일을 입력해주세요."/>
+            <FormRow type='email' name="email" blind placeholder="이메일"/>
             {/* <p className="validity">이메일을 입력해주세요.</p> */}
           </div>
 
           {/* pw */}
           <div className="input-box">
-            <FormRow type='password' name="password" placeholder="비밀번호를 입력해주세요."/>
+            <FormRow type='password' name="password" blind placeholder="비밀번호"/>
             <div className="input-eye">
               <RemoveRedEyeOutlinedIcon className="input-eye__on"/>
               <VisibilityOffSharpIcon className="input-eye__off"/>
