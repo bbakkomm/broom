@@ -1,8 +1,16 @@
-import React from 'react'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-
-function ProfileCard({ userImg, userName, userEmail }) {
+function ProfileCard(
+    { 
+        userImg, 
+        userName, 
+        userEmail,
+        skillTag,
+        like,
+        studing,
+        complate
+    }
+) {
   return (
     <div className="profile-card">
         <div className="profile-box">
@@ -15,29 +23,36 @@ function ProfileCard({ userImg, userName, userEmail }) {
             </div>
             <ArrowForwardIosIcon className="btn_arrowforward"/>
         </div>
-        <ul className="skill-tag-box">
-            <li className="skill-tag-box__item">
-                <span className="skill-tag skill-tag--js">JavaScript</span>
-            </li>
-            <li>
-                <span className="skill-tag skill-tag--ts">TypeScript</span>
-            </li>
-            <li>
-                <span className="skill-tag skill-tag--react">React</span>
-            </li>
-        </ul>
+        <div className="skill-tag-box">
+          {
+            skillTag.includes('javascript')
+            ? (<span className="skill-tag skill-tag--js">JavaScript</span>)
+            : ''
+          }
+          {
+            skillTag.includes('typescript')
+            ? (<span className="skill-tag skill-tag--ts">TypeScript</span>)
+            : ''
+          }
+          {
+            skillTag.includes('react')
+            ? (<span className="skill-tag skill-tag--react">React</span>)
+            : ''
+          }
+          
+        </div>
         <div className="status-box">
             <ul className='status'>
                 <li className="status__item">
-                    <span className="status__info status__info--like">999+</span>
+                    <span className="status__info status__info--like">{like}</span>
                     <span className="status__desc">찜모임</span>
                 </li>
                 <li className="status__item">
-                    <span className="status__info status__info--studing">2</span>
+                    <span className="status__info status__info--studing">{studing}</span>
                     <span className="status__desc">활동중</span>
                 </li>
                 <li className="status__item">
-                    <span className="status__info status__info--complate">3</span>
+                    <span className="status__info status__info--complate">{complate}</span>
                     <span className="status__desc">완료</span>
                 </li>
             </ul>
