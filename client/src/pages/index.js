@@ -7,7 +7,7 @@ export { default as Splash } from "./Splash";
 export { default as HomeLayout } from './HomeLayout';
 export { default as Error } from './Error';
 export { default as Landing } from './Landing';
-export { default as Profile } from './Mypage';
+export { default as Profile } from './profile/Profile';
 export { default as List } from './List';
 
 // list

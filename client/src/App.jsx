@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         element: <Splash />,
       },
       {
-        path: "/mypage",
+        path: "/profile",
         element: [
           <>
             <Header title={"마이페이지"} />
