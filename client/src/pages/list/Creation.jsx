@@ -161,9 +161,9 @@ function Creation(props) {
           
           <div className="btn">
             { study ? (
-              <Link to="" className="btn-bg">스터디 생성</Link>
+              <Link to="/study" className="btn-bg">스터디 생성</Link>
             ):(
-              <Link to="" className="btn-bg">팀프로젝트 생성</Link>
+              <Link to="/project" className="btn-bg">팀프로젝트 생성</Link>
             )}
           </div>
         </fieldset>

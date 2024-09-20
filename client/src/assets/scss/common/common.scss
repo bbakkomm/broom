@@ -68,3 +68,20 @@
   &__radio {display: none;}
   &__text {padding: .4rem 1.2rem; border-radius: .4rem; border: 1px solid #e5e5e5; font-size: 1.4rem; color: #ccc; cursor: pointer;}
 }
+
+
+
+// skill-tag-box
+.skill-tag-box {display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; padding: 0 2rem; gap: .4rem; margin-bottom: 3.6rem;}
+.skill-tag-box__item {}
+
+.skill-tag {
+  height: 2.3rem; color: #000; font-size: 1.1rem; font-weight: 700; padding: .4rem .8rem; border-radius: .5rem;
+  &--html {background-color: #f15a29; color: #fff;}
+  &--css {background-color: #0396fc; color: #fff;}
+  &--scss {background-color: #cf649b; color: #fff;}
+  &--js {background: #F7DF1E; color: #000;}
+  &--ts {background: #3178C6; color: #fff;}
+  &--react {background: #02D9FF; color: #fff;}
+  &--vue {background-color: #435466; color: #4dba87;}
+}

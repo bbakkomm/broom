@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 // component
-import Schedule from "../../components/list/Schedule";
-import Tab from "../../components/layout/Tab";
+// import Schedule from "../../components/list/Schedule";
+// import Tab from "../../components/layout/Tab";
+import Member from "../../components/list/Member";
 
 // img
 import img from '../../../src/assets/img/pages/detail.jpg';
-import dubuImg from '../../../src/assets/img/pages/dubu.jpg';
 
 // icon
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
@@ -18,7 +18,27 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
 
 
-function Detail() {
+function Detail(props) {
+    const { user } = props;
+
+    const members = [
+        {
+          src: ("../../../src/assets/img/pages/dubu.jpg"),
+          name: '뚜부',
+          text: '안녕하세요 뚜부에요! :D 💕'
+        },
+        {
+            src: ("../../../src/assets/img/pages/dubu.jpg"),
+            name: '뚜부',
+            text: '안녕하세요 뚜부에요! :D 💕'
+        },
+        {
+            src: ("../../../src/assets/img/pages/dubu.jpg"),
+            name: '뚜부',
+            text: '안녕하세요 뚜부에요! :D 💕'
+        },
+    ]
+
     return (
         <main className="detail">
             {/* 탭메뉴 */}
@@ -29,7 +49,7 @@ function Detail() {
                 <li className="tab__item">Q&A</li>
             </ul> */}
 
-            <Tab/>
+            {/* <Tab/> */}
 
             {/* 스터디 이미지 */}
             <section className="image">
@@ -92,8 +112,11 @@ function Detail() {
                             <SettingsOutlinedIcon/>
                             <p className="blind">주요 기술</p>
                         </div>
-                        <ul className="skill">
-                            <li className="skill__item"></li>
+
+                        <ul className="skill-tag-box">
+                            <li className="skill-tag-box__item"><span className="skill-tag skill-tag--js">JavaScript</span></li>
+                            <li><span className="skill-tag skill-tag--ts">TypeScript</span></li>
+                            <li><span className="skill-tag skill-tag--react">React</span></li>
                         </ul>
                     </li>
                 </ul>
@@ -105,25 +128,11 @@ function Detail() {
             </section>
 
             {/* 일정 */}
-            <section className="date">
+            {/* <section className="date">
                 <h2 className="section-title">일정11</h2>
                 <p className="day"><span className="day__date">08.01</span>목 <span className="day__status">오늘</span></p>
                 <div className="list">
                     <ul className="list__wrapper">
-                        {/* {listData.map((study, index) => (
-                            <ListBox
-                                key={index}
-                                index={index}
-                                status={study.status}
-                                name={study.name}
-                                date={study.date}
-                                time={study.time}
-                                location={study.loaction}
-                                cost={study.cost}
-                                participants={study.participants}
-                                imgSrc={imgPath + study.imgSrc}
-                            />
-                        ))} */}
                         <Schedule/>
                     </ul>
                 </div>
@@ -131,54 +140,23 @@ function Detail() {
                 <p className="day"><span className="day__date">08.01</span>목 <span className="day__status">오늘</span></p>
                 <div className="list">
                     <ul className="list__wrapper">
-                        {/* {listData.map((study, index) => (
-                            <ListBox
-                                key={index}
-                                index={index}
-                                status={study.status}
-                                name={study.name}
-                                date={study.date}
-                                time={study.time}
-                                location={study.loaction}
-                                cost={study.cost}
-                                participants={study.participants}
-                                imgSrc={imgPath + study.imgSrc}
-                            />
-                        ))} */}
                     </ul>
                 </div>
-            </section>
+            </section> */}
 
             {/* 모임 멤버 */}
             <section className="member">
-                <h2 className="section-title">모임 멤버 ({4})</h2>
+                <h2 className="section-title">모임 멤버 ({members.length})</h2>
                 
                 <ul className="member__list">
-                    <li className="member__item">
-                        <img src={ dubuImg } alt="" className="member__img"/>
-                        <div className="member__info">
-                            <div className="member__data">
-                                <p className="member__title">뚜부</p>
-                                <span className="member__status member__status--new">NEW</span>
-                            </div>
-                            <p className="member__text">안녕하세요 뚜부에요! :D 💕</p>
-                        </div>
-                    </li>
-                    <li className="member__item">
-                        <img src={ dubuImg } alt="" className="member__img"/>
-                        <div className="member__info">
-                            <div className="member__data">
-                                <p className="member__title">뚜부</p>
-                                <span className="member__status member__status--new">NEW</span>
-                            </div>
-                            <p className="member__text">안녕하세요 뚜부에요! :D 💕</p>
-                        </div>
-                    </li>
+                    {members.map((member, i) => 
+                        <Member member={member} key={i}/>
+                    )}
                 </ul>
             </section>
 
             {/* 댓글 */}
-            <section className="comment">
+            {/* <section className="comment">
                 <h2 className="section-title">댓글 ({5})</h2>
 
                 <ul className="comment__list">
@@ -195,7 +173,7 @@ function Detail() {
                             </p>
                         </div>
                     </li>
-                                        <li className="comment__item">
+                    <li className="comment__item">
                         <img src={ dubuImg } alt="" className="comment__img"/>
                         <div className="comment__left">
                             <div className="comment__info">
@@ -227,11 +205,18 @@ function Detail() {
                     <input type="text" placeholder="댓글을 입력해주세요." className="comment__input"/>
                     <button className="comment__btn">등록</button>
                 </div>
-            </section>
+            </section> */}
 
-            <div className="btn">
-                <button className="btn-bg">참여하기</button>    
-            </div>
+            {
+                user ? (
+                    <></>
+                ) :(
+
+                    <div className="btn">
+                        <button className="btn-bg">참여하기</button>    
+                    </div>
+                )
+            }
         </main>
     )
 }

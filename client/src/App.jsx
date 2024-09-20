@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
 // import LoginSuccess from "./pages/LoginSuccess";
-import { Header, Nav, HomeLayout, Splash, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
+import { Header, Nav, Splash, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +38,16 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "/study/studycreation",
+        element: [
+          <>
+            <Header title={"스터디"} />
+            <Creation study/>
+            <Nav />
+          </>,
+        ],
+      },
+      {
         path: "/study/studydetail",
         element: [
           <>
@@ -48,21 +58,21 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/project/projectdetail",
+        path: "/study/studydetail/user",
         element: [
           <>
-            <Header title={"팀프로젝트 상세"} rightBtn />
-            <Detail />
+            <Header title={"스터디 상세"} rightBtn user study/>
+            <Detail user/>
             <Nav />
           </>,
         ],
       },
       {
-        path: "/study/studycreation",
+        path: "/project",
         element: [
           <>
-            <Header title={"스터디 생성"} />
-            <Creation study/>
+            <Header title={"팀프로젝트"} />
+            <List />
             <Nav />
           </>,
         ],
@@ -71,8 +81,28 @@ const router = createBrowserRouter([
         path: "/project/projectcreation",
         element: [
           <>
-            <Header title={"팀프로젝트 생성"} />
+            <Header title={"팀프로젝트"} />
             <Creation />
+            <Nav />
+          </>,
+        ],
+      },
+      {
+        path: "/project/projectdetail",
+        element: [
+          <>
+            <Header title={"팀프로젝트 상세"} rightBtn  />
+            <Detail />
+            <Nav />
+          </>,
+        ],
+      },
+      {
+        path: "/project/projectdetail/user",
+        element: [
+          <>
+            <Header title={"팀프로젝트 상세"} rightBtn user />
+            <Detail user />
             <Nav />
           </>,
         ],
