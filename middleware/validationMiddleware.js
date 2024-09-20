@@ -116,7 +116,28 @@ export const validateUpdateUserInput = withValidationErrors([
   // body('lastName').notEmpty().withMessage('last name is required'),
 ]);
 
-export const validateEmailInput = withValidationErrors([
+export const validateUidInput = withValidationErrors([
+  body('email')
+  .notEmpty()
+  .withMessage('email is required')
+  .custom(async (email) => {
+    const user = await User.findOne({email});
+    if (!user) {
+      throw new BadRequestError('email not exists');
+    }
+  }),
+]);
+
+export const validatePasswordInput = withValidationErrors([
+  body('uid')
+  .notEmpty()
+  .withMessage('uid is required')
+  .custom(async (uid) => {
+    const user = await User.findOne({uid});
+    if (!user) {
+      throw new BadRequestError('uid not exists');
+    }
+  }),
   body('email')
   .notEmpty()
   .withMessage('email is required')

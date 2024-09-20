@@ -54,3 +54,13 @@ export const uidSearch = async (req, res) => {
 
   res.status(StatusCodes.OK).json({ uid: user.uid });
 }
+
+// 비밀번호 찾기 컨트롤러
+export const passwordSearch = async (req, res) => {
+  const user = await User.findOne({ uid: req.body.uid });
+  const isUserEmail = req.body.email === user.email ? true : false;
+
+  if (!user || !isUserEmail) throw new UnauthenticatedError('invalid credentials');
+
+  res.status(StatusCodes.OK).json({ uid: user.uid });
+}
