@@ -21,6 +21,18 @@
     - 유미
     - 모건
 
+## 개발 환경 셋팅
+
+    1. 개발 환경 셋팅
+    - npm run setup-project //back-end, front-end 한번에 설치
+
+    2. .env 셋팅
+    - mongoDB 데이터 연결을 위한 암호화 파일 생성 // 프로젝트 카톡방 참고
+
+    3. 서버 실행
+    - back-end : @broom 위치에서 npm run server // server mongoDB running 5100... 메세지뜨면 성공
+    - front-end : cd client > npm run dev
+
 ## 브랜치 전략
 
     1. git clone
@@ -59,15 +71,3 @@
         - git chekchout dev (dev Branch로 이동)
         - git pull (github 저장소와 소스 동기화)
         - git branch -D 삭제할branch명 (ex : git branch -D nav)
-
-## 개발 환경 셋팅
-
-    1. 개발 환경 셋팅
-    - npm run setup-project //back-end, front-end 한번에 설치
-
-    2. .env 셋팅
-    - mongoDB 데이터 연결을 위한 암호화 파일 생성 // 프로젝트 카톡방 참고
-
-    3. 서버 실행
-    - back-end : @broom 위치에서 npm run server // server mongoDB running 5100... 메세지뜨면 성공
-    - front-end : cd client > npm run dev
