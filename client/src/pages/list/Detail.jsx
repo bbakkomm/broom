@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 // component
 import Schedule from "../../components/list/Schedule";
-import Tab from "../../components/layout/Tab";
+import Tab from "../../components/common/tab/CommonTab";
 
 // img
 import img from '../../../src/assets/img/pages/detail.jpg';
