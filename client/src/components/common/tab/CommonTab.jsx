@@ -1,5 +1,7 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
+
+// css
+import styles from "./CommonTab.module.scss"
 
 function Tab() {
   const tabLists = [

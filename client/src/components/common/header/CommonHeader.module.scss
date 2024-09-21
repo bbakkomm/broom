@@ -1,0 +1,29 @@
+.header {
+  z-index: 2; display: flex; align-items: center; justify-content: space-between; position: fixed; top: 0; left: 0; width: 100%; height: 5rem; padding: 0 2rem; background-color: #fff;
+
+  &__link,
+  &__title,
+  &__btn {display: flex; align-items: center; justify-content: center; gap: .8rem;}
+  &__title {
+    gap: 1.6rem; font-size: 1.6rem; color: #222;
+  
+    a {color: #222;}
+  }
+  &__btn {
+    gap: .8rem;
+  
+    button {
+      display: flex; align-items: center; justify-content: center; width: 1.8rem;
+    
+      svg {width: 1.8rem; height: 1.8rem;}
+    }
+  }
+  &__heart {
+    color: #c1c1c1;
+  
+    .active {color: #fc4e03;}
+  }
+
+  .logo {width: 8rem;}
+  .icon {width: 2.4rem;}
+}

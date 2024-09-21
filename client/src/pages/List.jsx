@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ListWhole from "./ListWhole"
-import Nav from "../components/layout/Nav";
+import Nav from "../components/common/navigation/CommonNav";
 
 const List = () => {
 

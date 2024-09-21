@@ -1,6 +1,6 @@
 // layout
-export { default as Header } from '../components/layout/Header';
-export { default as Nav} from '../components/layout/Nav';
+export { default as Header } from '../components/common/header/CommonHeader';
+export { default as Nav} from '../components/common/navigation/CommonNav';
 
 // pages
 export { default as Splash } from "./Splash";
