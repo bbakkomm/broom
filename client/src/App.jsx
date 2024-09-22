@@ -1,15 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 // import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
 // import LoginSuccess from "./pages/LoginSuccess";
 import Header from "./components/common/header/CommonHeader"
 import Nav from "./components/common/navigation/CommonNav"
-import { HomeLayout, Splash, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
+import { HomeLayout, Splash, Error, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
 
 import { action as loginAction } from './pages/register/Login';
 import { action as registerAction } from './pages/register/Join';
 import { action as idSearch } from './pages/register/Id';
+import { action as pwSearch } from './pages/register/Pw';
+import { action as pwReset } from './pages/register/PwReset';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -154,6 +156,7 @@ const router = createBrowserRouter([
             <Pw />
           </>,
         ],
+        action: pwSearch
       },
       {
         path: "/pwreset",
@@ -163,6 +166,7 @@ const router = createBrowserRouter([
             <PwReset />
           </>,
         ],
+        action: pwReset
       },
       {
         path: "/pwsuccess",

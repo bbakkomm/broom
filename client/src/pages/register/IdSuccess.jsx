@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import Logo from "../../assets/img/common/logo_broom.svg";
 

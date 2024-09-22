@@ -62,5 +62,18 @@ export const passwordSearch = async (req, res) => {
 
   if (!user || !isUserEmail) throw new UnauthenticatedError('invalid credentials');
 
-  res.status(StatusCodes.OK).json({ uid: user.uid });
+  res.status(StatusCodes.OK).json({ id: user._id });
+}
+
+// 비밀번호 재설정 컨트롤러
+export const passwordReset = async (req, res) => {
+  const password = req.body.password;
+  const passconfirm = req.body.passconfirm;
+  if (password !== passconfirm) throw new UnauthenticatedError('invalid credentials');
+
+  const hashedPassword = await hashPassword(req.body.password);
+  req.body.password = hashedPassword;
+
+  const updateUserPassword = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.status(StatusCodes.OK).json({ msg:'password edit', user: updateUserPassword });
 }

@@ -148,3 +148,34 @@ export const validatePasswordInput = withValidationErrors([
     }
   }),
 ]);
+
+export const validatePasswordResetInput = withValidationErrors([
+  body('password')
+  .notEmpty()
+  .withMessage('password is required')
+  .isLength({min:8})
+  .withMessage('password least 8')
+  ,
+  body('passconfirm')
+  .notEmpty()
+  .withMessage('passconfirm is required')
+  .isLength({min:8})
+  .withMessage('passconfirm least 8'),
+]);
+
+export const validateIdResetParam = withValidationErrors([
+  param('id')
+    .custom(async (value, { req }) => {
+      const isValidId = mongoose.Types.ObjectId.isValid(value);
+      if (!isValidId) throw new BadRequestError('invalid MongoDB Id');
+
+      const user = await User.findById(value);
+      if (!user) throw new NotFoundError(`no user ${value}`);
+      
+      const isAdmin = user.role === 'admin';
+      if (isAdmin) throw new UnauthorizedError('Administrator password cannot be changed');
+
+      const isPassConfirm = req.body.password === req.body.passconfirm;
+      if (!isPassConfirm) throw new UnauthorizedError('Please check your password again');
+    }),
+]);

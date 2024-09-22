@@ -1,22 +1,52 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { Form, useLocation, Navigate, redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import FormRow from '../../components/FormRow';
+import customFetch from '../../utils/customFetch.js';
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  
+  try {
+    await customFetch.patch(`/auth/pwreset/${data.tid}`, data);
+    toast.success('password edit successful');
+    return redirect('/pwsuccess');
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 
 function PwReset() {
+  const { state } = useLocation();
+  const [currentState, setCurrentState] = useState(state);
+
+  useEffect(() => {
+    setCurrentState(state);
+  }, [state]);
+
+  if (currentState === null) return <Navigate to="/Pw" />;
+
   return (
     <main className="pw">
       <h2 className="pw__title">비밀번호 재설정</h2>
 
-      {/* pwd */}
-      <label htmlFor="pass" className="input-label">새 비밀번호</label>
-      <input type="password" id="pass" name="pass" placeholder="비밀번호" className="input-write"/>
-          
-      {/* pwd conf */}
-      <label htmlFor="passconfirm" className="input-label hidden">비밀번호 확인</label>
-      <input  type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-write"/>
+      <Form method='post'>
+        {/* pwd */}
+        <FormRow type='id' name="tid" defaultValue={currentState !== null ? currentState.data.id : ''} hidden/>
 
-      <div className="btn">
-        <Link to="/PwSuccess" className="btn-un">변경하기</Link>
-      </div>
+        {/* pwd */}
+        <FormRow type='password' name="password" labelText="새 비밀번호를 입력해주세요." placeholder="새 비밀번호"/>
+            
+        {/* pwd conf */}
+        <FormRow type='password' name="passconfirm" labelText="비밀번호 확인해주세요." placeholder="새 비밀번호"/>
+
+        <div className="btn">
+          <button type='submit' className="input-submit btn-un">변경하기</button>
+        </div>
+      </Form>
     </main>
   )
 }

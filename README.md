@@ -30,6 +30,7 @@
     - mongoDB 데이터 연결을 위한 암호화 파일 생성 // 프로젝트 카톡방 참고
 
     3. 서버 실행
+    - back-end, front-end (동시 실행) : @broom 위치에서 npm run dev
     - back-end : @broom 위치에서 npm run server // server mongoDB running 5100... 메세지뜨면 성공
     - front-end : cd client > npm run dev
 

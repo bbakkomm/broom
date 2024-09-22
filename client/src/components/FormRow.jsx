@@ -1,6 +1,6 @@
-const FormRow = ({ type, name, labelText, defaultValue, placeholder, onChange, blind }) => {
+const FormRow = ({ type, name, labelText, defaultValue, placeholder, onChange, blind, hidden }) => {
     return (
-        <div className='form-row'>
+        <div className={!hidden ? 'form-row' : 'form-row hidden'}>
             <label 
                 htmlFor={name} 
                 className={!blind ? 'input-label' : 'input-label blind'}
