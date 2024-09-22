@@ -1,4 +1,5 @@
-import { redirect, useLoaderData } from 'react-router-dom';
+import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // components
 import ProfileCard from './components/ProfileCard';
@@ -8,7 +9,7 @@ import StudyCard from '../../components/common/studycard/CommonStudyCard';
 import styles from '../../assets/scss/pages/profile/Profile.module.scss';
 
 // DB
-import userJson from '../../assets/data/userData.json';
+// import userJson from '../../assets/data/userData.json';
 import studyJson from '../../assets/data/studyData.json';
 
 import customFetch from '../../utils/customFetch.js';
@@ -27,6 +28,13 @@ const Profile = () => {
   const loadData = useLoaderData();
   const { user } = loadData;
   console.log(user);
+
+  const navigate = useNavigate();
+  const logOutHandler = async () => {
+    navigate('/');
+    await customFetch.get('/auth/logout');
+    toast.success('Log Out successful');
+  }
 
   const imgPath = '/src/assets/img/profile/'
 
@@ -69,6 +77,9 @@ const Profile = () => {
           <h3 className={styles.groupBox__title}>내가 신청한 모임</h3>          
           {studyList}
         </div>
+      </div>
+      <div className="btn rebottom">
+        <button className="input-submit btn-un btn-bg" onClick={logOutHandler}>로그아웃</button>
       </div>
     </div>
   )

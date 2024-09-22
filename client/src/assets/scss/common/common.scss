@@ -25,7 +25,9 @@ img {width: 100%; height: 100%; object-fit: cover;}
   &.on {background: #000;}
 }
 
-
+.btn.rebottom {
+  position: relative; padding: 0 2rem 4rem 2rem;
+}
 
 //form
 .form-box {
