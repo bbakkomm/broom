@@ -1,3 +1,5 @@
+import { redirect, useLoaderData } from 'react-router-dom';
+
 // components
 import ProfileCard from './components/ProfileCard';
 import StudyCard from '../../components/common/studycard/CommonStudyCard';
@@ -9,8 +11,22 @@ import styles from '../../assets/scss/pages/profile/Profile.module.scss';
 import userJson from '../../assets/data/userData.json';
 import studyJson from '../../assets/data/studyData.json';
 
+import customFetch from '../../utils/customFetch.js';
+
+export const loader = async ({ req }) => {
+  try {
+    const res = await customFetch.get('/users/current-user', req);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    return redirect('/');
+  }
+}
 
 const Profile = () => {
+  const loadData = useLoaderData();
+  const { user } = loadData;
+  console.log(user);
 
   const imgPath = '/src/assets/img/profile/'
 
@@ -41,8 +57,8 @@ const Profile = () => {
 
         <ProfileCard 
           userImg={imgPath + userData[0].userImg} 
-          userName={userData[0].userName} 
-          userEmail={userData[0].userEmail} 
+          userName={user.name} 
+          userEmail={user.email} 
           skillTag={userData[0].skillTag} 
           like={userData[0].like} 
           studing={userData[0].studing} 

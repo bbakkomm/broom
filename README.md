@@ -34,6 +34,10 @@
     - back-end : @broom 위치에서 npm run server // server mongoDB running 5100... 메세지뜨면 성공
     - front-end : cd client > npm run dev
 
+## API 목록
+
+    1. 현재 로그인 중인 사용자 정보: get('/users/current-user') [Profile.jsx 참고]
+
 ## 브랜치 전략
 
     1. git clone

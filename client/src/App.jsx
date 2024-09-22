@@ -5,7 +5,16 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // import LoginSuccess from "./pages/LoginSuccess";
 import Header from "./components/common/header/CommonHeader"
 import Nav from "./components/common/navigation/CommonNav"
-import { HomeLayout, Splash, Error, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
+
+import { 
+  HomeLayout, Splash, Error, 
+  Login, Profile, List, Detail, Creation, 
+  Join, JoinSetting, JoinSuccess, 
+  Id, IdSuccess, 
+  Pw, PwReset, PwSuccess, 
+} from "./pages";
+
+import { loader as profileLoader } from './pages/profile/Profile';
 
 import { action as loginAction } from './pages/register/Login';
 import { action as registerAction } from './pages/register/Join';
@@ -50,6 +59,7 @@ const router = createBrowserRouter([
             <Nav />
           </>,
         ],
+        loader: profileLoader
       },
       {
         path: "/study",
