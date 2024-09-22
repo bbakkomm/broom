@@ -5,14 +5,30 @@ const UserSchema = new mongoose.Schema({
   password: String,
   name: String,
   email: String,
-  // lastName: {
-  //   type: String,
-  //   default: 'lastName',
-  // },
-  // location: {
-  //   type: String,
-  //   default: 'my city',
-  // },
+  thumb: {
+    type: String,
+    default: 'profile_01.png'
+  },
+  job: {
+    type: String,
+    enum: ['planner', 'designer', 'developer'],
+  },
+  skillTag: {
+    type: Array,
+    item: [],
+  },
+  like: {
+    type: Number,
+    default: 0,
+  },
+  study: {
+    type: Number,
+    default: 0,
+  },
+  complete: {
+    type: Number,
+    default: 0,
+  },
   role: {
     type: String,
     enum: ['user', 'admin'],
