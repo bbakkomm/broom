@@ -30,7 +30,7 @@ const Profile = () => {
 
   const imgPath = '/src/assets/img/profile/'
 
-  const userData = userJson.result;
+  // const userData = userJson.result;
   const studyData = studyJson.result;
 
   const studyList = studyData.map((item, idx)=>{
@@ -56,13 +56,13 @@ const Profile = () => {
       <div className={styles.container}>
 
         <ProfileCard 
-          userImg={imgPath + userData[0].userImg} 
+          userImg={imgPath + user.thumb} 
           userName={user.name} 
           userEmail={user.email} 
-          skillTag={userData[0].skillTag} 
-          like={userData[0].like} 
-          studing={userData[0].studing} 
-          complate={userData[0].complate} 
+          skillTag={user.skillTag} 
+          like={user.like} 
+          studing={user.study} 
+          complate={user.complete} 
         />
 
         <div className={styles.groupBox}>

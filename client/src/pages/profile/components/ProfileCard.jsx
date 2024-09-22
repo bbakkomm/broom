@@ -10,7 +10,8 @@ function ProfileCard(
         studing,
         complate
     }
-) {
+  ) {
+
   return (
     <div className="profile-card">
         <div className="profile-box">
@@ -39,7 +40,26 @@ function ProfileCard(
             ? (<span className="skill-tag skill-tag--react">React</span>)
             : ''
           }
-          
+          {
+            skillTag.includes('figma')
+            ? (<span className="skill-tag skill-tag--figma">figma</span>)
+            : ''
+          }
+          {
+            skillTag.includes('html')
+            ? (<span className="skill-tag skill-tag--html">html</span>)
+            : ''
+          }
+          {
+            skillTag.includes('css')
+            ? (<span className="skill-tag skill-tag--css">css</span>)
+            : ''
+          }
+          {
+            skillTag.includes('scss')
+            ? (<span className="skill-tag skill-tag--scss">SCSS</span>)
+            : ''
+          }
         </div>
         <div className="status-box">
             <ul className='status'>

@@ -80,22 +80,22 @@ const Join = () => {
             </div>
 
             <div className="select-box__btn">
-              <input type="checkbox" id="html" name="skillTag" value="html"  className="select-box__radio select-box--html"/>
+              <input type="checkbox" id="html" name="skillTag" value="html" className="select-box__radio select-box--html"/>
               <label htmlFor="html" className="select-box__text">HTML</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="checkbox" id="css" name="skillTag" value="css"  className="select-box__radio select-box--css"/>
+              <input type="checkbox" id="css" name="skillTag" value="css" className="select-box__radio select-box--css"/>
               <label htmlFor="css" className="select-box__text">CSS</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="checkbox" id="SCSS" name="skillTag" value="SCSS"  className="select-box__radio select-box--scss"/>
+              <input type="checkbox" id="SCSS" name="skillTag" value="scss" className="select-box__radio select-box--scss"/>
               <label htmlFor="SCSS" className="select-box__text">SCSS</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="checkbox" id="javaScript" name="skillTag" value="javaScript" className="select-box__radio select-box--javascript"/>
+              <input type="checkbox" id="javaScript" name="skillTag" value="javascript" className="select-box__radio select-box--javascript"/>
               <label htmlFor="javaScript" className="select-box__text">JavaScript</label>
             </div>
           </div>
