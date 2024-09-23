@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 function ProfileCard(
@@ -22,7 +24,9 @@ function ProfileCard(
                 <h1 className="profile-box__username">{userName}</h1>
                 <p className="profile-box__email">{userEmail}</p>
             </div>
-            <ArrowForwardIosIcon className="btn_arrowforward"/>
+            <Link to="../profileEdit" style={{color: "#000"}}>
+              <ArrowForwardIosIcon className="btn_arrowforward"/>
+            </Link>
         </div>
         <div className="skill-tag-box">
           {

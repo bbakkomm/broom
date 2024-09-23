@@ -8,7 +8,7 @@ import Nav from "./components/common/navigation/CommonNav"
 
 import { 
   HomeLayout, Splash, Error, 
-  Login, Profile, List, Detail, Creation, 
+  Login, Profile, ProfileEdit, List, Detail, Creation, 
   Join, JoinSetting, JoinSuccess, 
   Id, IdSuccess, 
   Pw, PwReset, PwSuccess, 
@@ -60,6 +60,16 @@ const router = createBrowserRouter([
           </>,
         ],
         loader: profileLoader
+      },
+      {
+        path: "/profileedit",
+        element: [
+          <>
+            <Header title={"내 프로필"} />
+            <ProfileEdit />
+            <Nav />
+          </>,
+        ],
       },
       {
         path: "/study",
