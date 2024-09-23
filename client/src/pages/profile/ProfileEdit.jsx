@@ -1,8 +1,13 @@
 import { Link, Form, redirect, useNavigation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import { useRef } from 'react';
+
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
+
+// CSS style
+import styles from '../../assets/scss/pages/profile/ProfileEdit.module.scss';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -21,14 +26,26 @@ export const action = async ({ request }) => {
 const ProfileEdit = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
+  const textarea = useRef();
+  const handleResizeHeight = () => {
+    textarea.current.style.height = "auto"; // 높이 초기화
+    textarea.current.style.height = textarea.current.scrollHeight + "px";
+  };
+
+
 
   return (
-    <main className="join">
-      <h2 className="join__title">회원가입</h2>
+    <main className={styles.profileEdit}>
 
       <Form method='post' className="form-box">
         <fieldset className="form-box__inner">
-          <legend className="form-box__title">회원 가입</legend>
+          <legend className="form-box__title">프로필 수정</legend>
+
+          {/* 이미지 수정 */}
+          <label htmlFor="profileEditImg" className={styles.profileEdit__img}>
+            <img src="src/assets/img/profile/profile_01.png" alt="" />
+          </label>
+          <input type="file" id="profileEditImg" name="profileImg" placeholder="이미지 수정" accept="image/*" className="input-write blind"/>
 
           {/* id */}
           <FormRow type='uid' name="uid" labelText="아이디" placeholder="아이디"/>
@@ -67,36 +84,43 @@ const ProfileEdit = () => {
 
           {/* skill */}
           <p className="input-label">주요기술</p>
-          <div className="select-box">
-            <div className="select-box__btn">
+          <div className={styles.selectBox}>
+            <div className={styles.selectBox__btn}>
               <input type="radio" id="figma" name="work" value="figma"  className="select-box__radio"/>
               <label htmlFor="figma" className="select-box__text">Figma</label>
             </div>
 
-            <div className="select-box__btn">
+            <div className={styles.selectBox__btn}>
               <input type="radio" id="html" name="work" value="html"  className="select-box__radio"/>
               <label htmlFor="html" className="select-box__text">HTML</label>
             </div>
 
-            <div className="select-box__btn">
+            <div className={styles.selectBox__btn}>
               <input type="radio" id="css" name="work" value="css"  className="select-box__radio"/>
               <label htmlFor="css" className="select-box__text">CSS</label>
             </div>
 
-            <div className="select-box__btn">
+            <div className={styles.selectBox__btn}>
               <input type="radio" id="SCSS" name="work" value="SCSS"  className="select-box__radio"/>
               <label htmlFor="SCSS" className="select-box__text">SCSS</label>
             </div>
 
-            <div className="select-box__btn">
+            <div className={styles.selectBox__btn}>
               <input type="radio" id="javaScript" name="work" value="javaScript" className="select-box__radio"/>
               <label htmlFor="javaScript" className="select-box__text">JavaScript</label>
             </div>
           </div>
 
-          {/* reCAPTCHA */}
-          {/* <div className="recaptcha">reCAPTCHA</div> */}
-          <div className="btn">
+          <div className={styles.profileEdit__info}>
+            <span className={styles.profileEdit__info__title}>소개글</span>
+            <textarea
+              ref={textarea}
+              onInput={handleResizeHeight}
+              rows={1} 
+              className={styles.profileEdit__info__textarea} />
+          </div>
+
+          <div className={styles.profileEdit__btn}>
             <button type='submit' className="input-submit btn-bg" disabled={isSubmitting}>저장 {isSubmitting?'...':''}</button>
           </div>
         </fieldset>
