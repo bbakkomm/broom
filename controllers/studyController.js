@@ -9,9 +9,10 @@ export const getAllStudy = async (req, res) => {
 
 // CREATE JOB
 export const createStudy = async (req, res) => {
+  // console.log(req.file);
   req.body.createdBy = req.user.userId;
   const study = await Study.create(req.body);
-  res.status(StatusCodes.CREATED).json({ study });
+  res.status(StatusCodes.CREATED).json({ study, thumbFile: req.file });
 }
 
 // GET SINGLE JOB
