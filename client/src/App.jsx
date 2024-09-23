@@ -21,6 +21,7 @@ import { action as registerAction } from './pages/register/Join';
 import { action as idSearch } from './pages/register/Id';
 import { action as pwSearch } from './pages/register/Pw';
 import { action as pwReset } from './pages/register/PwReset';
+import { action as creation } from './pages/list/Creation';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -110,6 +111,7 @@ const router = createBrowserRouter([
             <Nav />
           </>,
         ],
+        action: creation
       },
       {
         path: "/project/projectcreation",

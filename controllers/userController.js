@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import User from "../models/UserModel.js";
-import Job from "../models/JobModel.js";
+import Study from "../models/StudyModel.js";
 
 export const getCurrentUser = async (req, res) => {
     const user = await User.findOne({ _id: req.user.userId });
@@ -10,7 +10,7 @@ export const getCurrentUser = async (req, res) => {
 
 export const getApplicationStats = async (req, res) => {
     const users = await User.countDocuments();
-    const jobs = await Job.countDocuments();
+    const jobs = await Study.countDocuments();
     res.status(StatusCodes.OK).json({ users, jobs });
 }
 

@@ -1,7 +1,6 @@
 import { body, param, validationResult } from 'express-validator'; // param 파라미터 유효성 체크
 import { BadRequestError, NotFoundError, UnauthorizedError } from '../errors/customErrors.js';
-import { JOB_STATUS, JOB_TYPE } from '../utils/constants.js';
-import Job from '../models/JobModel.js';
+import Study from '../models/StudyModel.js';
 import User from '../models/UserModel.js';
 import mongoose from 'mongoose';
 
@@ -13,8 +12,8 @@ const withValidationErrors = (validateValues) => {
       if (!errors.isEmpty()) {
         const errorMessages = errors.array().map((error) => error.msg);
 
-        // 단일 job 호출 시 400 에러로 반환이 되는데, job을 찾을 수 없는 케이스이니 404로 커스텀 에러 적용
-        if (errorMessages[0].startsWith('no job')) {
+        // 단일 study 호출 시 400 에러로 반환이 되는데, study을 찾을 수 없는 케이스이니 404로 커스텀 에러 적용
+        if (errorMessages[0].startsWith('no study')) {
           throw new NotFoundError(errorMessages);
         }
 
@@ -29,12 +28,12 @@ const withValidationErrors = (validateValues) => {
   ]
 }
 
-export const validateJobInput = withValidationErrors([
-  body('company').notEmpty().withMessage('company is required'),
-  body('position').notEmpty().withMessage('position is required'),
-  body('jobLocation').notEmpty().withMessage('job Location is required'),
-  body('jobStatus').isIn(Object.values(JOB_STATUS)).withMessage('invalid status value'),
-  body('jobType').isIn(Object.values(JOB_TYPE)).withMessage('invalid type value'),
+export const validateStudyInput = withValidationErrors([
+  // body('company').notEmpty().withMessage('company is required'),
+  // body('position').notEmpty().withMessage('position is required'),
+  // body('studyLocation').notEmpty().withMessage('study Location is required'),
+  // body('studyStatus').isIn(Object.values(JOB_STATUS)).withMessage('invalid status value'),
+  // body('studyType').isIn(Object.values(JOB_TYPE)).withMessage('invalid type value'),
 ]);
 
 export const validateIdParam = withValidationErrors([
@@ -43,12 +42,12 @@ export const validateIdParam = withValidationErrors([
       const isValidId = mongoose.Types.ObjectId.isValid(value);
       if (!isValidId) throw new BadRequestError('invalid MongoDB Id');
 
-      // 반복되는 job 아이디를 찾는 구문을 유효성 미들웨어로 이동시켜 적용
-      const job = await Job.findById(value);
-      if (!job) throw new NotFoundError(`no job ${value}`);
+      // 반복되는 study 아이디를 찾는 구문을 유효성 미들웨어로 이동시켜 적용
+      const study = await Study.findById(value);
+      if (!study) throw new NotFoundError(`no study ${value}`);
 
       const isAdmin = req.user.role === 'admin';
-      const isOwner = req.user.userId === job.createdBy.toString();
+      const isOwner = req.user.userId === study.createdBy.toString();
       if (!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to acess this route');
     }),
 ]);
@@ -80,9 +79,9 @@ export const validateRegisterInput = withValidationErrors([
   .withMessage('password is required')
   .isLength({min:8})
   .withMessage('password least 8'),
-  body('job')
+  body('study')
   .notEmpty()
-  .withMessage('job is required'),
+  .withMessage('study is required'),
   body('skillTag')
   .isArray({min:1})
   .withMessage('skillTag is required'),
