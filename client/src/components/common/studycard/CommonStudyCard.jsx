@@ -2,17 +2,11 @@
 import styles from './CommonStudyCard.module.scss';
 
 // icon
-import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
-import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import StarRoundedIcon from "@mui/icons-material/StarRounded";
-
-
 
 function StudyCard(
   { 
