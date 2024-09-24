@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 
 // component
 import Member from "./components/Member";
@@ -17,9 +18,24 @@ import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
+import customFetch from "../../utils/customFetch.js";
 
+const datttId = '66f18c4a2a30944fef4c41e2';
+
+export const loader = async ({ req }) => {
+    try {
+      const res = await customFetch.get(`/study/${datttId}`, req);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      return redirect('/');
+    }
+  }
 
 function Detail(props) {
+    const loadData = useLoaderData();
+    console.log(loadData);
+
     const { user } = props;
 
     const members = [

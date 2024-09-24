@@ -16,6 +16,7 @@ import {
 
 import { loader as profileLoader } from './pages/profile/Profile';
 import { loader as studyLoader } from './pages/List';
+import { loader as detailLoader } from './pages/list/Detail';
 
 import { action as loginAction } from './pages/register/Login';
 import { action as registerAction } from './pages/register/Join';
@@ -103,6 +104,7 @@ const router = createBrowserRouter([
             <Nav />
           </>,
         ],
+        loader: detailLoader
       },
       {
         path: "/study/studydetail/user",
