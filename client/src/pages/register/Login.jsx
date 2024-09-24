@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Form, redirect, useNavigation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // img
 import Logo from "../../assets/img/common/logo_broom.svg";
@@ -11,31 +12,45 @@ import Github from "../../assets/img/pages/register/github_logo.png";
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import VisibilityOffSharpIcon from '@mui/icons-material/VisibilityOffSharp';
 
+import FormRow from '../../components/FormRow';
+import customFetch from '../../utils/customFetch.js';
 
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  
+  try {
+    await customFetch.post('/auth/login', data);
+    toast.success('Login successful');
+    return redirect('/Study');
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 
-function Login() {
-  const navigate = useNavigate();
-
+const Login = () => {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+  // console.log(navigation);
   return (
     <main className="login">
       <img src={Logo} alt="B.ROOM 로고" className="logo" />
 
       {/* 로그인 폼 */}
-      <form action="" className="form-box">
+      <Form method='post' className="form-box">
         <fieldset className="form-box__inner">
           <legend className="form-box__title">로그인</legend>
 
           {/* id */}
           <div className="input-box">
-            <label htmlFor="username" className="input-label blind">아이디</label>
-            <input type="text" id="username" name="username" placeholder="아이디" className="input-write input-write--danger"/>
-            <p className="validity">아이디를 입력해주세요.</p>
+            <FormRow type='uid' name="uid" blind placeholder="아이디"/>
+            {/* <p className="validity">이메일을 입력해주세요.</p> */}
           </div>
 
           {/* pw */}
           <div className="input-box">
-            <label htmlFor="pass" className="input-label blind">비밀번호</label>
-            <input type="password" id="pass" name="pass" placeholder="비밀번호" className="input-write"/>
+            <FormRow type='password' name="password" blind placeholder="비밀번호"/>
             <div className="input-eye">
               <RemoveRedEyeOutlinedIcon className="input-eye__on"/>
               <VisibilityOffSharpIcon className="input-eye__off"/>
@@ -43,9 +58,9 @@ function Login() {
             {/* <p className="validity">비밀번호를 입력해주세요.</p> */}
           </div>
           
-          <Link to="" onClick={() => navigate(-1)} className="btn-bg">로그인</Link>
+          <button type='submit' className="input-submit btn-bg" disabled={isSubmitting}>로그인 {isSubmitting?'...':''}</button>
         </fieldset>
-      </form>
+      </Form>
 
       {/* 찾기 / 회원가입 페이지 이동 버튼 */}
       <div className="register">

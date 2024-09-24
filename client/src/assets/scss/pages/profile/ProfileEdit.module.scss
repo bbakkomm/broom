@@ -1,0 +1,39 @@
+.profileEdit {
+	margin: 5rem 0; padding: 3.6rem 2rem 1.6rem;
+
+	&__img {
+		position: relative; display: flex; margin: 0 auto 5.8rem; width: 10rem; height: 10rem; border-radius: 5rem; cursor: pointer;
+		&::after {position: absolute; bottom: 0; right: 0; content: ''; display: block; width: 2.4rem; height: 2.4rem; background: url('/src/assets/img/icon/icon_camera.png'); background-color: #fff; border-radius: 1.2rem;}
+	}
+	&__info {
+		display: flex; flex-direction: column; gap: .6rem; margin-bottom: 3.6rem;
+		&__title {display: block; font-size: 1.4rem;}
+		&__textarea {width: 100%; padding: 1rem; border: 1px solid #f2f1f6; border-radius: 1rem; outline: none; resize: none;}
+	}
+
+	&__btn {
+
+	}
+    
+	
+  }
+
+  .selectBox {
+	display: flex; flex-wrap: wrap; align-items: center; justify-content: start; gap: 1.2rem 0.8rem; margin-bottom: 1.6rem;
+	&__btn {
+		&__figma:checked+label {background-color: #cc775a; color: #fff;}
+		&__html:checked+label {background-color: #f15a29; color: #fff;}
+		&__css:checked+label {background-color: #0396fc; color: #fff;}
+		&__scss:checked+label {background-color: #cf649b; color: #fff;}
+		&__javascript:checked+label {background-color: #f7df1e; color: #000;}
+		&__react:checked+label {background-color: #02d9ff; color: #fff;}
+		&__vue:checked+label {background-color: #435466; color: #4dba87;}
+		&__typescript:checked+label {background: #3178c6; color: #fff;}
+		
+		&__planner:checked+label {background: #9dde41; color: #fff;}
+		&__designer:checked+label {background: #c6a631; color: #fff;}
+		&__developer:checked+label {background: #9e31c6; color: #fff;}
+	
+		&:checked+label {border: 1px solid transparent;}
+	}
+  }

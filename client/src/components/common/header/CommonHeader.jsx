@@ -1,5 +1,7 @@
-/* eslint-disable react/prop-types */
 import { Link, useNavigate } from 'react-router-dom';
+
+// css
+import styles from "./CommonHeader.module.scss"
 
 // icon
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
@@ -14,15 +16,15 @@ function Header(props) {
   const navigate = useNavigate();
 
   return (
-    <header className="header">
+    <header className={styles.header}>
       {home ? (
         <>
           {logo ? (
             <>
               {/* header home */}
-              <h1 className="header__title">
-                <Link to="/" title={title} className="header__link">
-                  <img src={Logo} alt="B.ROOM 로고" className="logo" />
+              <h1 className={styles.header__title}>
+                <Link to="/" title={title} className={styles.header__link}>
+                  <img src={Logo} alt="B.ROOM 로고" className={styles.logo} />
                 </Link>
               </h1>
               <SearchOutlinedIcon />
@@ -32,18 +34,18 @@ function Header(props) {
               {search ? (
                 <>
                   {/* header main */}
-                  <h1 className="header__title">
+                  <h1 className={styles.header__title}>
                     <Link to="/" title={title}>
                       {title}
                     </Link>
                   </h1>
-                  <button className="header__btn">
+                  <button className={styles.header__btn}>
                     <SearchOutlinedIcon />
                   </button>
                 </>
               ) : (
                 <>
-                  <h1 className="header__title">
+                  <h1 className={styles.header__title}>
                     <Link to="/" title={title}>
                       {title}
                     </Link>
@@ -60,11 +62,11 @@ function Header(props) {
               { user ? (
                 <>
                   {/* header detail page */}
-                  <Link to={to} title={title} className="header__link">
+                  <Link to={to} title={title} className={styles.header__link}>
                     <ArrowBackIosNewOutlinedIcon />
-                    <h1 className="header__title">{title}</h1>
+                    <h1 className={styles.header__title}>{title}</h1>
                   </Link>
-                  <div className="header__btn">
+                  <div className={styles.header__btn}>
                     <button><ShareOutlinedIcon /></button>
                     { study ? <Link to="/study/studycreation"><SettingsOutlinedIcon /></Link> : <Link to="/project/projectcreation"><SettingsOutlinedIcon /></Link>}
                   </div>
@@ -72,12 +74,12 @@ function Header(props) {
               ): (
                 <>
                   {/* header detail page */}
-                  <Link to={to} title={title} className="header__link">
+                  <Link to={to} title={title} className={styles.header__link}>
                     <ArrowBackIosNewOutlinedIcon />
-                    <h1 className="header__title">{title}</h1>
+                    <h1 className={styles.header__title}>{title}</h1>
                   </Link>
-                  <div className="header__btn">
-                    <button className="header__heart"><FavoriteOutlinedIcon /></button>
+                  <div className={styles.header__btn}>
+                    <button className={styles.header__heart}><FavoriteOutlinedIcon /></button>
                     <button><ShareOutlinedIcon /></button>
                   </div>
                 </>
@@ -86,9 +88,9 @@ function Header(props) {
           ) : (
             <>
               {/* header perv page */}
-              <Link to="" onClick={() => navigate(-1)}  title={title} className="header__link">
+              <Link to="" onClick={() => navigate(-1)}  title={title} className={styles.header__link}>
                 <ArrowBackIosNewOutlinedIcon />
-                <h1 className="header__title">{title}</h1>
+                <h1 className={styles.header__title}>{title}</h1>
               </Link>
             </>
           )}

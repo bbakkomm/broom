@@ -1,136 +1,59 @@
 {
     "result":[
         {
-            "_id" : "000004",
+            "_id" : "000005",
+            "password" : "qwer1234",
             "userName" : "뚜부",
             "userImg" : "profile_01.png",
             "userEmail" : "broom@broom.com",
-            "skillTag" : {
-                "html" : true,
-                "css" : true,
-                "js" : true,
-                "react" : true,
-                "ts" : false
-                },
-            "date" : "2024.08.01 23:00",
-            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D",
-            "plan" : [
-                {
-                    "planTitle" : "모각코 15시~",
-                    "planDate" : "08.01",
-                    "planWeek" : "목",
-                    "planTime" : "오후 3:00",
-                    "place" : "종로구",
-                    "price" : "10,000"
-                },
-                {
-                    "planTitle" : "모각코 15시~",
-                    "planDate" : "09.14",
-                    "planWeek" : "토",
-                    "planTime" : "오후 5:00",
-                    "place" : "서초구",
-                    "price" : "15,000"
-                }
-            ]
+            "skillTag" : ["typescript", "react", "javascript"],
+            "like" : 9,
+            "studing" : 2,
+            "complate" : 2
+        },
+        {
+            "_id" : "000004",
+            "password" : "qwer1234",
+            "userName" : "데이빗",
+            "userImg" : "profile_05.png",
+            "userEmail" : "david@broom.com",
+            "skillTag" : ["javascript", "react", "next"],
+            "like" : 9,
+            "studing" : 2,
+            "complate" : 3
         },
         {
             "_id" : "000003",
-            "userName" : "뚜부",
-            "userImg" : "profile_01.png",
-            "userEmail" : "broom@broom.com",
-            "skillTag" : {
-                "html" : true,
-                "css" : true,
-                "js" : true,
-                "react" : true,
-                "ts" : false
-                },
-            "date" : "2024.08.01 23:00",
-            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D",
-            "plan" : [
-                {
-                    "planTitle" : "모각코 15시~",
-                    "planDate" : "08.01",
-                    "planWeek" : "목",
-                    "planTime" : "오후 3:00",
-                    "place" : "종로구",
-                    "price" : "10,000"
-                },
-                {
-                    "planTitle" : "모각코 15시~",
-                    "planDate" : "09.14",
-                    "planWeek" : "토",
-                    "planTime" : "오후 5:00",
-                    "place" : "서초구",
-                    "price" : "15,000"
-                }
-            ]
+            "password" : "qwer1234",
+            "userName" : "제이콥",
+            "userImg" : "profile_04.png",
+            "userEmail" : "jacob@broom.com",
+            "skillTag" : ["dart", "flutter"],
+            "like" : 4,
+            "studing" : 1,
+            "complate" : 8
         },
         {
             "_id" : "000002",
-            "userName" : "뚜부",
-            "userImg" : "profile_01.png",
-            "userEmail" : "broom@broom.com",
-            "skillTag" : {
-                "html" : true,
-                "css" : true,
-                "js" : true,
-                "react" : true,
-                "ts" : false
-                },
-            "date" : "2024.08.01 23:00",
-            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D",
-            "plan" : [
-                {
-                    "planTitle" : "모각코 15시~",
-                    "planDate" : "08.01",
-                    "planWeek" : "목",
-                    "planTime" : "오후 3:00",
-                    "place" : "종로구",
-                    "price" : "10,000"
-                },
-                {
-                    "planTitle" : "모각코 15시~",
-                    "planDate" : "09.14",
-                    "planWeek" : "토",
-                    "planTime" : "오후 5:00",
-                    "place" : "서초구",
-                    "price" : "15,000"
-                }
-            ]
+            "password" : "qwer1234",
+            "userName" : "모건",
+            "userImg" : "profile_03.png",
+            "userEmail" : "morgan@broom.com",
+            "skillTag" : ["html", "css", "javascript"],
+            "like" : 5,
+            "studing" : 6,
+            "complate" : 30
         },
         {
             "_id" : "000001",
-            "userName" : "뚜부",
-            "userImg" : "profile_01.png",
-            "userEmail" : "broom@broom.com",
-            "skillTag" : {
-                "html" : true,
-                "css" : true,
-                "js" : true,
-                "react" : true,
-                "ts" : false
-                },
-            "date" : "2024.08.01 23:00",
-            "comment" : "안녕하세요 잘 부탁드려요 비스톤스의 뚜부! 입니다 :D",
-            "plan" : [
-                {
-                    "planTitle" : "모각코 15시~",
-                    "planDate" : "08.01",
-                    "planWeek" : "목",
-                    "planTime" : "오후 3:00",
-                    "place" : "종로구",
-                    "price" : "10,000"
-                },
-                {
-                    "planTitle" : "모각코 15시~",
-                    "planDate" : "09.14",
-                    "planWeek" : "토",
-                    "planTime" : "오후 5:00",
-                    "place" : "서초구",
-                    "price" : "15,000"
-                }
-            ]
+            "password" : "qwer1234",
+            "userName" : "유미",
+            "userImg" : "profile_02.png",
+            "userEmail" : "yumi@broom.com",
+            "skillTag" : ["react", "vue"],
+            "like" : 20,
+            "studing" : 8,
+            "complate" : 4
         }        
     ]
 }
