@@ -19,9 +19,7 @@
     }
   }
   &__heart {
-    color: #c1c1c1;
-  
-    .active {color: #fc4e03;}
+    svg.heart__icon {width: 2.4rem; height: 2.4rem; color: #fc4e03;}
   }
 
   .logo {width: 8rem;}
