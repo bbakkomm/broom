@@ -9,7 +9,7 @@ import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import Logo from "../../assets/img/common/logo_broom.svg";
+import Logo from "../../../assets/img/common/logo_broom.svg";
   
 function Header(props) {
   const { home, logo, search, rightBtn, to, title, user, study } = props;
