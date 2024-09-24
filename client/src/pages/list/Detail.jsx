@@ -34,7 +34,8 @@ export const loader = async ({ req }) => {
 
 function Detail(props) {
     const loadData = useLoaderData();
-    console.log(loadData);
+    const { study } = loadData;
+    console.log(study);
 
     const { user } = props;
 
@@ -69,7 +70,7 @@ function Detail(props) {
                     <li className={styles.tag__item}>모집중</li>
                 </ul>
 
-                <h2 className={styles.title}>스터디 이름</h2>
+                <h2 className={styles.title}>{study.title}</h2>
 
                 <ul className={styles.desc}>
                     <li className={styles.desc__item}>
@@ -77,7 +78,7 @@ function Detail(props) {
                             <CalendarTodayRoundedIcon/>
                             <p className="blind">일정</p>
                         </div>
-                        <p className={styles.dec__text}>2024.08.01</p>~
+                        <p className={styles.dec__text}>{study.date}</p>~
                         <p className={styles.desc__text}></p>
                     </li>
 
@@ -86,7 +87,7 @@ function Detail(props) {
                             <AccessAlarmsRoundedIcon/>
                             <p className="blind">시간</p>
                         </div>
-                        <p className={styles.dec__text}>오후 02:00</p>
+                        <p className={styles.dec__text}>{study.time}</p>
                     </li>
                     
                     <li className={styles.desc__item}>
@@ -129,15 +130,14 @@ function Detail(props) {
                 </ul>
 
                 <p className={styles.info__text}>
-                    스터디 팀원 모집합니다. <br /> 같이 재미있게 공부해요! :D
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum rerum mollitia ullam alias, molestias fugiat suscipit delectus dicta, sunt ducimus, veniam cumque dolor non? Est minus explicabo atque alias recusandae.
+                    {study.introduce}
                 </p>
             </section>
 
             {/* 모임 멤버 */}
             <section className={styles.member}>
                 <h2 className={styles.sectionTitle}>모임 멤버 ({members.length})</h2>
-                
+                {/* <Member member={study.createdBy}/> */}
                 <ul className={styles.member__list}>
                     {members.map((member, i) => 
                         <Member member={member} key={i}/>
