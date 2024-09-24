@@ -19,7 +19,7 @@ function ListBox({ index, skillTag, name, date, time, location, cost, participan
       return { ...item, status: "모집중" }; // 현재 시간보다 미래일 경우 '모집중'으로 설정
     });
 
-    setListData(updatedData); // 상태 업데이트
+    setListData(updatedData); // 상태 업데이트중
 
     // 현재 아이템의 상태 찾기
     const currentItem = updatedData.find(item => item.name === name);
