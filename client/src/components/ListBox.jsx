@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import jsonData from '../assets/data/listData.json';
 
-function ListBox({ index, name, date, time, location, cost, participants, imgSrc }) {
+function ListBox({ index, skillTag, name, date, time, location, cost, participants, imgSrc }) {
   const [listData, setListData] = useState(jsonData.result);
-  const [status, setStatus] = useState("모집중"); // 상태를 위한 useState 훅 추가
+  const [status, setStatus] = useState("모집중");
 
   useEffect(() => {
     filterRecruiting();
-  }, []);
+  }, []); 
 
   const filterRecruiting = () => {
-    const nowtime = new Date(); // 현재 시간 가져오기
+    const nowtime = new Date(); 
     const updatedData = listData.map(item => {
       // item.date가 현재 시간보다 과거일 경우 '완료', 그렇지 않으면 '모집중'
       if (new Date(item.date) < nowtime) {
@@ -19,17 +19,20 @@ function ListBox({ index, name, date, time, location, cost, participants, imgSrc
       return { ...item, status: "모집중" }; // 현재 시간보다 미래일 경우 '모집중'으로 설정
     });
 
+    setListData(updatedData); // 상태 업데이트중
+
     // 현재 아이템의 상태 찾기
     const currentItem = updatedData.find(item => item.name === name);
     if (currentItem) {
-      setStatus(currentItem.status); // 현재 아이템의 상태 업데이트
+      setStatus(currentItem.status);
     }
   };
 
   return (
     <li className="list__box" key={index}>
       <div className="list__badge">
-        <p>{status}</p> {/* 상태 표시 */}
+        <p className="list__title">{status}</p>
+        <p className="list__skill01">{skillTag}</p>
       </div>
       <p className="study_name">{name}</p>
       <div className="study_inner">
