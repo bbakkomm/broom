@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { Link, Form, json } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+// component
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
+
+// CSS style
+import styles from "../../assets/scss/pages/list/Creation.module.scss";
 
 // icon
 import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
