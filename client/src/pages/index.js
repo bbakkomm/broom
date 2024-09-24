@@ -1,13 +1,14 @@
 // layout
-export { default as Header } from '../components/layout/Header';
-export { default as Nav} from '../components/layout/Nav';
+export { default as Header } from '../components/common/header/CommonHeader';
+export { default as Nav} from '../components/common/navigation/CommonNav';
 
 // pages
 export { default as Splash } from "./Splash";
 export { default as HomeLayout } from './HomeLayout';
 export { default as Error } from './Error';
 export { default as Landing } from './Landing';
-export { default as Profile } from './Mypage';
+export { default as Profile } from './profile/Profile';
+export { default as ProfileEdit } from './profile/ProfileEdit';
 export { default as List } from './List';
 
 // list

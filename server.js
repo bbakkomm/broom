@@ -10,19 +10,25 @@ import mongoose from "mongoose";
 import cookieParser from 'cookie-parser';
 
 // routers
-import jobRouter from './routes/jobRouter.js';
+import studyRouter from './routes/studyRouter.js';
 import userRouter from './routes/userRouter.js';
 import authRouter from './routes/authRouter.js';
-import userRouter from './routes/userRouter.js';
+
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 // middleware
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
 import { authenticateUser } from './middleware/authMiddleware.js';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+app.use(express.static(path.resolve(__dirname, './client/public')));
 app.use(cookieParser());
 app.use(express.json());
 
@@ -34,10 +40,9 @@ app.get('/api/v1/test', (req, res) => {
   res.json({ msg: 'test route' });
 });
 
-app.use('/api/v1/jobs', authenticateUser, jobRouter);
+app.use('/api/v1/study', authenticateUser, studyRouter);
 app.use('/api/v1/users', authenticateUser, userRouter);
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/users', authenticateUser, userRouter);
 
 app.use('*', (req, res) => {
   res.sendStatus(404).json({ msg: 'not found'});

@@ -1,86 +1,112 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import { Form, redirect, useNavigation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-function Join() {
+import FormRow from '../../components/FormRow';
+import customFetch from '../../utils/customFetch.js';
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+
+  let skillTags = document.querySelectorAll('[name="skillTag"]');
+  let skillArr = Array.from(skillTags)
+    .map(item => [item.value, item.checked])
+    .filter(item => item[1] === true).map(item => item[0]);
+    data.skillTag = skillArr;
+
+  try {
+    await customFetch.post('/auth/register', data);
+    toast.success('register successful');
+    return redirect('/joinsuccess');
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
+
+const Join = () => {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
     <main className="join">
       <h2 className="join__title">회원가입</h2>
 
-      <form action="" className="form-box">
+      <Form method='post' className="form-box">
         <fieldset className="form-box__inner">
           <legend className="form-box__title">회원 가입</legend>
 
           {/* id */}
-          <label htmlFor="username" className="input-label">아이디</label>
-          <input type="text" id="username" name="username" placeholder="아이디" className="input-write"/>
+          <FormRow type='uid' name="uid" labelText="아이디" placeholder="아이디"/>
+
+          {/* nickname */}
+          <FormRow type='name' name="name" labelText="닉네임" placeholder="닉네임"/>
 
           {/* email */}
-          <label htmlFor="useremail" className="input-label">이메일</label>
-          <input type="email" id="useremail" name="useremail" placeholder="이메일" className="input-write"/>
+          <FormRow type='email' name="email" labelText="이메일" placeholder="이메일"/>
 
           {/* pwd */}
-          <label htmlFor="pass" className="input-label">비밀번호</label>
-          <input type="password" id="pass" name="pass" placeholder="비밀번호" className="input-write"/>
+          <FormRow type='password' name="password" labelText="비밀번호" placeholder="비밀번호"/>
           
           {/* pwd conf */}
-          <label htmlFor="passconfirm" className="input-label hidden">비밀번호 확인</label>
-          <input  type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-write"/>
+          {/* <label htmlFor="passconfirm" className="input-label hidden">비밀번호 확인</label>
+          <input type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-write"/> */}
 
-          {/* work */}
-          {/* <p className="input-label">희망직무</p>
+          {/* job */}
+          <p className="input-label">희망직무</p>
           <div className="select-box">
             <div className="select-box__btn">
-              <input type="radio" id="planner" name="work" value="planner" className="select-box__radio" />
+              <input type="radio" id="planner" name="job" value="planner" className="select-box__radio select-box--planner" />
               <label htmlFor="planner" className="select-box__text">기획</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="radio" id="designer" name="work" value="designer" className="select-box__radio" />
+              <input type="radio" id="designer" name="job" value="designer" className="select-box__radio select-box--designer" />
               <label htmlFor="designer" className="select-box__text">디자인</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="radio" id="developer" name="work" value="developer" className="select-box__radio" />
+              <input type="radio" id="developer" name="job" value="developer" className="select-box__radio select-box--developer" />
               <label htmlFor="developer" className="select-box__text">개발</label>
             </div>
-          </div> */}
+          </div>
 
           {/* skill */}
-          {/* <p className="input-label">주요기술</p>
+          <p className="input-label">주요기술</p>
           <div className="select-box">
             <div className="select-box__btn">
-              <input type="radio" id="figma" name="work" value="figma"  className="select-box__radio"/>
+              <input type="checkbox" id="figma" name="skillTag" value="figma" className="select-box__radio select-box--figma"/>
               <label htmlFor="figma" className="select-box__text">Figma</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="radio" id="html" name="work" value="html"  className="select-box__radio"/>
+              <input type="checkbox" id="html" name="skillTag" value="html" className="select-box__radio select-box--html"/>
               <label htmlFor="html" className="select-box__text">HTML</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="radio" id="css" name="work" value="css"  className="select-box__radio"/>
+              <input type="checkbox" id="css" name="skillTag" value="css" className="select-box__radio select-box--css"/>
               <label htmlFor="css" className="select-box__text">CSS</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="radio" id="SCSS" name="work" value="SCSS"  className="select-box__radio"/>
+              <input type="checkbox" id="SCSS" name="skillTag" value="scss" className="select-box__radio select-box--scss"/>
               <label htmlFor="SCSS" className="select-box__text">SCSS</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="radio" id="javaScript" name="work" value="javaScript" className="select-box__radio"/>
+              <input type="checkbox" id="javaScript" name="skillTag" value="javascript" className="select-box__radio select-box--javascript"/>
               <label htmlFor="javaScript" className="select-box__text">JavaScript</label>
             </div>
-          </div> */}
+          </div>
 
           {/* reCAPTCHA */}
-          <div className="recaptcha">reCAPTCHA</div>
+          {/* <div className="recaptcha">reCAPTCHA</div> */}
           <div className="btn">
-            <Link to="/Joinsetting" className="btn-un">다음</Link>
+            <button type='submit' className="input-submit btn-bg" disabled={isSubmitting}>{isSubmitting?'회원가입중...':'회원가입하기'}</button>
           </div>
         </fieldset>
-      </form>
+      </Form>
     </main>
   );
 }

@@ -1,24 +1,26 @@
-img {width: 100%;}
-
-.inner_360 {max-width: 36rem; margin: 0 auto;}
+.container {max-width: 36rem; margin: 8.6rem auto; padding: 0 2rem;}
 
 
 .profile-header {
-  display: flex; justify-content: space-between; align-items: center; height: 5rem; padding: 0 2rem; box-shadow: 1px -1px 6px 0px rgba(166, 180, 200, 0.15); margin-bottom: 3.6rem;
+  display: flex; justify-content: space-between; align-items: center; height: 5rem; box-shadow: 1px -1px 6px 0px rgba(166, 180, 200, 0.15); margin-bottom: 3.6rem;
   &__title {font-size: 1.6rem; font-weight: 400;}
   .btn_search {width: 2rem; height: 2rem;}
 }
 
-.profile-box {
-  display: flex; justify-content: flex-start; align-items: center; gap: 1.6rem; padding: 0 2rem; margin-bottom: 2.4rem;
+.profileBox {
+  display: flex; justify-content: flex-start; align-items: center; gap: 1.6rem; margin-bottom: 2.4rem;
   &__img {width: 8rem; height: 8rem; overflow: hidden; border-radius: 4rem;}
   &__user {flex: 1;}
   &__username {font-size: 1.6rem;}
   &__email {font-size: 1.2rem; color: #aaa;}
+  &__btn {
+    color: #000;
+    &:visited {color: #000;}
+  }
   .btn_arrowforward {width: 2rem; height: 2rem;}
 }
 
-.skill-tag-box {display: flex; justify-content: flex-start; align-items: center; padding: 0 2rem; gap: .3rem; margin-bottom: 3.6rem;}
+.skill-tag-box {display: flex; justify-content: flex-start; align-items: center; gap: .3rem; margin-bottom: 3.6rem;}
 .skill-tag-box__item {}
 
 .skill-tag {
@@ -26,6 +28,10 @@ img {width: 100%;}
   &--js {background: #F7DF1E; color: #000;}
   &--ts {background: #3178C6; color: #fff;}
   &--react {background: #02D9FF; color: #fff;}
+  &--figma {background: #f24515; color: #fff;}
+  &--html {background: #f9bd23; color: #fff;}
+  &--css {background: #308797; color: #fff;}
+  &--scss {background: #fd1b1b; color: #fff;}
 }
 
 .status-box {border: .1rem solid #F2F1F6; border-radius: 1rem; margin: 0 2rem 1.6rem; box-shadow: .1rem -.1rem .6rem 0 #A6B4C826;}
@@ -41,7 +47,11 @@ img {width: 100%;}
   &__desc {font-size: 1.2rem; line-height: 1.4rem; color: #aaa;}
 }
 
-.tab-box {margin-bottom: 2.4rem; border-bottom: .1rem solid #F2F1F6;}
+.groupBox {
+  &__title {font-size: 1.6rem; line-height: 5rem; font-weight: 400; color: #aaa; margin: 1.4rem 0 1.6rem; border-bottom: 1px solid #F2F1F6;}
+}
+
+.tabBox {margin-bottom: 2.4rem; border-bottom: .1rem solid #F2F1F6;}
 .tabs {
   display: flex; justify-content: flex-start; align-items: center; height: 4rem; gap: 2.2rem; padding: 0 2rem;
   &__menu {
@@ -51,7 +61,6 @@ img {width: 100%;}
   }
 }
 
-.comment-box {}
 .comment-list {
   display: flex; flex-direction: column; gap: 1.6rem;
   &__item {display: flex; gap: .9rem; border: .1rem solid #F2F1F6; border-radius: 1rem; margin: 0 2rem; box-shadow: .1rem -.1rem .6rem 0 #A6B4C826; padding: 1.6rem;}
@@ -62,13 +71,13 @@ img {width: 100%;}
   &__comment {font-size: 1.4rem; line-height: 1.8rem;}
 }
 
-.plan-date {
+.planDate {
   display: flex; align-items: center; gap: .4rem; margin-bottom: 1.6rem;
-  &--day {font-size: 1.6rem; font-weight: 700;}
-  &--week {font-size: 1rem;}
-  &--dday {font-size: 1.1rem; color: #0396FC; font-weight: 700;}
+  &__day {font-size: 1.6rem; font-weight: 700;}
+  &__week {font-size: 1rem;}
+  &__dday {font-size: 1.1rem; color: #0396FC; font-weight: 700;}
 }
-.plan-list {
+.planList {
   &__item {display: flex; gap: 1.3rem; margin-bottom: 1.6rem; padding: 1.6rem; border: .1rem solid #F2F1F6; border-radius: 1rem; box-shadow: 1px -1px 6px 0px #A6B4C826;}
   &__img {width: 10.5rem; height: 10.5rem; overflow: hidden; border-radius: 1rem;}
   &__title {font-size: 1.4rem;}
@@ -79,7 +88,7 @@ img {width: 100%;}
   &__price {font-size: 1.2rem;}
   &__person {
     font-size: 1.2rem;
-    &--blue {color: #0396FC;}
+    &__blue {color: #0396FC;}
   }
 
 }

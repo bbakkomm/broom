@@ -1,28 +1,74 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 // import { HomeLayout, Error, Landing, Login, Profile, List } from './pages';
 // import LoginSuccess from "./pages/LoginSuccess";
-import { Header, Nav, HomeLayout, Splash, Error, Landing, Login, Profile, Join, JoinSetting, JoinSuccess, Id, IdSuccess, Pw, PwReset, PwSuccess, List, Detail, Creation } from "./pages";
+import Header from "./components/common/header/CommonHeader"
+import Nav from "./components/common/navigation/CommonNav"
+
+import { 
+  HomeLayout, Splash, Error, 
+  Login, Profile, ProfileEdit, List, Detail, Creation, 
+  Join, JoinSetting, JoinSuccess, 
+  Id, IdSuccess, 
+  Pw, PwReset, PwSuccess, 
+} from "./pages";
+
+import { loader as profileLoader } from './pages/profile/Profile';
+import { loader as studyLoader } from './pages/List';
+
+import { action as loginAction } from './pages/register/Login';
+import { action as registerAction } from './pages/register/Join';
+import { action as idSearch } from './pages/register/Id';
+import { action as pwSearch } from './pages/register/Pw';
+import { action as pwReset } from './pages/register/PwReset';
+import { action as creation } from './pages/list/Creation';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: <HomeLayout />,
+    element: <HomeLayout />,
     errorElement: <Error />,
     children: [
       {
-        path: "/Landing",
-        element: <Landing />,
+        index: true,
+        element: [
+          <>
+            {/* <Header title={"로그인"} /> */}
+            <Login />
+          </>,
+        ],
+        action: loginAction
       },
       {
         path: "/splash",
         element: <Splash />,
       },
       {
-        path: "/mypage",
+        path: "/profile",
         element: [
           <>
             <Header title={"마이페이지"} />
             <Profile />
+            <Nav />
+          </>,
+        ],
+        loader: profileLoader
+      },
+      {
+        path: "/profileedit",
+        element: [
+          <>
+            <Header title={"내 프로필"} />
+            <ProfileEdit />
             <Nav />
           </>,
         ],
@@ -33,6 +79,17 @@ const router = createBrowserRouter([
           <>
             <Header title={"스터디"} />
             <List />
+            <Nav />
+          </>,
+        ],
+        loader: studyLoader
+      },
+      {
+        path: "/study/studycreation",
+        element: [
+          <>
+            <Header title={"스터디"} />
+            <Creation study/>
             <Nav />
           </>,
         ],
@@ -48,31 +105,52 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "/study/studydetail/user",
+        element: [
+          <>
+            <Header title={"스터디 상세"} rightBtn user study/>
+            <Detail user/>
+            <Nav />
+          </>,
+        ],
+      },
+      {
+        path: "/project",
+        element: [
+          <>
+            <Header title={"팀프로젝트"} />
+            <List />
+            <Nav />
+          </>,
+        ],
+        action: creation
+      },
+      {
+        path: "/project/projectcreation",
+        element: [
+          <>
+            <Header title={"팀프로젝트"} />
+            <Creation />
+            <Nav />
+          </>,
+        ],
+      },
+      {
         path: "/project/projectdetail",
         element: [
           <>
-            <Header title={"팀프로젝트 상세"} rightBtn />
+            <Header title={"팀프로젝트 상세"} rightBtn  />
             <Detail />
             <Nav />
           </>,
         ],
       },
       {
-        path: "/study/studycreation",
+        path: "/project/projectdetail/user",
         element: [
           <>
-            <Header title={"스터디 생성"} />
-            <Creation study/>
-            <Nav />
-          </>,
-        ],
-      },
-      {
-        path: "/project/projectcreation",
-        element: [
-          <>
-            <Header title={"팀프로젝트 생성"} />
-            <Creation />
+            <Header title={"팀프로젝트 상세"} rightBtn user />
+            <Detail user />
             <Nav />
           </>,
         ],
@@ -94,6 +172,7 @@ const router = createBrowserRouter([
             <Join />
           </>,
         ],
+        action: registerAction,
       },
       {
         path: "/joinsetting",
@@ -121,6 +200,7 @@ const router = createBrowserRouter([
             <Id />
           </>,
         ],
+        action: idSearch,
       },
       {
         path: "/idsuccess",
@@ -139,6 +219,7 @@ const router = createBrowserRouter([
             <Pw />
           </>,
         ],
+        action: pwSearch
       },
       {
         path: "/pwreset",
@@ -148,6 +229,7 @@ const router = createBrowserRouter([
             <PwReset />
           </>,
         ],
+        action: pwReset
       },
       {
         path: "/pwsuccess",
@@ -163,6 +245,11 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+    </QueryClientProvider>
+  );
 };
 export default App;

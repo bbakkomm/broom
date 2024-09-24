@@ -14,8 +14,8 @@
 @import '../scss/pages/splash.scss';
 
 // pages list 
-@import '../scss/pages/list/creation.scss';
-@import '../scss/pages/list/detail.scss';
+@import '../scss/pages/list/creation.module.scss';
+@import '../scss/pages/list/detail.module.scss';
 
 // pages register
 @import '../scss/pages/register/login.scss';
@@ -25,4 +25,5 @@
 @import '../scss/pages/register/pw.scss';
 @import '../scss/pages/register/success.scss';
 
-@import '../scss/profile/profile.scss';
+// pages profile
+@import '../scss/pages/profile/profile.module.scss';

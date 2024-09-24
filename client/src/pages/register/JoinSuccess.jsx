@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/img/common/logo_broom.svg";
 
-function JoinSuccess() {
+const JoinSuccess = () => {
   return (
     <main className="success">
       <div className="text">
@@ -12,8 +12,8 @@ function JoinSuccess() {
       </div>
 
       <div className="btn">
-        <Link to="/" className="btn-outline">홈으로</Link>
-        <Link to="/login" className="btn-bg">로그인</Link>
+        {/* <Link to="/" className="btn-outline">홈으로</Link> */}
+        <Link to="/" className="btn-bg">로그인</Link>
       </div>
     </main>
   );

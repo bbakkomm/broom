@@ -1,16 +1,33 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
+  uid: String,
+  password: String,
   name: String,
   email: String,
-  password: String,
-  lastName: {
+  thumb: {
     type: String,
-    default: 'lastName',
+    default: 'profile_01.png'
   },
-  location: {
+  job: {
     type: String,
-    default: 'my city',
+    enum: ['planner', 'designer', 'developer'],
+  },
+  skillTag: {
+    type: Array,
+    item: [],
+  },
+  like: {
+    type: Number,
+    default: 0,
+  },
+  study: {
+    type: Number,
+    default: 0,
+  },
+  complete: {
+    type: Number,
+    default: 0,
   },
   role: {
     type: String,

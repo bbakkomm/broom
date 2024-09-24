@@ -6,58 +6,60 @@ const ListWhole = () => {
   const imgPath ="/src/assets/img/"
   const [listData, setListData] = useState(jsonData.result);
 
-// 팝업의 열림 상태를 관리하는 변수
-const [isModalOpen, setIsModalOpen] = useState(false);
-// 팝업을 토글하는 함수
-const toggleModal = () => {
-  setIsModalOpen(!isModalOpen);
-};
+// // 팝업의 열림 상태를 관리하는 변수
+// const [isModalOpen, setIsModalOpen] = useState(false);
+// // 팝업을 토글하는 함수
+// const toggleModal = () => {
+//   setIsModalOpen(!isModalOpen);
+// };
 
-// 희망직무를 관리하는 변수
-const [selectedOption, setSelectedOption] = useState("");
- // 옵션 선택 시 호출되는 함수
- const handleSelect = (option) => {
-  setSelectedOption(option);
-};
+// // 희망직무를 관리하는 변수
+// const [selectedOption, setSelectedOption] = useState("");
+//  // 옵션 선택 시 호출되는 함수
+//  const handleSelect = (option) => {
+//   setSelectedOption(option);
+// };
 
-// 주요기술을 관리하는 상태 변수
-const [selectedOptions2, setSelectedOptions2] = useState([]);
-// 옵션 선택 시 호출되는 함수
-const handleSelect2 = (option) => {
-  setSelectedOptions2((prevSelected) =>
-    prevSelected.includes(option) ? prevSelected.filter((item) => item !== option) : [...prevSelected, option]
-  );
-};
+// // 주요기술을 관리하는 상태 변수
+// const [selectedOptions2, setSelectedOptions2] = useState([]);
+// // 옵션 선택 시 호출되는 함수
+// const handleSelect2 = (option) => {
+//   setSelectedOptions2((prevSelected) =>
+//     prevSelected.includes(option) ? prevSelected.filter((item) => item !== option) : [...prevSelected, option]
+//   );
+// };
 
-//모달창 적용 버튼
-const [inputData, setInputData] = useState("");
 
-// 입력 데이터 상태 업데이트 함수
- const handleInputChange = (event) => {
-  setInputData(event.target.value);
-};
-// 데이터를 서버로 보내는 함수
-  const handleSubmit = async () => {
-    try {
-      const response = await fetch("서버로보내는 곳", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ data: inputData }),
-      });
 
-      if (response.ok) {
-        alert("성공");
-        setInputData("");
-      } else {
-        alert("희망직무와 주요기술을 선택해주세요");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("에옹에옹에옹에옹에러");
-    }
-  };
+// //모달창 적용 버튼
+// const [inputData, setInputData] = useState("");
+
+// // 입력 데이터 상태 업데이트 함수
+//  const handleInputChange = (event) => {
+//   setInputData(event.target.value);
+// };
+// // 데이터를 서버로 보내는 함수
+//   const handleSubmit = async () => {
+//     try {
+//       const response = await fetch("서버로보내는 곳", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ data: inputData }),
+//       });
+
+//       if (response.ok) {
+//         alert("성공");
+//         setInputData("");
+//       } else {
+//         alert("희망직무와 주요기술을 선택해주세요");
+//       }
+//     } catch (error) {
+//       console.error("Error:", error);
+//       alert("에옹에옹에옹에옹에러");
+//     }
+//   };
 
 
   //반복할 데이터 배열
@@ -139,14 +141,17 @@ const sortByLatest = () => {
   setListData(sortedListData);
 };
 
+
+
     return (
       <div>
         <div className="select">
           <p className="whole_num">전체 <span className="whole_num__count">{listData.length}</span>개</p>
           <div className="filter">
             <a className="filter__recent" onClick={sortByLatest}>최신순</a>
-            <a className="filter__popup" onClick={toggleModal}>필터</a>
-              {/* 모달 */}
+             {/* 모달 */}
+            {/* <a className="filter__popup" onClick={toggleModal}>필터</a> 
+             
               {isModalOpen && (
                 <div className="modal_overlay" onClick={toggleModal}>
                   <div className="modal_content" onClick={(e) => e.stopPropagation()}>
@@ -183,10 +188,10 @@ const sortByLatest = () => {
                     <button className="modal_btn" onClick={toggleModal}>닫기</button>
                   </div>
                 </div>
-              )}
+              )}*/}
           </div>
         </div>
-
+        
         {/* 리스트 목록 */}
         <div className="list">
           <ul className="list__wrapper">

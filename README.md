@@ -1,8 +1,9 @@
 # B.ROOM Project
 
 ## 기획
+
     - 데이빗
-	- 유미
+    - 유미
 
 ## 디자인
 
@@ -18,7 +19,24 @@
     - 데이빗
     - 제이콥
     - 유미
-	- 모건
+    - 모건
+
+## 개발 환경 셋팅
+
+    1. 개발 환경 셋팅
+    - npm run setup-project //back-end, front-end 한번에 설치
+
+    2. .env 셋팅
+    - mongoDB 데이터 연결을 위한 암호화 파일 생성 // 프로젝트 카톡방 참고
+
+    3. 서버 실행
+    - back-end, front-end (동시 실행) : @broom 위치에서 npm run dev
+    - back-end : @broom 위치에서 npm run server // server mongoDB running 5100... 메세지뜨면 성공
+    - front-end : cd client > npm run dev
+
+## API 목록
+
+    1. 현재 로그인 중인 사용자 정보: get('/users/current-user') [Profile.jsx 참고]
 
 ## 브랜치 전략
 
@@ -58,14 +76,3 @@
         - git chekchout dev (dev Branch로 이동)
         - git pull (github 저장소와 소스 동기화)
         - git branch -D 삭제할branch명 (ex : git branch -D nav)
-
-## 개발 환경 셋팅
-
-    1. 개발환경 셋팅
-    @초기폴더셋팅 Clinet
-	- cd client (client 폴더로 진입)
-    - npm i (완료)
-
-    2. 폴더 설명
-        @pages
-        - 해당 폴더에 각 페이지 셋팅
