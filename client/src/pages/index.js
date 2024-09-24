@@ -3,6 +3,7 @@ export { default as Header } from '../components/common/header/CommonHeader';
 export { default as Nav} from '../components/common/navigation/CommonNav';
 
 // pages
+export { default as Home } from "./Home";
 export { default as Splash } from "./Splash";
 export { default as HomeLayout } from './HomeLayout';
 export { default as Error } from './Error';
