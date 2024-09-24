@@ -72,12 +72,12 @@
     .list__wrapper{    
         display: flex; flex-direction: column; gap: 8px;
         .list__box{
-            width: 320px; height: 202px; border: 1px solid #F2F1F6; border-radius: 10px; margin: 0 auto; padding: 19px 15px;
-            .list__badge{
+            width: 320px; height: 202px; border: 1px solid #F2F1F6; border-radius: 10px; margin: 0 auto; padding: 19px 15px; 
+            .list__badge{display: flex; gap: 0.3rem;
                 margin-bottom: 8px;
-                p{    
-                    display: flex; justify-content: center; align-items: center; font-size: 10px; font-weight: 700; width: 43px; height: 19px; padding: 3px 6px 3px 6px; border: 1px solid #0396FC; border-radius: 5px; color: #0396FC;
-                }
+                p{display: flex; justify-content: center; align-items: center; font-size: 10px; font-weight: 700;  width: 43px; height: 19px; padding: 3px 6px 3px 6px; border-radius: 5px;}
+                .list__title{ border: 1px solid #0396FC; color: #0396FC;}
+                .list__skill01{background-color: #F7DF1E; color: #000;}
             }
             .study_name{
                 font-size: 16px; font-weight: 700; margin-bottom: 8px;
