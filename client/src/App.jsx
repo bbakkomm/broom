@@ -7,7 +7,7 @@ import Header from "./components/common/header/CommonHeader"
 import Nav from "./components/common/navigation/CommonNav"
 
 import { 
-  HomeLayout, Splash, Error, 
+  Home, HomeLayout, Splash, Error, 
   Login, Profile, ProfileEdit, List, Detail, Creation, 
   Join, JoinSetting, JoinSuccess, 
   Id, IdSuccess, 
@@ -46,6 +46,15 @@ const router = createBrowserRouter([
           </>,
         ],
         action: loginAction
+      },
+      {
+        path: "/home",
+        element: [
+          <>
+            <Home />
+            <Nav />
+          </>,
+        ],
       },
       {
         path: "/splash",
