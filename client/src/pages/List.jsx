@@ -1,8 +1,25 @@
 import React, { useState } from "react";
+import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
+
 import ListWhole from "./ListWhole"
 import Nav from "../components/common/navigation/CommonNav";
 
+import customFetch from "../utils/customFetch.js";
+
+export const loader = async ({ req }) => {
+  try {
+    const res = await customFetch.get('/study', req);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    return redirect('/');
+  }
+}
+
 const List = () => {
+  const loadData = useLoaderData();
+  const { studys } = loadData;
+  console.log(studys);
 
   //전체, 모집중, 완료
   const [selectedIndex, setSelectedIndex] = useState(null);
