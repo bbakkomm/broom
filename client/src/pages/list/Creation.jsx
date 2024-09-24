@@ -19,6 +19,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const file = formData.get('thumb');
+  // console.log(file.path);
 
   if (file && file.size > 500000) {
     toast.error('Image size too large');
@@ -35,6 +36,7 @@ export const action = async ({ request }) => {
   try {
     const res = await customFetch.post('/study', formData);
     toast.success('study create successful');
+    console.log(request);
     console.log(res);
 
     return json({

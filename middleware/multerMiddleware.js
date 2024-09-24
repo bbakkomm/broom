@@ -5,10 +5,10 @@ const storage = multer.diskStorage({
     cb(null, 'client/public/uploads/study');
   },
   filename: (req, file, cb) => {
-    // const newFileName = file.originalname;
-    // cb(null, `${Date.now()}_${newFileName}`);
-    const ext = path.extname(file.originalname);
-    cb(null, path.basename(file.originalname, ext) + '-' + Date.now() + ext);
+    const newFileName = file.originalname;
+    cb(null, `${Date.now()}_${newFileName}`);
+    // const ext = path.extname(file.originalname);
+    // cb(null, path.basename(file.originalname, ext) + '-' + Date.now() + ext);
   }
 });
 const upload = multer({ storage });
