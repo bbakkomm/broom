@@ -39,8 +39,8 @@ function Home() {
     <div className="kv">
       <Swiper
         style={{
-          height: "360px",
           width: "360px",
+          height: "202px",
           position: "relative",
         }}
         modules={[Pagination, Autoplay]}
@@ -52,17 +52,17 @@ function Home() {
       >
         <SwiperSlide>
           <div className='banner-box'>
-            <img src="" alt="" />
+            <img src="src/assets/img/home/banner_01.jpg" alt="" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className='banner-box'>
-            <img src="" alt="" />
+            <img src="src/assets/img/home/banner_02.jpg" alt="" />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className='banner-box'>
-            <img src="" alt="" />
+            <img src="src/assets/img/home/banner_03.jpg" alt="" />
           </div>
         </SwiperSlide>
       </Swiper>
