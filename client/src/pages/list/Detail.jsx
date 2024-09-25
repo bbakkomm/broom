@@ -28,7 +28,7 @@ export const loader = async ({ req }) => {
       return res.data;
     } catch (error) {
       console.log(error);
-      return redirect('/');
+      return redirect('/study');
     }
   }
 
@@ -38,6 +38,10 @@ function Detail(props) {
     console.log(study);
 
     const { user } = props;
+    const skillTag = study.skillTag;
+    console.log("22" + skillTag.includes('javascript'));
+    
+    
 
     const members = [
         {
@@ -61,7 +65,7 @@ function Detail(props) {
         <main className={styles.detail}>
             {/* 스터디 이미지 */}
             <section className={styles.image}>
-                <img src={img} alt="" />
+                <img src={study.thumb} alt={study.title} />
             </section>
 
             {/* 스터디 정보 */}
@@ -95,7 +99,7 @@ function Detail(props) {
                             <PlaceOutlinedIcon/>
                             <p className="blind">위치</p>
                         </div>
-                        <p className={styles.dec__text}>강남역 4번 출구</p>
+                        <p className={styles.dec__text}>{study.place}</p>
                     </li>
 
                     <li className={styles.desc__item}>
@@ -103,7 +107,7 @@ function Detail(props) {
                             <PaymentsOutlinedIcon/>
                             <p className="blind">비용</p>
                         </div>
-                        <p className={styles.dec__text}>비용없음</p>
+                        <p className={styles.dec__text}>{study.price}</p>
                     </li>
                     
                     <li className={styles.desc__item}>
@@ -111,8 +115,7 @@ function Detail(props) {
                             <PeopleAltOutlinedIcon/>
                             <p className="blind">인원</p>
                         </div>
-                        <p className={styles.dec__text}>최소 {4}명</p> ~
-                        <p className={styles.dec__text}>최대 {13}명</p>
+                        <p className={styles.dec__text}>최대 {study.maximumPerson}명</p>
                     </li>
 
                     <li className={styles.desc__item}>
@@ -121,11 +124,52 @@ function Detail(props) {
                             <p className="blind">주요 기술</p>
                         </div>
 
-                        <ul className={`${styles.skillTagBox} + skill-tag-box`}>
+                        {/* <ul className={`${styles.skillTagBox} + skill-tag-box`}>
+                            {skillTag.map((skillTag, i)=>
+                                <li key={i}><span className="skill-tag skill-tag--react">{skillTag}</span></li>
+                            )}
                             <li className="skill-tag-box__item"><span className="skill-tag skill-tag--js">JavaScript</span></li>
                             <li><span className="skill-tag skill-tag--ts">TypeScript</span></li>
                             <li><span className="skill-tag skill-tag--react">React</span></li>
-                        </ul>
+                        </ul> */}
+                        
+                        <div className="skillTag">
+                            {
+                                skillTag.includes('javascript')
+                                ? (<span className="skillTag__javascript">JavaScript</span>)
+                                : ''
+                            }
+                            {
+                                skillTag.includes('typescript')
+                                ? (<span className="skillTag__typescript">TypeScript</span>)
+                                : ''
+                            }
+                            {
+                                skillTag.includes('react')
+                                ? (<span className="skillTag__react">React</span>)
+                                : ''
+                            }
+                            {
+                                skillTag.includes('dart')
+                                ? (<span className="skillTag__dart">Dart</span>)
+                                : ''
+                            }
+                            {
+                                skillTag.includes('flutter')
+                                ? (<span className="skillTag__flutter">Flutter</span>)
+                                : ''
+                            }
+                            {
+                                skillTag.includes('html')
+                                ? (<span className="skillTag__html">HTML</span>)
+                                : ''
+                            }
+                            {
+                                skillTag.includes('css')
+                                ? (<span className="skillTag__css">CSS</span>)
+                                : ''
+                            }
+                        </div>
                     </li>
                 </ul>
 
