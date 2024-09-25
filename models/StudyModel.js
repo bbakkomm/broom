@@ -6,7 +6,11 @@ const studySchema = new mongoose.Schema({
     type: String,
     default: '111.jpg',
   },
-  date: {
+  startDate: {
+    type: String,
+    default: '2024.08.14',
+  },
+  endDate: {
     type: String,
     default: '2024.08.14',
   },
@@ -18,11 +22,18 @@ const studySchema = new mongoose.Schema({
     type: Array,
     item: [],
   },
-  complete: Boolean,
+  complete: {
+    type: Boolean,
+    default: false
+  },
   introduce: String,
   createdBy: {
     type: mongoose.Types.ObjectId,
     ref: 'User',
+  },
+  member: {
+    type: Array,
+    item: []
   }
 }, { timestamps: true });
 

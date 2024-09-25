@@ -2,7 +2,7 @@
     "result" :[
         {
             "id": 1,
-            "status": "모집중",
+            "skillTag" : ["typescript", "react", "javascript"],
             "name": "MORGAN",
             "date": "2024.10.05",
             "time": "오후 02:00",
@@ -13,7 +13,7 @@
           },
           {
             "id": 2,
-            "status": "모집중",
+            "skillTag" : ["typescript", "react", "javascript"],
             "name": "DAVID",
             "date": "2024.08.02",
             "time": "오후 02:00",
@@ -24,7 +24,7 @@
           },
           {
             "id": 3,
-            "status": "모집중",
+            "skillTag" : ["typescript", "react", "javascript"],
             "name": "JACOB",
             "date": "2024.08.03",
             "time": "오후 02:00",
@@ -35,7 +35,7 @@
           },
           {
             "id": 4,
-            "status": "모집중",
+            "skillTag" : ["typescript", "react", "javascript"],
             "name": "YUMI",
             "date": "2024.09.30",
             "time": "오후 02:00",
@@ -46,7 +46,7 @@
           },
           {
             "id": 5,
-            "status": "모집중",
+            "skillTag" : ["typescript", "react", "javascript"],
             "name": "YUMI",
             "date": "2024.08.05",
             "time": "오후 02:00",
@@ -57,7 +57,7 @@
           },
           {
             "id": 6,
-            "status": "모집중",
+            "skillTag" : ["typescript", "react", "javascript"],
             "name": "YUMI",
             "date": "2024.08.06",
             "time": "오후 02:00",

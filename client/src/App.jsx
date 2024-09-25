@@ -7,7 +7,7 @@ import Header from "./components/common/header/CommonHeader"
 import Nav from "./components/common/navigation/CommonNav"
 
 import { 
-  HomeLayout, Splash, Error, 
+  Home, HomeLayout, Splash, Error, 
   Login, Profile, ProfileEdit, List, Detail, Creation, 
   Join, JoinSetting, JoinSuccess, 
   Id, IdSuccess, 
@@ -16,6 +16,7 @@ import {
 
 import { loader as profileLoader } from './pages/profile/Profile';
 import { loader as studyLoader } from './pages/List';
+import { loader as detailLoader } from './pages/list/Detail';
 
 import { action as loginAction } from './pages/register/Login';
 import { action as registerAction } from './pages/register/Join';
@@ -47,6 +48,15 @@ const router = createBrowserRouter([
           </>,
         ],
         action: loginAction
+      },
+      {
+        path: "/home",
+        element: [
+          <>
+            <Home />
+            <Nav />
+          </>,
+        ],
       },
       {
         path: "/splash",
@@ -103,6 +113,7 @@ const router = createBrowserRouter([
             <Nav />
           </>,
         ],
+        loader: detailLoader
       },
       {
         path: "/study/studydetail/user",
