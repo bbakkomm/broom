@@ -7,7 +7,7 @@
   .btn_search {width: 2rem; height: 2rem;}
 }
 
-.profileBox {
+.profile-box {
   display: flex; justify-content: flex-start; align-items: center; gap: 1.6rem; margin-bottom: 2.4rem;
   &__img {width: 8rem; height: 8rem; overflow: hidden; border-radius: 4rem;}
   &__user {flex: 1;}
