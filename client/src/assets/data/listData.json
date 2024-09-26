@@ -13,7 +13,7 @@
           },
           {
             "id": 2,
-            "skillTag" : ["typescript", "react", "javascript"],
+            "skillTag" : "javascript",
             "name": "DAVID",
             "date": "2024.08.02",
             "time": "오후 02:00",

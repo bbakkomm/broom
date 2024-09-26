@@ -33,7 +33,12 @@ export const loader = async ({ req }) => {
 function Detail(props) {
     const loadData = useLoaderData();
     const { study } = loadData;
+<<<<<<< HEAD
+    console.log(loadData);
+
+=======
     console.log(study);
+>>>>>>> 824e6a7f50eb32041c8598315e49a6a8511df35e
     const { user } = props;
     const skillTag = study.skillTag;
     console.log("22" + skillTag.includes('javascript'));
