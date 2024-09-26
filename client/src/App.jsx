@@ -42,15 +42,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: [
-          <>
-            <Login />
-          </>,
-        ],
-        action: loginAction
-      },
-      {
-        path: "/home",
+        path: "/",
         element: [
           <>
             <Header home logo />
@@ -126,6 +118,7 @@ const router = createBrowserRouter([
             <Login />
           </>,
         ],
+        action: loginAction
       },
       {
         path: "/join",

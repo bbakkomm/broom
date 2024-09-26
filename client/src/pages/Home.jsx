@@ -30,16 +30,20 @@ export const loader = async ({ req }) => {
   }
 }
 
-
-
 function Home() {
 
   const loadData = useLoaderData();
   const { studys } = loadData;
-  console.log(studys);
+  // console.log(studys);
 
-  const studyData = studyJson.result;
-  const [studyCard, setStudyCard] = useState(studys);
+  let studyMap = studys.map(item => {
+    let spli = item.thumb.path.replace('client/','');
+    item.thumb.path = spli;
+    return item;
+  });
+
+  // const studyData = studyJson.result;
+  const [studyCard, setStudyCard] = useState(studyMap);
   const [search, setSearch] = useState('');
 
   const studyList = studyCard.map((item, idx)=>{
@@ -47,7 +51,7 @@ function Home() {
       <HomeStudyCard 
         idx={idx}
         title={item.title}
-        thumb={item.thumb}
+        thumb={item.thumb.path}
         date={item.date}
         time={item.time}
         place={item.place}

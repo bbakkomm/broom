@@ -17,7 +17,7 @@ function HomeStudyCard(
   }
 ) {
 
-  const imgPath = '/src/assets/img/studycard/'
+  const imgPath = 'http://localhost:5173/'
 
   return (
     <ul className={styles.studyCard} key={idx}>
