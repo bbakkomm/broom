@@ -7,7 +7,7 @@ import styles from "./CommonHeader.module.scss"
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import Logo from "../../../assets/img/common/logo_broom.svg";
-import HeartBtn from './component/HeartBtn';
+import LikeBtn from './component/LikeBtn';
 import ShareBtn from './component/ShareBtn';
 import SearchBtn from './component/SearchBtn';
   
@@ -79,7 +79,7 @@ function Header(props) {
                     <h1 className={styles.header__title}>{title}</h1>
                   </Link>
                   <div className={styles.header__btn}>
-                    <HeartBtn/>
+                    <LikeBtn/>
                     <ShareBtn/>
                   </div>
                 </>
