@@ -1,45 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import jsonData from '../assets/data/listData.json';
-// api
-import customFetch from "../utils/customFetch.js";
-
-export const loader = async ({ req }) => {
-  try {
-    const res = await customFetch.get(`/study`, req);
-    // console.log('API 응답 성공:', res.data);
-    return res.data;
-  } catch (error) {
-    console.log(error);
-    // console.error('API 요청 실패:', error);
-    return redirect('/study');
-  }
-}
-
 
 function ListBox({ index, skillTag, name, date, time, location, cost, participants, imgSrc }) {
-  const loadData = useLoaderData();
-  const { study } = loadData;
-
-  // console.log(loadData);
-    console.log(study);
-
-  // if (jsonData.skills && Array.isArray(jsonData.skills)) {
-  //   jsonData.skills.forEach((skill) => console.log(skill));
-  // }
-
-  // useEffect(() => {
-  //   // result 배열의 모든 요소에서 skillTag를 추출
-  //   const allSkillTags = jsonData.result.map(item => item.skillTag); 
-    
-  //   // 각 skillTag 배열의 요소를 콘솔에 출력
-  //   allSkillTags.forEach((skillTag, index) => {
-  //     console.log(`스킬태그 ${index + 1}:`);
-  //     skillTag.forEach(skillTag => console.log(skillTag)); // 각 skillTag를 개별적으로 출력
-  //   });
-  // }, []);
-
-
   const [listData, setListData] = useState(jsonData.result);
   const [status, setStatus] = useState("모집중");
 

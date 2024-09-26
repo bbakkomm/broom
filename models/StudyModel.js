@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 const studySchema = new mongoose.Schema({
   title: String,
   thumb: {
-    type: String,
-    default: '111.jpg',
+    type: Object,
+    file: {},
+    default: {}
   },
   startDate: {
     type: String,

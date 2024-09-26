@@ -17,8 +17,8 @@ export const getAllStudy = async (req, res) => {
 export const createStudy = async (req, res) => {
   req.body.createdBy = req.user.userId;
   req.body.thumb = req.file;
-  req.body.date.startDate = req.body.startDate;
-  req.body.date.endDate = req.body.endDate;
+  // req.body.date.startDate = req.body.startDate;
+  // req.body.date.endDate = req.body.endDate;
 
   const study = await Study.create(req.body);
   res.status(StatusCodes.CREATED).json({ study });

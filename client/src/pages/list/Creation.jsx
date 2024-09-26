@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Form, json } from 'react-router-dom';
+import { Link, Form, json, redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 // component
@@ -40,28 +40,18 @@ export const action = async ({ request }) => {
   try {
     const res = await customFetch.post('/study', formData);
     toast.success('study create successful');
-    console.log(request);
-    console.log(res);
-
-    return json({
-      data: res,
-      // redirect: "/idsuccess"
-    });
+    return redirect('/study');
   } catch (error) {
     toast.error(error?.response?.data?.msg);
+    return error;
   }
-  return null;
 };
 
 function Creation(props) {
   const {study} = props;
-  
-  const StartDay = "startday";
-  const Deadline = "deadline";
 
   const [file, setFile] = useState();
     function handleChange(e) {
-        console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
 
@@ -101,16 +91,14 @@ function Creation(props) {
 
           {/* calender */}
           <div className="input-box">
-            <label htmlFor="startdate" className="input-label input-label--require">
+            <label htmlFor="startDate" className="input-label input-label--require">
               <CalendarTodayRoundedIcon/>
               <p className="blind">시작 날짜</p>
             </label>
-            {/* startdate */}
-            <input type="date" id="startdate" name="startdate" value={StartDay} required className="input-write"/>
+            <input type="date" id="startDate" name="startDate" required className="input-write"/>
             <span className="range">~</span>
-            {/* deadline */}
-            <label htmlFor="deadline" className="input-label blind">마감 날짜</label>
-            <input type="date" id="deadline" name="deadline" value={Deadline} className="input-write"/>
+            <label htmlFor="endDate" className="input-label blind">마감 날짜</label>
+            <input type="date" id="endDate" name="endDate" className="input-write"/>
 
             <p className="validity blind">날짜를 선택해주세요.</p>
           </div>
@@ -218,11 +206,12 @@ function Creation(props) {
           </div>
           
           <div className="btn">
-            { study ? (
+            <button type='submit' className="btn-bg">스터디 생성</button>
+            {/* { study ? (
               <Link to="/study" className="btn-bg">스터디 생성</Link>
             ):(
               <Link to="/project" className="btn-bg">팀프로젝트 생성</Link>
-            )}
+            )} */}
           </div>
         </fieldset>
       </Form>

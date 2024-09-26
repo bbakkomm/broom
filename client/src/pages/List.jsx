@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
-
-import ListWhole from "./ListWhole"
-import Nav from "../components/common/navigation/CommonNav";
+import path from 'path';
 
 import customFetch from "../utils/customFetch.js";
+
+import Nav from "../components/common/navigation/CommonNav";
+import ListBox from "../components/ListBox";
 
 export const loader = async ({ req }) => {
   try {
@@ -17,16 +18,19 @@ export const loader = async ({ req }) => {
 }
 
 const List = () => {
-  const loadData = useLoaderData();
-  const { studys } = loadData;
-  console.log(studys);
-
   //전체, 모집중, 완료
   const [selectedIndex, setSelectedIndex] = useState(null);
   const handleClick = (index, e) => {
     e.preventDefault();
     setSelectedIndex(index);
   }
+
+  const loadData = useLoaderData();
+  const { studys } = loadData;
+  console.log(studys);
+
+  const imgPath ="/client/public/uploads/study";
+
     return (
       <div>
         {/* <Header></Header> */}
@@ -52,7 +56,25 @@ const List = () => {
             }}>완료</div>
           </a>
         </div>
-        <ListWhole/>
+        {/* 리스트 목록 */}
+        <div className="list">
+          <ul className="list__wrapper">
+            {studys.map((study, index) => (
+                <ListBox
+                index={index}
+                status={study.status}
+                skillTag={study.skillTag}
+                name={study.name}
+                date={study.date}
+                time={study.time}
+                location={study.loaction}
+                cost={study.cost}
+                participants={study.participants}
+                imgSrc={imgPath }
+                />
+            ))}
+          </ul>
+        </div>
         <Nav/>
       </div>
     )

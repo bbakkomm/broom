@@ -105,6 +105,7 @@ const router = createBrowserRouter([
             <Nav />
           </>,
         ],
+        action: creation
       },
       {
         path: "/study/studydetail",
