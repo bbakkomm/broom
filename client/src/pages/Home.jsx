@@ -18,29 +18,28 @@ import 'swiper/css/scrollbar';
 import studyJson from '../assets/data/studyData.json';
 import HomeStudyCard from '../components/common/studycard/CommonHomeStudyCard';
 
-const datttId = '66f18c4a2a30944fef4c41e2';
+// const datttId = '66f18c4a2a30944fef4c41e2';
 
 export const loader = async ({ req }) => {
-    try {
-      const res = await customFetch.get('/users/current-user', req);
-      // const res = await customFetch.get(`/study/${datttId}`, req);
-      return res.data;
-    } catch (error) {
-      console.log(error);
-      return redirect('/');
-    }
+  try {
+    const res = await customFetch.get('/study', req);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    return redirect('/');
   }
+}
 
 
 
 function Home() {
 
   const loadData = useLoaderData();
-  const { user } = loadData;
-  console.log(user);
+  const { studys } = loadData;
+  console.log(studys);
 
   const studyData = studyJson.result;
-  const [studyCard, setStudyCard] = useState(studyData);
+  const [studyCard, setStudyCard] = useState(studys);
   const [search, setSearch] = useState('');
 
   const studyList = studyCard.map((item, idx)=>{
@@ -63,7 +62,7 @@ function Home() {
 
 
   useEffect(()=>{
-    const filter = studyData.filter((item)=>{
+    const filter = studys.filter((item)=>{
       return item.title.toLowerCase().includes(search.toLowerCase())
     })
     setStudyCard(filter);
