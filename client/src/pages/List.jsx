@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
-import path from 'path';
 
 import customFetch from "../utils/customFetch.js";
 
@@ -27,7 +26,8 @@ const List = () => {
 
   const loadData = useLoaderData();
   const { studys } = loadData;
-
+  const domain = [window.location.protocol, window.location.host].join('//') + '/';
+  
     return (
       <div>
         {/* <Header></Header> */}
@@ -58,6 +58,7 @@ const List = () => {
           <ul className="list__wrapper">
             {studys.map((study, index) => (
                 <ListBox
+                key={`study_${index}`}
                 objId={study._id}
                 index={index}
                 status={study.status}
@@ -68,7 +69,8 @@ const List = () => {
                 location={study.loaction}
                 cost={study.cost}
                 participants={study.participants}
-                imgSrc={'http://localhost:5173/' + study.thumb.path}
+                complete={study.complete}
+                imgSrc={domain + study.thumb.path}
                 />
             ))}
           </ul>

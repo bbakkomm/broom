@@ -19,9 +19,10 @@ import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const datttId = sessionStorage.getItem('singleStudyValue');
 
 export const loader = async ({ req }) => {
+    const datttId = sessionStorage.getItem('singleStudyValue');
+    
     try {
         const res = await customFetch.get(`/study/${datttId}`, req);
         return res.data;
@@ -39,7 +40,7 @@ function Detail(props) {
     const skillTag = study.skillTag;
     const member = study.member;
     console.log(study);
-    
+    const domain = [window.location.protocol, window.location.host].join('//') + '/';
     const members = [
         {
             src: ("../../../src/assets/img/pages/dubu.jpg"),
@@ -81,14 +82,14 @@ function Detail(props) {
         <main className={styles.detail}>
             {/* 스터디 이미지 */}
             <section className={styles.image}>
-                <img src={study.thumb.path} alt={study.title} />
+                <img src={domain + study.thumb.path} alt={study.title} />
             </section>
 
             {/* 스터디 정보 */}
             <section className={styles.info}>
                 <ul className={styles.tag}>
                     {
-                        study.complete ? 
+                        !study.complete ? 
                         <li className={styles.tag__item}>모집중</li> :
                         <li className={styles.tag__item__complete}>완료</li> 
                     }
@@ -127,7 +128,7 @@ function Detail(props) {
                             <PaymentsOutlinedIcon/>
                             <p className="blind">비용</p>
                         </div>
-                        <p className={styles.dec__text}>{study.price}</p>
+                        <p className={styles.dec__text}>{Number(study.price).toLocaleString('ko-KR')}</p>
                     </li>
                     
                     <li className={styles.desc__item}>
@@ -214,12 +215,12 @@ function Detail(props) {
                 </>
             ) : (
                 
-                 <div className={`${styles.btn} + btn`}>
+                <div className={`${styles.btn} + btn`}>
                     <button onClick={trashHandler} className={styles.btn__trash}><DeleteIcon/></button>
                     <Link to="/studycreation">
                         <button className={`${styles.btn__modify} + btn-bg`}>수정하기</button>
                     </Link>
-                 </div>
+                </div>
             )} 
         </main>
     )
