@@ -13,7 +13,7 @@ function Member(props) {
                     <p className={styles.member__title}>{member.name}</p>
                     <span className={styles.member__status}>NEW</span>
                 </div>
-                <p className={styles.member__text}>{ member.text }</p>
+                {/* <p className={styles.member__text}>{ member.text }</p> */}
             </div>
         </li>
     );
