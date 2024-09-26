@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 
+// api
+import customFetch from "../../utils/customFetch.js";
+
 // component
 import Member from "./components/Member";
 
 // CSS style
 import styles from "../../assets/scss/pages/list/Detail.module.scss";
-
-// img
-import img from '../../../src/assets/img/pages/detail.jpg';
 
 // icon
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
@@ -17,8 +17,6 @@ import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-
-import customFetch from "../../utils/customFetch.js";
 
 const datttId = '66f18c4a2a30944fef4c41e2';
 
@@ -36,13 +34,11 @@ function Detail(props) {
     const loadData = useLoaderData();
     const { study } = loadData;
     console.log(study);
-
     const { user } = props;
     const skillTag = study.skillTag;
     console.log("22" + skillTag.includes('javascript'));
+    const member = study.member;
     
-    
-
     const members = [
         {
           src: ("../../../src/assets/img/pages/dubu.jpg"),
@@ -61,6 +57,15 @@ function Detail(props) {
         },
     ]
 
+    // 탈퇴하기 버튼
+    const leaveHandler = () => {
+        // if (user.name === study.member) {
+            
+        // } else {
+            
+        // }
+    }
+
     return (
         <main className={styles.detail}>
             {/* 스터디 이미지 */}
@@ -71,7 +76,11 @@ function Detail(props) {
             {/* 스터디 정보 */}
             <section className={styles.info}>
                 <ul className={styles.tag}>
-                    <li className={styles.tag__item}>모집중</li>
+                    {
+                        study.complete ? 
+                        <li className={styles.tag__item}>모집중</li> :
+                        <li className={styles.tag__item__complete}>완료</li> 
+                    }
                 </ul>
 
                 <h2 className={styles.title}>{study.title}</h2>
@@ -82,8 +91,8 @@ function Detail(props) {
                             <CalendarTodayRoundedIcon/>
                             <p className="blind">일정</p>
                         </div>
-                        <p className={styles.dec__text}>{study.date}</p>~
-                        <p className={styles.desc__text}></p>
+                        <p className={styles.dec__text}>{study.startDate}</p>~
+                        <p className={styles.desc__text}>{study.endDate}</p>
                     </li>
 
                     <li className={styles.desc__item}>
@@ -115,6 +124,7 @@ function Detail(props) {
                             <PeopleAltOutlinedIcon/>
                             <p className="blind">인원</p>
                         </div>
+                        <p className={styles.dec__text}>최소 {study.minimumPerson}명</p>~
                         <p className={styles.dec__text}>최대 {study.maximumPerson}명</p>
                     </li>
 
@@ -123,50 +133,40 @@ function Detail(props) {
                             <SettingsOutlinedIcon/>
                             <p className="blind">주요 기술</p>
                         </div>
-
-                        {/* <ul className={`${styles.skillTagBox} + skill-tag-box`}>
-                            {skillTag.map((skillTag, i)=>
-                                <li key={i}><span className="skill-tag skill-tag--react">{skillTag}</span></li>
-                            )}
-                            <li className="skill-tag-box__item"><span className="skill-tag skill-tag--js">JavaScript</span></li>
-                            <li><span className="skill-tag skill-tag--ts">TypeScript</span></li>
-                            <li><span className="skill-tag skill-tag--react">React</span></li>
-                        </ul> */}
-                        
-                        <div className="skillTag">
+                        <div className={styles.skillTag}>
                             {
                                 skillTag.includes('javascript')
-                                ? (<span className="skillTag__javascript">JavaScript</span>)
+                                ? (<span className={styles.skillTag__javascript}>JavaScript</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('typescript')
-                                ? (<span className="skillTag__typescript">TypeScript</span>)
+                                ? (<span className={styles.skillTag__typescript}>TypeScript</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('react')
-                                ? (<span className="skillTag__react">React</span>)
+                                ? (<span className={styles.skillTag__react}>React</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('dart')
-                                ? (<span className="skillTag__dart">Dart</span>)
+                                ? (<span className={styles.skillTag__dart}>Dart</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('flutter')
-                                ? (<span className="skillTag__flutter">Flutter</span>)
+                                ? (<span className={styles.skillTag__flutter}>Flutter</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('html')
-                                ? (<span className="skillTag__html">HTML</span>)
+                                ? (<span className={styles.skillTag__html}>HTML</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('css')
-                                ? (<span className="skillTag__css">CSS</span>)
+                                ? (<span className={styles.skillTag__css}>CSS</span>)
                                 : ''
                             }
                         </div>
@@ -194,6 +194,20 @@ function Detail(props) {
                     <button className="btn-bg">참여하기</button>    
                 </div>
             )}
+
+            { !user ? (
+                <>
+                    { member ? (
+                        <div className={`${styles.btn} + btn`}>
+                            <button className="btn-bg" onClick={leaveHandler}>탈퇴하기</button>    
+                        </div>
+                    ) : (
+                        <div className={`${styles.btn} + btn`}>
+                            <button className="btn-bg">참여하기</button>    
+                        </div>
+                    )}
+                </>
+            ): ''}
         </main>
     )
 }

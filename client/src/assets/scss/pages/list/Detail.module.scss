@@ -28,7 +28,11 @@
         .tag {
             display: flex; align-items: center; gap: .4rem; margin-bottom: 1.6rem;
 
-            &__item {padding: .2rem .8rem; border-radius: .4rem; border: 1px solid #0396fc; font-size: 1.2rem; font-weight: 700; color: #0396fc;}
+            &__item {
+                padding: .2rem .8rem; border-radius: .4rem; border: 1px solid #0396fc; font-size: 1.2rem; font-weight: 700; color: #0396fc;
+            
+                &__complete {padding: .2rem .8rem; border-radius: .4rem; border: 1px solid #ccc; font-size: 1.2rem; font-weight: 700; color: #ccc;}
+            }
         }
 
         .title {margin-bottom: 2.4rem; font-size: 2.4rem; line-height: 2.9rem; font-weight: 700;}
@@ -48,6 +52,18 @@
         
         // skill-tag-box
         .skillTagBox {padding: 0;}
+        .skillTag {
+            display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .3rem; font-size: 1.1rem;
+            span {border-radius: .5rem; padding: .1rem .6rem; line-height: 1.7rem; font-weight: 700;}
+            &__complate {border: 1px solid #aaa; color: #aaa;}
+            &__javascript {border: 1px solid #F7DF1E; background-color: #F7DF1E; color: #000;}
+            &__typescript {border: 1px solid #3178C6; background-color: #3178C6; color: #fff;}
+            &__react {border: 1px solid #02D9FF; background-color: #02D9FF; color: #fff;}
+            &__html {border: 1px solid #dd4b25; background-color: #dd4b25; color: #fff;}
+            &__css {border: 1px solid #264ce0; background-color: #264ce0; color: #fff;}
+            &__dart {border: 1px solid #00cbb2; background-color: #00cbb2; color: #fff;}
+            &__flutter {border: 1px solid #5dc2ed; background-color: #5dc2ed; color: #fff;}
+        }
     }
     
     // 모임 멤버
