@@ -1,7 +1,30 @@
 import React, { useEffect, useState } from "react";
+import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import jsonData from '../assets/data/listData.json';
+import customFetch from "../utils/customFetch.js";
+
+const datttId = '66f18c4a2a30944fef4c41e2';
+
+
+export const loader = async ({ req }) => {
+  try {
+    const res = await customFetch.get(`/study/${datttId}`, req);
+    console.log('API 응답 성공:', res.data);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    console.error('API 요청 실패:', error);
+    return redirect('/study');
+  }
+}
+
 
 function ListBox({ index, skillTag, name, date, time, location, cost, participants, imgSrc }) {
+  const loadData = useLoaderData();
+  const { study } = loadData;
+    // console.log(study);
+
+
   const [listData, setListData] = useState(jsonData.result);
   const [status, setStatus] = useState("모집중");
 
