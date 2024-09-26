@@ -12,13 +12,13 @@ import styles from "../../assets/scss/pages/list/Creation.module.scss";
 // icon
 import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-// import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
+import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-// import StarRoundedIcon from "@mui/icons-material/StarRounded";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -100,20 +100,20 @@ function Creation(props) {
           </div>
 
           {/* calender */}
-          {/* <div className="input-box">
+          <div className="input-box">
             <label htmlFor="startdate" className="input-label input-label--require">
               <CalendarTodayRoundedIcon/>
               <p className="blind">시작 날짜</p>
-            </label> */}
+            </label>
             {/* startdate */}
-            {/* <input type="date" id="startdate" name="startdate" value={StartDay} required className="input-write"/>
-            <span className="range">~</span> */}
+            <input type="date" id="startdate" name="startdate" value={StartDay} required className="input-write"/>
+            <span className="range">~</span>
             {/* deadline */}
-            {/* <label htmlFor="deadline" className="input-label blind">마감 날짜</label>
+            <label htmlFor="deadline" className="input-label blind">마감 날짜</label>
             <input type="date" id="deadline" name="deadline" value={Deadline} className="input-write"/>
 
             <p className="validity blind">날짜를 선택해주세요.</p>
-          </div> */}
+          </div>
 
           {/* time */}
           <div className="input-box">
@@ -122,7 +122,6 @@ function Creation(props) {
               <p className="blind">시간</p>
             </label>
             <input type="time" id="time" name="time" required className="input-write"/>
-            <p className="validity blind">시간을 선택해주세요.</p>
           </div>
 
           {/* place */}
@@ -132,32 +131,27 @@ function Creation(props) {
               <p className="blind">위치</p>
             </label>
             <input type="text" id="place" name="place" required className="input-write"/>
-            <p className="validity blind">위치를 선택해주세요.</p>
           </div>
 
           {/* price */}
           <div className="input-box">
-            <label htmlFor="price" className="input-label">
+            <label htmlFor="price" className="input-label input-label--require">
               <PaymentsOutlinedIcon/>
               <p className="blind">비용</p>
             </label>
             <input type="number" id="price" name="price" placeholder="비용" className="input-write"/>
-            <p className="validity blind">비용을 입력해주세요.</p>
           </div>
 
           {/* people */}
           <div className="input-box">
-            {/* <label htmlFor="people" className="input-label input-label--require">
-              
+            <label htmlFor="minimumPerson" className="input-label input-label--require">
+              <PeopleAltOutlinedIcon/>
               <p className="blind">최소 인원</p>
             </label>
-            <input type="number" id="people" name="people" placeholder="최소 인원" required className="input-write"/>
-            ~             */}
-            <PeopleAltOutlinedIcon/>
+            <input type="number" id="minimumPerson" name="minimumPerson" placeholder="최소 인원" required className="input-write"/>
+            ~            
             <label htmlFor="maximumPerson" className="input-label blind">최대 인원</label>
             <input type="number" id="maximumPerson" name="maximumPerson" placeholder="최대 인원" required className="input-write"/>
-
-            <p className="validity blind">인원을 선택해주세요.</p>
           </div>
 
           {/* skill */}
@@ -201,9 +195,18 @@ function Creation(props) {
               <span className="">
                 <input type="checkbox" id="typescript" name="skillTag" value="typescript" className="input-check__item input-check__item--typescript"/>              
                 <label htmlFor="typescript">TypeScript</label>
-              </span>              
+              </span>      
+              
+              <span className="">
+                <input type="checkbox" id="dart" name="skillTag" value="dart" className="input-check__item input-check__item--dart"/>              
+                <label htmlFor="dart">Dart</label>
+              </span>          
+                            
+              <span className="">
+                <input type="checkbox" id="flutter" name="skillTag" value="flutter" className="input-check__item input-check__item--flutter"/>              
+                <label htmlFor="flutter">Flutter</label>
+              </span>        
             </div>
-            <p className="validity blind">주요기술을 선택해주세요.</p>
           </div>
 
           <div className="input-box">

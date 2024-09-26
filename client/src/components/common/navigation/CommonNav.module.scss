@@ -7,9 +7,10 @@
     
     svg {font-size: 2.6rem;}
   }
-  &__link {display: flex; flex-direction: column; justify-content: center; align-items: center; color: #ccc;}
+  &__link {
+    display: flex; flex-direction: column; justify-content: center; align-items: center; color: #ccc;
+  }
+  &__linkOn {display: flex; flex-direction: column; justify-content: center; align-items: center; color: #0396fc;}
   &__icon {font-size: 3.5rem;}
   &__btn {font-size: 1.2rem;}
-  
-  .on {color: #0396fc;}
 }
