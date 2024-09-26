@@ -16,6 +16,7 @@ import {
 
 import { loader as profileLoader } from './pages/profile/Profile';
 import { loader as studyLoader } from './pages/List';
+import { loader as homeLoader } from './pages/Home';
 import { loader as detailLoader } from './pages/list/Detail';
 
 import { action as loginAction } from './pages/register/Login';
@@ -57,6 +58,7 @@ const router = createBrowserRouter([
             <Nav />
           </>,
         ],
+        loader: homeLoader
       },
       {
         path: "/splash",

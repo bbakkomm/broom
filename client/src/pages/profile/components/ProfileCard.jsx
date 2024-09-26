@@ -24,7 +24,7 @@ function ProfileCard(
                 <h1 className="profile-box__username">{userName}</h1>
                 <p className="profile-box__email">{userEmail}</p>
             </div>
-            <Link to="../profileEdit" style={{color: "#000"}}>
+            <Link to="./profileEdit" style={{color: "#000"}}>
               <ArrowForwardIosIcon className="btn_arrowforward"/>
             </Link>
         </div>

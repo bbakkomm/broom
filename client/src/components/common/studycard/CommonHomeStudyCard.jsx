@@ -1,13 +1,6 @@
 // css
 import styles from './CommonHomeStudyCard.module.scss';
 
-// icon
-import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
-import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
-import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
-import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
-import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-
 function HomeStudyCard(
   { 
     idx, 

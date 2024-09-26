@@ -27,6 +27,7 @@ function Header(props) {
                   <img src={Logo} alt="B.ROOM 로고" className={styles.logo} />
                 </Link>
               </h1>
+              <input type="text" value={search} placeholder="검색어를 입력하세요" />
               <SearchBtn/>
             </>
           ) : (
