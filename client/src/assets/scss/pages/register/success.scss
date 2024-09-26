@@ -1,8 +1,10 @@
 .success {
-  margin: 5rem 0; padding: 16rem 2rem 0;
+  position: relative; height: 100vh;
+
+  &__inner {position: absolute; top: 50%; transform: translateY(-50%); width: 100%;}
 
   .text {
-    text-align: center;
+    text-align: center; padding-bottom: 6.6rem;
 
     &__logo {width: 13.6rem; margin-bottom: 1.2rem;}
     &__title {margin-bottom: 3rem; font-size: 2.8rem;}
