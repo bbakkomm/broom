@@ -27,9 +27,11 @@ const List = () => {
 
   const loadData = useLoaderData();
   const { studys } = loadData;
-  console.log(studys);
-
-  const imgPath ="/client/public/uploads/study";
+  let studyMap = studys.map(item => {
+    let spli = item.thumb.path.split('/');
+    item.thumb.path = spli.slice(1, spli.length).join('/');
+    return item;
+  });
 
     return (
       <div>
@@ -59,7 +61,9 @@ const List = () => {
         {/* 리스트 목록 */}
         <div className="list">
           <ul className="list__wrapper">
-            {studys.map((study, index) => (
+            {studyMap.map((study, index) => (
+                
+
                 <ListBox
                 index={index}
                 status={study.status}
@@ -70,7 +74,7 @@ const List = () => {
                 location={study.loaction}
                 cost={study.cost}
                 participants={study.participants}
-                imgSrc={imgPath }
+                imgSrc={'http://localhost:5173/' + study.thumb.path}
                 />
             ))}
           </ul>
