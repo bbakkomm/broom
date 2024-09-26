@@ -79,9 +79,9 @@ export const validateRegisterInput = withValidationErrors([
   .withMessage('password is required')
   .isLength({min:8})
   .withMessage('password least 8'),
-  body('study')
+  body('job')
   .notEmpty()
-  .withMessage('study is required'),
+  .withMessage('job is required'),
   body('skillTag')
   .isArray({min:1})
   .withMessage('skillTag is required'),

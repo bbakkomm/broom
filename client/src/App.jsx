@@ -43,7 +43,6 @@ const router = createBrowserRouter([
         index: true,
         element: [
           <>
-            {/* <Header title={"로그인"} /> */}
             <Login />
           </>,
         ],
@@ -75,7 +74,7 @@ const router = createBrowserRouter([
         loader: profileLoader
       },
       {
-        path: "/profileedit",
+        path: "/profile/profileedit",
         element: [
           <>
             <Header title={"내 프로필"} />
@@ -99,7 +98,7 @@ const router = createBrowserRouter([
         path: "/studycreation",
         element: [
           <>
-            <Header title={"스터디 생성"} rightBtn />
+            <Header title={"스터디 생성"} />
             <Creation study/>
             <Nav />
           </>,
@@ -125,6 +124,7 @@ const router = createBrowserRouter([
             <Nav />
           </>,
         ],
+        loader: detailLoader
       },
       {
         path: "/login",
