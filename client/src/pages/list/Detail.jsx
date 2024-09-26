@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 
 // api
 import customFetch from "../../utils/customFetch.js";
@@ -189,13 +189,7 @@ function Detail(props) {
                     )}
                 </ul>
             </section>
-
-            { !user && (
-                <div className={`${styles.btn} + btn`}>
-                    <button className="btn-bg">참여하기</button>    
-                </div>
-            )}
-
+            
             { !user ? (
                 <>
                     { member ? (
@@ -208,7 +202,11 @@ function Detail(props) {
                         </div>
                     )}
                 </>
-            ): ''}
+            ) : (
+                <Link to="/studycreation" className={`${styles.btn} + btn`}>
+                    <button className="btn-un">수정하기</button>
+                </Link>
+            )}
         </main>
     )
 }
