@@ -14,6 +14,7 @@ import {
   Pw, PwReset, PwSuccess, 
 } from "./pages";
 
+// import { loader as currentLoader } from './pages/HomeLayout';
 import { loader as profileLoader } from './pages/profile/Profile';
 import { loader as studyLoader } from './pages/List';
 import { loader as homeLoader } from './pages/Home';
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <HomeLayout />,
     errorElement: <Error />,
+    // loader: currentLoader,
     children: [
       {
         index: true,

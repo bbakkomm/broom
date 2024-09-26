@@ -22,16 +22,16 @@ import HomeStudyCard from '../components/common/studycard/CommonHomeStudyCard';
 
 export const loader = async ({ req }) => {
   try {
+    const tp = await customFetch.get('/users/current-user', req);
     const res = await customFetch.get('/study', req);
     return res.data;
   } catch (error) {
     console.log(error);
-    return redirect('/');
+    return redirect('/login');
   }
 }
 
 function Home() {
-
   const loadData = useLoaderData();
   const { studys } = loadData;
   // console.log(studys);
@@ -42,7 +42,6 @@ function Home() {
     return item;
   });
 
-  // const studyData = studyJson.result;
   const [studyCard, setStudyCard] = useState(studyMap);
   const [search, setSearch] = useState('');
 

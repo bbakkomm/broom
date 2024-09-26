@@ -14,7 +14,7 @@ function Nav(props) {
     <nav className={styles.nav}>
       <ul className={styles.nav__list}>
         <li className={styles.nav__item}>
-          <NavLink to="/home" className={({ isActive }) => (isActive ? styles.nav__linkOn : styles.nav__link)}>
+          <NavLink to="/" className={({ isActive }) => (isActive ? styles.nav__linkOn : styles.nav__link)}>
             <HomeOutlinedIcon/>
             <p className={styles.nav__btn}>홈</p>
           </NavLink>
