@@ -67,46 +67,46 @@ const ProfileEdit = () => {
           <p className="input-label">희망직무</p>
           <div className="select-box">
             <div className="select-box__btn">
-              <input type="radio" id="planner" name="work" value="planner" className="select-box__radio" />
+              <input type="radio" id="planner" name="work" value="planner" className="select-box__radio select-box--planner" />
               <label htmlFor="planner" className="select-box__text">기획</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="radio" id="designer" name="work" value="designer" className="select-box__radio" />
+              <input type="radio" id="designer" name="work" value="designer" className="select-box__radio select-box--designer" />
               <label htmlFor="designer" className="select-box__text">디자인</label>
             </div>
 
             <div className="select-box__btn">
-              <input type="radio" id="developer" name="work" value="developer" className="select-box__radio" />
+              <input type="radio" id="developer" name="work" value="developer" className="select-box__radio select-box--developer" />
               <label htmlFor="developer" className="select-box__text">개발</label>
             </div>
           </div>
 
           {/* skill */}
           <p className="input-label">주요기술</p>
-          <div className={styles.selectBox}>
-            <div className={styles.selectBox__btn}>
-              <input type="radio" id="figma" name="work" value="figma"  className="select-box__radio"/>
+          <div className="select-box">
+            <div className="select-box__btn">
+              <input type="checkbox" id="figma" name="skillTag" value="figma" className="select-box__radio select-box--figma"/>
               <label htmlFor="figma" className="select-box__text">Figma</label>
             </div>
 
-            <div className={styles.selectBox__btn}>
-              <input type="radio" id="html" name="work" value="html"  className="select-box__radio"/>
+            <div className="select-box__btn">
+              <input type="checkbox" id="html" name="skillTag" value="html" className="select-box__radio select-box--html"/>
               <label htmlFor="html" className="select-box__text">HTML</label>
             </div>
 
-            <div className={styles.selectBox__btn}>
-              <input type="radio" id="css" name="work" value="css"  className="select-box__radio"/>
+            <div className="select-box__btn">
+              <input type="checkbox" id="css" name="skillTag" value="css" className="select-box__radio select-box--css"/>
               <label htmlFor="css" className="select-box__text">CSS</label>
             </div>
 
-            <div className={styles.selectBox__btn}>
-              <input type="radio" id="SCSS" name="work" value="SCSS"  className="select-box__radio"/>
+            <div className="select-box__btn">
+              <input type="checkbox" id="SCSS" name="skillTag" value="scss" className="select-box__radio select-box--scss"/>
               <label htmlFor="SCSS" className="select-box__text">SCSS</label>
             </div>
 
-            <div className={styles.selectBox__btn}>
-              <input type="radio" id="javaScript" name="work" value="javaScript" className="select-box__radio"/>
+            <div className="select-box__btn">
+              <input type="checkbox" id="javaScript" name="skillTag" value="javascript" className="select-box__radio select-box--javascript"/>
               <label htmlFor="javaScript" className="select-box__text">JavaScript</label>
             </div>
           </div>

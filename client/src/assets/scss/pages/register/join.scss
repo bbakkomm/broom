@@ -4,21 +4,4 @@
   &__title {margin-bottom: 3.6rem; font-size: 2.4rem; letter-spacing:-.05em;}
 
   .recaptcha {margin-bottom: 8.2rem;}
-
-  .select-box {
-    &--figma:checked+label {background-color: #a259ff; color: #fff;}
-    &--html:checked+label {background-color: #f15a29; color: #fff;}
-    &--css:checked+label {background-color: #0396fc; color: #fff;}
-    &--scss:checked+label {background-color: #cf649b; color: #fff;}
-    &--javascript:checked+label {background-color: #f7df1e; color: #000;}
-    &--react:checked+label {background-color: #02d9ff; color: #fff;}
-    &--vue:checked+label {background-color: #435466; color: #4dba87;}
-    &--typescript:checked+label {background: #3178c6; color: #fff;}
-    
-    &--planner:checked+label {background: #e8c36a; color: #fff;}
-    &--designer:checked+label {background: #f16947; color: #fff;}
-    &--developer:checked+label {background: #2a9d8e; color: #fff;}
-
-    &:checked+label {border: 1px solid transparent;}
-  }
 }
