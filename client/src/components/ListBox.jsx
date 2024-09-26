@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import jsonData from '../assets/data/listData.json';
 
-function ListBox({ index, skillTag, name, date, time, location, cost, participants, imgSrc }) {
+function ListBox({ objId, index, skillTag, name, date, time, location, cost, participants, imgSrc }) {
+  const navigate = useNavigate();
+
+  const listClickHandler = (e) => {
+    const targetLi = e.target.closest('.list__box');
+    sessionStorage.setItem('singleStudyValue', targetLi.getAttribute('prod'));
+    navigate('/study/studydetail');
+  }
+  
   const [listData, setListData] = useState(jsonData.result);
   const [status, setStatus] = useState("모집중");
 
@@ -29,7 +38,7 @@ function ListBox({ index, skillTag, name, date, time, location, cost, participan
   };
 
   return (
-    <li className="list__box" key={index}>
+    <li className="list__box" key={index} prod={objId} onClick={listClickHandler}>
       <div className="list__badge">
         <p className="list__title">{status}</p>
         <p className="list__skill">{skillTag}</p>

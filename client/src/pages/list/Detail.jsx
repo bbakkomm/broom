@@ -19,17 +19,17 @@ import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const datttId = '66f18c4a2a30944fef4c41e2';
+const datttId = sessionStorage.getItem('singleStudyValue');
 
 export const loader = async ({ req }) => {
     try {
-      const res = await customFetch.get(`/study/${datttId}`, req);
-      return res.data;
+        const res = await customFetch.get(`/study/${datttId}`, req);
+        return res.data;
     } catch (error) {
-      console.log(error);
-      return redirect('/study');
+        console.log(error);
+        return redirect('/study');
     }
-  }
+}
 
 function Detail(props) {
     const loadData = useLoaderData();
@@ -37,16 +37,14 @@ function Detail(props) {
     const { user } = props;
 
     const skillTag = study.skillTag;
-    console.log(typeof(skillTag));
-    
-    console.log("22" + skillTag.includes('javascript'));
     const member = study.member;
+    console.log(study);
     
     const members = [
         {
-          src: ("../../../src/assets/img/pages/dubu.jpg"),
-          name: '뚜부',
-          text: '안녕하세요 뚜부에요! :D 💕'
+            src: ("../../../src/assets/img/pages/dubu.jpg"),
+            name: '뚜부',
+            text: '안녕하세요 뚜부에요! :D 💕'
         },
         {
             src: ("../../../src/assets/img/pages/dubu.jpg"),
@@ -83,7 +81,7 @@ function Detail(props) {
         <main className={styles.detail}>
             {/* 스터디 이미지 */}
             <section className={styles.image}>
-                <img src={study.thumb} alt={study.title} />
+                <img src={study.thumb.path} alt={study.title} />
             </section>
 
             {/* 스터디 정보 */}

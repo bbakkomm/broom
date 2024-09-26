@@ -34,15 +34,9 @@ export const loader = async ({ req }) => {
 function Home() {
   const loadData = useLoaderData();
   const { studys } = loadData;
-  // console.log(studys);
+  console.log(studys);
 
-  let studyMap = studys.map(item => {
-    let spli = item.thumb.path.replace('client/','');
-    item.thumb.path = spli;
-    return item;
-  });
-
-  const [studyCard, setStudyCard] = useState(studyMap);
+  const [studyCard, setStudyCard] = useState(studys);
   const [search, setSearch] = useState('');
 
   const studyList = studyCard.map((item, idx)=>{

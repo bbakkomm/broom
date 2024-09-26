@@ -27,11 +27,6 @@ const List = () => {
 
   const loadData = useLoaderData();
   const { studys } = loadData;
-  let studyMap = studys.map(item => {
-    let spli = item.thumb.path.split('/');
-    item.thumb.path = spli.slice(1, spli.length).join('/');
-    return item;
-  });
 
     return (
       <div>
@@ -61,10 +56,9 @@ const List = () => {
         {/* 리스트 목록 */}
         <div className="list">
           <ul className="list__wrapper">
-            {studyMap.map((study, index) => (
-                
-
+            {studys.map((study, index) => (
                 <ListBox
+                objId={study._id}
                 index={index}
                 status={study.status}
                 skillTag={study.skillTag}

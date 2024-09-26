@@ -17,6 +17,7 @@ export const getAllStudy = async (req, res) => {
 export const createStudy = async (req, res) => {
   req.body.createdBy = req.user.userId;
   req.body.thumb = req.file;
+  req.body.thumb.path = req.body.thumb.path.replace('client/','');
   // req.body.date.startDate = req.body.startDate;
   // req.body.date.endDate = req.body.endDate;
 
