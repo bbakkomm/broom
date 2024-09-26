@@ -36,7 +36,13 @@
 
 ## API 목록
 
-    1. 현재 로그인 중인 사용자 정보: get('/users/current-user') [Profile.jsx 참고]
+    1-1. 현재 로그인 중인 사용자 정보: get('/users/current-user') [Profile.jsx 참고]
+    1-2. 전체 유저 정보 가져오기: get('/all-user', getAllUsers)
+    1-3. 단일 유저 정보 가져오기: get('/single-user/:id', getUser) [id: _id]
+
+    2-1. 모든 스터디 정보 가져오기: .get('/study')
+    2-2. 단일 스터디 정보 가져오기: .get('/study/:id) [id: _id]
+    2-3. 유저가 작성한 스터디 목록 가져오기: .get('/study/user/:id') [id: createdBy]
 
 ## 브랜치 전략
 
