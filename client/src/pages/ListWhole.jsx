@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import ListBox from "../components/ListBox";
-import jsonData from '../assets/data/listData.json';
+import jsonData from '../assets/data/listData.json';''
 
 const ListWhole = () => {
   const imgPath ="/src/assets/img/"
   const [listData, setListData] = useState(jsonData.result);
+
+
 
 // // 팝업의 열림 상태를 관리하는 변수
 // const [isModalOpen, setIsModalOpen] = useState(false);
@@ -199,6 +201,7 @@ const sortByLatest = () => {
                 <ListBox
                 index={index}
                 status={study.status}
+                skillTag={study.skillTag}
                 name={study.name}
                 date={study.date}
                 time={study.time}
