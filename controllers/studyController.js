@@ -26,7 +26,7 @@ export const createStudy = async (req, res) => {
 
 // GET SINGLE JOB
 export const getStudy = async (req, res) => {
-  const study = await Study.find({ _id: req.params.id});
+  const study = await Study.findOne({ _id: req.params.id});
   res.status(StatusCodes.OK).json({ study });
 }
 

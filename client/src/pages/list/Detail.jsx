@@ -17,6 +17,7 @@ import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const datttId = '66f18c4a2a30944fef4c41e2';
 
@@ -33,10 +34,11 @@ export const loader = async ({ req }) => {
 function Detail(props) {
     const loadData = useLoaderData();
     const { study } = loadData;
-    console.log(loadData);
-    console.log(study);
     const { user } = props;
+
     const skillTag = study.skillTag;
+    console.log(typeof(skillTag));
+    
     console.log("22" + skillTag.includes('javascript'));
     const member = study.member;
     
@@ -65,6 +67,16 @@ function Detail(props) {
         // } else {
             
         // }
+    }
+
+    // 참여하기 버튼
+    const participateHandler = () => {
+        
+    }
+
+    // 스터디 삭제 버튼
+    const trashHandler = () => {
+
     }
 
     return (
@@ -194,19 +206,23 @@ function Detail(props) {
                 <>
                     { member ? (
                         <div className={`${styles.btn} + btn`}>
-                            <button className="btn-bg" onClick={leaveHandler}>탈퇴하기</button>    
+                            <button className={`${styles.btn__button} + btn-bg`} onClick={leaveHandler}>탈퇴하기</button>    
                         </div>
                     ) : (
                         <div className={`${styles.btn} + btn`}>
-                            <button className="btn-bg">참여하기</button>    
+                            <button className={`${styles.btn__button} + btn-bg`} onClick={participateHandler}>참여하기</button>    
                         </div>
                     )}
                 </>
             ) : (
-                <Link to="/studycreation" className={`${styles.btn} + btn`}>
-                    <button className="btn-un">수정하기</button>
-                </Link>
-            )}
+                
+                 <div className={`${styles.btn} + btn`}>
+                    <button onClick={trashHandler} className={styles.btn__trash}><DeleteIcon/></button>
+                    <Link to="/studycreation">
+                        <button className={`${styles.btn__modify} + btn-bg`}>수정하기</button>
+                    </Link>
+                 </div>
+            )} 
         </main>
     )
 }

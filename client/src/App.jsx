@@ -118,17 +118,6 @@ const router = createBrowserRouter([
         loader: detailLoader
       },
       {
-        path: "/study/studydetail/user",
-        element: [
-          <>
-            <Header title={"스터디 상세"} rightBtn user study/>
-            <Detail user/>
-            <Nav />
-          </>,
-        ],
-        loader: detailLoader
-      },
-      {
         path: "/login",
         element: [
           <>
