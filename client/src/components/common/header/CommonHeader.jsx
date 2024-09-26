@@ -4,12 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from "./CommonHeader.module.scss"
 
 // icon
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import Logo from "../../../assets/img/common/logo_broom.svg";
 import HeartBtn from './component/HeartBtn';
 import ShareBtn from './component/ShareBtn';
+import SearchBtn from './component/SearchBtn';
   
 function Header(props) {
   const { home, logo, search, rightBtn, to, title, user, study } = props;
@@ -27,7 +27,7 @@ function Header(props) {
                   <img src={Logo} alt="B.ROOM 로고" className={styles.logo} />
                 </Link>
               </h1>
-              <SearchOutlinedIcon />
+              <SearchBtn/>
             </>
           ) : (
             <>
@@ -39,9 +39,9 @@ function Header(props) {
                       {title}
                     </Link>
                   </h1>
-                  <button className={styles.header__btn}>
-                    <SearchOutlinedIcon />
-                  </button>
+                  <div className={styles.header__btn}>
+                    <SearchBtn/>
+                  </div>
                 </>
               ) : (
                 <>
