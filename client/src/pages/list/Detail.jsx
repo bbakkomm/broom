@@ -35,7 +35,7 @@ export const loader = async ({ req }) => {
 function Detail(props) {
     const loadData = useLoaderData();
     const { study } = loadData;
-    console.log(study);
+    console.log(loadData);
 
     const { user } = props;
     const skillTag = study.skillTag;
