@@ -19,6 +19,7 @@ const studySchema = new mongoose.Schema({
   price: String,
   minimumPerson: Number,
   maximumPerson: Number,
+  job: String,
   skillTag: {
     type: Array,
     item: [],
