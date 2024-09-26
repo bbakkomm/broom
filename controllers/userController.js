@@ -2,6 +2,19 @@ import { StatusCodes } from "http-status-codes";
 import User from "../models/UserModel.js";
 import Study from "../models/StudyModel.js";
 
+export const getAllUsers = async (req, res) => {
+    let users = await User.find({});
+    const userWithoutPassword = users.map(item => item.toJSON());
+    // const userWithoutPassword = users.toJSON();
+    res.status(StatusCodes.OK).json({ user: userWithoutPassword });
+}
+
+export const getUser = async (req, res) => {
+    const user = await User.findOne({ _id: req.params.id });
+    const userWithoutPassword = user.toJSON();
+    res.status(StatusCodes.OK).json({ user: userWithoutPassword });
+}
+
 export const getCurrentUser = async (req, res) => {
     const user = await User.findOne({ _id: req.user.userId });
     const userWithoutPassword = user.toJSON();
