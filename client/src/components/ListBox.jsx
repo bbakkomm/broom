@@ -9,12 +9,12 @@ function ListBox({
 
   const listClickHandler = (e) => {
     const targetLi = e.target.closest('.list__box');
-    sessionStorage.setItem('singleStudyValue', targetLi.getAttribute('prod'));
+    sessionStorage.setItem('singleStudyValue', targetLi.getAttribute('data-prod'));
     navigate('/study/studydetail');
   }
 
   return (
-    <li className="list__box" key={index} prod={objId} onClick={listClickHandler}>
+    <li className="list__box" key={index} data-prod={objId} onClick={listClickHandler}>
       <div className="list__badge">
         <p className="list__title">{complete}</p>
         <p className="list__skill">{skillTag}</p>

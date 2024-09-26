@@ -14,8 +14,8 @@ const JoinSuccess = () => {
       </div>
 
       <div className="btn">
-        <Link to="/home" className="btn-outline">홈으로</Link>
-        <Link to="/login" className="btn-bg">로그인</Link>
+        <Link to="/" className="btn-outline">홈으로</Link>
+        {/* <Link to="/login" className="btn-bg">로그인</Link> */}
       </div>
     </main>
   );
