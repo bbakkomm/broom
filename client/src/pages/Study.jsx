@@ -4,7 +4,10 @@ import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 // api
 import customFetch from "../utils/customFetch.js";
 
+import SearchBtn from '../components/common/header/component/SearchBtn.jsx';
+
 import StudyCard from '../components/common/studycard/CommonStudyCard';
+import SearchNotFound from '../components/common/studycard/SearchNotFound.jsx';
 
 export const loader = async ({ req }) => {
 	try {
@@ -67,9 +70,12 @@ function Study() {
   return (
 	<div className="study-wrap">
 		<div className="search-box">
-			<input type="text" value={search} placeholder="검색어를 입력하세요" onChange={titleChange} className="search-box__input" />
+			<SearchBtn/>
+			<input type="text" value={search} placeholder="원하는 스터디를 찾아보세요!" onChange={titleChange} className="search-box__input" />
 		</div>
-		{studyList}
+		{
+			studyCard.length === 0 ? <SearchNotFound /> : studyList
+		}
 	</div>
   )
 }
