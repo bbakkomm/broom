@@ -6,9 +6,6 @@ import { toast } from 'react-toastify';
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
 
-// CSS style
-import styles from "../../assets/scss/pages/list/Creation.module.scss";
-
 // icon
 import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
