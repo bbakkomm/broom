@@ -7,9 +7,6 @@ import customFetch from "../../utils/customFetch.js";
 // component
 import Member from "./components/Member";
 
-// CSS style
-import styles from "../../assets/scss/pages/list/Detail.module.scss";
-
 // icon
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
@@ -96,122 +93,122 @@ function Detail(props) {
     }
 
     return (
-        <main className={styles.detail}>
+        <main className="detail">
             {/* 스터디 이미지 */}
-            <section className={styles.image}>
+            <section className="image">
                 <img src={domain + study.thumb.path} alt={study.title} />
             </section>
 
             {/* 스터디 정보 */}
-            <section className={styles.info}>
-                <ul className={styles.tag}>
+            <section className="info">
+                <ul className="tag">
                     {
                         !study.complete ? 
-                        <li className={styles.tag__item}>모집중</li> :
-                        <li className={styles.tag__item__complete}>완료</li> 
+                        <li className="tag__item">모집중</li> :
+                        <li className="tag__item__complete">완료</li> 
                     }
                 </ul>
 
-                <h2 className={styles.title}>{study.title}</h2>
+                <h2 className="title">{study.title}</h2>
 
-                <ul className={styles.desc}>
-                    <li className={styles.desc__item}>
-                        <div className={styles.dec__icon}>
+                <ul className="desc">
+                    <li className="desc__item">
+                        <div className="dec__icon">
                             <CalendarTodayRoundedIcon/>
                             <p className="blind">일정</p>
                         </div>
-                        <p className={styles.dec__text}>{study.startDate}</p>~
-                        <p className={styles.desc__text}>{study.endDate}</p>
+                        <p className="dec__text">{study.startDate}</p>~
+                        <p className="desc__text">{study.endDate}</p>
                     </li>
 
-                    <li className={styles.desc__item}>
-                        <div className={styles.dec__icon}>
+                    <li className="desc__item">
+                        <div className="dec__icon">
                             <AccessAlarmsRoundedIcon/>
                             <p className="blind">시간</p>
                         </div>
-                        <p className={styles.dec__text}>{study.time}</p>
+                        <p className="dec__text">{study.time}</p>
                     </li>
                     
-                    <li className={styles.desc__item}>
-                        <div className={styles.dec__icon}>
+                    <li className="desc__item">
+                        <div className="dec__icon">
                             <PlaceOutlinedIcon/>
                             <p className="blind">위치</p>
                         </div>
-                        <p className={styles.dec__text}>{study.place}</p>
+                        <p className="dec__text">{study.place}</p>
                     </li>
 
-                    <li className={styles.desc__item}>
-                        <div className={styles.dec__icon}>
+                    <li className="desc__item">
+                        <div className="dec__icon">
                             <PaymentsOutlinedIcon/>
                             <p className="blind">비용</p>
                         </div>
-                        <p className={styles.dec__text}>{Number(study.price).toLocaleString('ko-KR')}</p>
+                        <p className="dec__text">{Number(study.price).toLocaleString('ko-KR')}</p>
                     </li>
                     
-                    <li className={styles.desc__item}>
-                        <div className={styles.dec__icon}>
+                    <li className="desc__item">
+                        <div className="dec__icon">
                             <PeopleAltOutlinedIcon/>
                             <p className="blind">인원</p>
                         </div>
-                        <p className={styles.dec__text}>최소 {study.minimumPerson}명</p>~
-                        <p className={styles.dec__text}>최대 {study.maximumPerson}명</p>
+                        <p className="dec__text">최소 {study.minimumPerson}명</p>~
+                        <p className="dec__text">최대 {study.maximumPerson}명</p>
                     </li>
 
-                    <li className={styles.desc__item}>
-                        <div className={styles.dec__icon}>
+                    <li className="desc__item">
+                        <div className="dec__icon">
                             <SettingsOutlinedIcon/>
                             <p className="blind">주요 기술</p>
                         </div>
-                        <div className={styles.skillTag}>
+                        <div className="skillTag">
                             {
                                 skillTag.includes('javascript')
-                                ? (<span className={styles.skillTag__javascript}>JavaScript</span>)
+                                ? (<span className="skillTag__javascript">JavaScript</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('typescript')
-                                ? (<span className={styles.skillTag__typescript}>TypeScript</span>)
+                                ? (<span className="skillTag__typescript">TypeScript</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('react')
-                                ? (<span className={styles.skillTag__react}>React</span>)
+                                ? (<span className="skillTag__react">React</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('dart')
-                                ? (<span className={styles.skillTag__dart}>Dart</span>)
+                                ? (<span className="skillTag__dart">Dart</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('flutter')
-                                ? (<span className={styles.skillTag__flutter}>Flutter</span>)
+                                ? (<span className="skillTag__flutter">Flutter</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('html')
-                                ? (<span className={styles.skillTag__html}>HTML</span>)
+                                ? (<span className="skillTag__html">HTML</span>)
                                 : ''
                             }
                             {
                                 skillTag.includes('css')
-                                ? (<span className={styles.skillTag__css}>CSS</span>)
+                                ? (<span className="skillTag__css">CSS</span>)
                                 : ''
                             }
                         </div>
                     </li>
                 </ul>
 
-                <p className={styles.info__text}>
+                <p className="info__text">
                     {study.introduce}
                 </p>
             </section>
 
             {/* 모임 멤버 */}
-            <section className={styles.member}>
-                <h2 className={styles.sectionTitle}>모임 멤버 ({member.length})</h2>
+            <section className="member">
+                <h2 className="sectionTitle">모임 멤버 ({member.length})</h2>
                 {/* <Member member={study.createdBy}/> */}
-                <ul className={styles.member__list}>
+                <ul className="member__list">
                     {membersArr.map((member, i) => 
                         <Member member={member} key={i}/>
                     )}
@@ -231,14 +228,14 @@ function Detail(props) {
             ) : ('')}
 
             { isManager ? (
-                <div className={`${styles.btn} + btn`}>
-                    <button className={`${styles.btn__button} + btn-bg`} onClick={editHandler}>수정하기</button>    
+                <div className="btn">
+                    <button className="btn__button btn-bg" onClick={editHandler}>수정하기</button>    
                 </div>
             ) : ('')}
 
             { !isManager && !isMember && isJoinMemberMaxNum ? (
-                <div className={`${styles.btn} + btn`}>
-                    <button className={`${styles.btn__button} + btn-bg`} onClick={participateHandler}>참여하기</button>    
+                <div className="btn">
+                    <button className="btn__button btn-bg" onClick={participateHandler}>참여하기</button>    
                 </div>
             ):('')}
         </main>
