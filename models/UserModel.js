@@ -29,6 +29,10 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  introduce: {
+    type: String,
+    default: '소개글을 작성하세요.'
+  },
   role: {
     type: String,
     enum: ['user', 'admin'],

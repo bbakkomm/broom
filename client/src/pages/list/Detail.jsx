@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from 'react';
 import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 
 // api
@@ -25,7 +25,15 @@ export const loader = async ({ req }) => {
     
     try {
         const res = await customFetch.get(`/study/${datttId}`, req);
-        return res.data;
+        let members = res.data.study.member;
+        
+        const allUsers = await customFetch.get(`/users/all-user`, req);
+        let users = allUsers.data.user;
+        users = users.filter(v => members.includes(v._id));
+
+        const getCurrentUser = await customFetch.get(`/users/current-user`, req);
+
+        return [res.data, users, getCurrentUser.data.user];
     } catch (error) {
         console.log(error);
         return redirect('/study');
@@ -34,38 +42,37 @@ export const loader = async ({ req }) => {
 
 function Detail(props) {
     const loadData = useLoaderData();
-    const { study } = loadData;
+    const [{ study }, membersArr, getCurrentUser] = loadData;
     const { user } = props;
 
-    const skillTag = study.skillTag;
-    const member = study.member;
-    console.log(study);
     const domain = [window.location.protocol, window.location.host].join('//') + '/';
-    const members = [
-        {
-            src: ("../../../src/assets/img/pages/dubu.jpg"),
-            name: '뚜부',
-            text: '안녕하세요 뚜부에요! :D 💕'
-        },
-        {
-            src: ("../../../src/assets/img/pages/dubu.jpg"),
-            name: '뚜부',
-            text: '안녕하세요 뚜부에요! :D 💕'
-        },
-        {
-            src: ("../../../src/assets/img/pages/dubu.jpg"),
-            name: '뚜부',
-            text: '안녕하세요 뚜부에요! :D 💕'
-        },
-    ]
+
+    console.log(study);
+    const [
+        skillTag, 
+        member
+    ] = [
+        study.skillTag, 
+        study.member
+    ];
+    
+    // 스터디 개설자 == 현재 접속한 사용자
+    const isManager = study.createdBy === getCurrentUser._id;
+
+    // 스터디에 참석한 멤버에 포함 여부
+    const isMember = membersArr.map(v => v._id).includes(getCurrentUser._id);
+
+    // 스터디 최대 인원 초과 여부
+    const isJoinMemberMaxNum = membersArr.map(v => v._id).length < study.maximumPerson;
+
+    // 페이지 진입시 ScrollTop
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [])
 
     // 탈퇴하기 버튼
     const leaveHandler = () => {
-        // if (user.name === study.member) {
-            
-        // } else {
-            
-        // }
+        
     }
 
     // 참여하기 버튼
@@ -73,8 +80,13 @@ function Detail(props) {
         
     }
 
+    // 수정하기 버튼
+    const editHandler = () => {
+        
+    }
+
     // 스터디 삭제 버튼
-    const trashHandler = () => {
+    const removeHandler = () => {
 
     }
 
@@ -192,36 +204,38 @@ function Detail(props) {
 
             {/* 모임 멤버 */}
             <section className={styles.member}>
-                <h2 className={styles.sectionTitle}>모임 멤버 ({members.length})</h2>
+                <h2 className={styles.sectionTitle}>모임 멤버 ({member.length})</h2>
                 {/* <Member member={study.createdBy}/> */}
                 <ul className={styles.member__list}>
-                    {members.map((member, i) => 
+                    {membersArr.map((member, i) => 
                         <Member member={member} key={i}/>
                     )}
                 </ul>
             </section>
-            
-            { !user ? (
-                <>
-                    { member ? (
-                        <div className={`${styles.btn} + btn`}>
-                            <button className={`${styles.btn__button} + btn-bg`} onClick={leaveHandler}>탈퇴하기</button>    
-                        </div>
-                    ) : (
-                        <div className={`${styles.btn} + btn`}>
-                            <button className={`${styles.btn__button} + btn-bg`} onClick={participateHandler}>참여하기</button>    
-                        </div>
-                    )}
-                </>
-            ) : (
-                
-                <div className={`${styles.btn} + btn`}>
-                    <button onClick={trashHandler} className={styles.btn__trash}><DeleteIcon/></button>
-                    <Link to="/studycreation">
-                        <button className={`${styles.btn__modify} + btn-bg`}>수정하기</button>
-                    </Link>
+
+            { isManager ? (
+                <div className="btn rebottom">
+                    <button className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
                 </div>
-            )} 
+            ) : ('')}
+
+            { !isManager && isMember ? (
+                <div className="btn rebottom">
+                    <button className="input-submit btn-un btn-bg" onClick={leaveHandler}>스터디 탈퇴하기</button>
+                </div>
+            ) : ('')}
+
+            { isManager ? (
+                <div className={`${styles.btn} + btn`}>
+                    <button className={`${styles.btn__button} + btn-bg`} onClick={editHandler}>수정하기</button>    
+                </div>
+            ) : ('')}
+
+            { !isManager && !isMember && isJoinMemberMaxNum ? (
+                <div className={`${styles.btn} + btn`}>
+                    <button className={`${styles.btn__button} + btn-bg`} onClick={participateHandler}>참여하기</button>    
+                </div>
+            ):('')}
         </main>
     )
 }
