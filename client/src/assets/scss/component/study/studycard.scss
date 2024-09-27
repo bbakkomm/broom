@@ -1,0 +1,15 @@
+.studycard {
+	&__item {
+	  padding: 1rem;
+	  margin-bottom: 1.6rem;
+	  box-shadow: 1px -1px 6px 0px #A6B4C826;
+	}
+  }
+  
+  .study-box {
+	&__content {display: flex; justify-content: flex-start; gap: .8rem;}
+	&__title {font-size: 1.6rem; margin-bottom: .8rem;}
+	&__image {width: 10.5rem; height: 10.5rem; border-radius: 1rem; overflow: hidden; background-color: #eee;}
+	&__item {display: flex; align-items: center; justify-content: flex-start; gap: .2rem;font-size: 1.1rem; color: #656668; margin-bottom: .6rem;}
+  	&__item:last-child {margin-bottom: 0;}
+  }

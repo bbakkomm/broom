@@ -1,6 +1,3 @@
-// css
-import styles from './CommonStudyCard.module.scss';
-
 // icon
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
@@ -21,82 +18,81 @@ function StudyCard(
     maximumPerson,
     skillTag,
     complate,
+    imgSrc,
   }
 ) {
 
-  const imgPath = '/src/assets/img/studycard/'
-
   return (
-    <ul className={styles.studyCard} key={idx}>
-      <li className={styles.studyCard__item}>
-        <div className={styles.skillTag}>
+    <ul className="studycard" key={idx}>
+      <li className="studycard__item">
+        <div className="skill-tag">
           {
             complate
-            ? (<span className={styles.skillTag__complate}>완료</span>)
+            ? (<span className="skill-tag--complate">완료</span>)
             : ''
           }
           {
             skillTag.includes('javascript')
-            ? (<span className={styles.skillTag__javascript}>JavaScript</span>)
+            ? (<span className="skill-tag--javascript">JavaScript</span>)
             : ''
           }
           {
             skillTag.includes('typescript')
-            ? (<span className={styles.skillTag__typescript}>TypeScript</span>)
+            ? (<span className="skill-tag--typescript">TypeScript</span>)
             : ''
           }
           {
             skillTag.includes('react')
-            ? (<span className={styles.skillTag__react}>React</span>)
+            ? (<span className="skill-tag--react">React</span>)
             : ''
           }
           {
             skillTag.includes('dart')
-            ? (<span className={styles.skillTag__dart}>Dart</span>)
+            ? (<span className="skill-tag--dart">Dart</span>)
             : ''
           }
           {
             skillTag.includes('flutter')
-            ? (<span className={styles.skillTag__flutter}>Flutter</span>)
+            ? (<span className="skill-tag--flutter">Flutter</span>)
             : ''
           }
           {
             skillTag.includes('html')
-            ? (<span className={styles.skillTag__html}>HTML</span>)
+            ? (<span className="skill-tag--html">HTML</span>)
             : ''
           }
           {
             skillTag.includes('css')
-            ? (<span className={styles.skillTag__css}>CSS</span>)
+            ? (<span className="skill-tag--css">CSS</span>)
             : ''
           }
         </div>
-        <div className={styles.studyBox}>
-          <h3 className={styles.studyBox__title}>{title}</h3>
-          <div className={styles.studyBox__content}>
-            <div className={styles.studyBox__image}>
-              <img src={imgPath + thumb} alt={title + ' 모임 상세보기'} />
+        <div className="study-box">
+          <h3 className="study-box__title">{title}</h3>
+          <div className="study-box__content">
+            <div className="study-box__image">
+              <img src={imgSrc} alt={title + ' 모임 상세보기'} />
             </div>
-            <ul className={styles.studyBox__list}>
-              <li className={styles.studyBox__list__item}>
+            <ul className="study-box__list">
+              <li className="study-box__item">
                 <CalendarTodayRoundedIcon />
-                <span className={styles.studyBox__list__desc}>{date} ~</span>
+                <span className="study-box__desc">{date} ~</span>
               </li>
-              <li className={styles.studyBox__list__item}>
+              <li className="study-box__item">
                 <AccessAlarmsRoundedIcon />
-                <span className={styles.studyBox__list__desc}>{time}</span>
+                <span className="study-box__desc">{time}</span>
               </li>
-              <li className={styles.studyBox__list__item}>
+              <li className="study-box__item">
                 <PlaceOutlinedIcon />
-                <span className={styles.studyBox__list__desc}>{place}</span>
+                <span className="study-box__desc">{place}</span>
               </li>
-              <li className={styles.studyBox__list__item}>
+              <li className="study-box__item">
                 <PaymentsOutlinedIcon />
-                <span className={styles.studyBox__list__desc}>{price}</span>
+                <span className="study-box__desc">{price}</span>
               </li>
-              <li className={styles.studyBox__list__item}>
+              <li className="study-box__item">
                 <PeopleAltOutlinedIcon />
-                <span className={styles.studyBox__list__desc}>최소 {minimumPerson}명 ~ 최대 {maximumPerson}명</span>
+                <span className="study-box__desc">최소 {minimumPerson}명 ~ 최대 {maximumPerson}명</span>
               </li>
             </ul>
           </div>

@@ -3,8 +3,8 @@
 	height: 36rem; background-color: #eee; margin-bottom: 2rem;
 	& > img {width: 36rem; height: min-content;}
 }
-.study-box {
-	padding: 3rem 2rem;
+.study-box__home{
+	padding: 0 1rem;
 	
 	&__title {font-size: 1.6rem; margin-bottom: 1.6rem;}
 	&__cont {display: flex; flex-wrap: wrap; justify-content: space-between;}
