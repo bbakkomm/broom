@@ -32,7 +32,7 @@ function Study() {
 				idx={idx}
 				title={item.title}
 				thumb={item.thumb.path}
-				date={item.date}
+				date={item.startDate}
 				time={item.time}
 				place={item.place}
 				price={item.price}
