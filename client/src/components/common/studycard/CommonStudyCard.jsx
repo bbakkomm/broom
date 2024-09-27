@@ -1,3 +1,5 @@
+import { redirect, useNavigate } from 'react-router-dom';
+
 // icon
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
 import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
@@ -8,6 +10,7 @@ import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 function StudyCard(
   { 
     idx, 
+    objId,
     title, 
     thumb,
     date, 
@@ -22,8 +25,16 @@ function StudyCard(
   }
 ) {
 
+  const navigate = useNavigate();
+
+  const listClickHandler = (e) => {
+    const targetUl = e.target.closest('.studycard');
+    sessionStorage.setItem('singleStudyValue', targetUl.getAttribute('data-prod'));
+    navigate('/study/studydetail');
+  }
+
   return (
-    <ul className="studycard" key={idx}>
+    <ul className="studycard" key={idx} data-prod={objId} onClick={listClickHandler}>
       <li className="studycard__item">
         <div className="skill-tag">
           {
