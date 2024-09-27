@@ -66,7 +66,9 @@ function Study() {
   
   return (
 	<div className="study-wrap">
-		<input type="text" value={search} placeholder="검색어를 입력하세요" onChange={titleChange} />
+		<div className="search-box">
+			<input type="text" value={search} placeholder="검색어를 입력하세요" onChange={titleChange} className="search-box__input" />
+		</div>
 		{studyList}
 	</div>
   )

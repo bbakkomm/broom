@@ -84,17 +84,6 @@ const router = createBrowserRouter([
         element: [
           <>
             <Header title={"스터디"} />
-            <List />
-            <Nav />
-          </>,
-        ],
-        loader: studyLoader
-      },
-      {
-        path: "/study2",
-        element: [
-          <>
-            <Header title={"스터디"} />
             <Study />
             <Nav />
           </>,
