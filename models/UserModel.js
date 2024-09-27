@@ -6,8 +6,11 @@ const UserSchema = new mongoose.Schema({
   name: String,
   email: String,
   thumb: {
-    type: String,
-    default: 'profile_01.png'
+    type: Object,
+    file: {},
+    default: {
+      path: 'public\\uploads\\profile\\default.jpeg'
+    }
   },
   job: {
     type: String,
