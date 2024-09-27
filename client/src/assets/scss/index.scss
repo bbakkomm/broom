@@ -2,9 +2,8 @@
 @import '../scss/common/common.scss';
 
 // component layout
-@import '../scss/component/layout/header.scss';
-@import '../scss/component/layout/nav.scss';
-@import '../scss/component/layout/tab.scss';
+@import '../scss/component/layout/CommonHeader.scss';
+@import '../scss/component/layout/CommonNav.scss';
 
 // component list
 @import '../scss/component/list/schedule.scss';
@@ -17,16 +16,16 @@
 @import '../scss/pages/splash.scss';
 
 // pages list 
-@import '../scss/pages/list/creation.module.scss';
-@import '../scss/pages/list/detail.module.scss';
+@import '../scss/pages/list/Creation.scss';
+@import '../scss/pages/list/Detail.scss';
 
 // pages register
-@import '../scss/pages/register/login.scss';
-@import '../scss/pages/register/join.scss';
-@import '../scss/pages/register/joinsetting.scss';
-@import '../scss/pages/register/id.scss';
-@import '../scss/pages/register/pw.scss';
-@import '../scss/pages/register/success.scss';
+@import '../scss/pages/register/Id.scss';
+@import '../scss/pages/register/Join.scss';
+@import '../scss/pages/register/Joinsetting.scss';
+@import '../scss/pages/register/Login.scss';
+@import '../scss/pages/register/Pw.scss';
+@import '../scss/pages/register/Success.scss';
 
 // pages profile
 @import '../scss/pages/profile/profile.module.scss';
