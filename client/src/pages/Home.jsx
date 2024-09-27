@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
-import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
-
+import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 
 // api
 import customFetch from "../utils/customFetch.js";
-
 // Swiper
 import { Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,31 +12,30 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+import Logo from "../assets/img/common/logo_broom.svg";
+
 // DB
-import studyJson from '../assets/data/studyData.json';
+// import studyJson from '../assets/data/studyData.json';
 import HomeStudyCard from '../components/common/studycard/CommonHomeStudyCard';
 
 // const datttId = '66f18c4a2a30944fef4c41e2';
 
 export const loader = async ({ req }) => {
   try {
+    const tp = await customFetch.get('/users/current-user', req);
     const res = await customFetch.get('/study', req);
     return res.data;
   } catch (error) {
     console.log(error);
-    return redirect('/');
+    return redirect('/login');
   }
 }
 
-
-
 function Home() {
-
   const loadData = useLoaderData();
   const { studys } = loadData;
   console.log(studys);
 
-  const studyData = studyJson.result;
   const [studyCard, setStudyCard] = useState(studys);
   const [search, setSearch] = useState('');
 
@@ -47,7 +44,7 @@ function Home() {
       <HomeStudyCard 
         idx={idx}
         title={item.title}
-        thumb={item.thumb}
+        thumb={item.thumb.path}
         date={item.date}
         time={item.time}
         place={item.place}
@@ -74,6 +71,13 @@ function Home() {
 
   return (
 	<div className="broom">
+    <header className="main-header">
+      <h1 className="main-header__title">
+        <Link to="/" title="BROOM" className="main-header__link">
+          <img src={Logo} alt="B.ROOM 로고" className="logo" />
+        </Link>
+      </h1>
+    </header>
     <div className="kv">
       <Swiper
         style={{
@@ -104,10 +108,10 @@ function Home() {
           </div>
         </SwiperSlide>
       </Swiper>
-      <div className="study-box">
-        <h3 className="study-box__title">최근 등록된 스터디</h3>
-        <input type="text" value={search} placeholder="검색어를 입력하세요" onChange={titleChange} />
-        <div className="study-box__cont">
+      <div className="study-home">
+        <h3 className="study-home__title">최근 등록된 스터디</h3>
+        {/* <input type="text" value={search} placeholder="검색어를 입력하세요" onChange={titleChange} /> */}
+        <div className="study-home__cont">
           {studyList}
         </div>
       </div>

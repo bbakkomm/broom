@@ -11,6 +11,7 @@ export { default as Landing } from './Landing';
 export { default as Profile } from './profile/Profile';
 export { default as ProfileEdit } from './profile/ProfileEdit';
 export { default as List } from './List';
+export { default as Study } from './Study';
 
 // list
 export { default as Detail } from './list/Detail';

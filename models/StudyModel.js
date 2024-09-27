@@ -36,7 +36,8 @@ const studySchema = new mongoose.Schema({
   },
   member: {
     type: Array,
-    item: []
+    item: [],
+    default: [],
   },
   like: {
     type: Number,

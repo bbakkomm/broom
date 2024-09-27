@@ -1,10 +1,30 @@
 .broom {max-width: 36rem; margin: 5rem auto 7.4rem;}
+
+.main-header {
+	z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    padding: 0 2rem;
+    background-color: #fff;
+
+	&__title {gap: 1.6rem; font-size: 1.6rem; color: #222;}
+	&__link {color: #222;}
+	.logo {width: 8rem;}
+}
+
 .banner-box {
 	height: 36rem; background-color: #eee; margin-bottom: 2rem;
 	& > img {width: 36rem; height: min-content;}
 }
-.study-box {
-	padding: 3rem 2rem;
+.study-home{
+	margin-top: 2rem;
+	padding: 0 2rem;
 	
 	&__title {font-size: 1.6rem; margin-bottom: 1.6rem;}
 	&__cont {display: flex; flex-wrap: wrap; justify-content: space-between;}

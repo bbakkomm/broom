@@ -6,8 +6,11 @@ const UserSchema = new mongoose.Schema({
   name: String,
   email: String,
   thumb: {
-    type: String,
-    default: 'profile_01.png'
+    type: Object,
+    file: {},
+    default: {
+      path: 'public\\uploads\\profile\\default.jpeg'
+    }
   },
   job: {
     type: String,
@@ -28,6 +31,10 @@ const UserSchema = new mongoose.Schema({
   complete: {
     type: Number,
     default: 0,
+  },
+  introduce: {
+    type: String,
+    default: '소개글을 작성하세요.'
   },
   role: {
     type: String,

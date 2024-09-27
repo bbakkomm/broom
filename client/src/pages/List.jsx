@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
-import path from 'path';
 
 import customFetch from "../utils/customFetch.js";
 
@@ -27,6 +26,7 @@ const List = () => {
 
   const loadData = useLoaderData();
   const { studys } = loadData;
+<<<<<<< HEAD
   let studyMap = studys.map(item => {
     let spli = item.thumb.path.split('/');
     item.thumb.path = spli.slice(1, spli.length).join('/');
@@ -44,6 +44,10 @@ const sortByLatest = () => {
 };
 
 
+=======
+  const domain = [window.location.protocol, window.location.host].join('//') + '/';
+  
+>>>>>>> dev
     return (
       <div>
         {/* <Header></Header> */}
@@ -80,8 +84,14 @@ const sortByLatest = () => {
         {/* 리스트 목록 */}
         <div className="list">
           <ul className="list__wrapper">
+<<<<<<< HEAD
             {studyMap.map((study, index) => (
+=======
+            {studys.map((study, index) => (
+>>>>>>> dev
                 <ListBox
+                key={`study_${index}`}
+                objId={study._id}
                 index={index}
                 title={study.title}
                 status={study.status}
@@ -90,10 +100,18 @@ const sortByLatest = () => {
                 startDate={study.startDate}
                 endDate={study.endDate}
                 time={study.time}
+<<<<<<< HEAD
                 place={study.place}
                 price={study.price}
                 member={study.member.length}
                 imgSrc={'http://localhost:5173/' + study.thumb.path}
+=======
+                location={study.loaction}
+                cost={study.cost}
+                participants={study.participants}
+                complete={study.complete}
+                imgSrc={domain + study.thumb.path}
+>>>>>>> dev
                 />
             ))}
           </ul>

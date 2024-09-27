@@ -94,12 +94,14 @@ img {width: 100%; height: 100%; object-fit: cover;}
 .skill-tag-box__item {}
 
 .skill-tag {
-  height: 2.3rem; color: #000; font-size: 1.1rem; font-weight: 700; padding: .4rem .8rem; border-radius: .5rem;
-  &--html {background-color: #f15a29; color: #fff;}
-  &--css {background-color: #0396fc; color: #fff;}
-  &--scss {background-color: #cf649b; color: #fff;}
-  &--js {background: #F7DF1E; color: #000;}
-  &--ts {background: #3178C6; color: #fff;}
-  &--react {background: #02D9FF; color: #fff;}
-  &--vue {background-color: #435466; color: #4dba87;}
-}
+	display: flex; justify-content: flex-start; align-items: center; gap: .3rem; font-size: 1.1rem; line-height: 1.3rem; margin-bottom: 1.6rem;
+	span {border-radius: .5rem; padding: .1rem .6rem; font-weight: 700;}
+	&--complate {border: 1px solid #aaa; color: #aaa;}
+	&--javascript {border: 1px solid #F7DF1E; background-color: #F7DF1E; color: #000;}
+	&--typescript {border: 1px solid #3178C6; background-color: #3178C6; color: #fff;}
+	&--react {border: 1px solid #02D9FF; background-color: #02D9FF; color: #fff;}
+	&--html {border: 1px solid #dd4b25; background-color: #dd4b25; color: #fff;}
+	&--css {border: 1px solid #264ce0; background-color: #264ce0; color: #fff;}
+	&--dart {border: 1px solid #00cbb2; background-color: #00cbb2; color: #fff;}
+	&--flutter {border: 1px solid #5dc2ed; background-color: #5dc2ed; color: #fff;}
+  }

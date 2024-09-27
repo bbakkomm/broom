@@ -8,14 +8,16 @@ import Nav from "./components/common/navigation/CommonNav"
 
 import { 
   Home, HomeLayout, Splash, Error, 
-  Login, Profile, ProfileEdit, List, Detail, Creation, 
+  Login, Profile, ProfileEdit, List, Study, Detail, Creation, 
   Join, JoinSetting, JoinSuccess, 
   Id, IdSuccess, 
   Pw, PwReset, PwSuccess, 
 } from "./pages";
 
+// import { loader as currentLoader } from './pages/HomeLayout';
 import { loader as profileLoader } from './pages/profile/Profile';
 import { loader as studyLoader } from './pages/List';
+import { loader as studyLoader2 } from './pages/Study';
 import { loader as homeLoader } from './pages/Home';
 import { loader as detailLoader } from './pages/list/Detail';
 
@@ -39,21 +41,13 @@ const router = createBrowserRouter([
     path: "/",
     element: <HomeLayout />,
     errorElement: <Error />,
+    // loader: currentLoader,
     children: [
       {
         index: true,
+        path: "/",
         element: [
           <>
-            <Login />
-          </>,
-        ],
-        action: loginAction
-      },
-      {
-        path: "/home",
-        element: [
-          <>
-            <Header home logo />
             <Home />
             <Nav />
           </>,
@@ -97,6 +91,17 @@ const router = createBrowserRouter([
         loader: studyLoader
       },
       {
+        path: "/study2",
+        element: [
+          <>
+            <Header title={"스터디"} />
+            <Study />
+            <Nav />
+          </>,
+        ],
+        loader: studyLoader2
+      },
+      {
         path: "/studycreation",
         element: [
           <>
@@ -126,6 +131,7 @@ const router = createBrowserRouter([
             <Login />
           </>,
         ],
+        action: loginAction
       },
       {
         path: "/join",
