@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from 'react';
 import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 
 // api
@@ -58,6 +58,11 @@ function Detail(props) {
             text: '안녕하세요 뚜부에요! :D 💕'
         },
     ]
+
+    // 페이지 진입시 ScrollTop
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [])
 
     // 탈퇴하기 버튼
     const leaveHandler = () => {
