@@ -48,7 +48,6 @@ const router = createBrowserRouter([
         path: "/",
         element: [
           <>
-            <Header home logo />
             <Home />
             <Nav />
           </>,

@@ -34,6 +34,7 @@ function StudyCard(
   }
 
   return (
+    
     <ul className="studycard" key={idx} data-prod={objId} onClick={listClickHandler}>
       <li className="studycard__item">
         <div className="skill-tag">
