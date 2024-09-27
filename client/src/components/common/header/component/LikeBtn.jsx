@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 
-// css
-import styles from "../CommonHeader.module.scss";
-
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
@@ -32,21 +29,21 @@ function LikeBtn() {
     // 좋아요버튼
     const handleLike = () => {
         if(like) {
-            setLikeCount(studyLikeCount + 1);
-            console.log(studyLikeCount);
+            setLikeCount(likeCount - 1);
+            console.log(likeCount);
             
         } else {
-            setLikeCount(studyLikeCount - 1);
-            console.log(studyLikeCount);
+            setLikeCount(likeCount + 1);
+            console.log(likeCount);
         }
             setLike(!like);
     }
 
     return (
-        <button className={styles.header__like} onClick={handleLike}>
-            {like ? <FavoriteOutlinedIcon className={styles.like__icon}/> : <FavoriteBorderOutlinedIcon className={styles.like__icon}/>}
+        <button className="header__like" onClick={handleLike}>
+            {like ? <FavoriteOutlinedIcon className="like__icon" /> : <FavoriteBorderOutlinedIcon className="like__icon" />}
         </button>
-    )
+    );
 }
 
 export default LikeBtn;
