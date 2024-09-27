@@ -24,7 +24,10 @@ function Study() {
 	console.log(studys);
 	const domain = [window.location.protocol, window.location.host].join('//') + '/';
 
-	const studyList = studys.map((item, idx)=>{
+	const [studyCard, setStudyCard] = useState(studys);
+	const [search, setSearch] = useState('');
+
+	const studyList = studyCard.map((item, idx)=>{
 		return (
 			<StudyCard 
 				key={`study_${idx}`}
@@ -49,9 +52,21 @@ function Study() {
 			/>      
 		)
 	});
+
+	useEffect(()=>{
+		const filter = studys.filter((item)=>{
+		  return item.title.toLowerCase().includes(search.toLowerCase())
+		})
+		setStudyCard(filter);
+	  }, [search])
+
+	  const titleChange = (e)=>{
+		setSearch(e.target.value)
+	  }
   
   return (
 	<div className="study-wrap">
+		<input type="text" value={search} placeholder="검색어를 입력하세요" onChange={titleChange} />
 		{studyList}
 	</div>
   )
