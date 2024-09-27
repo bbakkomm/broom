@@ -70,6 +70,11 @@ function Detail(props) {
         window.scrollTo(0, 0);
     }, [])
 
+    // 페이지 진입시 ScrollTop
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [])
+
     // 탈퇴하기 버튼
     const leaveHandler = () => {
         
