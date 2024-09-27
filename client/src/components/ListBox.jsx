@@ -1,17 +1,11 @@
 import { redirect, useNavigate } from 'react-router-dom';
 
-<<<<<<< HEAD
-function ListBox({ index, title, skillTag, name, startDate, endDate, time, place, price, member, imgSrc }) {
-  const [listData, setListData] = useState(jsonData.result);
-  const [status, setStatus] = useState("모집중");
-=======
 function ListBox({ 
   objId, complete, index, skillTag, 
   name, date, time, location, cost, 
   participants, imgSrc
 }) {
   const navigate = useNavigate();
->>>>>>> dev
 
   const listClickHandler = (e) => {
     const targetLi = e.target.closest('.list__box');
