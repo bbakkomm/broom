@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import jsonData from '../assets/data/listData.json';
 
-function ListBox({ index, skillTag, name, date, time, location, cost, participants, imgSrc }) {
+function ListBox({ index, title, skillTag, name, startDate, endDate, time, place, price, member, imgSrc }) {
   const [listData, setListData] = useState(jsonData.result);
   const [status, setStatus] = useState("모집중");
 
@@ -34,15 +34,15 @@ function ListBox({ index, skillTag, name, date, time, location, cost, participan
         <p className="list__title">{status}</p>
         <p className="list__skill">{skillTag}</p>
       </div>
-      <p className="study_name">{name}</p>
+      <p className="study_name">{title}</p>
       <div className="study_inner">
         <img src={imgSrc} alt="" className="img_box" />
         <div className="study_info">
-          <p>{date} ~</p>
+          <p>{startDate} ~ {endDate}</p>
           <p>{time}</p>
-          <p>{location}</p>
-          <p>{cost}</p>
-          <p>{participants}</p>
+          <p>{place}</p>
+          <p>{price}</p>
+          <p>{member}</p>
         </div>
       </div>
     </li>

@@ -12,7 +12,7 @@ export const loader = async ({ req }) => {
     const res = await customFetch.get('/study', req);
     return res.data;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return redirect('/');
   }
 }
@@ -32,6 +32,17 @@ const List = () => {
     item.thumb.path = spli.slice(1, spli.length).join('/');
     return item;
   });
+
+  console.log(studys);
+
+const [listData, setListData] = useState(studys);
+
+//최신순으로 정렬하는 함수
+const sortByLatest = () => {
+  const sortedListData = [...listData].sort((a, b) => new Date(b.date) - new Date(a.date));
+  setListData(sortedListData);
+};
+
 
     return (
       <div>
@@ -58,22 +69,30 @@ const List = () => {
             }}>완료</div>
           </a>
         </div>
+
+        <div className="select">
+          <p className="whole_num">전체 <span className="whole_num__count">{listData.length}</span>개</p>
+          <div className="filter">
+            <a className="filter__recent" onClick={sortByLatest}>최신순</a>
+          </div>
+        </div>
+
         {/* 리스트 목록 */}
         <div className="list">
           <ul className="list__wrapper">
             {studyMap.map((study, index) => (
-                
-
                 <ListBox
                 index={index}
+                title={study.title}
                 status={study.status}
                 skillTag={study.skillTag}
                 name={study.name}
-                date={study.date}
+                startDate={study.startDate}
+                endDate={study.endDate}
                 time={study.time}
-                location={study.loaction}
-                cost={study.cost}
-                participants={study.participants}
+                place={study.place}
+                price={study.price}
+                member={study.member.length}
                 imgSrc={'http://localhost:5173/' + study.thumb.path}
                 />
             ))}
