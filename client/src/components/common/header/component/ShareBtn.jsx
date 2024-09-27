@@ -1,8 +1,5 @@
 import { useState } from 'react';
 
-// css
-import styles from "../CommonHeader.module.scss";
-
 // icon
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
@@ -28,27 +25,33 @@ function Modal (props) {
 
   return (
     <>
-      { open ? (
-          <>
-            <div className={styles.dimmed} onClick={ModalClose}/>
-            <div className={`${open && styles.modal}`}>
-              <div className={styles.modal__titleWrap}>
-                <p className={styles.modal__title}>링크 공유</p>
-                <CloseRoundedIcon onClick={ModalClose}/>
-              </div>
-              <div className={styles.modal__content}>
-                <input type="text" value={currentUrl} readOnly className={styles.modal__input}/>
-                <button onClick={handleCopy} className={styles.modal__btn}>복사</button>
-              </div>
-              <div className={styles.modal__notice}>
-                {copied && "URL이 복사되었습니다!"}
-              </div>
+      {open ? (
+        <>
+          <div className="dimmed" onClick={ModalClose} />
+          <div className={open && `modal`}>
+            <div className="modal__titleWrap">
+              <p className="modal__title">링크 공유</p>
+              <CloseRoundedIcon onClick={ModalClose} />
             </div>
-          </>
-        ): null
-      }
+            <div className="modal__content">
+              <input
+                type="text"
+                value={currentUrl}
+                readOnly
+                className="modal__input"
+              />
+              <button onClick={handleCopy} className="modal__btn">
+                복사
+              </button>
+            </div>
+            <div className="modal__notice">
+              {copied && "URL이 복사되었습니다!"}
+            </div>
+          </div>
+        </>
+      ) : null}
     </>
-  )
+  );
 }
 
 function ShareBtn() {
@@ -64,8 +67,8 @@ function ShareBtn() {
 
   return (
       <>
-          <button onClick={ModalOpen} className={styles.header__share}>
-              <ShareOutlinedIcon className={styles.share__icon}/>
+          <button onClick={ModalOpen} className="header__share">
+              <ShareOutlinedIcon className="share__icon"/>
           </button>
           {modal ? <Modal ModalClose={ModalClose}/> : null}
       </>
