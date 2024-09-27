@@ -2,3 +2,9 @@
 	margin: 8rem 0;
 	padding: 0 2rem;
 }
+
+.search-box {
+	padding: 1rem; margin-bottom: 1.6rem; box-shadow: 1px -1px 6px 0px rgba(166, 180, 200, 0.1490196078);
+	&__input {width: 100%; border: 0; outline: 0;}
+}
+
