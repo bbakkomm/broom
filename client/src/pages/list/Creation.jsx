@@ -63,7 +63,7 @@ function Creation(props) {
             <label htmlFor="thumb" className="input-label input-label--img">
               {file && <img src={file} alt="preview-img" />}
               {!file && <AddAPhotoOutlinedIcon className="input-label__icon"/>}
-              {!file && <p>스터디 모집 사진을 <br/>등록해주세요.</p>}
+              {!file && <p className="input-label__text">스터디 모집 사진을 등록해주세요.</p>}
             </label>
             <input 
               type="file" 
