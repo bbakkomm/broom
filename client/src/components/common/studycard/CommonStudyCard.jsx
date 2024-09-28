@@ -6,6 +6,8 @@ import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function StudyCard(
   { 
@@ -41,7 +43,7 @@ function StudyCard(
           {
             complate
             ? (<span className="skill-tag--complate">완료</span>)
-            : ''
+            : (<span className="skill-tag--ing">모집중</span>)
           }
           {
             skillTag.includes('javascript')
@@ -108,6 +110,9 @@ function StudyCard(
               </li>
             </ul>
           </div>
+          <button className="btn-like">
+            <FavoriteIcon style={{color: '#FB744A', width:'2.2rem', height: '2rem'}} />
+          </button>
         </div>
       </li>
     </ul>
