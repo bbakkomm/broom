@@ -17,7 +17,7 @@ import customFetch from '../../utils/customFetch.js';
 export const loader = async ({ req }) => {
   try {
     const res = await customFetch.get('/users/current-user', req);
-    return res.data;
+    return [res.data];
   } catch (error) {
     console.log(error);
     return redirect('/');
@@ -26,17 +26,22 @@ export const loader = async ({ req }) => {
 
 const Profile = () => {
   const loadData = useLoaderData();
-  const { user } = loadData;
+  const { user } = loadData[0];
   console.log(user);
 
   const navigate = useNavigate();
-  const logOutHandler = async () => {
-    navigate('/');
-    await customFetch.get('/auth/logout');
-    toast.success('Log Out successful');
+
+  const logOutHandler = async (e) => {
+    e.preventDefault();
+    if (window.confirm('정말 로그아웃하시겠습니까?')) {
+      await customFetch.get('/auth/logout');
+      toast.success('Log Out successful');
+      navigate('/');
+    }
   }
 
-  const imgPath = '/src/assets/img/profile/'
+  const domain = [window.location.protocol, window.location.host].join('//') + '/';
+  console.log(domain);
 
   // const userData = userJson.result;
   const studyData = studyJson.result;
@@ -46,7 +51,7 @@ const Profile = () => {
       <StudyCard 
         idx={idx}
         title={item.title}
-        thumb={item.thumb}
+        thumb={item.thumb.path}
         date={item.date}
         time={item.time}
         place={item.place}
@@ -64,7 +69,7 @@ const Profile = () => {
       <div className={styles.container}>
 
         <ProfileCard 
-          userImg={imgPath + user.thumb} 
+          userImg={domain + user.thumb.path} 
           userName={user.name} 
           userEmail={user.email} 
           skillTag={user.skillTag} 

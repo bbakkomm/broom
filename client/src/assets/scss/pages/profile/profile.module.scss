@@ -9,7 +9,7 @@
 
 .profile-box {
   display: flex; justify-content: flex-start; align-items: center; gap: 1.6rem; margin-bottom: 2.4rem;
-  &__img {width: 8rem; height: 8rem; overflow: hidden; border-radius: 4rem;}
+  &__img {width: 8rem; height: 8rem; overflow: hidden; border-radius: 4rem; border: 1px solid #eee;}
   &__user {flex: 1;}
   &__username {font-size: 1.6rem;}
   &__email {font-size: 1.2rem; color: #aaa;}

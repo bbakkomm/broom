@@ -75,10 +75,10 @@ function ProfileCard(
                     <span className="status__info status__info--studing">{studing}</span>
                     <span className="status__desc">활동중</span>
                 </li>
-                <li className="status__item">
+                {/* <li className="status__item">
                     <span className="status__info status__info--complate">{complate}</span>
                     <span className="status__desc">완료</span>
-                </li>
+                </li> */}
             </ul>
         </div>
     </div>
