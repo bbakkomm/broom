@@ -82,21 +82,23 @@ function Detail(props) {
         const memberData = getCurrentUser._id;
         
         try {
-            const datttId = sessionStorage.getItem('singleStudyValue');
-            const res1 = await customFetch.get(`/study/${datttId}`, '');
-            let req2 = res1.data.study.member;
-            req2 = req2.filter(value => memberData !== value);
+            if (window.confirm('정말 스터디를 탈퇴하시겠습니까?')) {
+                const datttId = sessionStorage.getItem('singleStudyValue');
+                const res1 = await customFetch.get(`/study/${datttId}`, '');
+                let req2 = res1.data.study.member;
+                req2 = req2.filter(value => memberData !== value);
 
-            const formData = { member: req2 }
-            let res = await customFetch.patch(`/study/${datttId}`, formData);
+                const formData = { member: req2 }
+                let res = await customFetch.patch(`/study/${datttId}`, formData);
 
-            const res2 = await customFetch.get(`/study/${datttId}`, '');
-            if (res2.data.study.member.length < res2.data.study.maximumPerson) {
-                let res = await customFetch.patch(`/study/${datttId}`, {complete: false});
+                const res2 = await customFetch.get(`/study/${datttId}`, '');
+                if (res2.data.study.member.length < res2.data.study.maximumPerson) {
+                    let res = await customFetch.patch(`/study/${datttId}`, {complete: false});
+                }
+
+                toast.success('study member leave successful');
+                navigate('/study/studydetail');
             }
-
-            toast.success('study member leave successful');
-            navigate('/study/studydetail');
         } catch (error) {
             toast.error(error?.response?.data?.msg);
             return error;
@@ -140,7 +142,7 @@ function Detail(props) {
         e.preventDefault();
 
         try {
-            if (window.confirm('정말 삭제하시겠습니까?')) {
+            if (window.confirm('정말 스터디를 삭제하시겠습니까?')) {
                 const datttId = sessionStorage.getItem('singleStudyValue');
                 const res = await customFetch.delete(`/study/${datttId}`, '');
                 toast.success('study delete successful');
