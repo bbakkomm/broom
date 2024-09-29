@@ -91,19 +91,19 @@ function Home() {
         >
           <SwiperSlide>
             <div className="banner-box">
-              <img src="src/assets/img/home/banner_01.webp" alt="" />
+              <img src="uploads/home/banner_01.webp" alt="" />
               <p className="banner-box__title">찾았다! <br/>지금 가장 핫한 스터디 Top5 👑</p>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="banner-box">
-              <img src="src/assets/img/home/banner_02.gif" alt="" />
+              <img src="uploads/home/banner_02.gif" alt="" />
               <p className="banner-box__title banner-box__title--black">B.ROOM과 함께 <br/>단계별 스터디 찾기 🚀</p>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="banner-box">
-              <img src="src/assets/img/home/banner_03.webp" alt="" />
+              <img src="uploads/home/banner_03.webp" alt="" />
               <p className="banner-box__title">내 취향에 맞는 <br/>스터디 찾기 꿀팁은? 💕</p>
             </div>
           </SwiperSlide>

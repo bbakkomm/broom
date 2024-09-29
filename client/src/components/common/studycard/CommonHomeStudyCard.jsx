@@ -26,15 +26,13 @@ function HomeStudyCard(
     navigate('/study/studydetail');
   }
 
-  const domain = [window.location.protocol, window.location.host].join('//') + '/';
-
   return (
     <ul className="studyCard" key={idx} data-prod={objId} onClick={listClickHandler}>
       <li className="studyCard__item">
         <div className="studyBox">
           <div className="studyBox__content">
             <div className="studyBox__image">
-              <img src={domain + thumb} alt={title + " 모임 상세보기"} />
+              <img src={thumb} alt={title + " 모임 상세보기"} />
             </div>
             <div className="studyBox__text">
               <h3 className="studyBox__title">{title}</h3>

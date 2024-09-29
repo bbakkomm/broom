@@ -26,8 +26,6 @@ function Study() {
 	const currentUserId = loadData[1].data.user._id;
 	// const isLikes = studys.map(v => v.like.includes(currentUserId));
 
-	const domain = [window.location.protocol, window.location.host].join('//') + '/';
-
 	const [studyCard, setStudyCard] = useState(studys);
 	const [search, setSearch] = useState('');
 
@@ -49,7 +47,7 @@ function Study() {
 				maximumPerson={item.maximumPerson}
 				skillTag={item.skillTag}
 				complete={item.complete}
-				imgSrc={domain + item.thumb.path}
+				imgSrc={item.thumb.path}
 				status={item.status}
 				name={item.name}
 				location={item.loaction}

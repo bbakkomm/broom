@@ -38,7 +38,6 @@ const Profile = () => {
   // console.log(likes);
 
   const navigate = useNavigate();
-  const domain = [window.location.protocol, window.location.host].join('//') + '/';
 
   const logOutHandler = async (e) => {
     e.preventDefault();
@@ -67,7 +66,7 @@ const Profile = () => {
         maximumPerson={item.maximumPerson}
         skillTag={item.skillTag}
         complete={item.complete}
-        imgSrc={domain + item.thumb.path}
+        imgSrc={item.thumb.path}
         status={item.status}
         name={item.name}
         location={item.loaction}
@@ -95,7 +94,7 @@ const Profile = () => {
         maximumPerson={item.maximumPerson}
         skillTag={item.skillTag}
         complete={item.complete}
-        imgSrc={domain + item.thumb.path}
+        imgSrc={item.thumb.path}
         status={item.status}
         name={item.name}
         location={item.loaction}
@@ -110,7 +109,7 @@ const Profile = () => {
       <div className={styles.container}>
 
         <ProfileCard 
-          userImg={domain + user.thumb.path} 
+          userImg={user.thumb.path} 
           userName={user.name} 
           userEmail={user.email} 
           skillTag={user.skillTag} 

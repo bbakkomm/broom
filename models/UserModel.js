@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     type: Object,
     file: {},
     default: {
-      path: 'public\\uploads\\profile\\default.jpeg'
+      path: 'uploads\\profile\\default.jpeg'
     }
   },
   job: {

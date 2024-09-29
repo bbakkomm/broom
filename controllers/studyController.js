@@ -18,7 +18,7 @@ export const createStudy = async (req, res) => {
   req.body.createdBy = req.user.userId;
   req.body.member = [req.user.userId];
   req.body.thumb = req.file;
-  req.body.thumb.path = req.body.thumb.path.replace(/client\\/,'');
+  req.body.thumb.path = req.body.thumb.path.replace(/client\\public\\/,'');
 
   const study = await Study.create(req.body);
   res.status(StatusCodes.CREATED).json({ study });
