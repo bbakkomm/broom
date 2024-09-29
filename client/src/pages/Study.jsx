@@ -38,7 +38,8 @@ function Study() {
 				idx={idx}
 				title={item.title}
 				thumb={item.thumb.path}
-				date={item.startDate}
+				startDate={item.startDate}
+				endDate={item.endDate}
 				time={item.time}
 				place={item.place}
 				price={item.price}
@@ -51,7 +52,6 @@ function Study() {
 				name={item.name}
 				location={item.loaction}
 				cost={item.cost}
-				participants={item.participants}
 			/>      
 		)
 	});

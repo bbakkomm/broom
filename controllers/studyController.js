@@ -13,7 +13,7 @@ export const getAllStudy = async (req, res) => {
   res.status(StatusCodes.OK).json({ studys });
 }
 
-// CREATE JOB
+// CREATE study
 export const createStudy = async (req, res) => {
   req.body.createdBy = req.user.userId;
   req.body.member = [req.user.userId];
@@ -24,19 +24,25 @@ export const createStudy = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ study });
 }
 
-// GET SINGLE JOB
+// GET SINGLE study
 export const getStudy = async (req, res) => {
   const study = await Study.findOne({ _id: req.params.id});
   res.status(StatusCodes.OK).json({ study });
 }
 
-// UPDATE JOB
+// GET ALL study member
+export const getObjAllStudyParticipate = async (req, res) => {
+  const studys = await Study.find({ member: req.params.id });
+  res.status(StatusCodes.OK).json({ studys });
+}
+
+// UPDATE study
 export const updateStudy = async (req, res) => {
   const updateStudy = await Study.findByIdAndUpdate(req.params.id, req.body, { new: true });
   res.status(StatusCodes.OK).json({ msg:'study edit', study: updateStudy });
 }
 
-// DELETE JOB
+// DELETE study
 export const deleteStudy = async (req, res) => {
   const removeStudy = await Study.findByIdAndDelete(req.params.id);
   res.status(StatusCodes.OK).json({ msg: 'study delete', study: removeStudy});

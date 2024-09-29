@@ -17,19 +17,26 @@ import customFetch from '../../utils/customFetch.js';
 export const loader = async ({ req }) => {
   try {
     const res = await customFetch.get('/users/current-user', req);
-    return [res.data];
+    const userId = res.data.user._id;
+    
+    const res1 = await customFetch.get(`/study/member-all/${userId}`, req);
+    
+    return [res.data, res1.data];
   } catch (error) {
     console.log(error);
-    return redirect('/');
+    // return redirect('/');
+
   }
 }
 
 const Profile = () => {
   const loadData = useLoaderData();
   const { user } = loadData[0];
-  console.log(user);
+  const { studys } = loadData[1];
+  console.log(studys);
 
   const navigate = useNavigate();
+  const domain = [window.location.protocol, window.location.host].join('//') + '/';
 
   const logOutHandler = async (e) => {
     e.preventDefault();
@@ -40,26 +47,29 @@ const Profile = () => {
     }
   }
 
-  const domain = [window.location.protocol, window.location.host].join('//') + '/';
-  console.log(domain);
-
-  // const userData = userJson.result;
-  const studyData = studyJson.result;
-
-  const studyList = studyData.map((item, idx)=>{
+  const studyList = studys.map((item, idx)=>{
     return (
       <StudyCard 
+        key={`study_${idx}`}
+        objId={item._id}
         idx={idx}
         title={item.title}
         thumb={item.thumb.path}
-        date={item.date}
+        startDate={item.startDate}
+				endDate={item.endDate}
         time={item.time}
         place={item.place}
         price={item.price}
         minimumPerson={item.minimumPerson}
         maximumPerson={item.maximumPerson}
         skillTag={item.skillTag}
-        complate={item.complate}
+        complete={item.complete}
+        imgSrc={domain + item.thumb.path}
+        status={item.status}
+        name={item.name}
+        location={item.loaction}
+        cost={item.cost}
+        participants={item.participants}
       />      
     )
   });
@@ -74,7 +84,7 @@ const Profile = () => {
           userEmail={user.email} 
           skillTag={user.skillTag} 
           like={user.like} 
-          studing={user.study} 
+          studing={studys.length} 
           complate={user.complete} 
         />
 

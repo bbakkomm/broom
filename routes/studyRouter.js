@@ -3,6 +3,7 @@ const router = Router();
 
 import { 
   getObjAllStudy,
+  getObjAllStudyParticipate,
   createStudy, 
   
   getStudy, 
@@ -23,8 +24,10 @@ router.route('/:id')
   // .patch(validateStudyInput, validateIdParam, updateStudy)
   .patch(validateStudyInput, updateStudy)
   .delete(validateIdParam, deleteStudy);
-
+  
 router.route('/user/:id')
   .get(getAllStudy)
 
+router.route('/member-all/:id')
+  .get(getObjAllStudyParticipate)
 export default router;

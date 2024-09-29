@@ -15,7 +15,8 @@ function StudyCard(
     objId,
     title, 
     thumb,
-    date, 
+    startDate, 
+    endDate, 
     time, 
     place, 
     price, 
@@ -30,7 +31,9 @@ function StudyCard(
   const navigate = useNavigate();
 
   const listClickHandler = (e) => {
+    e.preventDefault();
     const targetUl = e.target.closest('.studycard');
+    console.log(targetUl);
     sessionStorage.setItem('singleStudyValue', targetUl.getAttribute('data-prod'));
     navigate('/study/studydetail');
   }
@@ -90,7 +93,7 @@ function StudyCard(
             <ul className="study-box__list">
               <li className="study-box__item">
                 <CalendarTodayRoundedIcon />
-                <span className="study-box__desc">{date} ~</span>
+                <span className="study-box__desc">{startDate} ~ {endDate}</span>
               </li>
               <li className="study-box__item">
                 <AccessAlarmsRoundedIcon />
