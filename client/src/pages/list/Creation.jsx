@@ -24,7 +24,7 @@ export const action = async ({ request }) => {
   console.log(formData);
 
   if (file && file.size > 500000) {
-    toast.error('Image size too large');
+    toast.error('파일 용량이 너무 큽니다.');
     return null;
   }
 
@@ -37,7 +37,7 @@ export const action = async ({ request }) => {
   
   try {
     const res = await customFetch.post('/study', formData);
-    toast.success('study create successful');
+    toast.success('스터디 생성 완료.');
     return redirect('/study');
   } catch (error) {
     toast.error(error?.response?.data?.msg);

@@ -25,17 +25,17 @@ export const createStudy = async (req, res) => {
     await fs.unlink(req.file.path);
     req.body.thumb = response.secure_url;
     req.body.thumbPublicId = response.public_id;
+
+    const createStudy = await Study.create(req.body);
+
+    // if (createStudy.thumbPublicId) {
+    //   await coludinary.v2.uploader.destroy(createStudy.thumbPublicId);
+    // }
+
+    res.status(StatusCodes.CREATED).json({ createStudy });
   } else {
     throw new Error("파일이 없습니다.");
   }
-
-  const createStudy = await Study.create(req.body);
-
-  // if (createStudy.thumbPublicId) {
-  //   await coludinary.v2.uploader.destroy(createStudy.thumbPublicId);
-  // }
-
-  res.status(StatusCodes.CREATED).json({ createStudy });
 }
 
 // GET SINGLE study
