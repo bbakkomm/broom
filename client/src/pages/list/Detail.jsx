@@ -92,10 +92,12 @@ function Detail(props) {
     // 스터디 삭제 버튼
     const removeHandler = async (req) => {
         try {
-            const datttId = sessionStorage.getItem('singleStudyValue');
-            const res = await customFetch.delete(`/study/${datttId}`, req);
-            toast.success('study delete successful');
-            navigate('/study');
+            if (window.confirm('정말 삭제하시겠습니까?')) {
+                const datttId = sessionStorage.getItem('singleStudyValue');
+                const res = await customFetch.delete(`/study/${datttId}`, req);
+                toast.success('study delete successful');
+                navigate('/study');
+            }
         } catch (error) {
             toast.error(error?.response?.data?.msg);
             return error;
