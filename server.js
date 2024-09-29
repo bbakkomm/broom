@@ -29,10 +29,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // 배포용
-app.use(express.static(path.resolve(__dirname, './client/dist')));
+// app.use(express.static(path.resolve(__dirname, './client/dist')));
 
 // DEV
-// app.use(express.static(path.resolve(__dirname, './client/public')));
+app.use(express.static(path.resolve(__dirname, './client/public')));
 
 app.use(cookieParser());
 app.use(express.json());
@@ -50,9 +50,9 @@ app.use('/api/v1/users', authenticateUser, userRouter);
 app.use('/api/v1/auth', authRouter);
 
 // 배포용
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'));
+// });
 
 // app.get('*', (req, res) => {
 //   res.sendFile(path.resolve(__dirname, './public', 'index.html'));
