@@ -70,44 +70,53 @@ img {width: 100%; height: 100%; object-fit: cover;}
 .select-box {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: start; gap: 1rem .4rem; margin-bottom: 1.6rem;
 
-  &__radio {display: none;}
+  &__radio {
+    display: none;
+
+    &--javascript:checked+label {background-color: #f7df1e; color: #000;}
+    &--react:checked+label {background-color: #02d9ff; color: #fff;}
+    &--vue:checked+label {background-color: #435466; color: #4dba87;}
+    &--typescript:checked+label {background: #3178c6; color: #fff;}
+    &--node:checked+label {background-color: #80BD01; color: #fff;}
+    &--java:checked+label {background-color: #EC2025; color: #fff;}
+    &--dart:checked+label {background-color: #00cbb2; color: #fff;}
+    &--flutter:checked+label {background-color: #5dc2ed; color: #fff;}
+    &--html:checked+label {background-color: #f15a29; color: #fff;}
+    &--css:checked+label {background-color: #0396fc; color: #fff;}
+    &--scss:checked+label {background-color: #cf649b; color: #fff;}
+    &--figma:checked+label {background-color: #a259ff; color: #fff;}
+    &--xd:checked+label {background-color: #FF61F6; color: #fff;}
+  
+    &--planner:checked+label {background: #e8c36a; color: #fff;}
+    &--designer:checked+label {background: #f16947; color: #fff;}
+    &--developer:checked+label {background: #2a9d8e; color: #fff;}
+  }
   &__text {padding: .4rem 1.2rem; border-radius: .4rem; border: 1px solid #e5e5e5; font-size: 1.4rem; color: #ccc; cursor: pointer;}
-  
-  &--figma:checked+label {background-color: #a259ff; color: #fff;}
-  &--html:checked+label {background-color: #f15a29; color: #fff;}
-  &--css:checked+label {background-color: #0396fc; color: #fff;}
-  &--scss:checked+label {background-color: #cf649b; color: #fff;}
-  &--javascript:checked+label {background-color: #f7df1e; color: #000;}
-  &--react:checked+label {background-color: #02d9ff; color: #fff;}
-  &--vue:checked+label {background-color: #435466; color: #4dba87;}
-  &--typescript:checked+label {background: #3178c6; color: #fff;}
-  
-  &--planner:checked+label {background: #e8c36a; color: #fff;}
-  &--designer:checked+label {background: #f16947; color: #fff;}
-  &--developer:checked+label {background: #2a9d8e; color: #fff;}
   
   &:checked+label {border: 1px solid transparent;}
 }
 
 // skill-tag-box
-.skill-tag-box {display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; padding: 0 2rem; gap: .4rem; margin-bottom: 3.6rem;}
+.skill-tag-box {display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; padding: 0 2rem; gap: .4rem; margin-bottom: 2.4rem;}
 .skill-tag-box__item {}
 
 .skill-tag {
-	display: flex; justify-content: flex-start; align-items: center; gap: .3rem; font-size: 1.1rem; line-height: 1.5rem; margin-bottom: 1.6rem;
-	span {border-radius: .5rem; padding: .1rem .6rem; font-weight: 700;}
-	&--html {border: 1px solid #FB744A; background-color: #FB744A; color: #fff;}
-	&--css {border: 1px solid #FBD44A; background-color: #FBD44A; color: #fff;}
-	&--scss {border: 1px solid #CF649B; background-color: #CF649B; color: #fff;}
-	&--javascript {border: 1px solid #F7DF1E; background-color: #F7DF1E; color: #000;}
-	&--typescript {border: 1px solid #3178C6; background-color: #3178C6; color: #fff;}
-	&--react {border: 1px solid #61DAFB; background-color: #61DAFB; color: #fff;}
-	&--node {border: 1px solid #80BD01; background-color: #80BD01; color: #fff;}
-	&--java {border: 1px solid #EC2025; background-color: #EC2025; color: #fff;}
-	&--figma {border: 1px solid #FF7161; background-color: #FF7161; color: #fff;}
-	&--xd {border: 1px solid #FF61F6; background-color: #FF61F6; color: #fff;}
-	&--dart {border: 1px solid #00cbb2; background-color: #00cbb2; color: #fff;}
-	&--flutter {border: 1px solid #5dc2ed; background-color: #5dc2ed; color: #fff;}
-	&--ing {border: 1px solid #0396FC; color: #0396FC;}
-	&--complate {border: 1px solid #aaa; color: #aaa;}
-  }
+	display: flex; justify-content: flex-start; align-items: center; flex-wrap: wrap; gap: .4rem; font-size: 1.1rem; line-height: 1.5rem; margin-bottom: 1.6rem;
+	
+  span {border-radius: .5rem; padding: .1rem .6rem; font-weight: 700;}
+	&__javascript {border: 1px solid #F7DF1E; background-color: #F7DF1E; color: #000;}
+	&__react {border: 1px solid #61DAFB; background-color: #61DAFB; color: #fff;}
+  &__vue {border: 1px solid #435466; background-color: #435466; color: #4dba87;}
+	&__typescript {border: 1px solid #3178C6; background-color: #3178C6; color: #fff;}
+	&__node {border: 1px solid #80BD01; background-color: #80BD01; color: #fff;}
+	&__java {border: 1px solid #EC2025; background-color: #EC2025; color: #fff;}
+	&__dart {border: 1px solid #00cbb2; background-color: #00cbb2; color: #fff;}
+	&__flutter {border: 1px solid #5dc2ed; background-color: #5dc2ed; color: #fff;}
+	&__html {border: 1px solid #FB744A; background-color: #FB744A; color: #fff;}
+	&__css {border: 1px solid #FBD44A; background-color: #FBD44A; color: #fff;}
+	&__scss {border: 1px solid #CF649B; background-color: #CF649B; color: #fff;}
+	&__figma {border: 1px solid #FF7161; background-color: #FF7161; color: #fff;}
+	&__xd {border: 1px solid #FF61F6; background-color: #FF61F6; color: #fff;}
+	&__ing {border: 1px solid #0396FC; color: #0396FC;}
+	&__complate {border: 1px solid #aaa; color: #aaa;}
+}

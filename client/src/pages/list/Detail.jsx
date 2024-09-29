@@ -217,42 +217,57 @@ function Detail(props) {
                             <SettingsOutlinedIcon/>
                             <p className="blind">주요 기술</p>
                         </div>
-                        <div className="skillTag">
-                            {
-                                skillTag.includes('javascript')
-                                ? (<span className="skillTag__javascript">JavaScript</span>)
-                                : ''
-                            }
-                            {
-                                skillTag.includes('typescript')
-                                ? (<span className="skillTag__typescript">TypeScript</span>)
-                                : ''
-                            }
-                            {
-                                skillTag.includes('react')
-                                ? (<span className="skillTag__react">React</span>)
-                                : ''
-                            }
-                            {
-                                skillTag.includes('dart')
-                                ? (<span className="skillTag__dart">Dart</span>)
-                                : ''
-                            }
-                            {
-                                skillTag.includes('flutter')
-                                ? (<span className="skillTag__flutter">Flutter</span>)
-                                : ''
-                            }
-                            {
-                                skillTag.includes('html')
-                                ? (<span className="skillTag__html">HTML</span>)
-                                : ''
-                            }
-                            {
-                                skillTag.includes('css')
-                                ? (<span className="skillTag__css">CSS</span>)
-                                : ''
-                            }
+                        <div className="skill-tag">
+                        {
+                            skillTag.includes('javascript')
+                            ? (<span className="skill-tag__javascript">JavaScript</span>)
+                            : ''
+                        }
+                        {
+                            skillTag.includes('react')
+                            ? (<span className="skill-tag__react">React</span>)
+                            : ''
+                        }
+                        {
+                            skillTag.includes('vue')
+                            ? (<span className="skill-tag__vue">Vue</span>)
+                            : ''
+                        }
+                        {
+                            skillTag.includes('typescript')
+                            ? (<span className="skill-tag__typescript">TypeScript</span>)
+                            : ''
+                        }
+                        {
+                            skillTag.includes('dart')
+                            ? (<span className="skill-tag__dart">Dart</span>)
+                            : ''
+                        }
+                        {
+                            skillTag.includes('flutter')
+                            ? (<span className="skill-tag__flutter">Flutter</span>)
+                            : ''
+                        }
+                        {
+                            skillTag.includes('html')
+                            ? (<span className="skill-tag__html">HTML</span>)
+                            : ''
+                        }
+                        {
+                            skillTag.includes('css')
+                            ? (<span className="skill-tag__css">CSS</span>)
+                            : ''
+                        }
+                        {
+                            skillTag.includes('scss')
+                            ? (<span className="skill-tag__scss">SCSS</span>)
+                            : ''
+                        }
+                        {
+                            skillTag.includes('figma')
+                            ? (<span className="skill-tag__figma">Figma</span>)
+                            : ''
+                        }
                         </div>
                     </li>
                 </ul>

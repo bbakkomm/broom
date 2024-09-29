@@ -9,7 +9,7 @@ function Member(props) {
             <div className="member__info">
                 <div className="member__data">
                     <p className="member__title">{member.name}</p>
-                    { member._id === create ? (<span className="member__status">모임장</span>) : ('')}
+                    { member._id === create ? (<span className="member__status">★</span>) : ('')}
                 </div>
                 <p className="member__text">{ member.introduce }</p>
             </div>

@@ -28,41 +28,56 @@ function ProfileCard(
               <ArrowForwardIosIcon className="btn_arrowforward"/>
             </Link>
         </div>
-        <div className="skill-tag-box">
+        <div className="skill-tag">
           {
-            skillTag.includes('javascript')
-            ? (<span className="skill-tag skill-tag--js">JavaScript</span>)
-            : ''
+              skillTag.includes('javascript')
+              ? (<span className="skill-tag__javascript">JavaScript</span>)
+              : ''
           }
           {
-            skillTag.includes('typescript')
-            ? (<span className="skill-tag skill-tag--ts">TypeScript</span>)
-            : ''
+              skillTag.includes('react')
+              ? (<span className="skill-tag__react">React</span>)
+              : ''
           }
           {
-            skillTag.includes('react')
-            ? (<span className="skill-tag skill-tag--react">React</span>)
-            : ''
+              skillTag.includes('vue')
+              ? (<span className="skill-tag__vue">Vue</span>)
+              : ''
           }
           {
-            skillTag.includes('figma')
-            ? (<span className="skill-tag skill-tag--figma">figma</span>)
-            : ''
+              skillTag.includes('typescript')
+              ? (<span className="skill-tag__typescript">TypeScript</span>)
+              : ''
           }
           {
-            skillTag.includes('html')
-            ? (<span className="skill-tag skill-tag--html">html</span>)
-            : ''
+              skillTag.includes('dart')
+              ? (<span className="skill-tag__dart">Dart</span>)
+              : ''
           }
           {
-            skillTag.includes('css')
-            ? (<span className="skill-tag skill-tag--css">css</span>)
-            : ''
+              skillTag.includes('flutter')
+              ? (<span className="skill-tag__flutter">Flutter</span>)
+              : ''
           }
           {
-            skillTag.includes('scss')
-            ? (<span className="skill-tag skill-tag--scss">SCSS</span>)
-            : ''
+              skillTag.includes('html')
+              ? (<span className="skill-tag__html">HTML</span>)
+              : ''
+          }
+          {
+              skillTag.includes('css')
+              ? (<span className="skill-tag__css">CSS</span>)
+              : ''
+          }
+          {
+              skillTag.includes('scss')
+              ? (<span className="skill-tag__scss">SCSS</span>)
+              : ''
+          }
+          {
+              skillTag.includes('figma')
+              ? (<span className="skill-tag__figma">Figma</span>)
+              : ''
           }
         </div>
         <div className="status-box">

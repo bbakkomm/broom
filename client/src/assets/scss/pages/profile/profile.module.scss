@@ -23,7 +23,8 @@
 .skill-tag-box {display: flex; justify-content: flex-start; align-items: center; gap: .3rem; margin-bottom: 3.6rem;}
 .skill-tag-box__item {}
 
-// .skill-tag {
+.skill-tag {
+  margin-bottom: 3.6rem;
 //   height: 2.3rem; color: #000; font-size: 1.1rem; font-weight: 700; padding: .4rem .8rem; border-radius: .5rem;
 //   &--js {background: #F7DF1E; color: #000;}
 //   &--ts {background: #3178C6; color: #fff;}
@@ -32,7 +33,7 @@
 //   &--html {background: #dd4b25; color: #fff;}
 //   &--css {background: #264ce0; color: #fff;}
 //   &--scss {background: #fd1b1b; color: #fff;}
-// }
+}
 
 .status-box {border: .1rem solid #F2F1F6; border-radius: 1rem; margin: 0 2rem 1.6rem; box-shadow: .1rem -.1rem .6rem 0 #A6B4C826;}
 .status {
