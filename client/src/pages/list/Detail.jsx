@@ -320,6 +320,12 @@ function Detail(props) {
                         <button className="btn__button btn-bg" onClick={participateHandler}>참여하기</button>    
                     </div>
                 ):('')}
+
+                { !isManager && !isMember && !isJoinMemberMaxNum ? (
+                    <div className="btn">
+                        <button className="btn__button btn-un btn-bg">모집이 종료되었습니다.</button>    
+                    </div>
+                ):('')}
         </main>
     )
 }
