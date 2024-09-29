@@ -72,7 +72,7 @@ function Header(props) {
               ): (
                 <>
                   {/* header detail page */}
-                  <Link to={to} title={title} className="header__link">
+                  <Link to={to} onClick={() => navigate(-1)} title={title} className="header__link">
                     <ArrowBackIosNewOutlinedIcon />
                     <h1 className="header__title">{title}</h1>
                   </Link>

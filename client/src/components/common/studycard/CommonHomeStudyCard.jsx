@@ -1,6 +1,9 @@
+import { redirect, useNavigate } from 'react-router-dom';
+
 function HomeStudyCard(
   { 
-    idx, 
+    idx,
+    objId, 
     title, 
     thumb,
     date, 
@@ -13,16 +16,25 @@ function HomeStudyCard(
     complate,
   }
 ) {
+  const navigate = useNavigate();
 
-  const imgPath = 'http://localhost:5173/'
+  const listClickHandler = (e) => {
+    e.preventDefault();
+    const targetUl = e.target.closest('.studyCard');
+    console.log(targetUl);
+    sessionStorage.setItem('singleStudyValue', targetUl.getAttribute('data-prod'));
+    navigate('/study/studydetail');
+  }
+
+  const domain = [window.location.protocol, window.location.host].join('//') + '/';
 
   return (
-    <ul className="studyCard" key={idx}>
+    <ul className="studyCard" key={idx} data-prod={objId} onClick={listClickHandler}>
       <li className="studyCard__item">
         <div className="studyBox">
           <div className="studyBox__content">
             <div className="studyBox__image">
-              <img src={imgPath + thumb} alt={title + " 모임 상세보기"} />
+              <img src={domain + thumb} alt={title + " 모임 상세보기"} />
             </div>
             <div className="studyBox__text">
               <h3 className="studyBox__title">{title}</h3>

@@ -43,6 +43,7 @@ function Home() {
     return (
       <HomeStudyCard
         idx={idx}
+        objId={item._id}
         title={item.title}
         thumb={item.thumb.path}
         date={item.date}
