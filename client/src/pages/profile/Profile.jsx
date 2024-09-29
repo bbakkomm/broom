@@ -19,21 +19,23 @@ export const loader = async ({ req }) => {
     const res = await customFetch.get('/users/current-user', req);
     const userId = res.data.user._id;
     
-    const res1 = await customFetch.get(`/study/member-all/${userId}`, req);
+    const res1 = await customFetch.get(`/study/like-all/${userId}`, req);
+
+    const res2 = await customFetch.get(`/study/member-all/${userId}`, req);
     
-    return [res.data, res1.data];
+    return [res.data, res1.data, res2.data];
   } catch (error) {
     console.log(error);
     // return redirect('/');
-
   }
 }
 
 const Profile = () => {
   const loadData = useLoaderData();
-  const { user } = loadData[0];
-  const { studys } = loadData[1];
-  console.log(studys);
+  const user = loadData[0].user;
+  const likes = loadData[1].studys;
+  const studys = loadData[2].studys;
+  // console.log(likes);
 
   const navigate = useNavigate();
   const domain = [window.location.protocol, window.location.host].join('//') + '/';
@@ -46,6 +48,33 @@ const Profile = () => {
       navigate('/');
     }
   }
+
+  const likeList = likes.map((item, idx) => {
+    return (
+      <StudyCard 
+        key={`study_${idx}`}
+        objId={item._id}
+        idx={idx}
+        title={item.title}
+        thumb={item.thumb.path}
+        startDate={item.startDate}
+				endDate={item.endDate}
+        time={item.time}
+        place={item.place}
+        price={item.price}
+        minimumPerson={item.minimumPerson}
+        maximumPerson={item.maximumPerson}
+        skillTag={item.skillTag}
+        complete={item.complete}
+        imgSrc={domain + item.thumb.path}
+        status={item.status}
+        name={item.name}
+        location={item.loaction}
+        cost={item.cost}
+        participants={item.participants}
+      />      
+    )
+  });
 
   const studyList = studys.map((item, idx)=>{
     return (
@@ -83,13 +112,18 @@ const Profile = () => {
           userName={user.name} 
           userEmail={user.email} 
           skillTag={user.skillTag} 
-          like={user.like} 
+          like={likes.length} 
           studing={studys.length} 
           complate={user.complete} 
         />
 
         <div className={styles.groupBox}>
-          <h3 className={styles.groupBox__title}>내가 신청한 모임</h3>          
+          <h3 className={styles.groupBox__title}>내가 찜한 모임</h3>          
+          {likeList}
+        </div>
+
+        <div className={styles.groupBox}>
+          <h3 className={styles.groupBox__title}>내가 활동중인 모임</h3>          
           {studyList}
         </div>
       </div>

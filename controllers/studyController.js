@@ -30,6 +30,12 @@ export const getStudy = async (req, res) => {
   res.status(StatusCodes.OK).json({ study });
 }
 
+// GET ALL study like
+export const getObjAllStudyLike = async (req, res) => {
+  const studys = await Study.find({ like: req.params.id });
+  res.status(StatusCodes.OK).json({ studys });
+}
+
 // GET ALL study member
 export const getObjAllStudyParticipate = async (req, res) => {
   const studys = await Study.find({ member: req.params.id });

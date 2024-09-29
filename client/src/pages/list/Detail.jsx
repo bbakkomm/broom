@@ -47,7 +47,8 @@ function Detail(props) {
 
     const domain = [window.location.protocol, window.location.host].join('//') + '/';
 
-    console.log(study);
+    // console.log(study);
+    // console.log(getCurrentUser);
     const [
         skillTag, 
         member
@@ -64,11 +65,6 @@ function Detail(props) {
 
     // 스터디 최대 인원 초과 여부
     const isJoinMemberMaxNum = membersArr.map(v => v._id).length < study.maximumPerson;
-
-    // 페이지 진입시 ScrollTop
-    useEffect(()=>{
-        window.scrollTo(0, 0);
-    }, [])
 
     // 페이지 진입시 ScrollTop
     useEffect(()=>{
@@ -121,7 +117,7 @@ function Detail(props) {
             const res = await customFetch.patch(`/study/${datttId}`, formData);
             
             if (res1.data.study.member.length >= res1.data.study.maximumPerson) {
-                const res = await customFetch.patch(`/study/${datttId}`, {complete: true});
+                const res3 = await customFetch.patch(`/study/${datttId}`, {complete: true});
             }
 
             toast.success('study member add successful');

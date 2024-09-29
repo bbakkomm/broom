@@ -1,47 +1,64 @@
 import { useState } from 'react';
 import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import customFetch from '../../../../utils/customFetch.js';
 
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
+export const loader = async ({ req }) => {
+    try {
+        const res = await customFetch.get(`/users/current-user`, req);
 
-// const datttId = '66f18c4a2a30944fef4c41e2';
+        return res;
+    } catch (error) {
+        console.log(error);
+    //   return redirect('/study');
+    }
+}
 
-// export const loader = async ({ req }) => {
-//     try {
-//       const res = await customFetch.get(`/study/${datttId}`, req);
-//       return res.data;
-//     } catch (error) {
-//       console.log(error);
-//     //   return redirect('/study');
-//     }
-// }
-
-function LikeBtn() {
-    const [like, setLike] = useState(false);
-    const [likeCount, setLikeCount] = useState(0);  
+function LikeBtn() { 
+    const navigate = useNavigate();
     const loadData = useLoaderData();
-    const { study } = loadData;
-    // const studyLikeCount = study.like;
-    // console.log(loadData);
+    // const [{ study }] = loadData;    console.log(loadData);
+    const getStudy = loadData[0];
+    const getCurrentUser = loadData[2];
+
+    const getStudyId = getStudy.study._id;
+    const userId = getCurrentUser._id;
+
+    let likeArr = getStudy.study.like;
+    let isLikeUser = getStudy.study.like.includes(userId);
+    
+    console.log(getStudy.study);
     // console.log(study);
 
-    // 좋아요버튼
-    const handleLike = () => {
-        if(like) {
-            setLikeCount(likeCount - 1);
-            console.log(likeCount);
-            
-        } else {
-            setLikeCount(likeCount + 1);
-            console.log(likeCount);
+    // 좋아요 버튼
+    const likeHandler = async (e) => {
+        e.preventDefault();
+
+        try {
+            if (!isLikeUser) {
+                likeArr.push(userId);
+            } else {
+                likeArr = likeArr.filter(value => value !== userId);
+            }
+
+            let formData = { like: likeArr }
+            const res = await customFetch.patch(`/study/${getStudyId}`, formData);
+
+            toast.success('study like edit successful');
+            navigate('/study/studydetail');
+        } catch (error) {
+            toast.error(error?.response?.data?.msg);
+            return error;
         }
-            setLike(!like);
     }
 
     return (
-        <button className="header__like" onClick={handleLike}>
-            {like ? <FavoriteOutlinedIcon className="like__icon" /> : <FavoriteBorderOutlinedIcon className="like__icon" />}
+        <button className="header__like" onClick={likeHandler}>
+            {isLikeUser ? <FavoriteOutlinedIcon className="like__icon" /> : <FavoriteBorderOutlinedIcon className="like__icon" />}
         </button>
     );
 }

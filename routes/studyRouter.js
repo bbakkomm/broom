@@ -4,6 +4,7 @@ const router = Router();
 import { 
   getObjAllStudy,
   getObjAllStudyParticipate,
+  getObjAllStudyLike,
   createStudy, 
   
   getStudy, 
@@ -30,4 +31,7 @@ router.route('/user/:id')
 
 router.route('/member-all/:id')
   .get(getObjAllStudyParticipate)
+
+router.route('/like-all/:id')
+  .get(getObjAllStudyLike)
 export default router;
