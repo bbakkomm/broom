@@ -259,7 +259,7 @@ function Detail(props) {
                 {/* <Member member={study.createdBy}/> */}
                 <ul className="member__list">
                     {membersArr.map((member, i) => 
-                        <Member member={member} key={i}/>
+                        <Member member={member} create={study.createdBy} key={i}/>
                     )}
                 </ul>
             </section>

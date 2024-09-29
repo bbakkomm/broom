@@ -1,7 +1,7 @@
 function Member(props) {
     const domain = [window.location.protocol, window.location.host].join('//') + '/';
-    const {member} = props;
-    console.log(member);
+    const {member, create} = props;
+    // console.log(member._id, create);
 
     return (
         <li className="member__item">
@@ -9,7 +9,7 @@ function Member(props) {
             <div className="member__info">
                 <div className="member__data">
                     <p className="member__title">{member.name}</p>
-                    <span className="member__status">NEW</span>
+                    { member._id === create ? (<span className="member__status">모임장</span>) : ('')}
                 </div>
                 <p className="member__text">{ member.introduce }</p>
             </div>
