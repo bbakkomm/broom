@@ -8,7 +8,8 @@ function Modal (props) {
   const { ModalClose } = props;
   const [copied, setCopied] = useState(false);
 
-  const currentUrl = window.location.href;
+  const getStudyId = sessionStorage.getItem('singleStudyValue');
+  const currentUrl = window.location.href + `?stuid=${btoa(getStudyId)}`;
   const handleCopy = () => {
 
     navigator.clipboard.writeText(currentUrl).then(

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 // api
 import customFetch from "../../utils/customFetch.js";
-import FormRow from '../../components/FormRow';
+// import FormRow from '../../components/FormRow';
 
 // component
 import Member from "./components/Member";
@@ -16,11 +16,21 @@ import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import DeleteIcon from '@mui/icons-material/Delete';
+// import DeleteIcon from '@mui/icons-material/Delete';
 
+function isNull(v) {
+    return (v === undefined || v === null) ? true : false;
+}
 
 export const loader = async ({ req }) => {
-    
+    // 공유하기 Url로 진입 시, 파라미터 디코딩 처리
+    const urlParams = new URL(location.href).searchParams;
+    const stuid = urlParams.get('stuid');
+    if (!isNull(stuid)) {
+        const stuidDecode = atob(stuid);
+        sessionStorage.setItem('singleStudyValue', stuidDecode);
+    }
+
     try {
         const datttId = sessionStorage.getItem('singleStudyValue');
         const res = await customFetch.get(`/study/${datttId}`, req);
