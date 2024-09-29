@@ -6,11 +6,11 @@ import ProfileCard from './components/ProfileCard';
 import StudyCard from '../../components/common/studycard/CommonStudyCard';
 
 // CSS style
-import styles from '../../assets/scss/pages/profile/Profile.module.scss';
+import styles from '../../assets/scss/pages/profile/profile.module.scss';
 
 // DB
 // import userJson from '../../assets/data/userData.json';
-import studyJson from '../../assets/data/studyData.json';
+// import studyJson from '../../assets/data/studyData.json';
 
 import customFetch from '../../utils/customFetch.js';
 

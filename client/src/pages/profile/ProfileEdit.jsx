@@ -7,7 +7,7 @@ import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
 
 // CSS style
-import styles from '../../assets/scss/pages/profile/ProfileEdit.module.scss';
+import styles from '../../assets/scss/pages/profile/profileedit.module.scss';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
