@@ -22,7 +22,7 @@ function StudyCard(
     minimumPerson, 
     maximumPerson,
     skillTag,
-    complate,
+    complete,
     imgSrc,
   }
 ) {
@@ -41,7 +41,7 @@ function StudyCard(
       <li className="studycard__item">
         <div className="skill-tag">
           {
-            complate
+            complete
             ? (<span className="skill-tag--complate">완료</span>)
             : (<span className="skill-tag--ing">모집중</span>)
           }

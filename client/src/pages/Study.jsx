@@ -45,7 +45,7 @@ function Study() {
 				minimumPerson={item.minimumPerson}
 				maximumPerson={item.maximumPerson}
 				skillTag={item.skillTag}
-				complate={item.complate}
+				complete={item.complete}
 				imgSrc={domain + item.thumb.path}
 				status={item.status}
 				name={item.name}
