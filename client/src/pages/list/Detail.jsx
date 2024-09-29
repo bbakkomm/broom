@@ -88,7 +88,13 @@ function Detail(props) {
             req2 = req2.filter(value => memberData !== value);
 
             const formData = { member: req2 }
-            const res = await customFetch.patch(`/study/${datttId}`, formData);
+            let res = await customFetch.patch(`/study/${datttId}`, formData);
+
+            const res2 = await customFetch.get(`/study/${datttId}`, '');
+            if (res2.data.study.member.length < res2.data.study.maximumPerson) {
+                let res = await customFetch.patch(`/study/${datttId}`, {complete: false});
+            }
+
             toast.success('study member leave successful');
             navigate('/study/studydetail');
         } catch (error) {
@@ -109,8 +115,13 @@ function Detail(props) {
             let req2 = res1.data.study.member;
             req2.push(memberData);
 
-            const formData = { member: req2 }
+            let formData = { member: req2 }
             const res = await customFetch.patch(`/study/${datttId}`, formData);
+            
+            if (res1.data.study.member.length >= res1.data.study.maximumPerson) {
+                const res = await customFetch.patch(`/study/${datttId}`, {complete: true});
+            }
+
             toast.success('study member add successful');
             navigate('/study/studydetail');
         } catch (error) {
