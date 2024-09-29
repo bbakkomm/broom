@@ -6,12 +6,10 @@ const UserSchema = new mongoose.Schema({
   name: String,
   email: String,
   thumb: {
-    type: Object,
-    file: {},
-    default: {
-      path: 'uploads\\profile\\default.jpeg'
-    }
+    type: String,
+    default: 'https://res.cloudinary.com/dvlunddak/image/upload/v1727637542/default_f7j3nd.jpg'
   },
+  thumbPublicId: String,
   job: {
     type: String,
     enum: ['planner', 'designer', 'developer'],

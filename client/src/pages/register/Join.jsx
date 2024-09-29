@@ -16,7 +16,7 @@ export const action = async ({ request }) => {
 
   try {
     await customFetch.post('/auth/register', data);
-    toast.success('register successful');
+    toast.success('회원가입이 완료되었습니다.');
     return redirect('/joinsuccess');
   } catch (error) {
     toast.error(error?.response?.data?.msg);

@@ -11,7 +11,7 @@ export const action = async ({ request }) => {
 
   try {
     const res = await customFetch.post('/auth/userid', data);
-    toast.success('id search successful');
+    toast.success('아이디를 찾았습니다.');
     return json({
       data: res,
       redirect: "/idsuccess"

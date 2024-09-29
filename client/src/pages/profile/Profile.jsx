@@ -43,7 +43,7 @@ const Profile = () => {
     e.preventDefault();
     if (window.confirm('정말 로그아웃하시겠습니까?')) {
       await customFetch.get('/auth/logout');
-      toast.success('Log Out successful');
+      toast.success('로그아웃 되었습니다.');
       navigate('/');
     }
   }
@@ -56,7 +56,7 @@ const Profile = () => {
         objId={item._id}
         idx={idx}
         title={item.title}
-        thumb={item.thumb.path}
+        thumb={item.thumb}
         startDate={item.startDate}
 				endDate={item.endDate}
         time={item.time}
@@ -66,7 +66,6 @@ const Profile = () => {
         maximumPerson={item.maximumPerson}
         skillTag={item.skillTag}
         complete={item.complete}
-        imgSrc={item.thumb.path}
         status={item.status}
         name={item.name}
         location={item.loaction}
@@ -84,7 +83,7 @@ const Profile = () => {
         objId={item._id}
         idx={idx}
         title={item.title}
-        thumb={item.thumb.path}
+        thumb={item.thumb}
         startDate={item.startDate}
 				endDate={item.endDate}
         time={item.time}
@@ -94,7 +93,6 @@ const Profile = () => {
         maximumPerson={item.maximumPerson}
         skillTag={item.skillTag}
         complete={item.complete}
-        imgSrc={item.thumb.path}
         status={item.status}
         name={item.name}
         location={item.loaction}
@@ -109,7 +107,7 @@ const Profile = () => {
       <div className={styles.container}>
 
         <ProfileCard 
-          userImg={user.thumb.path} 
+          userImg={user.thumb} 
           userName={user.name} 
           userEmail={user.email} 
           skillTag={user.skillTag} 

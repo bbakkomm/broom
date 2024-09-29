@@ -2,11 +2,8 @@ import mongoose from "mongoose";
 
 const studySchema = new mongoose.Schema({
   title: String,
-  thumb: {
-    type: Object,
-    file: {},
-    default: {}
-  },
+  thumb: String,
+  thumbPublicId: String,
   startDate: {
     type: String,
     default: '2024.08.14',
@@ -43,7 +40,7 @@ const studySchema = new mongoose.Schema({
     type: Array,
     item: [],
     default: []
-  }
+  },
 }, { timestamps: true });
 
 export default mongoose.model('Study', studySchema);

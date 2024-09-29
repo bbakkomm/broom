@@ -1,11 +1,10 @@
 function Member(props) {
-    const domain = [window.location.protocol, window.location.host].join('//') + '/';
     const {member, create} = props;
     // console.log(member._id, create);
 
     return (
         <li className="member__item">
-            <img src={ domain + member.thumb.path } alt={ member.name } className="member__img"/>
+            <img src={ member.thumb } alt={ member.name } className="member__img"/>
             <div className="member__info">
                 <div className="member__data">
                     <p className="member__title">{member.name}</p>

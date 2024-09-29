@@ -55,8 +55,6 @@ function Detail(props) {
     const [{ study }, membersArr, getCurrentUser] = loadData;
     const { user } = props;
 
-    const domain = [window.location.protocol, window.location.host].join('//') + '/';
-
     // console.log(study);
     // console.log(getCurrentUser);
     const [
@@ -102,7 +100,7 @@ function Detail(props) {
                     let res = await customFetch.patch(`/study/${datttId}`, {complete: false});
                 }
 
-                toast.success('study member leave successful');
+                toast.success('스터디에 탈퇴되었습니다.');
                 navigate('/study/studydetail');
             }
         } catch (error) {
@@ -130,7 +128,7 @@ function Detail(props) {
                 const res3 = await customFetch.patch(`/study/${datttId}`, {complete: true});
             }
 
-            toast.success('study member add successful');
+            toast.success('스터디에 참여되었습니다.');
             navigate('/study/studydetail');
         } catch (error) {
             toast.error(error?.response?.data?.msg);
@@ -151,7 +149,7 @@ function Detail(props) {
             if (window.confirm('정말 스터디를 삭제하시겠습니까?')) {
                 const datttId = sessionStorage.getItem('singleStudyValue');
                 const res = await customFetch.delete(`/study/${datttId}`, '');
-                toast.success('study delete successful');
+                toast.success('스터디가 삭제되었습니다.');
                 navigate('/study');
             }
         } catch (error) {
@@ -164,7 +162,7 @@ function Detail(props) {
         <main className="detail">
             {/* 스터디 이미지 */}
             <section className="image">
-                <img src={domain + study.thumb.path} alt={study.title} />
+                <img src={study.thumb} alt={study.title} />
             </section>
 
             {/* 스터디 정보 */}

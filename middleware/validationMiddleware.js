@@ -29,7 +29,7 @@ const withValidationErrors = (validateValues) => {
 }
 
 export const validateStudyInput = withValidationErrors([
-  // body('company').notEmpty().withMessage('company is required'),
+  // body('thumb').notEmpty().withMessage('thumb is required'),
   // body('position').notEmpty().withMessage('position is required'),
   // body('studyLocation').notEmpty().withMessage('study Location is required'),
   // body('studyStatus').isIn(Object.values(JOB_STATUS)).withMessage('invalid status value'),

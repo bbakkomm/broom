@@ -1,5 +1,7 @@
 import Study from "../models/StudyModel.js";
 import { StatusCodes } from "http-status-codes";
+import coludinary from 'cloudinary';
+import { promises as fs } from 'fs';
 
 // GET ALL study
 export const getObjAllStudy = async (req, res) => {
@@ -17,11 +19,23 @@ export const getAllStudy = async (req, res) => {
 export const createStudy = async (req, res) => {
   req.body.createdBy = req.user.userId;
   req.body.member = [req.user.userId];
-  req.body.thumb = req.file;
-  req.body.thumb.path = req.body.thumb.path.replace(/client\\public\\/,'');
 
-  const study = await Study.create(req.body);
-  res.status(StatusCodes.CREATED).json({ study });
+  if (req.file) {
+    const response = await coludinary.v2.uploader.upload(req.file.path);
+    await fs.unlink(req.file.path);
+    req.body.thumb = response.secure_url;
+    req.body.thumbPublicId = response.public_id;
+  } else {
+    throw new Error("파일이 없습니다.");
+  }
+
+  const createStudy = await Study.create(req.body);
+
+  // if (createStudy.thumbPublicId) {
+  //   await coludinary.v2.uploader.destroy(createStudy.thumbPublicId);
+  // }
+
+  res.status(StatusCodes.CREATED).json({ createStudy });
 }
 
 // GET SINGLE study

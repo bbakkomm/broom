@@ -27,7 +27,6 @@ function StudyCard(
     maximumPerson,
     skillTag,
     complete,
-    imgSrc,
     like
   }
 ) {
@@ -65,18 +64,21 @@ function StudyCard(
 
   const likeClickHandler = async (e) => {
     e.stopPropagation();
+    let likeState = '';
 
     try {
         if (!isLike) {
             likeArr.push(currentUserId);
+            likeState = '찜 추가되었습니다.';
         } else {
             likeArr = likeArr.filter(value => value !== currentUserId);
+            likeState = '찜 해제되었습니다.';
         }
 
         let formData = { like: likeArr }
         const res = await customFetch.patch(`/study/${objId}`, formData);
 
-        toast.success('study like edit successful');
+        toast.success(likeState);
         navigate(currentLocation);
     } catch (error) {
         toast.error(error?.response?.data?.msg);
@@ -148,7 +150,7 @@ function StudyCard(
           <h3 className="study-box__title">{title}</h3>
           <div className="study-box__content">
             <div className="study-box__image">
-              <img src={imgSrc} alt={title + ' 모임 상세보기'} />
+              <img src={thumb} alt={title + ' 모임 상세보기'} />
             </div>
             <ul className="study-box__list">
               <li className="study-box__item">

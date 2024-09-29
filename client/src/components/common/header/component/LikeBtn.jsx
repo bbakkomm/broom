@@ -38,18 +38,21 @@ function LikeBtn() {
     // 좋아요 버튼
     const likeHandler = async (e) => {
         e.preventDefault();
+        let likeState = '';
 
         try {
             if (!isLikeUser) {
                 likeArr.push(userId);
+                likeState = '찜 추가되었습니다.';
             } else {
                 likeArr = likeArr.filter(value => value !== userId);
+                likeState = '찜 해제되었습니다.';
             }
 
             let formData = { like: likeArr }
             const res = await customFetch.patch(`/study/${getStudyId}`, formData);
 
-            toast.success('study like edit successful');
+            toast.success(likeState);
             navigate(currentLocation);
         } catch (error) {
             toast.error(error?.response?.data?.msg);

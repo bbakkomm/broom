@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, Form, json, redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -49,9 +49,14 @@ function Creation(props) {
   const {study} = props;
 
   const [file, setFile] = useState();
-    function handleChange(e) {
-        setFile(URL.createObjectURL(e.target.files[0]));
-    }
+  function handleChange(e) {
+    setFile(URL.createObjectURL(e.target.files[0]));
+  }
+
+  // 페이지 진입시 ScrollTop
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  }, [])
 
   return (
     <main className="creation">

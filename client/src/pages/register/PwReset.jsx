@@ -11,7 +11,7 @@ export const action = async ({ request }) => {
   
   try {
     await customFetch.patch(`/auth/pwreset/${data.tid}`, data);
-    toast.success('password edit successful');
+    toast.success('비밀번호 변경이 완료되었습니다.');
     return redirect('/pwsuccess');
   } catch (error) {
     toast.error(error?.response?.data?.msg);

@@ -37,7 +37,7 @@ function Study() {
 				objId={item._id}
 				idx={idx}
 				title={item.title}
-				thumb={item.thumb.path}
+				thumb={item.thumb}
 				startDate={item.startDate}
 				endDate={item.endDate}
 				time={item.time}
@@ -47,7 +47,6 @@ function Study() {
 				maximumPerson={item.maximumPerson}
 				skillTag={item.skillTag}
 				complete={item.complete}
-				imgSrc={item.thumb.path}
 				status={item.status}
 				name={item.name}
 				location={item.loaction}
