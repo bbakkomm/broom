@@ -75,11 +75,6 @@ const Join = () => {
           <p className="input-label">주요기술</p>
           <div className="select-box">
             <div className="select-box__btn">
-              <input type="checkbox" id="figma" name="skillTag" value="figma" className="select-box__radio select-box__radio--figma"/>
-              <label htmlFor="figma" className="select-box__text">Figma</label>
-            </div>
-
-            <div className="select-box__btn">
               <input type="checkbox" id="html" name="skillTag" value="html" className="select-box__radio select-box__radio--html"/>
               <label htmlFor="html" className="select-box__text">HTML</label>
             </div>
@@ -97,6 +92,36 @@ const Join = () => {
             <div className="select-box__btn">
               <input type="checkbox" id="javaScript" name="skillTag" value="javascript" className="select-box__radio select-box__radio--javascript"/>
               <label htmlFor="javaScript" className="select-box__text">JavaScript</label>
+            </div>
+
+            <div className="select-box__btn">
+              <input type="checkbox" id="typescript" name="skillTag" value="typescript" className="select-box__radio select-box__radio--typescript"/>
+              <label htmlFor="typescript" className="select-box__text">TypeScript</label>
+            </div>
+
+            <div className="select-box__btn">
+              <input type="checkbox" id="react" name="skillTag" value="react" className="select-box__radio select-box__radio--react"/>
+              <label htmlFor="react" className="select-box__text">React</label>
+            </div>
+
+            <div className="select-box__btn">
+              <input type="checkbox" id="vue" name="skillTag" value="vue" className="select-box__radio select-box__radio--vue"/>
+              <label htmlFor="vue" className="select-box__text">Vue</label>
+            </div>
+
+            <div className="select-box__btn">
+              <input type="checkbox" id="dart" name="skillTag" value="dart" className="select-box__radio select-box__radio--dart"/>
+              <label htmlFor="dart" className="select-box__text">Dart</label>
+            </div>
+
+            <div className="select-box__btn">
+              <input type="checkbox" id="flutter" name="skillTag" value="flutter" className="select-box__radio select-box__radio--flutter"/>
+              <label htmlFor="flutter" className="select-box__text">Flutter</label>
+            </div>
+
+            <div className="select-box__btn">
+              <input type="checkbox" id="figma" name="skillTag" value="figma" className="select-box__radio select-box__radio--figma"/>
+              <label htmlFor="figma" className="select-box__text">Figma</label>
             </div>
           </div>
 
