@@ -13,7 +13,7 @@ function HomeStudyCard(
     minimumPerson, 
     maximumPerson,
     skillTag,
-    complate,
+    complete,
   }
 ) {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ function HomeStudyCard(
             <div className="studyBox__text">
               <h3 className="studyBox__title">{title}</h3>
               <div className="skill-tag">
-                {complate ? <span className="skill-tag__complate">완료</span> : (<span className="skill-tag__ing">모집중</span>)}
+                {complete ? <span className="skill-tag__complate">완료</span> : (<span className="skill-tag__ing">모집중</span>)}
                 {
                     skillTag.includes('javascript')
                     ? (<span className="skill-tag__javascript">JavaScript</span>)

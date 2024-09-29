@@ -53,7 +53,7 @@ function Home() {
         minimumPerson={item.minimumPerson}
         maximumPerson={item.maximumPerson}
         skillTag={item.skillTag}
-        complate={item.complate}
+        complete={item.complete}
       />
     );
   });

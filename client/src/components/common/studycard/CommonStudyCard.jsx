@@ -35,7 +35,6 @@ function StudyCard(
   const navigate = useNavigate();
 
   const loadData = useLoaderData();
-  console.log(loadData);
 
   let studys = []
   let currentUserId = '';
