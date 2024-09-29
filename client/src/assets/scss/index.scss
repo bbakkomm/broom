@@ -1,33 +1,33 @@
 // common
-@import '../scss/common/common.scss';
+@import 'common/common.scss';
 
 // component layout
-@import '../scss/component/layout/CommonHeader.scss';
-@import '../scss/component/layout/CommonNav.scss';
+@import 'component/layout/CommonHeader.scss';
+@import 'component/layout/CommonNav.scss';
 
 // component list
-@import '../scss/component/list/schedule.scss';
-@import '../scss/component/study/studycard.scss';
-@import '../scss/component/search/search.scss';
-@import '../scss/List/List.scss';
+@import 'component/list/schedule.scss';
+@import 'component/study/studycard.scss';
+@import 'component/search/search.scss';
+@import 'List/List.scss';
 
 // pages
-@import '../scss/pages/home.scss';
-@import '../scss/pages/study.scss';
-@import '../scss/component/study/CommonHomeStudyCard.scss';
-@import '../scss/pages/splash.scss';
+@import 'pages/home.scss';
+@import 'pages/study.scss';
+@import 'component/study/CommonHomeStudyCard.scss';
+@import 'pages/splash.scss';
 
 // pages list 
-@import '../scss/pages/list/creation.scss';
-@import '../scss/pages/list/detail.scss';
+@import 'pages/list/creation.scss';
+@import 'pages/list/detail.scss';
 
 // pages register
-@import '../scss/pages/register/Id.scss';
-@import '../scss/pages/register/Join.scss';
-@import '../scss/pages/register/Joinsetting.scss';
-@import '../scss/pages/register/Login.scss';
-@import '../scss/pages/register/Pw.scss';
-@import '../scss/pages/register/Success.scss';
+@import 'pages/register/Id.scss';
+@import 'pages/register/Join.scss';
+@import 'pages/register/Joinsetting.scss';
+@import 'pages/register/Login.scss';
+@import 'pages/register/Pw.scss';
+@import 'pages/register/Success.scss';
 
 // pages profile
-@import '../scss/pages/profile/profile.module.scss';
+@import 'pages/profile/profile.module.scss';
