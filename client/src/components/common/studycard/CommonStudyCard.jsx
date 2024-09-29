@@ -102,7 +102,7 @@ function StudyCard(
               </li>
               <li className="study-box__item">
                 <PaymentsOutlinedIcon />
-                <span className="study-box__desc">{price}</span>
+                <span className="study-box__desc">{Number(price).toLocaleString('ko-KR')}</span>
               </li>
               <li className="study-box__item">
                 <PeopleAltOutlinedIcon />
