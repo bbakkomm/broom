@@ -20,7 +20,8 @@ router.route('/')
   
 router.route('/:id')
   .get(getStudy)
-  .patch(validateStudyInput, validateIdParam, updateStudy)
+  // .patch(validateStudyInput, validateIdParam, updateStudy)
+  .patch(validateStudyInput, updateStudy)
   .delete(validateIdParam, deleteStudy);
 
 router.route('/user/:id')

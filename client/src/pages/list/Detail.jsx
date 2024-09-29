@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 // api
 import customFetch from "../../utils/customFetch.js";
+import FormRow from '../../components/FormRow';
 
 // component
 import Member from "./components/Member";
@@ -75,13 +76,47 @@ function Detail(props) {
     }, [])
 
     // 탈퇴하기 버튼
-    const leaveHandler = async ( req ) => {
+    const leaveHandler = async ( e ) => {
+        e.preventDefault();
+
+        const memberData = getCurrentUser._id;
         
+        try {
+            const datttId = sessionStorage.getItem('singleStudyValue');
+            const res1 = await customFetch.get(`/study/${datttId}`, '');
+            let req2 = res1.data.study.member;
+            req2 = req2.filter(value => memberData !== value);
+
+            const formData = { member: req2 }
+            const res = await customFetch.patch(`/study/${datttId}`, formData);
+            toast.success('study member leave successful');
+            navigate('/study/studydetail');
+        } catch (error) {
+            toast.error(error?.response?.data?.msg);
+            return error;
+        }
     }
 
     // 참여하기 버튼
-    const participateHandler = () => {
+    const participateHandler = async (e) => {
+        e.preventDefault();
+
+        const memberData = getCurrentUser._id;
         
+        try {
+            const datttId = sessionStorage.getItem('singleStudyValue');
+            const res1 = await customFetch.get(`/study/${datttId}`, '');
+            let req2 = res1.data.study.member;
+            req2.push(memberData);
+
+            const formData = { member: req2 }
+            const res = await customFetch.patch(`/study/${datttId}`, formData);
+            toast.success('study member add successful');
+            navigate('/study/studydetail');
+        } catch (error) {
+            toast.error(error?.response?.data?.msg);
+            return error;
+        }
     }
 
     // 수정하기 버튼
@@ -90,11 +125,13 @@ function Detail(props) {
     }
 
     // 스터디 삭제 버튼
-    const removeHandler = async (req) => {
+    const removeHandler = async ( e ) => {
+        e.preventDefault();
+
         try {
             if (window.confirm('정말 삭제하시겠습니까?')) {
                 const datttId = sessionStorage.getItem('singleStudyValue');
-                const res = await customFetch.delete(`/study/${datttId}`, req);
+                const res = await customFetch.delete(`/study/${datttId}`, '');
                 toast.success('study delete successful');
                 navigate('/study');
             }
@@ -226,16 +263,15 @@ function Detail(props) {
                     )}
                 </ul>
             </section>
-            {/* <Form method='post' className="form-box"> */}
                 { isManager ? (
                     <div className="btn rebottom">
-                        <button type='submit' className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
+                        <button className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
                     </div>
                 ) : ('')}
 
                 { !isManager && isMember ? (
                     <div className="btn rebottom">
-                        <button type='submit' className="input-submit btn-un btn-bg" onClick={leaveHandler}>스터디 탈퇴하기</button>
+                        <button className="input-submit btn-un btn-bg" onClick={leaveHandler}>스터디 탈퇴하기</button>
                     </div>
                 ) : ('')}
 
@@ -247,10 +283,9 @@ function Detail(props) {
 
                 { !isManager && !isMember && isJoinMemberMaxNum ? (
                     <div className="btn">
-                        <button type='submit' className="btn__button btn-bg" onClick={participateHandler}>참여하기</button>    
+                        <button className="btn__button btn-bg" onClick={participateHandler}>참여하기</button>    
                     </div>
                 ):('')}
-            {/* </Form> */}
         </main>
     )
 }
