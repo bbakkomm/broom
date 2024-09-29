@@ -52,6 +52,7 @@ const Profile = () => {
   const likeList = likes.map((item, idx) => {
     return (
       <StudyCard 
+        studyType={'like'}
         key={`study_${idx}`}
         objId={item._id}
         idx={idx}
@@ -71,7 +72,7 @@ const Profile = () => {
         name={item.name}
         location={item.loaction}
         cost={item.cost}
-        participants={item.participants}
+        like={item.like}
       />      
     )
   });
@@ -79,6 +80,7 @@ const Profile = () => {
   const studyList = studys.map((item, idx)=>{
     return (
       <StudyCard 
+        studyType={'study'}
         key={`study_${idx}`}
         objId={item._id}
         idx={idx}
@@ -98,7 +100,7 @@ const Profile = () => {
         name={item.name}
         location={item.loaction}
         cost={item.cost}
-        participants={item.participants}
+        like={item.like}
       />      
     )
   });

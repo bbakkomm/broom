@@ -11,9 +11,9 @@ import SearchNotFound from '../components/common/studycard/SearchNotFound.jsx';
 
 export const loader = async ({ req }) => {
 	try {
-	  const tp = await customFetch.get('/users/current-user', req);
+	  const resUser = await customFetch.get('/users/current-user', req);
 	  const res = await customFetch.get('/study', req);
-	  return res.data;
+	  return [res.data, resUser];
 	} catch (error) {
 	  console.log(error);
 	  return redirect('/login');
@@ -21,10 +21,11 @@ export const loader = async ({ req }) => {
 }
 
 function Study() {
-
 	const loadData = useLoaderData();
-	const { studys } = loadData;
-	console.log(studys);
+	const { studys } = loadData[0];
+	const currentUserId = loadData[1].data.user._id;
+	// const isLikes = studys.map(v => v.like.includes(currentUserId));
+
 	const domain = [window.location.protocol, window.location.host].join('//') + '/';
 
 	const [studyCard, setStudyCard] = useState(studys);
@@ -33,6 +34,7 @@ function Study() {
 	const studyList = studyCard.map((item, idx)=>{
 		return (
 			<StudyCard 
+				studyType={'all'}
 				key={`study_${idx}`}
 				objId={item._id}
 				idx={idx}
@@ -52,6 +54,7 @@ function Study() {
 				name={item.name}
 				location={item.loaction}
 				cost={item.cost}
+				like={item.like}
 			/>      
 		)
 	});

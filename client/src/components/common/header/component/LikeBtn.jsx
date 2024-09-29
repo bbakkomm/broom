@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, redirect, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import customFetch from '../../../../utils/customFetch.js';
@@ -19,6 +19,7 @@ export const loader = async ({ req }) => {
 }
 
 function LikeBtn() { 
+    const currentLocation = useLocation().pathname;
     const navigate = useNavigate();
     const loadData = useLoaderData();
     // const [{ study }] = loadData;    console.log(loadData);
@@ -49,7 +50,7 @@ function LikeBtn() {
             const res = await customFetch.patch(`/study/${getStudyId}`, formData);
 
             toast.success('study like edit successful');
-            navigate('/study/studydetail');
+            navigate(currentLocation);
         } catch (error) {
             toast.error(error?.response?.data?.msg);
             return error;

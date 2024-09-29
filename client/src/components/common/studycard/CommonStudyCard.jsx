@@ -1,4 +1,6 @@
-import { redirect, useNavigate } from 'react-router-dom';
+import { redirect, useLocation, useNavigate, useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import customFetch from '../../../utils/customFetch.js';
 
 // icon
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
@@ -6,11 +8,12 @@ import AccessAlarmsRoundedIcon from "@mui/icons-material/AccessAlarmsRounded";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 function StudyCard(
   { 
+    studyType,
     idx, 
     objId,
     title, 
@@ -25,21 +28,64 @@ function StudyCard(
     skillTag,
     complete,
     imgSrc,
+    like
   }
 ) {
-
+  const currentLocation = useLocation().pathname;
   const navigate = useNavigate();
+
+  const loadData = useLoaderData();
+  console.log(loadData);
+
+  let studys = []
+  let currentUserId = '';
+
+  if (studyType === 'all') {
+    studys = loadData[0].studys;
+    currentUserId = loadData[1].data.user._id;
+  } else if (studyType === 'like') {
+    currentUserId = loadData[0].user._id;
+    studys = loadData[1].studys;
+  } else if (studyType === 'study') {
+    currentUserId = loadData[0].user._id;
+    studys = loadData[2].studys;
+  }
+  
+  const getCurrentStudy = studys.find(v => v._id === objId);
+  // let likes = like;
+  let likeArr = getCurrentStudy.like;
+  let isLike = likeArr.includes(currentUserId);
 
   const listClickHandler = (e) => {
     e.preventDefault();
-    const targetUl = e.target.closest('.studycard');
-    console.log(targetUl);
-    sessionStorage.setItem('singleStudyValue', targetUl.getAttribute('data-prod'));
+
+    const targetUlAttr = e.target.closest('.studycard').getAttribute('data-prod');
+    sessionStorage.setItem('singleStudyValue', targetUlAttr);
     navigate('/study/studydetail');
   }
 
+  const likeClickHandler = async (e) => {
+    e.stopPropagation();
+
+    try {
+        if (!isLike) {
+            likeArr.push(currentUserId);
+        } else {
+            likeArr = likeArr.filter(value => value !== currentUserId);
+        }
+
+        let formData = { like: likeArr }
+        const res = await customFetch.patch(`/study/${objId}`, formData);
+
+        toast.success('study like edit successful');
+        navigate(currentLocation);
+    } catch (error) {
+        toast.error(error?.response?.data?.msg);
+        return error;
+    }
+  }
+
   return (
-    
     <ul className="studycard" key={idx} data-prod={objId} onClick={listClickHandler}>
       <li className="studycard__item">
         <div className="skill-tag">
@@ -113,8 +159,11 @@ function StudyCard(
               </li>
             </ul>
           </div>
-          <button className="btn-like">
-            <FavoriteIcon style={{color: '#FB744A', width:'2.2rem', height: '2rem'}} />
+          <button className="btn-like" onClick={likeClickHandler}>
+            {isLike 
+              ? <FavoriteOutlinedIcon style={{color: '#FB744A', width:'2.2rem', height: '2rem'}} /> 
+              : <FavoriteBorderOutlinedIcon style={{color: '#FB744A', width:'2.2rem', height: '2rem'}} />
+            }
           </button>
         </div>
       </li>

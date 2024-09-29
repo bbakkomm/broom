@@ -34,7 +34,7 @@ export const loader = async ({ req }) => {
 function Home() {
   const loadData = useLoaderData();
   const { studys } = loadData;
-  console.log(studys);
+  // console.log(studys);
 
   const [studyCard, setStudyCard] = useState(studys);
   const [search, setSearch] = useState('');
