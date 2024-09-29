@@ -45,43 +45,58 @@ function StudyCard(
         <div className="skill-tag">
           {
             complete
-            ? (<span className="skill-tag--complate">완료</span>)
-            : (<span className="skill-tag--ing">모집중</span>)
+            ? (<span className="skill-tag__complate">완료</span>)
+            : (<span className="skill-tag__ing">모집중</span>)
           }
           {
-            skillTag.includes('javascript')
-            ? (<span className="skill-tag--javascript">JavaScript</span>)
-            : ''
+              skillTag.includes('javascript')
+              ? (<span className="skill-tag__javascript">JavaScript</span>)
+              : ''
           }
           {
-            skillTag.includes('typescript')
-            ? (<span className="skill-tag--typescript">TypeScript</span>)
-            : ''
+              skillTag.includes('react')
+              ? (<span className="skill-tag__react">React</span>)
+              : ''
           }
           {
-            skillTag.includes('react')
-            ? (<span className="skill-tag--react">React</span>)
-            : ''
+              skillTag.includes('vue')
+              ? (<span className="skill-tag__vue">Vue</span>)
+              : ''
           }
           {
-            skillTag.includes('dart')
-            ? (<span className="skill-tag--dart">Dart</span>)
-            : ''
+              skillTag.includes('typescript')
+              ? (<span className="skill-tag__typescript">TypeScript</span>)
+              : ''
           }
           {
-            skillTag.includes('flutter')
-            ? (<span className="skill-tag--flutter">Flutter</span>)
-            : ''
+              skillTag.includes('dart')
+              ? (<span className="skill-tag__dart">Dart</span>)
+              : ''
           }
           {
-            skillTag.includes('html')
-            ? (<span className="skill-tag--html">HTML</span>)
-            : ''
+              skillTag.includes('flutter')
+              ? (<span className="skill-tag__flutter">Flutter</span>)
+              : ''
           }
           {
-            skillTag.includes('css')
-            ? (<span className="skill-tag--css">CSS</span>)
-            : ''
+              skillTag.includes('html')
+              ? (<span className="skill-tag__html">HTML</span>)
+              : ''
+          }
+          {
+              skillTag.includes('css')
+              ? (<span className="skill-tag__css">CSS</span>)
+              : ''
+          }
+          {
+              skillTag.includes('scss')
+              ? (<span className="skill-tag__scss">SCSS</span>)
+              : ''
+          }
+          {
+              skillTag.includes('figma')
+              ? (<span className="skill-tag__figma">Figma</span>)
+              : ''
           }
         </div>
         <div className="study-box">
