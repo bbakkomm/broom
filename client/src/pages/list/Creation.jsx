@@ -20,7 +20,8 @@ import StarRoundedIcon from "@mui/icons-material/StarRounded";
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const file = formData.get('thumb');
-  // console.log(file.path);
+  console.log(request);
+  console.log(formData);
 
   if (file && file.size > 500000) {
     toast.error('Image size too large');

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, Form, redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 // api
 import customFetch from "../../utils/customFetch.js";
@@ -18,9 +19,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export const loader = async ({ req }) => {
-    const datttId = sessionStorage.getItem('singleStudyValue');
     
     try {
+        const datttId = sessionStorage.getItem('singleStudyValue');
         const res = await customFetch.get(`/study/${datttId}`, req);
         let members = res.data.study.member;
         
@@ -39,6 +40,7 @@ export const loader = async ({ req }) => {
 
 function Detail(props) {
     const loadData = useLoaderData();
+    const navigate = useNavigate();
     const [{ study }, membersArr, getCurrentUser] = loadData;
     const { user } = props;
 
@@ -73,7 +75,7 @@ function Detail(props) {
     }, [])
 
     // 탈퇴하기 버튼
-    const leaveHandler = () => {
+    const leaveHandler = async ( req ) => {
         
     }
 
@@ -88,8 +90,16 @@ function Detail(props) {
     }
 
     // 스터디 삭제 버튼
-    const removeHandler = () => {
-
+    const removeHandler = async (req) => {
+        try {
+            const datttId = sessionStorage.getItem('singleStudyValue');
+            const res = await customFetch.delete(`/study/${datttId}`, req);
+            toast.success('study delete successful');
+            navigate('/study');
+        } catch (error) {
+            toast.error(error?.response?.data?.msg);
+            return error;
+        }
     }
 
     return (
@@ -214,30 +224,31 @@ function Detail(props) {
                     )}
                 </ul>
             </section>
+            {/* <Form method='post' className="form-box"> */}
+                { isManager ? (
+                    <div className="btn rebottom">
+                        <button type='submit' className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
+                    </div>
+                ) : ('')}
 
-            { isManager ? (
-                <div className="btn rebottom">
-                    <button className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
-                </div>
-            ) : ('')}
+                { !isManager && isMember ? (
+                    <div className="btn rebottom">
+                        <button type='submit' className="input-submit btn-un btn-bg" onClick={leaveHandler}>스터디 탈퇴하기</button>
+                    </div>
+                ) : ('')}
 
-            { !isManager && isMember ? (
-                <div className="btn rebottom">
-                    <button className="input-submit btn-un btn-bg" onClick={leaveHandler}>스터디 탈퇴하기</button>
-                </div>
-            ) : ('')}
+                { isManager ? (
+                    <div className="btn">
+                        <button type='submit' className="btn__button btn-bg" onClick={editHandler}>수정하기</button>    
+                    </div>
+                ) : ('')}
 
-            { isManager ? (
-                <div className="btn">
-                    <button className="btn__button btn-bg" onClick={editHandler}>수정하기</button>    
-                </div>
-            ) : ('')}
-
-            { !isManager && !isMember && isJoinMemberMaxNum ? (
-                <div className="btn">
-                    <button className="btn__button btn-bg" onClick={participateHandler}>참여하기</button>    
-                </div>
-            ):('')}
+                { !isManager && !isMember && isJoinMemberMaxNum ? (
+                    <div className="btn">
+                        <button type='submit' className="btn__button btn-bg" onClick={participateHandler}>참여하기</button>    
+                    </div>
+                ):('')}
+            {/* </Form> */}
         </main>
     )
 }
