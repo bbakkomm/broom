@@ -19,16 +19,17 @@
 	.logo {width: 8rem;}
 }
 
+.kv {margin-bottom: 3.6rem;}
+
 .banner-box {
-	height: 36rem; background-color: #eee; margin-bottom: 2rem;
+	height: 33rem; background-color: #eee;
+
 	& > img {width: 36rem; height: min-content;}
 }
 .study-home{
-	margin-top: 2rem;
 	padding: 0 2rem;
 	
-	&__title {font-size: 1.6rem; margin-bottom: 1.6rem;}
+    &__sub {margin-bottom: .2rem; font-size: 1.2rem; color: #656668;}
+	&__title {font-size: 1.8rem; line-height: 2rem; margin-bottom: 1.6rem;}
 	&__cont {display: flex; flex-wrap: wrap; justify-content: space-between;}
 }
-
-.swiper-pagination-bullet {background-color: #eee;}

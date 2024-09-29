@@ -4,12 +4,12 @@ import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 // api
 import customFetch from "../utils/customFetch.js";
 // Swiper
-import { Pagination, Autoplay } from 'swiper/modules';
+import { EffectFade, Navigation, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
+import "swiper/css/effect-fade";
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import Logo from "../assets/img/common/logo_broom.svg";
@@ -41,7 +41,7 @@ function Home() {
 
   const studyList = studyCard.map((item, idx)=>{
     return (
-      <HomeStudyCard 
+      <HomeStudyCard
         idx={idx}
         title={item.title}
         thumb={item.thumb.path}
@@ -53,8 +53,8 @@ function Home() {
         maximumPerson={item.maximumPerson}
         skillTag={item.skillTag}
         complate={item.complate}
-      />      
-    )
+      />
+    );
   });
 
 
@@ -70,56 +70,50 @@ function Home() {
   }
 
   return (
-	<div className="broom">
-    <header className="main-header">
-      <h1 className="main-header__title">
-        <Link to="/" title="BROOM" className="main-header__link">
-          <img src={Logo} alt="B.ROOM 로고" className="logo" />
-        </Link>
-      </h1>
-    </header>
-    <div className="kv">
-      <Swiper
-        style={{
-          width: "360px",
-          height: "202px",
-          position: "relative",
-        }}
-        modules={[Pagination, Autoplay]}
-        spaceBetween={0}
-        slidesPerView={1}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        loop={true}
-        pagination={{ clickable: true }}
-      >
-        <SwiperSlide>
-          <div className='banner-box'>
-            <img src="src/assets/img/home/banner_01.jpg" alt="" />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className='banner-box'>
-            <img src="src/assets/img/home/banner_02.jpg" alt="" />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className='banner-box'>
-            <img src="src/assets/img/home/banner_03.jpg" alt="" />
-          </div>
-        </SwiperSlide>
-      </Swiper>
-      <div className="study-home">
-        <h3 className="study-home__title">최근 등록된 스터디</h3>
-        {/* <input type="text" value={search} placeholder="검색어를 입력하세요" onChange={titleChange} /> */}
-        <div className="study-home__cont">
-          {studyList}
-        </div>
+    <div className="broom">
+      <header className="main-header">
+        <h1 className="main-header__title">
+          <Link to="/" title="BROOM" className="main-header__link">
+            <img src={Logo} alt="B.ROOM 로고" className="logo" />
+          </Link>
+        </h1>
+      </header>
+      <div className="kv">
+        <Swiper
+          modules={[EffectFade, Autoplay, Navigation]}
+          spaceBetween={0}
+          slidesPerView={1}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          loop={true}
+          effect={"fade"}
+          // navigation={true}
+        >
+          <SwiperSlide>
+            <div className="banner-box">
+              <img src="src/assets/img/home/banner_01.jpg" alt="" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="banner-box">
+              <img src="src/assets/img/home/banner_02.jpg" alt="" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="banner-box">
+              <img src="src/assets/img/home/banner_03.jpg" alt="" />
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
 
-      
+      <section className="study-home">
+        <p className="study-home__sub">가장 최근 등록된 스터디를 만나보세요!</p>
+        <h3 className="study-home__title">지금 가장 핫한 신규 스터디</h3>
+        {/* <input type="text" value={search} placeholder="검색어를 입력하세요" onChange={titleChange} /> */}
+        <div className="study-home__cont">{studyList}</div>
+      </section>
     </div>
-  </div>
-  )
+  );
 }
 
 export default Home

@@ -20,15 +20,14 @@ function HomeStudyCard(
   const imgPath = 'http://localhost:5173/'
 
   return (
-    <ul className={styles.studyCard} key={idx}>
-      <li className={styles.studyCard__item}>
-        
-        <div className={styles.studyBox}>
-          <div className={styles.studyBox__content}>
-            <div className={styles.studyBox__image}>
-              <img src={imgPath + thumb} alt={title + ' 모임 상세보기'} />
+    <ul className="studyCard" key={idx}>
+      <li className="studyCard__item">
+        <div className="studyBox">
+          <div className="studyBox__content">
+            <div className="studyBox__image">
+              <img src={imgPath + thumb} alt={title + " 모임 상세보기"} />
             </div>
-            <h3 className={styles.studyBox__title}>{title}</h3>
+            <h3 className="studyBox__title">{title}</h3>
 
             {/* <ul className={styles.studyBox__list}>
               <li className={styles.studyBox__list__item}>
@@ -54,51 +53,47 @@ function HomeStudyCard(
             </ul> */}
           </div>
         </div>
-        <div className={styles.skillTag}>
-          {
-            complate
-            ? (<span className={styles.skillTag__complate}>완료</span>)
-            : ''
-          }
-          {
-            skillTag.includes('javascript')
-            ? (<span className={styles.skillTag__javascript}>JavaScript</span>)
-            : ''
-          }
-          {
-            skillTag.includes('typescript')
-            ? (<span className={styles.skillTag__typescript}>TypeScript</span>)
-            : ''
-          }
-          {
-            skillTag.includes('react')
-            ? (<span className={styles.skillTag__react}>React</span>)
-            : ''
-          }
-          {
-            skillTag.includes('dart')
-            ? (<span className={styles.skillTag__dart}>Dart</span>)
-            : ''
-          }
-          {
-            skillTag.includes('flutter')
-            ? (<span className={styles.skillTag__flutter}>Flutter</span>)
-            : ''
-          }
-          {
-            skillTag.includes('html')
-            ? (<span className={styles.skillTag__html}>HTML</span>)
-            : ''
-          }
-          {
-            skillTag.includes('css')
-            ? (<span className={styles.skillTag__css}>CSS</span>)
-            : ''
-          }
+        <div className="skill-tag">
+          {complate ? <span className="skill-tag--complate">완료</span> : ""}
+          {skillTag.includes("javascript") ? (
+            <span className="skill-tag--javascript">JavaScript</span>
+          ) : (
+            ""
+          )}
+          {skillTag.includes("typescript") ? (
+            <span className="skill-tag--typescript">TypeScript</span>
+          ) : (
+            ""
+          )}
+          {skillTag.includes("react") ? (
+            <span className="skill-tag--react">React</span>
+          ) : (
+            ""
+          )}
+          {skillTag.includes("dart") ? (
+            <span className="skill-tag--dart">Dart</span>
+          ) : (
+            ""
+          )}
+          {skillTag.includes("flutter") ? (
+            <span className="skill-tag--flutter">Flutter</span>
+          ) : (
+            ""
+          )}
+          {skillTag.includes("html") ? (
+            <span className="skill-tag--html">HTML</span>
+          ) : (
+            ""
+          )}
+          {skillTag.includes("css") ? (
+            <span className="skill-tag--css">CSS</span>
+          ) : (
+            ""
+          )}
         </div>
       </li>
     </ul>
-  )
+  );
 }
 
 export default HomeStudyCard

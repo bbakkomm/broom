@@ -9,7 +9,8 @@
   }
   
   .skillTag {
-	display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .3rem; font-size: 1.1rem; line-height: 1.3rem;
+	display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.6rem; font-size: 1.1rem; line-height: 1.3rem;
+	
 	span {border-radius: .5rem; padding: .1rem .6rem; font-weight: 700;}
 	&__complate {border: 1px solid #aaa; color: #aaa;}
 	&__javascript {border: 1px solid #F7DF1E; background-color: #F7DF1E; color: #000;}
