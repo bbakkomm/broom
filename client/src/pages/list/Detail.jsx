@@ -319,7 +319,7 @@ function Detail(props) {
                     </div>
                 ):('')}
 
-                { !isManager && !isMember && !isJoinMemberMaxNum ? (
+                { !isJoinMemberMaxNum ? (
                     <div className="btn">
                         <button className="btn__button btn-un btn-bg">모집이 종료되었습니다.</button>    
                     </div>

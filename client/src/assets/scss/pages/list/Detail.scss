@@ -68,7 +68,8 @@
     }
 
     .btn {
-        position: fixed; flex-direction: row; gap: .8rem; bottom: 5rem; padding: .8rem 2rem; border: none; background: #fff; box-shadow: .1rem -.1rem .6rem rgba($color: #a6b4c8, $alpha: .3);
+        position: fixed; flex-direction: row; gap: .8rem; bottom: 5rem; padding: .8rem 2rem; border: none; background: #fff; 
+        box-shadow: .1rem -.1rem .6rem rgba($color: #a6b4c8, $alpha: .3);
     
         // &__bg {border: none;}
         &__trash {
@@ -82,5 +83,6 @@
     .btn.rebottom {
         position: relative;
         padding: 0 2rem 4rem 2rem;
+        box-shadow: none;
     }
 }

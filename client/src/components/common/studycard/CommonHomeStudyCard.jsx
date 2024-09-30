@@ -21,7 +21,7 @@ function HomeStudyCard(
   const listClickHandler = (e) => {
     e.preventDefault();
     const targetUl = e.target.closest('.studyCard');
-    console.log(targetUl);
+    // console.log(targetUl);
     sessionStorage.setItem('singleStudyValue', targetUl.getAttribute('data-prod'));
     navigate('/study/studydetail');
   }

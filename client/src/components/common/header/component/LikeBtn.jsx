@@ -32,7 +32,7 @@ function LikeBtn() {
     let likeArr = getStudy.study.like;
     let isLikeUser = getStudy.study.like.includes(userId);
     
-    console.log(getStudy.study);
+    // console.log(getStudy.study);
     // console.log(study);
 
     // 좋아요 버튼
