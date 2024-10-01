@@ -64,7 +64,7 @@ const router = createBrowserRouter([
         path: "/profile",
         element: [
           <>
-            <Header title={"마이페이지"} />
+            <Header pagetype="profile" title={"마이페이지"} />
             <Profile />
             <Nav />
           </>,
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
         path: "/profile/profileedit",
         element: [
           <>
-            <Header title={"내 프로필"} />
+            <Header pagetype="profileEdit" title={"내 프로필"} />
             <ProfileEdit />
             <Nav />
           </>,
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
         path: "/study",
         element: [
           <>
-            <Header title={"스터디"} />
+            <Header pagetype="study" title={"스터디"} />
             <Study />
             <Nav />
           </>,
@@ -98,7 +98,7 @@ const router = createBrowserRouter([
         path: "/studycreation",
         element: [
           <>
-            <Header title={"스터디 생성"} />
+            <Header pagetype="creation" title={"스터디 생성"} />
             <Creation study/>
             <Nav />
           </>,
@@ -109,7 +109,7 @@ const router = createBrowserRouter([
         path: "/study/studydetail",
         element: [
           <>
-            <Header title={"스터디 상세"} rightBtn />
+            <Header pagetype="detail" title={"스터디 상세"} rightBtn />
             <Detail />
             <Nav />
           </>,
@@ -120,7 +120,7 @@ const router = createBrowserRouter([
         path: "/login",
         element: [
           <>
-            <Header title={"로그인"} />
+            <Header pagetype="login" title={"로그인"} />
             <Login />
           </>,
         ],
@@ -130,7 +130,7 @@ const router = createBrowserRouter([
         path: "/join",
         element: [
           <>
-            <Header title={"회원가입"} />
+            <Header pagetype="join" title={"회원가입"} rightBtn />
             <Join />
           </>,
         ],
@@ -140,7 +140,7 @@ const router = createBrowserRouter([
         path: "/joinsetting",
         element: [
           <>
-            <Header title={"회원가입"} />
+            <Header pagetype="joinsetting" title={"회원가입"} rightBtn />
             <JoinSetting />
           </>,
         ],
@@ -149,7 +149,7 @@ const router = createBrowserRouter([
         path: "/joinsuccess",
         element: [
           <>
-            <Header title={"회원가입 완료"} />
+            <Header pagetype="joinsuccess" title={"회원가입 완료"} />
             <JoinSuccess />
           </>,
         ],
@@ -158,7 +158,7 @@ const router = createBrowserRouter([
         path: "/id",
         element: [
           <>
-            <Header title={"아이디 찾기"} />
+            <Header pagetype="id" title={"아이디 찾기"} rightBtn />
             <Id />
           </>,
         ],
@@ -168,7 +168,7 @@ const router = createBrowserRouter([
         path: "/idsuccess",
         element: [
           <>
-            <Header title={"아이디 찾기 완료"} />
+            <Header pagetype="idsuccess" title={"아이디 찾기 완료"} />
             <IdSuccess />
           </>,
         ],
@@ -177,7 +177,7 @@ const router = createBrowserRouter([
         path: "/pw",
         element: [
           <>
-            <Header title={"비밀번호 찾기"} />
+            <Header pagetype="pw" title={"비밀번호 찾기"} rightBtn />
             <Pw />
           </>,
         ],
@@ -187,7 +187,7 @@ const router = createBrowserRouter([
         path: "/pwreset",
         element: [
           <>
-            <Header title={"비밀번호 재설정"} />
+            <Header pagetype="pwreset" title={"비밀번호 재설정"} rightBtn />
             <PwReset />
           </>,
         ],
@@ -197,7 +197,7 @@ const router = createBrowserRouter([
         path: "/pwsuccess",
         element: [
           <>
-            <Header title={"비밀번호 찾기 완료"} />
+            <Header pagetype="pwsuccess" title={"비밀번호 찾기 완료"} />
             <PwSuccess />
           </>,
         ],
