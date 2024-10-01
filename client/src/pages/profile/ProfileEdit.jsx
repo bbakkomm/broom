@@ -86,8 +86,8 @@ const ProfileEdit = () => {
 
           {/* 이미지 수정 */}
           <label htmlFor="thumb" className={styles.profileEdit__img}>
-            {file && <img src={file} alt="preview-img" />}
-            {!file && <img src={user.thumb} alt="preview-img" />}
+            {file && <img src={file} className='preview-img' alt="preview-img" />}
+            {!file && <img src={user.thumb} className='preview-img' alt="preview-img" />}
           </label>
           <input 
             type="file" 
