@@ -2,7 +2,7 @@ import multer from "multer";
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'client/public/uploads/study');
+    cb(null, 'client/public/uploads');
   },
   filename: (req, file, cb) => {
     const newFileName = file.originalname;

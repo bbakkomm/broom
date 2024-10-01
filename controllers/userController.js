@@ -38,8 +38,14 @@ export const updateUser = async (req, res) => {
 }
 
 export const updateProfile = async (req, res) => {
-    const obj = {...req.body};
+    if (req.file) {
+        const response = await coludinary.v2.uploader.upload(req.file.path);
+        await fs.unlink(req.file.path);
+        req.body.thumb = response.secure_url;
+        req.body.thumbPublicId = response.public_id;
+    }
 
+    const obj = {...req.body};
     const updatedUser = await User.findByIdAndUpdate(req.user.userId, obj);
     res.status(StatusCodes.OK).json({ msg: 'update user' });
 }

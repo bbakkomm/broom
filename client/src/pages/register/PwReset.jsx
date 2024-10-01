@@ -7,8 +7,16 @@ import customFetch from '../../utils/customFetch.js';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
+  const password = formData.get('password');
+  const passconfirm = formData.get('passconfirm');
+
   const data = Object.fromEntries(formData);
   
+  if (password !== passconfirm) {
+    toast.error('비밀번호가 틀립니다. 다시 확인해주세요.');
+    return null;
+  }
+
   try {
     await customFetch.patch(`/auth/pwreset/${data.tid}`, data);
     toast.success('비밀번호 변경이 완료되었습니다.');

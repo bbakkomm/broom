@@ -205,7 +205,15 @@ function Creation(props) {
               <CreateOutlinedIcon/>
               <p className="blind">소개글</p>
             </label>
-            <textarea className="input-textarea" id="introduce" name="introduce" cols={10} maxLength={1000} required placeholder="소개글을 입력해주세요. (1,000자 작성 가능)"></textarea>
+            <textarea 
+            className="input-textarea" 
+            id="introduce" 
+            name="introduce" 
+            cols={10} 
+            maxLength={1000} 
+            required 
+            placeholder="소개글을 입력해주세요. (1,000자 작성 가능)"
+            ></textarea>
           </div>
           
           <div className="btn">

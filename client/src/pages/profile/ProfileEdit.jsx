@@ -24,6 +24,8 @@ export const loader = async ({ req }) => {
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const file = formData.get('thumb');
+  const password = formData.get('password');
+  const passconfirm = formData.get('passconfirm');
 
   if (!file) formData.delete('thumb');
 
@@ -32,8 +34,12 @@ export const action = async ({ request }) => {
     return null;
   }
 
+  if (password !== passconfirm) {
+    toast.error('비밀번호가 틀립니다. 다시 확인해주세요.');
+    return null;
+  }
+
   let skillTags = document.querySelectorAll('[name="skillTag"]');
-  console.log(skillTags);
   let skillArr = Array.from(skillTags)
     .map(item => [item.value, item.checked])
     .filter(item => item[1] === true).map(item => item[0]);
@@ -41,9 +47,11 @@ export const action = async ({ request }) => {
     skillArr.forEach(value => formData.append('skillTag', value));
   
   try {
-    const res = await customFetch.post('/study', formData);
-    toast.success('나의 정보 수정 완료.');
-    return redirect('/profile');
+    if (window.confirm('정보를 저장하시겠습니까?')) {
+      const res = await customFetch.patch('/users/profile-update-user', formData);
+      toast.success('나의 정보 수정 완료.');
+      return redirect('/profile');
+    }
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
@@ -52,16 +60,10 @@ export const action = async ({ request }) => {
 
 const ProfileEdit = () => {
   const loadData = useLoaderData();
-  const { user } = loadData;
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-  const textarea = useRef();
-  const handleResizeHeight = () => {
-    textarea.current.style.height = "auto"; // 높이 초기화
-    textarea.current.style.height = textarea.current.scrollHeight + "px";
-  };
 
-  console.log(user);  
+  const { user } = loadData;
   const userJob = user.job;
   const skillTags = user.skillTag;
 
@@ -78,7 +80,7 @@ const ProfileEdit = () => {
   return (
     <main className={styles.profileEdit}>
 
-      <Form method='post' className="form-box">
+      <Form method='post' className="form-box" encType='multipart/form-data'>
         <fieldset className="form-box__inner">
           <legend className="form-box__title">프로필 수정</legend>
 
@@ -98,7 +100,7 @@ const ProfileEdit = () => {
           />
 
           {/* id */}
-          <FormRow type='uid' name="uid" labelText="아이디" placeholder="아이디" defaultValue={user.uid}/>
+          {/* <FormRow type='uid' name="uid" labelText="아이디" placeholder="아이디" defaultValue={user.uid}/> */}
 
           {/* nickname */}
           <FormRow type='name' name="name" labelText="닉네임" placeholder="닉네임" defaultValue={user.name}/>
@@ -111,7 +113,7 @@ const ProfileEdit = () => {
           
           {/* pwd conf */}
           <label htmlFor="passconfirm" className="input-label hidden">비밀번호 확인</label>
-          <input type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-write"/>
+          <input type="password" id="passconfirm" name="passconfirm" placeholder="비밀번호 확인" className="input-write" required/>
 
           {/* work */}
           <p className="input-label">희망직무</p>
@@ -202,11 +204,13 @@ const ProfileEdit = () => {
           <div className={styles.profileEdit__info}>
             <span className={styles.profileEdit__info__title}>소개글</span>
             <textarea
-              ref={textarea}
-              onInput={handleResizeHeight}
-              rows={1} 
               className={styles.profileEdit__info__textarea} 
+              id="introduce" 
+              name="introduce" 
+              cols={10} 
+              maxLength={1000} 
               defaultValue={user.introduce}
+              required
             />
           </div>
 

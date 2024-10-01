@@ -17,7 +17,7 @@ import {
 // import { loader as currentLoader } from './pages/HomeLayout';
 import { loader as profileLoader } from './pages/profile/Profile';
 import { loader as profileEditLoader } from './pages/profile/ProfileEdit';
-import { loader as studyLoader } from './pages/List';
+// import { loader as studyLoader } from './pages/List';
 import { loader as studyLoader2 } from './pages/Study';
 import { loader as homeLoader } from './pages/Home';
 import { loader as detailLoader } from './pages/list/Detail';
