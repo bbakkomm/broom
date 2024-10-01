@@ -78,7 +78,7 @@ const ProfileEdit = () => {
   }, [])
 
   return (
-    <main className={styles.profileEdit}>
+    <div className={styles.profileEdit}>
 
       <Form method='post' className="form-box" encType='multipart/form-data'>
         <fieldset className="form-box__inner">
@@ -215,11 +215,11 @@ const ProfileEdit = () => {
           </div>
 
           <div className={styles.profileEdit__btn}>
-            <button type='submit' className="input-submit btn-bg" disabled={isSubmitting}>저장 {isSubmitting?'...':''}</button>
+            <button type='submit' className="input-submit btn-bg" disabled={isSubmitting}>프로필 정보 저장 {isSubmitting?'...':''}</button>
           </div>
         </fieldset>
       </Form>
-    </main>
+    </div>
   );
 }
 

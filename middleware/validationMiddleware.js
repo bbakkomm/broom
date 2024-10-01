@@ -29,10 +29,16 @@ const withValidationErrors = (validateValues) => {
 }
 
 export const validateStudyInput = withValidationErrors([
-  // body('thumb').notEmpty().withMessage('thumb is required'),
-  // body('position').notEmpty().withMessage('position is required'),
-  // body('studyLocation').notEmpty().withMessage('study Location is required'),
-  // body('studyStatus').isIn(Object.values(JOB_STATUS)).withMessage('invalid status value'),
+  body('title').notEmpty().withMessage('타이틀을 입력해주세요.'),
+  body('startDate').notEmpty().withMessage('시작 날짜를 입력해주세요.'),
+  body('endDate').notEmpty().withMessage('마감 날짜를 입력해주세요.'),
+  body('time').notEmpty().withMessage('시간을 입력해주세요.'),
+  body('place').notEmpty().withMessage('위치를 입력해주세요.'),
+  body('price').notEmpty().withMessage('비용을 입력해주세요.'),
+  body('minimumPerson').notEmpty().withMessage('최소 인원을 입력해주세요.'),
+  body('maximumPerson').notEmpty().withMessage('최대 인원을 입력해주세요.'),
+  body('skillTag').isArray({min:1}).withMessage('주요기술을 선택해주세요.'),
+  
   // body('studyType').isIn(Object.values(JOB_TYPE)).withMessage('invalid type value'),
 ]);
 

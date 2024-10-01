@@ -23,8 +23,11 @@ router.route('/')
 router.route('/:id')
   .get(getStudy)
   // .patch(validateStudyInput, validateIdParam, updateStudy)
-  .patch(validateStudyInput, updateStudy)
+  .patch(validateIdParam, updateStudy)
   .delete(validateIdParam, deleteStudy);
+
+router.route('/studyedit/:id')
+  .patch(upload.single('thumb'), validateStudyInput, updateStudy)
   
 router.route('/user/:id')
   .get(getAllStudy)

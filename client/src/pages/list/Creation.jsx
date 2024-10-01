@@ -20,8 +20,6 @@ import StarRoundedIcon from "@mui/icons-material/StarRounded";
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const file = formData.get('thumb');
-  console.log(request);
-  console.log(formData);
 
   if (file && file.size > 500000) {
     toast.error('파일 용량이 너무 큽니다.');
@@ -157,45 +155,41 @@ function Creation(props) {
                 <input type="checkbox" id="html" name="skillTag" value="html" className="input-check__item input-check__item--html"/>              
                 <label htmlFor="html">HTML</label>
               </span>
-              
               <span>
                 <input type="checkbox" id="css" name="skillTag" value="css" className="input-check__item input-check__item--css"/>              
                 <label htmlFor="css">CSS</label>
               </span>
-
-              <span className="">
+              <span>
                 <input type="checkbox" id="scss" name="skillTag" value="scss" className="input-check__item input-check__item--scss"/>              
                 <label htmlFor="scss">SCSS</label>
               </span>              
-              
-              <span className="">
+              <span>
                 <input type="checkbox" id="javascript" name="skillTag" value="javascript" className="input-check__item input-check__item--javascript"/>            
                 <label htmlFor="javascript">JavaScript</label>
               </span>
-
-              <span className="">
+              <span>
                 <input type="checkbox" id="react" name="skillTag" value="react" className="input-check__item input-check__item--react"/>              
                 <label htmlFor="react">React</label>
               </span>
-
-              <span className="">
+              <span>
                 <input type="checkbox" id="vue" name="skillTag" value="vue" className="input-check__item input-check__item--vue"/>              
                 <label htmlFor="vue">Vue</label>
               </span>              
-
-              <span className="">
+              <span>
                 <input type="checkbox" id="typescript" name="skillTag" value="typescript" className="input-check__item input-check__item--typescript"/>              
                 <label htmlFor="typescript">TypeScript</label>
               </span>      
-              
-              <span className="">
+              <span>
                 <input type="checkbox" id="dart" name="skillTag" value="dart" className="input-check__item input-check__item--dart"/>              
                 <label htmlFor="dart">Dart</label>
               </span>          
-                            
-              <span className="">
+              <span>
                 <input type="checkbox" id="flutter" name="skillTag" value="flutter" className="input-check__item input-check__item--flutter"/>              
                 <label htmlFor="flutter">Flutter</label>
+              </span>   
+              <span>
+                <input type="checkbox" id="figma" name="skillTag" value="figma" className="input-check__item input-check__item--figma"/>              
+                <label htmlFor="figma">Figma</label>
               </span>        
             </div>
           </div>

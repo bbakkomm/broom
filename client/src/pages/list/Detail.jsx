@@ -135,7 +135,7 @@ function Detail() {
 
     // 수정하기 버튼
     const studyEditHandler = () => {
-        navigate('/study/detailedit', { state: 'sasad', replace: true });
+        navigate('/study/detailedit');
     }
 
     // 스터디 삭제 버튼
