@@ -18,22 +18,24 @@ export const loader = async ({ req }) => {
     }
 }
 
-function LikeBtn() { 
+function LikeBtn(props) { 
+    const { pagetype } = props;
     const currentLocation = useLocation().pathname;
     const navigate = useNavigate();
     const loadData = useLoaderData();
-    // const [{ study }] = loadData;    console.log(loadData);
-    const getStudy = loadData[0];
-    const getCurrentUser = loadData[2];
+    
+    let getStudy = {}
+    let getCurrentUser = {}
+    if (pagetype === 'detail') {
+        getStudy = loadData[0];
+        getCurrentUser = loadData[2];
+    }
 
-    const getStudyId = getStudy.study._id;
+    const getStudyId = sessionStorage.getItem('singleStudyValue');
     const userId = getCurrentUser._id;
 
     let likeArr = getStudy.study.like;
     let isLikeUser = getStudy.study.like.includes(userId);
-    
-    // console.log(getStudy.study);
-    // console.log(study);
 
     // 좋아요 버튼
     const likeHandler = async (e) => {

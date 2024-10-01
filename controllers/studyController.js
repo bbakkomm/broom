@@ -32,7 +32,7 @@ export const createStudy = async (req, res) => {
     //   await coludinary.v2.uploader.destroy(createStudy.thumbPublicId);
     // }
 
-    res.status(StatusCodes.CREATED).json({ createStudy });
+    res.status(StatusCodes.CREATED).json({ msg:'study create' });
   } else {
     throw new Error("파일이 없습니다.");
   }
@@ -59,11 +59,23 @@ export const getObjAllStudyParticipate = async (req, res) => {
 // UPDATE study
 export const updateStudy = async (req, res) => {
   const updateStudy = await Study.findByIdAndUpdate(req.params.id, req.body, { new: true });
-  res.status(StatusCodes.OK).json({ msg:'study edit', study: updateStudy });
+  res.status(StatusCodes.OK).json({ msg:'study edit'});
+}
+
+export const updateEditStudy = async (req, res) => {
+  if (req.file) {
+    const response = await coludinary.v2.uploader.upload(req.file.path);
+    await fs.unlink(req.file.path);
+    req.body.thumb = response.secure_url;
+    req.body.thumbPublicId = response.public_id;
+  }
+
+  const updateStudy = await Study.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.status(StatusCodes.OK).json({ msg:'study edit'});
 }
 
 // DELETE study
 export const deleteStudy = async (req, res) => {
   const removeStudy = await Study.findByIdAndDelete(req.params.id);
-  res.status(StatusCodes.OK).json({ msg: 'study delete', study: removeStudy});
+  res.status(StatusCodes.OK).json({ msg: 'study delete'});
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Form, redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, Form, json, redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 // api
@@ -49,14 +49,11 @@ export const loader = async ({ req }) => {
     }
 }
 
-function Detail(props) {
+function Detail() {
     const loadData = useLoaderData();
     const navigate = useNavigate();
     const [{ study }, membersArr, getCurrentUser] = loadData;
-    const { user } = props;
 
-    // console.log(study);
-    // console.log(getCurrentUser);
     const [
         skillTag, 
         member
@@ -77,7 +74,7 @@ function Detail(props) {
     // 페이지 진입시 ScrollTop
     useEffect(()=>{
         window.scrollTo(0, 0);
-    }, [])
+    }, []);
 
     // 탈퇴하기 버튼
     const leaveHandler = async ( e ) => {
@@ -137,8 +134,8 @@ function Detail(props) {
     }
 
     // 수정하기 버튼
-    const editHandler = () => {
-        
+    const studyEditHandler = () => {
+        navigate('/study/detailedit');
     }
 
     // 스터디 삭제 버튼
@@ -295,23 +292,17 @@ function Detail(props) {
                     )}
                 </ul>
             </section>
-                { isManager ? (
-                    <div className="btn rebottom">
-                        <button className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
-                    </div>
-                ) : ('')}
-
                 { !isManager && isMember ? (
                     <div className="btn rebottom">
                         <button className="input-submit btn-un btn-bg" onClick={leaveHandler}>스터디 탈퇴하기</button>
                     </div>
                 ) : ('')}
 
-                { isManager ? (
+                { !isManager && !isJoinMemberMaxNum ? (
                     <div className="btn">
-                        <button type='submit' className="btn__button btn-bg" onClick={editHandler}>수정하기</button>    
+                        <button className="btn__button btn-un btn-bg">모집이 종료되었습니다.</button>    
                     </div>
-                ) : ('')}
+                ):('')}
 
                 { !isManager && !isMember && isJoinMemberMaxNum ? (
                     <div className="btn">
@@ -319,11 +310,12 @@ function Detail(props) {
                     </div>
                 ):('')}
 
-                { !isJoinMemberMaxNum ? (
+                { isManager ? (
                     <div className="btn">
-                        <button className="btn__button btn-un btn-bg">모집이 종료되었습니다.</button>    
+                        <button className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
+                        <button className="btn__button btn-bg" onClick={studyEditHandler}>수정하기</button>   
                     </div>
-                ):('')}
+                ) : ('')}
         </main>
     )
 }

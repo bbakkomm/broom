@@ -1,5 +1,5 @@
 .detail {
-    margin: 5rem 0;
+    margin: 5rem 0; padding-bottom: 4.0rem;
 
     //common 
     .sectionTitle {margin-bottom: 1.6rem; font-size: 1.8rem;}
@@ -32,7 +32,7 @@
             &__item {
                 padding: .2rem .8rem; border-radius: .4rem; border: 1px solid #0396fc; font-size: 1.2rem; font-weight: 700; color: #0396fc;
             
-                &__complete {padding: .2rem .8rem; border-radius: .4rem; border: 1px solid #ccc; font-size: 1.2rem; font-weight: 700; color: #ccc;}
+                &__complete {padding: .2rem .8rem; border-radius: .4rem; border: 1px solid #aaa; font-size: 1.2rem; font-weight: 700; color: #aaa;}
             }
         }
 
@@ -60,7 +60,7 @@
         
             &:last-child {margin-bottom: 0;}
         }
-        &__img {width: 5rem; height: 5rem; border-radius: 10rem; overflow: hidden;}
+        &__img {width: 5rem; height: 5rem; border-radius: 10rem; overflow: hidden; border: 1px solid #ddd;}
         &__data {display: flex; align-items: center; gap: .4rem; font-size: 1.4rem;}
         &__title {font-size: 1.4rem; font-weight: 700;}
         &__status {font-size: 1.2rem; color: #0396fc;}
@@ -69,7 +69,7 @@
 
     .btn {
         position: fixed; flex-direction: row; gap: .8rem; bottom: 5rem; padding: .8rem 2rem; border: none; background: #fff; 
-        box-shadow: .1rem -.1rem .6rem rgba($color: #a6b4c8, $alpha: .3);
+        box-shadow: .1rem -.1rem .6rem rgba($color: #a6b4c8, $alpha: .3); z-index: 2;
     
         // &__bg {border: none;}
         &__trash {
@@ -84,5 +84,7 @@
         position: relative;
         padding: 0 2rem 4rem 2rem;
         box-shadow: none;
+        z-index: 1;
     }
+    .btn.rebottom.nop { padding: 0 2rem;}
 }

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -7,10 +8,6 @@ import StudyCard from '../../components/common/studycard/CommonStudyCard';
 
 // CSS style
 import styles from '../../assets/scss/pages/profile/profile.module.scss';
-
-// DB
-// import userJson from '../../assets/data/userData.json';
-// import studyJson from '../../assets/data/studyData.json';
 
 import customFetch from '../../utils/customFetch.js';
 
@@ -47,6 +44,11 @@ const Profile = () => {
       navigate('/');
     }
   }
+
+  // 페이지 진입시 ScrollTop
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  }, [])
 
   const likeList = likes.map((item, idx) => {
     return (
@@ -117,13 +119,13 @@ const Profile = () => {
         />
 
         <div className={styles.groupBox}>
-          <h3 className={styles.groupBox__title}>내가 찜한 모임</h3>          
-          {likeList}
+          <h3 className={styles.groupBox__title}>내가 찜한 모임</h3>
+          { likes.length ? (likeList) : (<p className={styles.groupBox__empty_txt}>찜한 모임이 없습니다</p>)}
         </div>
 
         <div className={styles.groupBox}>
-          <h3 className={styles.groupBox__title}>내가 활동중인 모임</h3>          
-          {studyList}
+          <h3 className={styles.groupBox__title}>내가 활동중인 모임</h3>   
+          { studys.length ? (studyList) : (<p className={styles.groupBox__empty_txt}>활동중인 모임이 없습니다</p>)} 
         </div>
       </div>
       <div className="btn rebottom">

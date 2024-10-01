@@ -8,18 +8,22 @@ import Nav from "./components/common/navigation/CommonNav"
 
 import { 
   Home, HomeLayout, Splash, Error, 
-  Login, Profile, ProfileEdit, List, Study, Detail, Creation, 
-  Join, JoinSetting, JoinSuccess, 
+  Login, Join, JoinSetting, JoinSuccess, 
   Id, IdSuccess, 
   Pw, PwReset, PwSuccess, 
+  Study, Creation, Detail, DetailEdit, 
+  Profile, ProfileEdit, 
 } from "./pages";
 
 // import { loader as currentLoader } from './pages/HomeLayout';
+import { loader as loginLoader } from './pages/register/Login';
 import { loader as profileLoader } from './pages/profile/Profile';
-import { loader as studyLoader } from './pages/List';
+import { loader as profileEditLoader } from './pages/profile/ProfileEdit';
+// import { loader as studyLoader } from './pages/List';
 import { loader as studyLoader2 } from './pages/Study';
 import { loader as homeLoader } from './pages/Home';
 import { loader as detailLoader } from './pages/list/Detail';
+import { loader as detailEditLoader } from './pages/list/DetailEdit';
 
 import { action as loginAction } from './pages/register/Login';
 import { action as registerAction } from './pages/register/Join';
@@ -27,6 +31,8 @@ import { action as idSearch } from './pages/register/Id';
 import { action as pwSearch } from './pages/register/Pw';
 import { action as pwReset } from './pages/register/PwReset';
 import { action as creation } from './pages/list/Creation';
+import { action as detailEditAction } from './pages/list/DetailEdit';
+import { action as profileEditAction } from './pages/profile/ProfileEdit';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -62,7 +68,7 @@ const router = createBrowserRouter([
         path: "/profile",
         element: [
           <>
-            <Header title={"마이페이지"} />
+            <Header pagetype="profile" title={"마이페이지"} />
             <Profile />
             <Nav />
           </>,
@@ -73,17 +79,19 @@ const router = createBrowserRouter([
         path: "/profile/profileedit",
         element: [
           <>
-            <Header title={"내 프로필"} />
+            <Header pagetype="profileEdit" title={"내 프로필"} />
             <ProfileEdit />
             <Nav />
           </>,
         ],
+        loader: profileEditLoader,
+        action: profileEditAction
       },
       {
         path: "/study",
         element: [
           <>
-            <Header title={"스터디"} />
+            <Header pagetype="study" title={"스터디"} />
             <Study />
             <Nav />
           </>,
@@ -94,7 +102,7 @@ const router = createBrowserRouter([
         path: "/studycreation",
         element: [
           <>
-            <Header title={"스터디 생성"} />
+            <Header pagetype="creation" title={"스터디 생성"} />
             <Creation study/>
             <Nav />
           </>,
@@ -105,7 +113,7 @@ const router = createBrowserRouter([
         path: "/study/studydetail",
         element: [
           <>
-            <Header title={"스터디 상세"} rightBtn />
+            <Header pagetype="detail" title={"스터디 상세"} rightBtn />
             <Detail />
             <Nav />
           </>,
@@ -113,20 +121,33 @@ const router = createBrowserRouter([
         loader: detailLoader
       },
       {
+        path: "/study/detailedit",
+        element: [
+          <>
+            <Header pagetype="detailedit" title={"스터디 수정"} rightBtn />
+            <DetailEdit />
+            <Nav />
+          </>,
+        ],
+        loader: detailEditLoader,
+        action: detailEditAction
+      },
+      {
         path: "/login",
         element: [
           <>
-            <Header title={"로그인"} />
+            <Header pagetype="login" title={"로그인"} />
             <Login />
           </>,
         ],
+        loader: loginLoader,
         action: loginAction
       },
       {
         path: "/join",
         element: [
           <>
-            <Header title={"회원가입"} />
+            <Header pagetype="join" title={"회원가입"} rightBtn />
             <Join />
           </>,
         ],
@@ -136,7 +157,7 @@ const router = createBrowserRouter([
         path: "/joinsetting",
         element: [
           <>
-            <Header title={"회원가입"} />
+            <Header pagetype="joinsetting" title={"회원가입"} rightBtn />
             <JoinSetting />
           </>,
         ],
@@ -145,7 +166,7 @@ const router = createBrowserRouter([
         path: "/joinsuccess",
         element: [
           <>
-            <Header title={"회원가입 완료"} />
+            <Header pagetype="joinsuccess" title={"회원가입 완료"} />
             <JoinSuccess />
           </>,
         ],
@@ -154,7 +175,7 @@ const router = createBrowserRouter([
         path: "/id",
         element: [
           <>
-            <Header title={"아이디 찾기"} />
+            <Header pagetype="id" title={"아이디 찾기"} rightBtn />
             <Id />
           </>,
         ],
@@ -164,7 +185,7 @@ const router = createBrowserRouter([
         path: "/idsuccess",
         element: [
           <>
-            <Header title={"아이디 찾기 완료"} />
+            <Header pagetype="idsuccess" title={"아이디 찾기 완료"} />
             <IdSuccess />
           </>,
         ],
@@ -173,7 +194,7 @@ const router = createBrowserRouter([
         path: "/pw",
         element: [
           <>
-            <Header title={"비밀번호 찾기"} />
+            <Header pagetype="pw" title={"비밀번호 찾기"} rightBtn />
             <Pw />
           </>,
         ],
@@ -183,7 +204,7 @@ const router = createBrowserRouter([
         path: "/pwreset",
         element: [
           <>
-            <Header title={"비밀번호 재설정"} />
+            <Header pagetype="pwreset" title={"비밀번호 재설정"} rightBtn />
             <PwReset />
           </>,
         ],
@@ -193,7 +214,7 @@ const router = createBrowserRouter([
         path: "/pwsuccess",
         element: [
           <>
-            <Header title={"비밀번호 찾기 완료"} />
+            <Header pagetype="pwsuccess" title={"비밀번호 찾기 완료"} />
             <PwSuccess />
           </>,
         ],

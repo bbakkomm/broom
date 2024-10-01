@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Form, redirect, useNavigation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -12,8 +12,15 @@ import Logo from "../../assets/img/common/logo_broom.svg";
 // import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 // import VisibilityOffSharpIcon from '@mui/icons-material/VisibilityOffSharp';
 
+import Splash from '../Splash';
+
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
+
+export const loader = async () => {
+
+  return null;
+};
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -32,9 +39,15 @@ export const action = async ({ request }) => {
 const Login = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-  // console.log(navigation);
+
+  const [spState, setspState] = useState('');
+  setTimeout(() => {
+    setspState('blind');
+  }, 2500);
+  
   return (
     <main className="login">
+      <Splash state={spState}/>
       <div className="login__inner">
         <img src={Logo} alt="B.ROOM 로고" className="logo" />
 

@@ -29,10 +29,16 @@ const withValidationErrors = (validateValues) => {
 }
 
 export const validateStudyInput = withValidationErrors([
-  // body('thumb').notEmpty().withMessage('thumb is required'),
-  // body('position').notEmpty().withMessage('position is required'),
-  // body('studyLocation').notEmpty().withMessage('study Location is required'),
-  // body('studyStatus').isIn(Object.values(JOB_STATUS)).withMessage('invalid status value'),
+  body('title').notEmpty().withMessage('타이틀을 입력해주세요.'),
+  body('startDate').notEmpty().withMessage('시작 날짜를 입력해주세요.'),
+  body('endDate').notEmpty().withMessage('마감 날짜를 입력해주세요.'),
+  body('time').notEmpty().withMessage('시간을 입력해주세요.'),
+  body('place').notEmpty().withMessage('위치를 입력해주세요.'),
+  body('price').notEmpty().withMessage('비용을 입력해주세요.'),
+  body('minimumPerson').notEmpty().withMessage('최소 인원을 입력해주세요.'),
+  body('maximumPerson').notEmpty().withMessage('최대 인원을 입력해주세요.'),
+  body('skillTag').isArray({min:1}).withMessage('주요기술을 선택해주세요.'),
+  
   // body('studyType').isIn(Object.values(JOB_TYPE)).withMessage('invalid type value'),
 ]);
 
@@ -55,65 +61,65 @@ export const validateIdParam = withValidationErrors([
 export const validateRegisterInput = withValidationErrors([
   body('uid')
   .notEmpty()
-  .withMessage('uid is required')
+  .withMessage('아이디를 입력해주세요.')
   .custom(async (uid) => {
     const user = await User.findOne({uid});
     if (user) {
-      throw new BadRequestError('uid already exists');
+      throw new BadRequestError('동일한 아이디가 존재합니다. 다시 입력해주세요.');
     }
   }),
-  body('name').notEmpty().withMessage('name is required'),
+  body('name').notEmpty().withMessage('닉네임을 입력해주세요.'),
   body('email')
   .notEmpty()
-  .withMessage('email is required')
+  .withMessage('이메일을 입력해주세요.')
   .isEmail()
-  .withMessage('invalid email format')
+  .withMessage('이메일 형식이 아닙니다. 올바르게 입력해주세요.')
   .custom(async (email) => {
     const user = await User.findOne({email});
     if (user) {
-      throw new BadRequestError('email already exists');
+      throw new BadRequestError('동일한 이메일이 존재합니다. 다시 입력해주세요.');
     }
   }),
   body('password')
   .notEmpty()
-  .withMessage('password is required')
+  .withMessage('비밀번호를 입력해주세요.')
   .isLength({min:8})
-  .withMessage('password least 8'),
+  .withMessage('비밀번호는 8자리 이상 입력해주세요.'),
   body('job')
   .notEmpty()
-  .withMessage('job is required'),
+  .withMessage('희망직무를 선택해주세요.'),
   body('skillTag')
   .isArray({min:1})
-  .withMessage('skillTag is required'),
+  .withMessage('주요기술을 선택해주세요.'),
 ]);
 
 export const validateLoginInput = withValidationErrors([
   body('uid')
   .notEmpty()
-  .withMessage('uid is required')
+  .withMessage('아이디를 입력해주세요.')
   ,
   // body('email')
   // .notEmpty()
-  // .withMessage('email is required')
+  // .withMessage('이메일을 입력해주세요.')
   // .isEmail()
-  // .withMessage('invalid email format')
+  // .withMessage('이메일 형식이 아닙니다. 올바르게 입력해주세요.')
   // ,
   body('password')
   .notEmpty()
-  .withMessage('password is required')
+  .withMessage('비밀번호를 입력해주세요.')
 ]);
 
 export const validateUpdateUserInput = withValidationErrors([
-  body('name').notEmpty().withMessage('name is required'),
+  body('name').notEmpty().withMessage('닉네임을 입력해주세요.'),
   body('email')
   .notEmpty()
-  .withMessage('email is required')
+  .withMessage('이메일을 입력해주세요.')
   .isEmail()
-  .withMessage('invalid email format')
+  .withMessage('이메일 형식이 아닙니다. 올바르게 입력해주세요.')
   .custom(async (email, { req }) => {
     const user = await User.findOne({email});
     if (user && user._id.toString() !== req.user.userId) {
-      throw new BadRequestError('email already exists'); 
+      throw new BadRequestError('동일한 이메일이 존재합니다. 다시 입력해주세요.'); 
     }
   }),
 ]);
@@ -121,11 +127,11 @@ export const validateUpdateUserInput = withValidationErrors([
 export const validateUidInput = withValidationErrors([
   body('email')
   .notEmpty()
-  .withMessage('email is required')
+  .withMessage('이메일을 입력해주세요.')
   .custom(async (email) => {
     const user = await User.findOne({email});
     if (!user) {
-      throw new BadRequestError('email not exists');
+      throw new BadRequestError('동일한 이메일이 존재합니다. 다시 입력해주세요.');
     }
   }),
 ]);
@@ -133,20 +139,20 @@ export const validateUidInput = withValidationErrors([
 export const validatePasswordInput = withValidationErrors([
   body('uid')
   .notEmpty()
-  .withMessage('uid is required')
+  .withMessage('아이디를 입력해주세요.')
   .custom(async (uid) => {
     const user = await User.findOne({uid});
     if (!user) {
-      throw new BadRequestError('uid not exists');
+      throw new BadRequestError('동일한 아이디가 존재합니다. 다시 입력해주세요.');
     }
   }),
   body('email')
   .notEmpty()
-  .withMessage('email is required')
+  .withMessage('이메일을 입력해주세요.')
   .custom(async (email) => {
     const user = await User.findOne({email});
     if (!user) {
-      throw new BadRequestError('email not exists');
+      throw new BadRequestError('동일한 이메일이 존재합니다. 다시 입력해주세요.');
     }
   }),
 ]);
@@ -154,9 +160,9 @@ export const validatePasswordInput = withValidationErrors([
 export const validatePasswordResetInput = withValidationErrors([
   body('password')
   .notEmpty()
-  .withMessage('password is required')
+  .withMessage('비밀번호를 입력해주세요.')
   .isLength({min:8})
-  .withMessage('password least 8')
+  .withMessage('비밀번호는 8자리 이상 입력해주세요.')
   ,
   body('passconfirm')
   .notEmpty()
