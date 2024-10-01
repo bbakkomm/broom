@@ -20,6 +20,8 @@ function Header(props) {
   const linkHandler = () => {
     if (pagetype === 'detail') {
       navigate('/study');
+    } else if (pagetype === 'detailedit') {
+      navigate('/study/studydetail');
     } else if (isArrow) {
       navigate(-1);
     }

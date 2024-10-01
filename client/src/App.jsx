@@ -8,10 +8,11 @@ import Nav from "./components/common/navigation/CommonNav"
 
 import { 
   Home, HomeLayout, Splash, Error, 
-  Login, Profile, ProfileEdit, List, Study, Detail, Creation, 
-  Join, JoinSetting, JoinSuccess, 
+  Login, Join, JoinSetting, JoinSuccess, 
   Id, IdSuccess, 
   Pw, PwReset, PwSuccess, 
+  Study, Creation, Detail, DetailEdit, 
+  Profile, ProfileEdit, 
 } from "./pages";
 
 // import { loader as currentLoader } from './pages/HomeLayout';
@@ -21,6 +22,7 @@ import { loader as profileEditLoader } from './pages/profile/ProfileEdit';
 import { loader as studyLoader2 } from './pages/Study';
 import { loader as homeLoader } from './pages/Home';
 import { loader as detailLoader } from './pages/list/Detail';
+import { loader as detailEditLoader } from './pages/list/DetailEdit';
 
 import { action as loginAction } from './pages/register/Login';
 import { action as registerAction } from './pages/register/Join';
@@ -28,6 +30,7 @@ import { action as idSearch } from './pages/register/Id';
 import { action as pwSearch } from './pages/register/Pw';
 import { action as pwReset } from './pages/register/PwReset';
 import { action as creation } from './pages/list/Creation';
+import { action as detailEditAction } from './pages/list/DetailEdit';
 import { action as profileEditAction } from './pages/profile/ProfileEdit';
 
 const queryClient = new QueryClient({
@@ -115,6 +118,18 @@ const router = createBrowserRouter([
           </>,
         ],
         loader: detailLoader
+      },
+      {
+        path: "/study/detailedit",
+        element: [
+          <>
+            <Header pagetype="detailedit" title={"스터디 수정"} rightBtn />
+            <DetailEdit />
+            <Nav />
+          </>,
+        ],
+        loader: detailEditLoader,
+        action: detailEditAction
       },
       {
         path: "/login",

@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link, Form, redirect, useNavigation, useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { useRef } from 'react';
-
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
 

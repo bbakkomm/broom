@@ -14,8 +14,9 @@ export { default as List } from './List';
 export { default as Study } from './Study';
 
 // list
-export { default as Detail } from './list/Detail';
 export { default as Creation } from "./list/Creation";
+export { default as Detail } from './list/Detail';
+export { default as DetailEdit } from './list/DetailEdit';
 
 // register
 export { default as Login } from './register/Login';
