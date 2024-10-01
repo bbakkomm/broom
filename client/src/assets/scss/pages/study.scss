@@ -3,5 +3,18 @@
 	padding: 0 2rem;
 }
 
+.study-header {
+	display: flex; align-items: center; justify-content: space-between; height: 5rem;
+	&__length {
+		&--desc {font-size: 1.1rem; line-height: 1.3rem; font-weight: 400; color: #999;}
+		&--total {font-size: 1.4rem; line-height: 1.6rem; font-weight: 700; color: #999;}
+	}
+}
 
-
+.menu-box {
+	display: flex; align-items: center; justify-content: flex-start; gap: 1.6rem; border-bottom: 1px solid #F2F1F6;
+	&__item {
+		font-size: 1.6rem; line-height: 4rem; color: #aaa;
+		&.active {color: #222; border-bottom: .2rem solid #222;}
+	}
+}
