@@ -1,6 +1,8 @@
 import { StatusCodes } from "http-status-codes";
 import User from "../models/UserModel.js";
 import Study from "../models/StudyModel.js";
+import coludinary from 'cloudinary';
+import { promises as fs } from 'fs';
 
 export const getAllUsers = async (req, res) => {
     let users = await User.find({});
@@ -30,6 +32,13 @@ export const getApplicationStats = async (req, res) => {
 export const updateUser = async (req, res) => {
     const obj = {...req.body};
     delete obj.password;
+
+    const updatedUser = await User.findByIdAndUpdate(req.user.userId, obj);
+    res.status(StatusCodes.OK).json({ msg: 'update user' });
+}
+
+export const updateProfile = async (req, res) => {
+    const obj = {...req.body};
 
     const updatedUser = await User.findByIdAndUpdate(req.user.userId, obj);
     res.status(StatusCodes.OK).json({ msg: 'update user' });

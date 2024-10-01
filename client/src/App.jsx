@@ -16,6 +16,7 @@ import {
 
 // import { loader as currentLoader } from './pages/HomeLayout';
 import { loader as profileLoader } from './pages/profile/Profile';
+import { loader as profileEditLoader } from './pages/profile/ProfileEdit';
 import { loader as studyLoader } from './pages/List';
 import { loader as studyLoader2 } from './pages/Study';
 import { loader as homeLoader } from './pages/Home';
@@ -27,6 +28,7 @@ import { action as idSearch } from './pages/register/Id';
 import { action as pwSearch } from './pages/register/Pw';
 import { action as pwReset } from './pages/register/PwReset';
 import { action as creation } from './pages/list/Creation';
+import { action as profileEditAction } from './pages/profile/ProfileEdit';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -78,6 +80,8 @@ const router = createBrowserRouter([
             <Nav />
           </>,
         ],
+        loader: profileEditLoader,
+        action: profileEditAction
       },
       {
         path: "/study",
