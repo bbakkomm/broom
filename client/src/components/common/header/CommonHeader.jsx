@@ -9,13 +9,12 @@ function Header(props) {
   const { pagetype, title, rightBtn } = props;
   const navigate = useNavigate();
   
-  const notArrow_Page = ['login'];
+  const notArrow_Page = ['login', 'study', 'creation', 'profile'];
   const okLike_Page = ['detail'];
   const okLink_Page = ['detail'];
   const isArrow = !notArrow_Page.includes(pagetype);
   const isLike = okLike_Page.includes(pagetype);
   const isLink = okLink_Page.includes(pagetype);
-
 
   const linkHandler = () => {
     if (pagetype === 'detail') {

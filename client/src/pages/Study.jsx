@@ -11,23 +11,22 @@ import SearchNotFound from '../components/common/studycard/SearchNotFound.jsx';
 
 export const loader = async ({ req }) => {
 	try {
-	  const resUser = await customFetch.get('/users/current-user', req);
-	  const res = await customFetch.get('/study', req);
-	  return [res.data, resUser];
+			const resUser = await customFetch.get('/users/current-user', req);
+			const res = await customFetch.get('/study', req);
+			return [res.data, resUser];
 	} catch (error) {
-	  console.log(error);
-	  return redirect('/login');
+			console.log(error);
+			return redirect('/login');
 	}
 }
 
 function Study() {
 	const loadData = useLoaderData();
 	const { studys } = loadData[0];
-	const currentUserId = loadData[1].data.user._id;
-	// const isLikes = studys.map(v => v.like.includes(currentUserId));
 
 	const [studyCard, setStudyCard] = useState(studys);
 	const [search, setSearch] = useState('');
+	const [studyTab, setStudyTab] = useState('all');
 
 	const studyList = studyCard.map((item, idx)=>{
 		return (
@@ -58,20 +57,33 @@ function Study() {
 
 	useEffect(()=>{
 		const filter = studys.filter((item)=>{
-		  return item.title.toLowerCase().includes(search.toLowerCase())
+			const searchValue = item.title.toLowerCase().includes(search.toLowerCase());
+
+			if (studyTab === 'open') {
+				return !item.complete && searchValue;
+			} else if (studyTab === 'close') {
+				return item.complete && searchValue;
+			}
+
+			return searchValue;
 		})
 		setStudyCard(filter);
-	  }, [search])
+	}, [search, studyTab])
 
-	  const titleChange = (e)=>{
+	const titleChange = (e)=>{
 		setSearch(e.target.value)
-	  }
-  
+	}
+
   return (
 	<div className="study-wrap">
 		<div className="search-box">
 			<SearchBtn/>
 			<input type="text" value={search} placeholder="원하는 스터디를 찾아보세요!" onChange={titleChange} className="search-box__input" />
+		</div>
+		<div className="studytab">
+			<button className={'studytab-btn' + (studyTab === "all" ? " active" : "")} onClick={()=>{setStudyTab("all")}}>전체</button>
+			<button className={'studytab-btn' + (studyTab === "open" ? " active" : "")} onClick={()=>{setStudyTab("open")}}>모집중</button>
+			<button className={'studytab-btn' + (studyTab === "close" ? " active" : "")} onClick={()=>{setStudyTab("close")}}>완료</button>
 		</div>
 		{
 			studyCard.length === 0 ? <SearchNotFound /> : studyList

@@ -32,7 +32,6 @@ function StudyCard(
 ) {
   const currentLocation = useLocation().pathname;
   const navigate = useNavigate();
-
   const loadData = useLoaderData();
 
   let studys = []

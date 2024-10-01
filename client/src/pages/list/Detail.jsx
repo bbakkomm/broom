@@ -312,13 +312,8 @@ function Detail() {
 
                 { isManager ? (
                     <div className="btn">
-                        { isManager ? (
-                            <button className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
-                        ) : ('')}
-
-                        { isManager ? (
-                            <button className="btn__button btn-bg" onClick={studyEditHandler}>수정하기</button>   
-                        ) : ('')}
+                        <button className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
+                        <button className="btn__button btn-bg" onClick={studyEditHandler}>수정하기</button>   
                     </div>
                 ) : ('')}
         </main>
