@@ -1,9 +1,10 @@
-import React from 'react'
 import LogoDot from "../assets/img/common/logo_broom_nonedot.svg";
 
-function Splash() {
+function Splash(prop) {
+  const { state } = prop;
+
   return (
-    <main className="splash-ver2">
+    <main className={'splash-ver2' + (state === 'blind' ? ' blind':'')}>
       <div className="title-box">
         <div className="title-box__logo">
           <img src={LogoDot} alt="" className="title-box__logo" />

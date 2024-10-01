@@ -16,6 +16,7 @@ import {
 } from "./pages";
 
 // import { loader as currentLoader } from './pages/HomeLayout';
+import { loader as loginLoader } from './pages/register/Login';
 import { loader as profileLoader } from './pages/profile/Profile';
 import { loader as profileEditLoader } from './pages/profile/ProfileEdit';
 // import { loader as studyLoader } from './pages/List';
@@ -139,6 +140,7 @@ const router = createBrowserRouter([
             <Login />
           </>,
         ],
+        loader: loginLoader,
         action: loginAction
       },
       {
