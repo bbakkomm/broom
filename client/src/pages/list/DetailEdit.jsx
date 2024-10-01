@@ -73,8 +73,6 @@ const DetailEdit = () => {
     setFile(URL.createObjectURL(e.target.files[0]));
   }
 
-  console.log(study);
-
   // 페이지 진입시 ScrollTop
   useEffect(()=>{
     window.scrollTo(0, 0);

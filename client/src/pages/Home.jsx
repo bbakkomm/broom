@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 
 // api
 import customFetch from "../utils/customFetch.js";
@@ -42,6 +43,7 @@ function Home() {
   const studyList = studyCard.map((item, idx)=>{
     return (
       <HomeStudyCard
+        key={'hsc_' + nanoid()}
         idx={idx}
         objId={item._id}
         title={item.title}

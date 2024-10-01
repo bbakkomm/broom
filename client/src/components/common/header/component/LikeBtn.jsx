@@ -23,7 +23,6 @@ function LikeBtn(props) {
     const currentLocation = useLocation().pathname;
     const navigate = useNavigate();
     const loadData = useLoaderData();
-    console.log(loadData);
     
     let getStudy = {}
     let getCurrentUser = {}
@@ -37,9 +36,6 @@ function LikeBtn(props) {
 
     let likeArr = getStudy.study.like;
     let isLikeUser = getStudy.study.like.includes(userId);
-    
-    // console.log(getStudy.study);
-    // console.log(study);
 
     // 좋아요 버튼
     const likeHandler = async (e) => {
