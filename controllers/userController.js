@@ -1,6 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import User from "../models/UserModel.js";
 import Study from "../models/StudyModel.js";
+import { hashPassword } from "../utils/passwordUtils.js";
 import coludinary from 'cloudinary';
 import { promises as fs } from 'fs';
 
@@ -44,6 +45,9 @@ export const updateProfile = async (req, res) => {
         req.body.thumb = response.secure_url;
         req.body.thumbPublicId = response.public_id;
     }
+
+    const hashedPassword = await hashPassword(req.body.password);
+    req.body.password = hashedPassword;
 
     const obj = {...req.body};
     const updatedUser = await User.findByIdAndUpdate(req.user.userId, obj);

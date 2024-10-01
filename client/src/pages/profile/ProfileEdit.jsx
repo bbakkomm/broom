@@ -51,6 +51,8 @@ export const action = async ({ request }) => {
       const res = await customFetch.patch('/users/profile-update-user', formData);
       toast.success('나의 정보 수정 완료.');
       return redirect('/profile');
+    } else {
+      return redirect('/profile/profileEdit');
     }
   } catch (error) {
     toast.error(error?.response?.data?.msg);

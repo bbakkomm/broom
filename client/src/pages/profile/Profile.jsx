@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -47,6 +48,11 @@ const Profile = () => {
       navigate('/');
     }
   }
+
+  // 페이지 진입시 ScrollTop
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  }, [])
 
   const likeList = likes.map((item, idx) => {
     return (
