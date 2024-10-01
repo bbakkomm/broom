@@ -18,7 +18,9 @@ function Header(props) {
 
 
   const linkHandler = () => {
-    if (isArrow) {
+    if (pagetype === 'detail') {
+      navigate('/study');
+    } else if (isArrow) {
       navigate(-1);
     }
   }
@@ -30,7 +32,7 @@ function Header(props) {
         <h1 className="header__title">{title}</h1>
       </button>
       <div className="header__btn">
-        {isLike ? (<LikeBtn/>) : ('')}
+        {isLike ? (<LikeBtn pagetype={pagetype}/>) : ('')}
         {isLink ? (<ShareBtn/>) : ('')}
       </div>
     </header>

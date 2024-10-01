@@ -18,15 +18,21 @@ export const loader = async ({ req }) => {
     }
 }
 
-function LikeBtn() { 
+function LikeBtn(props) { 
+    const { pagetype } = props;
     const currentLocation = useLocation().pathname;
     const navigate = useNavigate();
     const loadData = useLoaderData();
-    // const [{ study }] = loadData;    console.log(loadData);
-    const getStudy = loadData[0];
-    const getCurrentUser = loadData[2];
+    console.log(loadData);
+    
+    let getStudy = {}
+    let getCurrentUser = {}
+    if (pagetype === 'detail') {
+        getStudy = loadData[0];
+        getCurrentUser = loadData[2];
+    }
 
-    const getStudyId = getStudy.study._id;
+    const getStudyId = sessionStorage.getItem('singleStudyValue');
     const userId = getCurrentUser._id;
 
     let likeArr = getStudy.study.like;
