@@ -11,18 +11,20 @@ import SearchNotFound from '../components/common/studycard/SearchNotFound.jsx';
 
 export const loader = async ({ req }) => {
 	try {
-			const resUser = await customFetch.get('/users/current-user', req);
-			const res = await customFetch.get('/study', req);
-			return [res.data, resUser];
+		const resUser = await customFetch.get('/users/current-user', req);
+		const res = await customFetch.get('/study', req);
+		return [res.data, resUser];
 	} catch (error) {
-			console.log(error);
-			return redirect('/login');
+		console.log(error);
+		return redirect('/login');
 	}
 }
 
 function Study() {
 	const loadData = useLoaderData();
-	const { studys } = loadData[0];
+	let { studys } = loadData[0];
+
+	studys = [...studys].reverse();
 
 	const [studyCard, setStudyCard] = useState(studys);
 	const [search, setSearch] = useState('');
