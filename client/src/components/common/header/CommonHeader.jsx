@@ -1,12 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // icon
 import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import Logo from "../../../assets/img/common/logo_broom.svg";
 import LikeBtn from './component/LikeBtn';
 import ShareBtn from './component/ShareBtn';
-import SearchBtn from './component/SearchBtn';
   
 function Header(props) {
   const { pagetype, title, rightBtn } = props;
