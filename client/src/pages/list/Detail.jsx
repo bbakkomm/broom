@@ -292,23 +292,17 @@ function Detail() {
                     )}
                 </ul>
             </section>
-                { isManager ? (
-                    <div className="btn rebottom">
-                        <button className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
-                    </div>
-                ) : ('')}
-
                 { !isManager && isMember ? (
                     <div className="btn rebottom">
                         <button className="input-submit btn-un btn-bg" onClick={leaveHandler}>스터디 탈퇴하기</button>
                     </div>
                 ) : ('')}
 
-                { isManager ? (
+                { !isManager && !isJoinMemberMaxNum ? (
                     <div className="btn">
-                        <button className="btn__button btn-bg" onClick={studyEditHandler}>수정하기</button>   
+                        <button className="btn__button btn-un btn-bg">모집이 종료되었습니다.</button>    
                     </div>
-                ) : ('')}
+                ):('')}
 
                 { !isManager && !isMember && isJoinMemberMaxNum ? (
                     <div className="btn">
@@ -316,11 +310,17 @@ function Detail() {
                     </div>
                 ):('')}
 
-                { !isJoinMemberMaxNum ? (
+                { isManager ? (
                     <div className="btn">
-                        <button className="btn__button btn-un btn-bg">모집이 종료되었습니다.</button>    
+                        { isManager ? (
+                            <button className="input-submit btn-un btn-bg" onClick={removeHandler}>스터디 삭제하기</button>
+                        ) : ('')}
+
+                        { isManager ? (
+                            <button className="btn__button btn-bg" onClick={studyEditHandler}>수정하기</button>   
+                        ) : ('')}
                     </div>
-                ):('')}
+                ) : ('')}
         </main>
     )
 }

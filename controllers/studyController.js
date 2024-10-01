@@ -58,6 +58,11 @@ export const getObjAllStudyParticipate = async (req, res) => {
 
 // UPDATE study
 export const updateStudy = async (req, res) => {
+  const updateStudy = await Study.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.status(StatusCodes.OK).json({ msg:'study edit'});
+}
+
+export const updateEditStudy = async (req, res) => {
   if (req.file) {
     const response = await coludinary.v2.uploader.upload(req.file.path);
     await fs.unlink(req.file.path);

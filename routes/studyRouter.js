@@ -11,6 +11,8 @@ import {
   updateStudy, 
   deleteStudy, 
 
+  updateEditStudy,
+
   getAllStudy, 
 } from '../controllers/studyController.js';
 import { validateStudyInput, validateIdParam } from '../middleware/validationMiddleware.js';
@@ -23,11 +25,11 @@ router.route('/')
 router.route('/:id')
   .get(getStudy)
   // .patch(validateStudyInput, validateIdParam, updateStudy)
-  .patch(validateIdParam, updateStudy)
+  .patch(updateStudy)
   .delete(validateIdParam, deleteStudy);
 
 router.route('/studyedit/:id')
-  .patch(upload.single('thumb'), validateStudyInput, updateStudy)
+  .patch(upload.single('thumb'), validateStudyInput, updateEditStudy)
   
 router.route('/user/:id')
   .get(getAllStudy)
