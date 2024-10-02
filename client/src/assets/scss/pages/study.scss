@@ -21,6 +21,10 @@
 		&--desc {font-size: 1.1rem; line-height: 1.3rem; font-weight: 400; color: #999;}
 		&--total {font-size: 1.4rem; line-height: 1.6rem; font-weight: 700; color: #999;}
 	}
+
+	&__sort {
+		&--total {display: flex; align-items: end; font-size: 1.4rem; line-height: 1.6rem; font-weight: 700; color: #999;}
+	}
 }
 
 .menu-box {

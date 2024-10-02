@@ -8,6 +8,10 @@ import SearchBtn from '../components/common/header/component/SearchBtn.jsx';
 import StudyCard from '../components/common/studycard/CommonStudyCard';
 import SearchNotFound from '../components/common/studycard/SearchNotFound.jsx';
 
+// icon
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+
 export const loader = async ({ req }) => {
 	try {
 		const resUser = await customFetch.get('/users/current-user', req);
@@ -24,6 +28,7 @@ function Study() {
 	let { studys } = loadData[0];
 
 	studys = [...studys].reverse();
+	const cloneLatest = [...studys];
 
 	const [studyCard, setStudyCard] = useState(studys);
 	const [search, setSearch] = useState('');
@@ -58,7 +63,11 @@ function Study() {
 	});
 
 	useEffect(()=>{
-		// if ()
+		if (studySort === "latest") {
+			studys = cloneLatest;
+		} else {
+			studys = studys.sort((a,b) => b.like.length - a.like.length);
+		}
 
 		const filter = studys.filter((item)=>{
 			const searchValue = item.title.toLowerCase().includes(search.toLowerCase());
@@ -73,7 +82,7 @@ function Study() {
 		});
 
 		setStudyCard(filter);
-	}, [search, studyTab]);
+	}, [search, studyTab, studySort]);
 
 	const titleChange = (e)=>{
 		setSearch(e.target.value)
@@ -97,9 +106,10 @@ return (
 				<span className="study-header__length--desc">개</span>
 			</div>
 			<div className="study-header__sort">
-				<span className="study-header__length--total">
-					{/* {studyCard.length} */}
-				</span>
+				<button className="study-header__sort--total" onClick={() => {studySort === "latest" ? setStudySort("like") : setStudySort("latest")}}>
+					{studySort === "latest" ? "최신순" : "좋아요순"}
+					<KeyboardArrowDownOutlinedIcon />
+				</button>
 			</div>
 		</div>
 		{
