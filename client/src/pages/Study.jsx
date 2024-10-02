@@ -5,7 +5,6 @@ import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import customFetch from "../utils/customFetch.js";
 
 import SearchBtn from '../components/common/header/component/SearchBtn.jsx';
-
 import StudyCard from '../components/common/studycard/CommonStudyCard';
 import SearchNotFound from '../components/common/studycard/SearchNotFound.jsx';
 
@@ -29,6 +28,7 @@ function Study() {
 	const [studyCard, setStudyCard] = useState(studys);
 	const [search, setSearch] = useState('');
 	const [studyTab, setStudyTab] = useState('all');
+	const [studySort, setStudySort] = useState('latest'); // latest: 최신순, like: 좋아요순
 
 	const studyList = studyCard.map((item, idx)=>{
 		return (
@@ -58,6 +58,8 @@ function Study() {
 	});
 
 	useEffect(()=>{
+		// if ()
+
 		const filter = studys.filter((item)=>{
 			const searchValue = item.title.toLowerCase().includes(search.toLowerCase());
 
@@ -68,30 +70,43 @@ function Study() {
 			}
 
 			return searchValue;
-		})
+		});
+
 		setStudyCard(filter);
-	}, [search, studyTab])
+	}, [search, studyTab]);
 
 	const titleChange = (e)=>{
 		setSearch(e.target.value)
 	}
 
-  return (
+return (
 	<div className="study-wrap">
 		<div className="search-box">
 			<SearchBtn/>
 			<input type="text" value={search} placeholder="원하는 스터디를 찾아보세요!" onChange={titleChange} className="search-box__input" />
 		</div>
-		<div className="studytab">
-			<button className={'studytab-btn' + (studyTab === "all" ? " active" : "")} onClick={()=>{setStudyTab("all")}}>전체</button>
-			<button className={'studytab-btn' + (studyTab === "open" ? " active" : "")} onClick={()=>{setStudyTab("open")}}>모집중</button>
-			<button className={'studytab-btn' + (studyTab === "close" ? " active" : "")} onClick={()=>{setStudyTab("close")}}>완료</button>
+		<div className="menu-box">
+			<button className={'menu-box__item' + (studyTab === "all" ? " active" : "")} onClick={()=>{setStudyTab("all")}} >전체</button>
+			<button className={'menu-box__item' + (studyTab === "open" ? " active" : "")} onClick={()=>{setStudyTab("open")}} >모집중</button>
+			<button className={'menu-box__item' + (studyTab === "close" ? " active" : "")} onClick={()=>{setStudyTab("close")}} >완료</button>
+		</div>
+		<div className="study-header">
+			<div className="study-header__length">
+				<span className="study-header__length--desc">전체 </span>
+				<span className="study-header__length--total">{studyCard.length}</span>
+				<span className="study-header__length--desc">개</span>
+			</div>
+			<div className="study-header__sort">
+				<span className="study-header__length--total">
+					{/* {studyCard.length} */}
+				</span>
+			</div>
 		</div>
 		{
 			studyCard.length === 0 ? <SearchNotFound /> : studyList
 		}
 	</div>
-  )
+	)
 }
 
 export default Study
