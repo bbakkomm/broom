@@ -39,6 +39,7 @@ const Profile = () => {
   const logOutHandler = async (e) => {
     e.preventDefault();
     if (window.confirm('정말 로그아웃하시겠습니까?')) {
+      sessionStorage.removeItem('singleStudyValue');
       await customFetch.get('/auth/logout');
       toast.success('로그아웃 되었습니다.');
       navigate('/');
