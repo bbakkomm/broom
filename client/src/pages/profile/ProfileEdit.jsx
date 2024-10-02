@@ -6,7 +6,7 @@ import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
 
 // CSS style
-import styles from '../../assets/scss/pages/profile/profileedit.module.scss';
+// import styles from '../../assets/css/pages/profile/profileedit.css';
 
 export const loader = async ({ req }) => {
   try {
@@ -78,14 +78,14 @@ const ProfileEdit = () => {
   }, [])
 
   return (
-    <div className={styles.profileEdit}>
+    <div className="profileEdit">
 
       <Form method='post' className="form-box" encType='multipart/form-data'>
         <fieldset className="form-box__inner">
           <legend className="form-box__title">프로필 수정</legend>
 
           {/* 이미지 수정 */}
-          <label htmlFor="thumb" className={styles.profileEdit__img}>
+          <label htmlFor="thumb" className="profileEdit__img">
             {file && <img src={file} className='preview-img' alt="preview-img" />}
             {!file && <img src={user.thumb} className='preview-img' alt="preview-img" />}
           </label>
@@ -201,10 +201,10 @@ const ProfileEdit = () => {
             </div>
           </div>
 
-          <div className={styles.profileEdit__info}>
-            <span className={styles.profileEdit__info__title}>소개글</span>
+          <div className="profileEdit__info">
+            <span className="profileEdit__info__title">소개글</span>
             <textarea
-              className={styles.profileEdit__info__textarea} 
+              className="profileEdit__info__textarea"
               id="introduce" 
               name="introduce" 
               cols={10} 
@@ -214,7 +214,7 @@ const ProfileEdit = () => {
             />
           </div>
 
-          <div className={styles.profileEdit__btn}>
+          <div className="profileEdit__btn">
             <button type='submit' className="input-submit btn-bg" disabled={isSubmitting}>프로필 정보 저장 {isSubmitting?'...':''}</button>
           </div>
         </fieldset>

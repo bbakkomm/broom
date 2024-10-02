@@ -4,9 +4,9 @@ import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 // api
 import customFetch from "../utils/customFetch.js";
 
-import SearchBtn from '../components/common/header/component/SearchBtn.jsx';
+import SearchBtn from '../components/common/header/component/SearchBtn';
 import StudyCard from '../components/common/studycard/CommonStudyCard';
-import SearchNotFound from '../components/common/studycard/SearchNotFound.jsx';
+import SearchNotFound from '../components/common/studycard/SearchNotFound';
 
 // icon
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';

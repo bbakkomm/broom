@@ -7,7 +7,7 @@ import ProfileCard from './components/ProfileCard';
 import StudyCard from '../../components/common/studycard/CommonStudyCard';
 
 // CSS style
-import styles from '../../assets/scss/pages/profile/profile.module.scss';
+// import styles from '../../assets/scss/pages/profile/profile.css';
 
 import customFetch from '../../utils/customFetch.js';
 
@@ -106,8 +106,8 @@ const Profile = () => {
   });
 
   return (
-    <div className={styles.profile}>
-      <div className={styles.container}>
+    <div className="profile">
+      <div className="container">
 
         <ProfileCard 
           userImg={user.thumb} 
@@ -119,14 +119,14 @@ const Profile = () => {
           complate={user.complete} 
         />
 
-        <div className={styles.groupBox}>
-          <h3 className={styles.groupBox__title}>내가 찜한 모임</h3>
-          { likes.length ? (likeList) : (<p className={styles.groupBox__empty_txt}>찜한 모임이 없습니다</p>)}
+        <div className="groupBox">
+          <h3 className="groupBox__title">내가 찜한 모임</h3>
+          { likes.length ? (likeList) : (<p className="groupBox__empty_txt">찜한 모임이 없습니다</p>)}
         </div>
 
-        <div className={styles.groupBox}>
-          <h3 className={styles.groupBox__title}>내가 활동중인 모임</h3>   
-          { studys.length ? (studyList) : (<p className={styles.groupBox__empty_txt}>활동중인 모임이 없습니다</p>)} 
+        <div className="groupBox">
+          <h3 className="groupBox__title">내가 활동중인 모임</h3>   
+          { studys.length ? (studyList) : (<p className="groupBox__empty_txt">활동중인 모임이 없습니다</p>)} 
         </div>
       </div>
       <div className="btn rebottom">

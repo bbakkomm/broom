@@ -2,9 +2,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import 'react-toastify/dist/ReactToastify.css';
-import './assets/scss/common.scss';
-import './assets/scss/index.scss';
-import './assets/scss/navbar.scss';
+import './assets/css/common.css';
+import './assets/css/index.css';
 // import customFetch from './utils/customFetch.js';
 import { ToastContainer } from 'react-toastify';
 
