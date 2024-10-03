@@ -96,10 +96,10 @@ function Creation(props) {
               <CalendarTodayRoundedIcon/>
               <p className="blind">시작 날짜</p>
             </label>
-            <input type="date" id="startDate" name="startDate" required className="input-write" placeholder='0000-00-00'/>
+            <input type="date" id="startDate" name="startDate" required className="input-write"/>
             <span className="range">~</span>
             <label htmlFor="endDate" className="input-label blind">마감 날짜</label>
-            <input type="date" id="endDate" name="endDate" className="input-write" placeholder='0000-00-00'/>
+            <input type="date" id="endDate" name="endDate" className="input-write"/>
 
             <p className="validity blind">날짜를 선택해주세요.</p>
           </div>
@@ -110,7 +110,7 @@ function Creation(props) {
               <AccessAlarmsRoundedIcon/>
               <p className="blind">시간</p>
             </label>
-            <input type="time" id="time" name="time" required className="input-write" placeholder='오후 00:00'/>
+            <input type="time" id="time" name="time" required className="input-write"/>
           </div>
 
           {/* place */}
