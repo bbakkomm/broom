@@ -63,10 +63,10 @@ function StudyCard(
 
     try {
       setloading('submitting');
-      const res = await customFetch.get(`/study/${objId}`);
       const targetUlAttr = e.target.closest('.studycard').getAttribute('data-prod');
       sessionStorage.setItem('singleStudyValue', targetUlAttr);
       navigate('/study/studydetail');
+      const res = await customFetch.get(`/study/${objId}`);
     } catch (error) {
       toast.error(error?.response?.data?.msg);
       return error;

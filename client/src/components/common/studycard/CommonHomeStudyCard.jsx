@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+import customFetch from '../../../utils/customFetch';
 import CircularSize from '../../CircularSize';
 
 function HomeStudyCard(
@@ -29,10 +30,10 @@ function HomeStudyCard(
 
     try {
       setloading('submitting');
-      // const res = await customFetch.get(`/study/${objId}`);
       const targetUl = e.target.closest('.studyCard');
       sessionStorage.setItem('singleStudyValue', targetUl.getAttribute('data-prod'));
       navigate('/study/studydetail');
+      const res = await customFetch.get(`/study/${objId}`);
     } catch (error) {
       toast.error(error?.response?.data?.msg);
     } finally {
