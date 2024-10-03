@@ -30,7 +30,6 @@ function Study() {
 	studys = [...studys].reverse();
 	const cloneLatest = [...studys];
 
-	
 	const [studyCard, setStudyCard] = useState(studys);
 	const [search, setSearch] = useState('');
 	const [studyTab, setStudyTab] = useState('all');

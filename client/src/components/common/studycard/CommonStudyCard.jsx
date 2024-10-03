@@ -58,11 +58,12 @@ function StudyCard(
   let likeArr = getCurrentStudy.like;
   let isLike = likeArr.includes(currentUserId);
 
-  const listClickHandler = (e) => {
+  const listClickHandler = async (e) => {
     e.preventDefault();
 
     try {
       setloading('submitting');
+      const res = await customFetch.get(`/study/${objId}`);
       const targetUlAttr = e.target.closest('.studycard').getAttribute('data-prod');
       sessionStorage.setItem('singleStudyValue', targetUlAttr);
       navigate('/study/studydetail');

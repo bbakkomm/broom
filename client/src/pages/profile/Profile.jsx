@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 // components
 import ProfileCard from './components/ProfileCard';
 import StudyCard from '../../components/common/studycard/CommonStudyCard';
+import CircularSize from '../../components/CircularSize.jsx';
 
 // CSS style
 // import styles from '../../assets/scss/pages/profile/profile.css';
@@ -32,17 +33,27 @@ const Profile = () => {
   const user = loadData[0].user;
   const likes = loadData[1].studys;
   const studys = loadData[2].studys;
+  const [loading, setloading] = useState('');
+  const isSubmitting = loading === 'submitting';
   // console.log(likes);
 
   const navigate = useNavigate();
 
   const logOutHandler = async (e) => {
     e.preventDefault();
-    if (window.confirm('정말 로그아웃하시겠습니까?')) {
-      sessionStorage.removeItem('singleStudyValue');
-      await customFetch.get('/auth/logout');
-      toast.success('로그아웃 되었습니다.');
-      navigate('/');
+
+    try {
+      setloading('submitting');
+      if (window.confirm('정말 로그아웃하시겠습니까?')) {
+        sessionStorage.removeItem('singleStudyValue');
+        await customFetch.get('/auth/logout');
+        toast.success('로그아웃 되었습니다.');
+        navigate('/');
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+    } finally {
+      setloading('');
     }
   }
 
@@ -107,6 +118,7 @@ const Profile = () => {
 
   return (
     <div className="profile">
+      {isSubmitting ? (<CircularSize />) : ''}
       <div className="container">
 
         <ProfileCard 

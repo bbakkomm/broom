@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
+import CircularSize from '../../components/CircularSize.jsx';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -30,6 +31,7 @@ const Join = () => {
 
   return (
     <main className="join">
+      {isSubmitting ? (<CircularSize />) : ''}
       <h2 className="join__title">회원가입</h2>
 
       <Form method='post' className="form-box">

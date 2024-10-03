@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import { Form, json, useActionData, useNavigate, } from 'react-router-dom';
+import { Form, json, useActionData, useNavigate, useNavigation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
+import CircularSize from '../../components/CircularSize.jsx';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -25,6 +26,8 @@ export const action = async ({ request }) => {
 function Pw() {
   const actionData = useActionData();
   const navigate = useNavigate();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
 
   useEffect(() => {
     if (actionData) {
@@ -35,6 +38,7 @@ function Pw() {
 
   return (
     <main className="pw">
+      {isSubmitting ? (<CircularSize />) : ''}
       <h2 className="pw__title">비밀번호 찾기</h2>
       <Form method='post'>
         {/* id */}

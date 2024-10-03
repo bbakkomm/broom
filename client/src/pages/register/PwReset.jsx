@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Form, useLocation, Navigate, redirect } from 'react-router-dom';
+import { Form, useLocation, Navigate, redirect, useNavigation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
+import CircularSize from '../../components/CircularSize.jsx';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -28,6 +29,8 @@ export const action = async ({ request }) => {
 };
 
 function PwReset() {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
   const { state } = useLocation();
   const [currentState, setCurrentState] = useState(state);
 
@@ -39,6 +42,7 @@ function PwReset() {
 
   return (
     <main className="pw">
+      {isSubmitting ? (<CircularSize />) : ''}
       <h2 className="pw__title">비밀번호 재설정</h2>
 
       <Form method='post'>

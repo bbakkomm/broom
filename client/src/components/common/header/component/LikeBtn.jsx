@@ -3,6 +3,7 @@ import { Link, redirect, useLoaderData, useLocation, useNavigate } from 'react-r
 import { toast } from 'react-toastify';
 
 import customFetch from '../../../../utils/customFetch.js';
+import CircularSize from '../../../CircularSize.jsx';
 
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -23,6 +24,8 @@ function LikeBtn(props) {
     const currentLocation = useLocation().pathname;
     const navigate = useNavigate();
     const loadData = useLoaderData();
+    const [loading, setloading] = useState('');
+    const isSubmitting = loading === 'submitting';
     
     let getStudy = {}
     let getCurrentUser = {}
@@ -43,6 +46,7 @@ function LikeBtn(props) {
         let likeState = '';
 
         try {
+            setloading('submitting');
             if (!isLikeUser) {
                 likeArr.push(userId);
                 likeState = '찜 추가되었습니다.';
@@ -59,11 +63,14 @@ function LikeBtn(props) {
         } catch (error) {
             toast.error(error?.response?.data?.msg);
             return error;
+        } finally {
+            setloading('');
         }
     }
 
     return (
         <button className="header__like" onClick={likeHandler}>
+            {isSubmitting ? (<CircularSize />) : ''}
             {isLikeUser ? <FavoriteOutlinedIcon className="like__icon" /> : <FavoriteBorderOutlinedIcon className="like__icon" />}
         </button>
     );

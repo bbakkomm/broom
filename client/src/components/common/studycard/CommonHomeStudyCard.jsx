@@ -1,4 +1,8 @@
+import { useState } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
+import CircularSize from '../../CircularSize';
 
 function HomeStudyCard(
   { 
@@ -17,17 +21,29 @@ function HomeStudyCard(
   }
 ) {
   const navigate = useNavigate();
+  const [loading, setloading] = useState('');
+  const isSubmitting = loading === 'submitting';
 
-  const listClickHandler = (e) => {
+  const listClickHandler = async (e) => {
     e.preventDefault();
-    const targetUl = e.target.closest('.studyCard');
-    // console.log(targetUl);
-    sessionStorage.setItem('singleStudyValue', targetUl.getAttribute('data-prod'));
-    navigate('/study/studydetail');
+
+    try {
+      setloading('submitting');
+      // const res = await customFetch.get(`/study/${objId}`);
+      const targetUl = e.target.closest('.studyCard');
+      sessionStorage.setItem('singleStudyValue', targetUl.getAttribute('data-prod'));
+      navigate('/study/studydetail');
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+    } finally {
+      setloading('');
+    }
+    
   }
 
   return (
     <ul className="studyCard" key={idx} data-prod={objId} onClick={listClickHandler}>
+      {isSubmitting ? (<CircularSize />) : ''}
       <li className="studyCard__item">
         <div className="studyBox">
           <div className="studyBox__content">

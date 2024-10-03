@@ -13,7 +13,7 @@ import Logo from "../../assets/img/common/logo_broom.svg";
 // import VisibilityOffSharpIcon from '@mui/icons-material/VisibilityOffSharp';
 
 import Splash from '../Splash';
-
+import CircularSize from '../../components/CircularSize.jsx';
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
 
@@ -47,6 +47,7 @@ const Login = () => {
   
   return (
     <main className="login">
+      {isSubmitting ? (<CircularSize />) : ''}
       <Splash state={spState}/>
       <div className="login__inner">
         <img src={Logo} alt="B.ROOM 로고" className="logo" />

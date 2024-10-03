@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 // api
 import customFetch from "../../utils/customFetch.js";
+import CircularSize from '../../components/CircularSize.jsx';
 // import FormRow from '../../components/FormRow';
 
 // component
@@ -53,6 +54,8 @@ function Detail() {
     const loadData = useLoaderData();
     const navigate = useNavigate();
     const [{ study }, membersArr, getCurrentUser] = loadData;
+    const [loading, setloading] = useState('');
+    const isSubmitting = loading === 'submitting';
 
     const [
         skillTag, 
@@ -83,6 +86,7 @@ function Detail() {
         const memberData = getCurrentUser._id;
         
         try {
+            setloading('submitting');
             if (window.confirm('정말 스터디를 탈퇴하시겠습니까?')) {
                 const datttId = sessionStorage.getItem('singleStudyValue');
                 const res1 = await customFetch.get(`/study/${datttId}`, '');
@@ -103,6 +107,8 @@ function Detail() {
         } catch (error) {
             toast.error(error?.response?.data?.msg);
             return error;
+        } finally {
+            setloading('');
         }
     }
 
@@ -113,6 +119,7 @@ function Detail() {
         const memberData = getCurrentUser._id;
         
         try {
+            setloading('submitting');
             const datttId = sessionStorage.getItem('singleStudyValue');
             const res1 = await customFetch.get(`/study/${datttId}`, '');
             let req2 = res1.data.study.member;
@@ -130,6 +137,8 @@ function Detail() {
         } catch (error) {
             toast.error(error?.response?.data?.msg);
             return error;
+        } finally {
+            setloading('');
         }
     }
 
@@ -143,6 +152,7 @@ function Detail() {
         e.preventDefault();
 
         try {
+            setloading('submitting');
             if (window.confirm('정말 스터디를 삭제하시겠습니까?')) {
                 const datttId = sessionStorage.getItem('singleStudyValue');
                 const res = await customFetch.delete(`/study/${datttId}`, '');
@@ -152,11 +162,14 @@ function Detail() {
         } catch (error) {
             toast.error(error?.response?.data?.msg);
             return error;
+        } finally {
+            setloading('submitting');
         }
     }
 
     return (
         <main className="detail">
+            {isSubmitting ? (<CircularSize />) : ''}
             {/* 스터디 이미지 */}
             <section className="image">
                 <img src={study.thumb} alt={study.title} />
