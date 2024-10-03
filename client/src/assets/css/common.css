@@ -76,3 +76,5 @@ input[type='tiem']:after {
 input[type='tiem'][value]:not([value=""]) + input[type='tiem']:after {
   content: ''!important;
 }
+
+.circleSpinner { }
