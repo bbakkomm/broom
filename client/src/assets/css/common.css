@@ -49,8 +49,9 @@ textarea {
   width: 100%;
 }
 
-.black { color: #000; filter: #000;}
+.black { color: #000; filter: #000; fill: #000;}
 
 input[type='date'], input[type='time'] {
+  background: #fff;
   -webkit-appearance: none;
 }
