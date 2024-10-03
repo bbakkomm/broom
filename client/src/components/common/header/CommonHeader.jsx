@@ -34,7 +34,7 @@ function Header(props) {
       </button>
       <div className="header__btn">
         {isLike ? (<LikeBtn pagetype={pagetype}/>) : ('')}
-        {isLink ? (<ShareBtn className='black'/>) : ('')}
+        {isLink ? (<ShareBtn/>) : ('')}
       </div>
     </header>
   );

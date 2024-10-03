@@ -69,7 +69,7 @@ function ShareBtn() {
   return (
       <>
           <button onClick={ModalOpen} className="header__share">
-              <ShareOutlinedIcon className="share__icon"/>
+              <ShareOutlinedIcon className="share__icon black"/>
           </button>
           {modal ? <Modal ModalClose={ModalClose}/> : null}
       </>

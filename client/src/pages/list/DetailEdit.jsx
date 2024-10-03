@@ -117,10 +117,10 @@ const DetailEdit = () => {
               <CalendarTodayRoundedIcon/>
               <p className="blind">시작 날짜</p>
             </label>
-            <input type="date" id="startDate" name="startDate" required className="input-write" defaultValue={study.startDate}/>
+            <input type="date" id="startDate" name="startDate" required className="input-write" placeholder='0000-00-00' defaultValue={study.startDate}/>
             <span className="range">~</span>
             <label htmlFor="endDate" className="input-label blind">마감 날짜</label>
-            <input type="date" id="endDate" name="endDate" className="input-write" defaultValue={study.endDate}/>
+            <input type="date" id="endDate" name="endDate" className="input-write" placeholder='0000-00-00' defaultValue={study.endDate}/>
 
             <p className="validity blind">날짜를 선택해주세요.</p>
           </div>
@@ -131,7 +131,7 @@ const DetailEdit = () => {
               <AccessAlarmsRoundedIcon/>
               <p className="blind">시간</p>
             </label>
-            <input type="time" id="time" name="time" required className="input-write" defaultValue={study.time}/>
+            <input type="time" id="time" name="time" required className="input-write" placeholder='오후 00:00' defaultValue={study.time}/>
           </div>
 
           {/* place */}
@@ -140,7 +140,7 @@ const DetailEdit = () => {
               <PlaceOutlinedIcon/>
               <p className="blind">위치</p>
             </label>
-            <input type="text" id="place" name="place" required className="input-write" defaultValue={study.place}/>
+            <input type="text" id="place" name="place" required className="input-write" placeholder='위치' defaultValue={study.place}/>
           </div>
 
           {/* price */}
