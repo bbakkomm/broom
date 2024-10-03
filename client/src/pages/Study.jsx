@@ -7,7 +7,6 @@ import customFetch from "../utils/customFetch.js";
 import SearchBtn from '../components/common/header/component/SearchBtn';
 import StudyCard from '../components/common/studycard/CommonStudyCard';
 import SearchNotFound from '../components/common/studycard/SearchNotFound';
-import CircularSize from '../components/CircularSize.jsx';
 
 // icon
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -93,7 +92,6 @@ function Study() {
 
 return (
 	<div className="study-wrap">
-		{!loadData ? (<CircularSize />) : ('')}
 		<div className="search-box">
 			<SearchBtn/>
 			<input type="text" value={search} placeholder="원하는 스터디를 찾아보세요!" onChange={titleChange} className="search-box__input" />
