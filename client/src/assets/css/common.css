@@ -58,9 +58,9 @@ input[type='date'], input[type='time'] {
 }
 
 
-input[type='date']:after {
+/* input[type='date']:after {
   color: #ccc;
-  content: attr(placeholder) !important;
+  content: '0000-00-00';
   font-size: 1.6rem;
   left: 0.5em;
   width: max-content;
@@ -74,7 +74,7 @@ input[type='date'][value]:not([value=""]) + input[type='date']:after {
 
 input[type='time']:after {
   color: #ccc;
-  content: attr(placeholder) !important;
+  content: '오후 00:00';
   font-size: 1.6rem;
   left: 0.5em;
   width: max-content;
@@ -82,6 +82,6 @@ input[type='time']:after {
   top: 50%; transform: translateY(-50%);
 }
   
-input[type='time'][value]:not([value=""]) + input[type='time']:after {
+input[type='time'][value]:not + input[type='time']:after {
   content: ''!important;
-}
+} */
