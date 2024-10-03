@@ -43,6 +43,7 @@ button {
 }
 input,
 textarea {
+  position: relative;
   font-size: 1.6rem;
 }
 .input-submit {
@@ -61,8 +62,10 @@ input[type='date']:after {
   color: #ccc;
   content: attr(placeholder) !important;
   font-size: 1.6rem;
-  top: 0.5em;
+  left: 0.5em;
   width: max-content;
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
   }
   
 input[type='date'][value]:not([value=""]) + input[type='date']:after {
@@ -73,8 +76,10 @@ input[type='time']:after {
   color: #ccc;
   content: attr(placeholder) !important;
   font-size: 1.6rem;
-  top: 0.5em;
+  left: 0.5em;
   width: max-content;
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
 }
   
 input[type='time'][value]:not([value=""]) + input[type='time']:after {
