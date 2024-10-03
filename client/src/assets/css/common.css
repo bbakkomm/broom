@@ -36,6 +36,14 @@ button {
 }
 .input-write {
   width: 100%;
+  
+}
+.input-check span {
+  display: block;
+}
+input,
+textarea {
+  font-size: 1.6rem;
 }
 .input-submit {
   width: 100%;
