@@ -4,7 +4,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 function SearchBtn() {
   return (
     <button className="header__search">
-        <SearchOutlinedIcon className="search__icon"/>
+        <SearchOutlinedIcon className="search__icon black"/>
     </button>
   )
 }

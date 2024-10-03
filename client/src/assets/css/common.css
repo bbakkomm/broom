@@ -55,3 +55,24 @@ input[type='date'], input[type='time'] {
   background: #fff;
   -webkit-appearance: none;
 }
+
+
+input[type='date']:after {
+  color: #ccc;
+  content: attr(placeholder) !important;
+  font-size: 1.6rem;
+  }
+  
+input[type='date'][value]:not([value=""]) + input[type='date']:after {
+  content: ''!important;
+}
+
+input[type='tiem']:after {
+  color: #ccc;
+  content: attr(placeholder) !important;
+  font-size: 1.6rem;
+  }
+  
+input[type='tiem'][value]:not([value=""]) + input[type='tiem']:after {
+  content: ''!important;
+}
