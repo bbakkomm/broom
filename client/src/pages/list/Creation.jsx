@@ -21,7 +21,7 @@ export const action = async ({ request }) => {
   const formData = await request.formData();
   const file = formData.get('thumb');
 
-  if (file && file.size > 500000) {
+  if (file && file.size > 5000000) {
     toast.error('파일 용량이 너무 큽니다.');
     return null;
   }
