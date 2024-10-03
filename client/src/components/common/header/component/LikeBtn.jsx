@@ -69,10 +69,12 @@ function LikeBtn(props) {
     }
 
     return (
-        <button className="header__like" onClick={likeHandler}>
+        <>
             {isSubmitting ? (<CircularSize />) : ''}
-            {isLikeUser ? <FavoriteOutlinedIcon className="like__icon" /> : <FavoriteBorderOutlinedIcon className="like__icon" />}
-        </button>
+            <button className="header__like" onClick={likeHandler}>
+                {isLikeUser ? <FavoriteOutlinedIcon className="like__icon" /> : <FavoriteBorderOutlinedIcon className="like__icon" />}
+            </button>
+        </>
     );
 }
 
