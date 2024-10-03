@@ -61,20 +61,22 @@ input[type='date']:after {
   color: #ccc;
   content: attr(placeholder) !important;
   font-size: 1.6rem;
+  top: 0.5em;
+  width: max-content;
   }
   
 input[type='date'][value]:not([value=""]) + input[type='date']:after {
   content: ''!important;
 }
 
-input[type='tiem']:after {
+input[type='time']:after {
   color: #ccc;
   content: attr(placeholder) !important;
   font-size: 1.6rem;
-  }
+  top: 0.5em;
+  width: max-content;
+}
   
-input[type='tiem'][value]:not([value=""]) + input[type='tiem']:after {
+input[type='time'][value]:not([value=""]) + input[type='time']:after {
   content: ''!important;
 }
-
-.circleSpinner { }
