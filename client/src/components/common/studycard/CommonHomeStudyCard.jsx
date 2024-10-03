@@ -32,8 +32,8 @@ function HomeStudyCard(
       setloading('submitting');
       const targetUl = e.target.closest('.studyCard');
       sessionStorage.setItem('singleStudyValue', targetUl.getAttribute('data-prod'));
-      navigate('/study/studydetail');
       const res = await customFetch.get(`/study/${objId}`);
+      navigate('/study/studydetail');
     } catch (error) {
       toast.error(error?.response?.data?.msg);
     } finally {
