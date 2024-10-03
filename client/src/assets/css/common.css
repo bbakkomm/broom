@@ -57,6 +57,12 @@ input[type='date'], input[type='time'] {
   -webkit-appearance: none;
 }
 
+.circleSpinner { 
+  position: fixed; top: 0; left: 0; z-index: 50; 
+  display: flex; justify-content: center; align-items: center; 
+  width: 100%; height: 100vh; background-color: rgba(255, 255, 255, 0.3);
+}
+
 
 /* input[type='date']:after {
   color: #ccc;

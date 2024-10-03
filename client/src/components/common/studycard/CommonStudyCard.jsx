@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { redirect, useLocation, useNavigate, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import customFetch from '../../../utils/customFetch.js';
+import CircularSize from '../../CircularSize.jsx';
 
 // icon
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
@@ -34,6 +36,9 @@ function StudyCard(
   const navigate = useNavigate();
   const loadData = useLoaderData();
 
+  const [loading, setloading] = useState('');
+  const isSubmitting = loading === 'submitting';
+
   let studys = []
   let currentUserId = '';
 
@@ -56,9 +61,17 @@ function StudyCard(
   const listClickHandler = (e) => {
     e.preventDefault();
 
-    const targetUlAttr = e.target.closest('.studycard').getAttribute('data-prod');
-    sessionStorage.setItem('singleStudyValue', targetUlAttr);
-    navigate('/study/studydetail');
+    try {
+      setloading('submitting');
+      const targetUlAttr = e.target.closest('.studycard').getAttribute('data-prod');
+      sessionStorage.setItem('singleStudyValue', targetUlAttr);
+      navigate('/study/studydetail');
+    } catch (error) {
+      toast.error(error?.response?.data?.msg);
+      return error;
+    } finally {
+      setloading('');
+    }
   }
 
   const likeClickHandler = async (e) => {
@@ -66,27 +79,31 @@ function StudyCard(
     let likeState = '';
 
     try {
-        if (!isLike) {
-            likeArr.push(currentUserId);
-            likeState = '찜 추가되었습니다.';
-        } else {
-            likeArr = likeArr.filter(value => value !== currentUserId);
-            likeState = '찜 해제되었습니다.';
-        }
+      setloading('submitting');
+      if (!isLike) {
+          likeArr.push(currentUserId);
+          likeState = '찜 추가되었습니다.';
+      } else {
+          likeArr = likeArr.filter(value => value !== currentUserId);
+          likeState = '찜 해제되었습니다.';
+      }
 
-        let formData = { like: likeArr }
-        const res = await customFetch.patch(`/study/${objId}`, formData);
+      let formData = { like: likeArr }
+      const res = await customFetch.patch(`/study/${objId}`, formData);
 
-        toast.success(likeState);
-        navigate(currentLocation);
+      toast.success(likeState);
+      navigate(currentLocation);
     } catch (error) {
-        toast.error(error?.response?.data?.msg);
-        return error;
+      toast.error(error?.response?.data?.msg);
+      return error;
+    } finally {
+      setloading('');
     }
   }
 
   return (
     <ul className="studycard" key={idx} data-prod={objId} onClick={listClickHandler}>
+      {isSubmitting ? (<CircularSize />) : ''}
       <li className="studycard__item">
         <div className="skill-tag">
           {

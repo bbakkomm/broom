@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link, Form, json, redirect } from 'react-router-dom';
+import { Link, Form, json, redirect, useNavigation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 // component
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
+import CircularSize from '../../components/CircularSize.jsx';
 
 // icon
 import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
@@ -45,6 +46,8 @@ export const action = async ({ request }) => {
 
 function Creation(props) {
   const {study} = props;
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
 
   const [file, setFile] = useState();
   function handleChange(e) {
@@ -58,6 +61,7 @@ function Creation(props) {
 
   return (
     <main className="creation">
+      {isSubmitting ? (<CircularSize />) : ''}
       <Form method='post' className="form-box" encType='multipart/form-data'>
         <fieldset className="form-box__inner">
           <legend className="form-box__title">로그인</legend>

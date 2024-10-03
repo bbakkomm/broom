@@ -25,7 +25,6 @@ export const loader = async ({ req }) => {
 
 function Study() {
 	const loadData = useLoaderData();
-	console.log(loadData);
 	let { studys } = loadData[0];
 
 	studys = [...studys].reverse();

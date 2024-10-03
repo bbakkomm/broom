@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
+import CircularSize from '../../components/CircularSize.jsx';
 
 // CSS style
 // import styles from '../../assets/css/pages/profile/profileedit.css';
@@ -79,7 +80,7 @@ const ProfileEdit = () => {
 
   return (
     <div className="profileEdit">
-
+      {isSubmitting ? (<CircularSize />) : ''}
       <Form method='post' className="form-box" encType='multipart/form-data'>
         <fieldset className="form-box__inner">
           <legend className="form-box__title">프로필 수정</legend>
