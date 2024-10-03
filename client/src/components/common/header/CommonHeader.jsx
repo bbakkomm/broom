@@ -29,12 +29,12 @@ function Header(props) {
   return (
     <header className="header">
       <button title={title} className="header__link" onClick={linkHandler}>
-        {isArrow ? (<ArrowBackIosNewOutlinedIcon />) : ('')}
+        {isArrow ? (<ArrowBackIosNewOutlinedIcon className='black'/>) : ('')}
         <h1 className="header__title">{title}</h1>
       </button>
       <div className="header__btn">
         {isLike ? (<LikeBtn pagetype={pagetype}/>) : ('')}
-        {isLink ? (<ShareBtn/>) : ('')}
+        {isLink ? (<ShareBtn className='black'/>) : ('')}
       </div>
     </header>
   );

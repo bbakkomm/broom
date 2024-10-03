@@ -48,3 +48,9 @@ textarea {
 .input-submit {
   width: 100%;
 }
+
+.black { color: #000; filter: #000;}
+
+input[type='date'], input[type='time'] {
+  -webkit-appearance: none;
+}
