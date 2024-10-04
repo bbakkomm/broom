@@ -7,6 +7,11 @@ import AddIcon from '@mui/icons-material/Add';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 function Nav(props) {
+  const scroll = window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.nav');
+    if (nav !== null) nav.style.bottom = 0 + 'px';
+  });
+
   return (
     <nav className="nav">
       <ul className="nav__list">

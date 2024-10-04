@@ -57,6 +57,11 @@ function Detail() {
     const [loading, setloading] = useState('');
     const isSubmitting = loading === 'submitting';
 
+    const scroll = window.addEventListener('scroll', () => {
+        const dbtn = document.querySelector('.detail .btn');
+        if (dbtn !== null) dbtn.style.bottom = 5 + 'rem';
+    });
+
     const [
         skillTag, 
         member
