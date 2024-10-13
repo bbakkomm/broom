@@ -3,6 +3,8 @@ import { StatusCodes } from "http-status-codes";
 import { comparePassword, hashPassword } from "../utils/passwordUtils.js";
 import { UnauthenticatedError } from "../errors/customErrors.js";
 import { createJWT } from "../utils/tokenUtils.js";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 // 사용자 등록 컨트롤러
 export const register = async (req, res) => {

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const customFetch = axios.create({
   baseURL: `${process.env.BASE_URL}/api/v1`,
