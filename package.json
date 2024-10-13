@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "setup-project": "npm i && cd client && npm i",
-    "setup-production-app": "npm i && cd client && npm i && npm run build ",
-    "server": "nodemon server",
+    "setup-production-app": "npm i && cd client && npm i && npm run build",
+    "start": "node server",
+    "server": "node server",
     "client": "cd client && npm run dev",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
@@ -19,6 +20,7 @@
     "cloudinary": "^1.37.3",
     "concurrently": "^8.0.1",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "datauri": "^4.1.0",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
