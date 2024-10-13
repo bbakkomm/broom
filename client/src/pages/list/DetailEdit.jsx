@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
-import CircularSize from '../../components/CircularSize.jsx';
+// import CircularSize from '../../components/CircularSize.jsx';
 
 // icon
 import AddAPhotoOutlinedIcon from '@mui/icons-material/AddAPhotoOutlined';
@@ -83,7 +83,7 @@ const DetailEdit = () => {
 
   return (
     <div className="creation">
-      {isSubmitting ? (<CircularSize />) : ''}
+      {/* {isSubmitting ? (<CircularSize />) : ''} */}
       <Form method='post' className="form-box" encType='multipart/form-data'>
         <fieldset className="form-box__inner">
           <legend className="form-box__title">로그인</legend>

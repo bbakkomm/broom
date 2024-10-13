@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 // components
 import ProfileCard from './components/ProfileCard';
 import StudyCard from '../../components/common/studycard/CommonStudyCard';
-import CircularSize from '../../components/CircularSize.jsx';
+// import CircularSize from '../../components/CircularSize.jsx';
 
 // CSS style
 // import styles from '../../assets/scss/pages/profile/profile.css';
@@ -118,7 +118,7 @@ const Profile = () => {
 
   return (
     <div className="profile">
-      {isSubmitting ? (<CircularSize />) : ''}
+      {/* {isSubmitting ? (<CircularSize />) : ''} */}
       <div className="container">
 
         <ProfileCard 

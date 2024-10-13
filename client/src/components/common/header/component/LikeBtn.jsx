@@ -3,7 +3,7 @@ import { Link, redirect, useLoaderData, useLocation, useNavigate } from 'react-r
 import { toast } from 'react-toastify';
 
 import customFetch from '../../../../utils/customFetch.js';
-import CircularSize from '../../../CircularSize.jsx';
+// import CircularSize from '../../../CircularSize.jsx';
 
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -70,7 +70,7 @@ function LikeBtn(props) {
 
     return (
         <>
-            {isSubmitting ? (<CircularSize />) : ''}
+            {/* {isSubmitting ? (<CircularSize />) : ''} */}
             <button className="header__like" onClick={likeHandler}>
                 {isLikeUser ? <FavoriteOutlinedIcon className="like__icon" /> : <FavoriteBorderOutlinedIcon className="like__icon" />}
             </button>

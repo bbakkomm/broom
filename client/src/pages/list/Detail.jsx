@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 // api
 import customFetch from "../../utils/customFetch.js";
-import CircularSize from '../../components/CircularSize.jsx';
+// import CircularSize from '../../components/CircularSize.jsx';
 // import FormRow from '../../components/FormRow';
 
 // component
@@ -174,7 +174,7 @@ function Detail() {
 
     return (
         <main className="detail">
-            {isSubmitting ? (<CircularSize />) : ''}
+            {/* {isSubmitting ? (<CircularSize />) : ''} */}
             {/* 스터디 이미지 */}
             <section className="image">
                 <img src={study.thumb} alt={study.title} />

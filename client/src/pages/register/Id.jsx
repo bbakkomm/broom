@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
-import CircularSize from '../../components/CircularSize.jsx';
+// import CircularSize from '../../components/CircularSize.jsx';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -38,7 +38,7 @@ const Id = () => {
 
   return (
     <main className="id">
-      {isSubmitting ? (<CircularSize />) : ''}
+      {/* {isSubmitting ? (<CircularSize />) : ''} */}
       <h2 className="id__title">아이디 찾기</h2>
       <Form method='post'>
         {/* email */}

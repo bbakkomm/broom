@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import FormRow from '../../components/FormRow';
 import customFetch from '../../utils/customFetch.js';
-import CircularSize from '../../components/CircularSize.jsx';
+// import CircularSize from '../../components/CircularSize.jsx';
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -38,7 +38,7 @@ function Pw() {
 
   return (
     <main className="pw">
-      {isSubmitting ? (<CircularSize />) : ''}
+      {/* {isSubmitting ? (<CircularSize />) : ''} */}
       <h2 className="pw__title">비밀번호 찾기</h2>
       <Form method='post'>
         {/* id */}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { redirect, useLocation, useNavigate, useLoaderData } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import customFetch from '../../../utils/customFetch.js';
-import CircularSize from '../../CircularSize.jsx';
+// import CircularSize from '../../CircularSize.jsx';
 
 // icon
 import CalendarTodayRoundedIcon from "@mui/icons-material/CalendarTodayRounded";
@@ -104,7 +104,7 @@ function StudyCard(
 
   return (
     <ul className="studycard" key={idx} data-prod={objId} onClick={listClickHandler}>
-      {isSubmitting ? (<CircularSize />) : ''}
+      {/* {isSubmitting ? (<CircularSize />) : ''} */}
       <li className="studycard__item">
         <div className="skill-tag">
           {

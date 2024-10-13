@@ -3,7 +3,7 @@ import { redirect, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import customFetch from '../../../utils/customFetch';
-import CircularSize from '../../CircularSize';
+// import CircularSize from '../../CircularSize';
 
 function HomeStudyCard(
   { 
@@ -44,7 +44,7 @@ function HomeStudyCard(
 
   return (
     <ul className="studyCard" key={idx} data-prod={objId} onClick={listClickHandler}>
-      {isSubmitting ? (<CircularSize />) : ''}
+      {/* {isSubmitting ? (<CircularSize />) : ''} */}
       <li className="studyCard__item">
         <div className="studyBox">
           <div className="studyBox__content">
