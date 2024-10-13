@@ -1,9 +1,7 @@
 import axios from 'axios';
-import * as dotenv from "dotenv";
-dotenv.config();
 
 const customFetch = axios.create({
-  baseURL: `${process.env.BASE_URL}/api/v1`,
+  baseURL: "https://port-0-testvercel-m26geil7668e23ca.sel4.cloudtype.app/api/v1",
   // baseURL: 'http:localhost:5100/api/v1',
   withCredentials: true,
 });
