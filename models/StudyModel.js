@@ -6,11 +6,11 @@ const studySchema = new mongoose.Schema({
   thumbPublicId: String,
   startDate: {
     type: String,
-    default: '2024.08.14',
+    // default: '2024.08.14',
   },
   endDate: {
     type: String,
-    default: '2024.08.14',
+    // default: '2024.08.14',
   },
   time: String,
   place: String,
