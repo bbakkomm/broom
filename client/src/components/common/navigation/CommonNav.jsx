@@ -47,7 +47,7 @@ function Nav(props) {
             to="/profile"
             className={({ isActive }) => (isActive ? "nav__linkOn" : "nav__link")}>
             <PersonOutlineOutlinedIcon />
-            <p className="nav__btn">마이</p>
+            <p className="nav__btn">마이페이지</p>
           </NavLink>
         </li>
       </ul>
