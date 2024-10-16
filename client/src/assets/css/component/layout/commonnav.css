@@ -24,6 +24,7 @@
 }
 .nav__link {
   display: flex;
+  min-width: 4.0rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
