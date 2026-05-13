@@ -1,84 +1,238 @@
-# B.ROOM Project
+# B.ROOM — 스터디 모임 매칭 플랫폼
 
-## 기획
+> 직군과 기술 스택 기반으로 스터디 그룹을 찾고 개설할 수 있는 풀스택 웹 서비스
 
-    - 데이빗
-    - 유미
+<br/>
 
-## 디자인
+## 목차
 
-    - 유미
-    - https://www.figma.com/design/7ACRxyLLiCJJyEXa0djXzT/B.ROOM-Design?node-id=195-12697&t=i2B2zL7XSDWl4F9f-1
+- [소개](#소개)
+- [기술 스택](#기술-스택)
+- [주요 기능](#주요-기능)
+- [프로젝트 구조](#프로젝트-구조)
+- [시작하기](#시작하기)
+- [API 목록](#api-목록)
+- [브랜치 전략](#브랜치-전략)
+- [팀 구성](#팀-구성)
 
-## 레포지토리
+<br/>
 
-    - https://github.com/bbakkomm/broom
+## 소개
 
-## 개발
+B.ROOM은 개발자, 디자이너, 기획자가 직군과 기술 스택을 기반으로 스터디 모임을 매칭할 수 있는 플랫폼입니다. 모임 생성/참가, 좋아요, 프로필 관리 등 커뮤니티 서비스의 핵심 기능을 제공합니다.
 
-    - 데이빗
-    - 제이콥
-    - 유미
-    - 모건
+- **GitHub:** https://github.com/bbakkomm/broom
+- **디자인(Figma):** https://www.figma.com/design/7ACRxyLLiCJJyEXa0djXzT/B.ROOM-Design?node-id=195-12697
 
-## 개발 환경 셋팅
+<br/>
 
-    1. 개발 환경 셋팅
-    - npm run setup-project //back-end, front-end 한번에 설치
+## 기술 스택
 
-    2. .env 셋팅
-    - mongoDB 데이터 연결을 위한 암호화 파일 생성 // 프로젝트 카톡방 참고
+### Backend
 
-    3. 서버 실행
-    - back-end, front-end (동시 실행) : @broom 위치에서 npm run dev
-    - back-end : @broom 위치에서 npm run server // server mongoDB running 5100... 메세지뜨면 성공
-    - front-end : cd client > npm run dev
+| 분류 | 기술 |
+|---|---|
+| 런타임 | Node.js |
+| 프레임워크 | Express.js 4 |
+| 데이터베이스 | MongoDB + Mongoose |
+| 인증 | JWT + bcryptjs |
+| 파일 업로드 | Multer + Cloudinary |
+| 보안 | Helmet, express-rate-limit, CORS |
+| 유효성 검증 | express-validator |
+| 유틸 | dayjs, morgan, cookie-parser |
+| 개발 환경 | Nodemon, Concurrently |
+
+### Frontend
+
+| 분류 | 기술 |
+|---|---|
+| UI 프레임워크 | React 18 |
+| 빌드 도구 | Vite |
+| 라우팅 | React Router DOM v6 |
+| 서버 상태 관리 | TanStack React Query v4 |
+| HTTP 클라이언트 | Axios |
+| UI 컴포넌트 | MUI v6, styled-components |
+| 슬라이더 | Swiper |
+| 차트 | Recharts |
+| 알림 | React Toastify |
+| 아이콘 | React Icons |
+
+<br/>
+
+## 주요 기능
+
+### 회원 관련
+- 회원가입 / 로그인 / 로그아웃
+- 아이디·비밀번호 찾기 및 재설정
+- 프로필 조회·수정 (직군, 기술 스택, 소개글, 프로필 이미지)
+- 마이페이지 (찜한 스터디, 참가 중인 스터디)
+
+### 스터디 관련
+- 스터디 생성 (제목, 썸네일, 기간, 시간, 장소, 가격, 인원, 직군, 기술 태그)
+- 목록 조회 — 검색, 직군 필터, 모집 상태 필터, 최신순·좋아요순 정렬
+- 상세 조회 (참가자 목록, 좋아요)
+- 스터디 수정·삭제 (작성자 전용)
+- 참가·탈퇴
+- 좋아요 토글
+
+### 홈
+- 배너 캐러셀 (Swiper)
+- 최신 스터디 카드 리스트
+
+<br/>
+
+## 프로젝트 구조
+
+```
+broom/
+├── server.js                  # Express 서버 진입점
+├── package.json               # 백엔드 의존성
+├── models/
+│   ├── UserModel.js
+│   └── StudyModel.js
+├── routes/
+│   ├── authRouter.js
+│   ├── studyRouter.js
+│   └── userRouter.js
+├── controllers/               # 비즈니스 로직
+├── middleware/                # 인증, 유효성 검증, 에러 처리
+└── client/                    # React 프론트엔드
+    ├── package.json
+    └── src/
+        ├── App.jsx
+        ├── pages/
+        │   ├── Home.jsx
+        │   ├── Study.jsx
+        │   ├── register/      # Join, Login, Id/Pw 찾기
+        │   ├── profile/       # Profile, ProfileEdit
+        │   └── list/          # Creation, Detail, DetailEdit
+        ├── components/
+        │   └── common/        # Header, Nav, StudyCard 등
+        └── utils/
+            └── customFetch.js # Axios 래핑 유틸
+```
+
+<br/>
+
+## 시작하기
+
+### 요구 사항
+
+- Node.js 18+
+- MongoDB Atlas 계정 또는 로컬 MongoDB
+
+### 설치 및 실행
+
+```bash
+# 1. 레포지토리 클론
+git clone https://github.com/bbakkomm/broom.git
+cd broom
+
+# 2. 백엔드 + 프론트엔드 의존성 한 번에 설치
+npm run setup-project
+
+# 3. 루트에 .env 파일 생성 (아래 항목 작성)
+```
+
+### .env 설정
+
+```env
+MONGO_URL=<MongoDB 연결 URI>
+JWT_SECRET=<JWT 시크릿 키>
+JWT_EXPIRES_IN=<토큰 만료 기간, 예: 1d>
+CLOUD_NAME=<Cloudinary 클라우드 이름>
+CLOUD_API_KEY=<Cloudinary API 키>
+CLOUD_API_SECRET=<Cloudinary API 시크릿>
+NODE_ENV=development
+```
+
+### 실행 명령어
+
+```bash
+# 백엔드 + 프론트엔드 동시 실행 (권장)
+npm run dev
+
+# 백엔드만 실행 (포트 5100)
+npm run server
+
+# 프론트엔드만 실행
+cd client && npm run dev
+
+# 프로덕션 빌드
+npm run build
+```
+
+<br/>
 
 ## API 목록
 
-    1-1. 현재 로그인 중인 사용자 정보: get('/users/current-user') [Profile.jsx 참고]
-    1-2. 전체 유저 정보 가져오기: get('/all-user', getAllUsers)
-    1-3. 단일 유저 정보 가져오기: get('/single-user/:id', getUser) [id: _id]
+Base URL: `/api/v1`
 
-    2-1. 모든 스터디 정보 가져오기: .get('/study')
-    2-2. 단일 스터디 정보 가져오기: .get('/study/:id) [id: _id]
-    2-3. 유저가 작성한 스터디 목록 가져오기: .get('/study/user/:id') [id: createdBy]
+### Auth — `/auth`
+
+| 메서드 | 경로 | 설명 |
+|---|---|---|
+| POST | `/register` | 회원가입 |
+| POST | `/login` | 로그인 |
+| GET | `/logout` | 로그아웃 |
+| POST | `/find-id` | 아이디 찾기 |
+| POST | `/find-pw` | 비밀번호 찾기 |
+| PATCH | `/reset-pw` | 비밀번호 재설정 |
+
+### Users — `/users`
+
+| 메서드 | 경로 | 설명 |
+|---|---|---|
+| GET | `/current-user` | 현재 로그인 사용자 정보 |
+| GET | `/all-user` | 전체 유저 목록 |
+| GET | `/single-user/:id` | 단일 유저 정보 (`id`: `_id`) |
+| PATCH | `/update-user` | 프로필 수정 |
+
+### Study — `/study`
+
+| 메서드 | 경로 | 설명 |
+|---|---|---|
+| GET | `/` | 전체 스터디 목록 (검색, 필터, 정렬) |
+| POST | `/` | 스터디 생성 |
+| GET | `/:id` | 단일 스터디 상세 (`id`: `_id`) |
+| PATCH | `/:id` | 스터디 수정 |
+| DELETE | `/:id` | 스터디 삭제 |
+| GET | `/user/:id` | 특정 유저가 작성한 스터디 목록 (`id`: `createdBy`) |
+| PATCH | `/:id/join` | 스터디 참가·탈퇴 |
+| PATCH | `/:id/like` | 좋아요 토글 |
+
+<br/>
 
 ## 브랜치 전략
 
-    1. git clone
-        - 작업할 프로젝트 레포를 클론해줍니다.
+```
+main ── dev ── feature/기능명
+               bugfix/버그명
+```
 
-    2. branch 생성 (vscode에서 진행)
-        - git branch (현재 branch 목록 확인 // 현재위치 dev)
-        - git branch 개발할 branch명 (ex: git branch david // david branch 생성)
-        - git branch (branch 목록에 잘 생성되었는지 확인)
-        - git checkout 개발할 branch명 (ex: git checkout nav // nav branch로 이동)
+1. `dev` 기준으로 작업 브랜치 생성
+2. 작업 완료 후 `dev`로 PR 생성
+3. 코드 리뷰 완료 후 본인이 Merge
+4. 병합된 브랜치는 GitHub에서 삭제
 
-        개발완료후 커밋 진행
-        - git add .
-        - git commit -m "커밋메시지"
-        - git push (해당 branch가 github에 존재하지 않아 에러메세지 발생하며 해당 메세지 복붙하면 편함)
-        - git push --set-upstream origin david (david branch 등록 및 커밋된 파일 저장소로 업로드)
+```bash
+git checkout dev
+git pull
+git checkout -b feature/기능명
 
-    4. 개발완료된 branch를 dev로 머지 (github 페이지에서 진행)
-        - code 탭에서 등록한 branch 메세지 확인
-        - Compare & pull request 클릭
-        - description 간략한 내용 작성 (실무에서는 코드리뷰를 위해 아주 상세하게 적는다고 함, 대충 적으면 리젝당함)
-        - merge전 코드리뷰가 필요할시 Reviewers에 리뷰어 등록
-        - Assignees 본인 선택
-        - Labels 본인 라벨 선택
-        - Project 현재 프로젝트 선택
-        - add a description 내용에 closes #(개발 완료된 이슈 선택) (완료되면 해당 이슈는 프로젝트에서 Done처리됨)
-        - Create PR 클릭
-        - Merge PR 클릭 (Merge는 코드리뷰어 승인이 끝난후 작업자 본인이 진행함)
-        - Confirm Merge 클릭
-        - Delete Branch 클릭 (개발 완료된 Branch는 더 이상 필요하지 않으므로 github에서 삭제)
-        - Code 탭으로 돌아와 개발한 소스가 dev로 merge되었는지 확인
-        - Branch 목록에 삭제되었는지 확인
+# 작업 완료 후
+git add .
+git commit -m "feat: 기능 설명"
+git push --set-upstream origin feature/기능명
+# → GitHub에서 PR 생성
+```
 
-    5. Local 저장소에 dev branch pull 및 개발 완료된 Branch 삭제
-        - git branch (branch 리스트 확인)
-        - git chekchout dev (dev Branch로 이동)
-        - git pull (github 저장소와 소스 동기화)
-        - git branch -D 삭제할branch명 (ex : git branch -D nav)
+<br/>
+
+## 팀 구성
+
+| 역할 | 담당자 |
+|---|---|
+| 기획 | 데이빗, 유미 |
+| 디자인 | 유미 |
+| 개발 | 데이빗, 제이콥, 유미, 모건 |
